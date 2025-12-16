@@ -96,7 +96,7 @@
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Navigation */
+        /* Navigation - UPDATED */
         nav {
             position: fixed;
             top: 0;
@@ -163,9 +163,18 @@
             width: 100%;
         }
 
+        /* UPDATED: Nav icons - removed profile button, only search and cart remain */
         .nav-icons {
             display: flex;
             gap: 20px;
+            align-items: center;
+            position: relative;
+        }
+
+        /* UPDATED: Shopping bag with proper badge positioning */
+        .cart-container {
+            position: relative;
+            display: inline-block;
         }
 
         .nav-icons i {
@@ -177,6 +186,25 @@
         .nav-icons i:hover {
             color: var(--primary-color);
             transform: translateY(-2px);
+        }
+
+        /* UPDATED: Cart Badge - properly positioned on the shopping bag */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1001;
         }
 
         .mobile-menu-btn {
@@ -864,7 +892,7 @@
             padding: 20px;
         }
 
-        /* Authentication Modal */
+        /* Authentication Modal - KEPT BUT NO LONGER ACCESSIBLE FROM NAV */
         .auth-modal {
             position: fixed;
             top: 0;
@@ -1409,31 +1437,6 @@
             margin-bottom: 30px;
             color: rgba(255, 255, 255, 0.9);
         }
-
-        /* Cart Badge */
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #dc3545;
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-icons {
-            position: relative;
-        }
-
-        .fa-shopping-bag {
-            position: relative;
-        }
     </style>
 </head>
 <body>
@@ -1766,7 +1769,7 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation - UPDATED: Profile button removed -->
     <nav id="navbar">
         <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
         <div class="nav-links">
@@ -1776,11 +1779,13 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#footer">Contact</a>
         </div>
+        <!-- UPDATED: Only search and shopping bag remain, with proper cart badge positioning -->
         <div class="nav-icons">
             <i class="fas fa-search"></i>
-            <i class="fas fa-shopping-bag" id="openCart"></i>
-            <i class="fas fa-user" id="openAuth"></i>
-            <div class="cart-badge" id="cartBadge" style="display: none;">0</div>
+            <div class="cart-container">
+                <i class="fas fa-shopping-bag" id="openCart"></i>
+                <div class="cart-badge" id="cartBadge">0</div>
+            </div>
         </div>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
@@ -2184,7 +2189,7 @@
     </div>
 
     <script>
-        // DOM Elements
+        // DOM Elements - UPDATED: Removed openAuthBtn reference
         const navbar = document.getElementById('navbar');
         const fadeElements = document.querySelectorAll('.fade-in');
         const startQualificationBtn = document.querySelector('.start-qualification');
@@ -2204,17 +2209,7 @@
         const testimonialPrevBtn = document.querySelector('.testimonial-prev');
         const testimonialNextBtn = document.querySelector('.testimonial-next');
         
-        // Authentication elements
-        const openAuthBtn = document.getElementById('openAuth');
-        const authModal = document.getElementById('authModal');
-        const authTabs = document.querySelectorAll('.auth-tab');
-        const authForms = document.querySelectorAll('.auth-form');
-        const loginForm = document.getElementById('loginForm');
-        const signupForm = document.getElementById('signupForm');
-        const switchToSignupLinks = document.querySelectorAll('.switch-to-signup');
-        const switchToLoginLinks = document.querySelectorAll('.switch-to-login');
-        
-        // Cart elements
+        // Cart elements - UPDATED: Only cart functionality remains
         const openCartBtn = document.getElementById('openCart');
         const cartModal = document.getElementById('cartModal');
         const closeCartBtn = document.getElementById('closeCart');
@@ -2264,7 +2259,7 @@
         let currentTestimonial = 0;
         const testimonialCount = testimonialSlides.length;
         
-        // Cart state
+        // Cart state - UPDATED: This is what controls the cart badge
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
         
@@ -2272,7 +2267,7 @@
         let currentCheckoutStep = 1;
         let selectedPaymentMethod = 'credit';
         
-        // Initialize cart badge
+        // Initialize cart badge - UPDATED: This now works correctly
         updateCartBadge();
         
         // Scroll event for navbar and fade animations
@@ -2314,177 +2309,9 @@
             
             // Set initial progress bar
             updateProgressBar();
-            
-            // Check if user is logged in
-            updateUserStatus();
         });
         
-        // Authentication functionality
-        openAuthBtn.addEventListener('click', () => {
-            authModal.classList.add('active');
-        });
-        
-        // Close auth modal when clicking outside
-        authModal.addEventListener('click', (e) => {
-            if (e.target === authModal) {
-                authModal.classList.remove('active');
-            }
-        });
-        
-        // Auth tab switching
-        authTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                
-                // Update active tab
-                authTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Show corresponding form
-                authForms.forEach(form => {
-                    form.classList.remove('active');
-                    if (form.id === `${tabId}Form`) {
-                        form.classList.add('active');
-                    }
-                });
-            });
-        });
-        
-        // Switch to signup form
-        switchToSignupLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                authTabs[1].click();
-            });
-        });
-        
-        // Switch to login form
-        switchToLoginLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                authTabs[0].click();
-            });
-        });
-        
-        // Login form submission
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            // Simple validation
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // In a real app, you would validate against a backend
-            // For demo purposes, we'll use localStorage
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                // Successful login
-                currentUser = {
-                    name: user.name,
-                    email: user.email
-                };
-                
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                updateUserStatus();
-                
-                // Show success message
-                alert(`Welcome back, ${user.name}!`);
-                
-                // Close modal
-                authModal.classList.remove('active');
-                
-                // Reset form
-                loginForm.reset();
-            } else {
-                alert('Invalid email or password');
-            }
-        });
-        
-        // Signup form submission
-        signupForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('signupName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirmPassword = document.getElementById('signupConfirmPassword').value;
-            
-            // Validation
-            if (!name || !email || !password || !confirmPassword) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match');
-                return;
-            }
-            
-            if (!document.getElementById('agreeTerms').checked) {
-                alert('Please agree to the Terms & Conditions');
-                return;
-            }
-            
-            // Check if user already exists
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const existingUser = users.find(u => u.email === email);
-            
-            if (existingUser) {
-                alert('User with this email already exists');
-                return;
-            }
-            
-            // Create new user
-            const newUser = {
-                name,
-                email,
-                password, // In a real app, you would hash this
-                createdAt: new Date().toISOString()
-            };
-            
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Set as current user
-            currentUser = {
-                name: newUser.name,
-                email: newUser.email
-            };
-            
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            updateUserStatus();
-            
-            // Show success message
-            alert(`Account created successfully! Welcome to Lonz Flawls Aura, ${name}!`);
-            
-            // Close modal
-            authModal.classList.remove('active');
-            
-            // Reset form
-            signupForm.reset();
-        });
-        
-        // Update user status in UI
-        function updateUserStatus() {
-            if (currentUser) {
-                openAuthBtn.classList.add('fa-user-check');
-                openAuthBtn.classList.remove('fa-user');
-                openAuthBtn.title = `Logged in as ${currentUser.name}`;
-            } else {
-                openAuthBtn.classList.remove('fa-user-check');
-                openAuthBtn.classList.add('fa-user');
-                openAuthBtn.title = 'Login / Sign Up';
-            }
-        }
-        
-        // Cart functionality
+        // Cart functionality - UPDATED: Only cart remains, no profile/auth button
         openCartBtn.addEventListener('click', () => {
             cartModal.classList.add('active');
             updateCartDisplay();
@@ -2528,7 +2355,7 @@
             });
         });
         
-        // Add item to cart
+        // Add item to cart - UPDATED: This now properly updates the badge
         function addToCart(product) {
             // Check if item already exists in cart
             const existingItem = cart.find(item => item.id === product.id);
@@ -2554,7 +2381,7 @@
             }
         }
         
-        // Update cart badge
+        // Update cart badge - UPDATED: This now works correctly
         function updateCartBadge() {
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             
@@ -2681,13 +2508,6 @@
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
-                return;
-            }
-            
-            if (!currentUser) {
-                alert('Please login or create an account to checkout');
-                authModal.classList.add('active');
-                cartModal.classList.remove('active');
                 return;
             }
             
@@ -2821,11 +2641,6 @@
             document.getElementById('reviewShipping').textContent = `$${shipping.toFixed(2)}`;
             document.getElementById('reviewTax').textContent = `$${tax.toFixed(2)}`;
             document.getElementById('reviewTotal').textContent = `$${total.toFixed(2)}`;
-            
-            // Pre-fill user info
-            if (currentUser) {
-                document.getElementById('shippingEmail').value = currentUser.email;
-            }
         }
         
         // Place order
@@ -2838,9 +2653,6 @@
             // Generate order ID
             const orderId = Math.floor(1000 + Math.random() * 9000);
             document.getElementById('orderId').textContent = orderId;
-            
-            // In a real app, you would send order data to a backend
-            // For demo, we'll just simulate the process
             
             // Clear cart
             cart = [];

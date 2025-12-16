@@ -63,11 +63,11 @@
             z-index: -1;
         }
 
-        /* Floating Shopping Bag - MOVED UP by twice its size (120px) */
+        /* Floating Shopping Bag - MOVED UP BY 180px (60px + 120px) */
         .floating-cart {
             position: fixed;
             left: 50%;
-            top: calc(50% - 120px); /* Changed: moved up by twice its size (60px * 2 = 120px) */
+            top: calc(50% - 180px);
             transform: translate(-50%, -50%);
             z-index: 1000;
             display: flex;
@@ -2014,12 +2014,12 @@
 
         /* Remove duplicated social links from footer */
         footer .social-links-container {
-            display: none !important;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Floating Cart - MOVED UP -->
+    <!-- Floating Cart - MOVED UP BY 180px -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="floatingCartBtn">
             <i class="fas fa-shopping-bag"></i>
@@ -2372,7 +2372,7 @@
         <a href="#all-products" class="mobile-nav-link">All Products</a>
         <a href="#gallery" class="mobile-nav-link">Gallery</a>
         <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
-        <a href="#social" class="mobile-nav-link">Connect</a>
+        <a href="#footer" class="mobile-nav-link">Connect</a>
     </div>
 
     <!-- Navigation - ENLARGED -->
@@ -2384,7 +2384,7 @@
             <a href="#all-products">All Products</a>
             <a href="#gallery">Gallery</a>
             <a href="#testimonials">Testimonials</a>
-            <a href="#social">Connect</a>
+            <a href="#footer">Connect</a>
         </div>
         <div class="nav-icons">
             <!-- Search Container -->
@@ -2751,37 +2751,6 @@
             </div>
         </section>
 
-        <!-- Social Links Section -->
-        <section id="social" class="social-section">
-            <div class="section-header fade-in">
-                <h2>Connect With Us</h2>
-                <p>Follow us on social media for skincare tips, promotions, and updates</p>
-            </div>
-            
-            <div class="social-links-container fade-in">
-                <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-            
-            <div class="fade-in" style="margin-top: 30px; text-align: center;">
-                <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
-                <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
-            </div>
-        </section>
-
         <!-- Gallery -->
         <section id="gallery">
             <div class="section-header fade-in">
@@ -2883,8 +2852,43 @@
 
         <!-- Footer -->
         <footer id="footer">
-            <!-- Social Media Links in Footer - ADDED HERE -->
-            <div class="social-section fade-in" style="padding: 40px 20px; margin-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="footer-content fade-in">
+                <div class="footer-column">
+                    <h4>Lonz Flawls Aura</h4>
+                    <p>Premium skincare solutions that combine science and nature to reveal your natural radiance. Start your glow journey today.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#all-products">All Products</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#footer">Connect</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p><i class="fab fa-whatsapp"></i> +27 73 551 1216</p>
+                    <p><i class="fas fa-envelope"></i> mongwelonia@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> South Africa</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Join Our Glow Club</h4>
+                    <p>Subscribe to get exclusive offers, skincare tips, and early access to new products.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button class="glass-button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Links Section - MOVED TO FOOTER -->
+            <section id="social" class="social-section">
                 <div class="section-header fade-in">
                     <h2>Connect With Us</h2>
                     <p>Follow us on social media for skincare tips, promotions, and updates</p>
@@ -2912,42 +2916,7 @@
                     <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
                     <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
                 </div>
-            </div>
-            
-            <div class="footer-content fade-in">
-                <div class="footer-column">
-                    <h4>Lonz Flawls Aura</h4>
-                    <p>Premium skincare solutions that combine science and nature to reveal your natural radiance. Start your glow journey today.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#all-products">All Products</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#social">Connect</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Contact Info</h4>
-                    <p><i class="fab fa-whatsapp"></i> +27 73 551 1216</p>
-                    <p><i class="fas fa-envelope"></i> mongwelonia@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> South Africa</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Join Our Glow Club</h4>
-                    <p>Subscribe to get exclusive offers, skincare tips, and early access to new products.</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Your email address">
-                        <button class="glass-button">Subscribe</button>
-                    </div>
-                </div>
-            </div>
+            </section>
             
             <div class="copyright">
                 <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare</p>

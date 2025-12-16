@@ -96,7 +96,7 @@
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Navigation - UPDATED */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -163,7 +163,6 @@
             width: 100%;
         }
 
-        /* UPDATED: Nav icons - removed profile button, only search and cart remain */
         .nav-icons {
             display: flex;
             gap: 20px;
@@ -171,7 +170,6 @@
             position: relative;
         }
 
-        /* UPDATED: Shopping bag with proper badge positioning */
         .cart-container {
             position: relative;
             display: inline-block;
@@ -188,7 +186,6 @@
             transform: translateY(-2px);
         }
 
-        /* UPDATED: Cart Badge - properly positioned on the shopping bag */
         .cart-badge {
             position: absolute;
             top: -8px;
@@ -476,6 +473,28 @@
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
             line-height: 1.5;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 15px 0;
+            padding-left: 0;
+        }
+
+        .benefits-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
         }
 
         .product-price {
@@ -830,6 +849,23 @@
             }
         }
 
+        /* Product Details */
+        .product-details {
+            margin: 15px 0;
+        }
+
+        .detail-item {
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
         /* Results Modal */
         .results-modal {
             position: fixed;
@@ -892,7 +928,7 @@
             padding: 20px;
         }
 
-        /* Authentication Modal - KEPT BUT NO LONGER ACCESSIBLE FROM NAV */
+        /* Authentication Modal */
         .auth-modal {
             position: fixed;
             top: 0;
@@ -1446,330 +1482,7 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- Authentication Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="auth-content glass-card">
-            <div class="auth-tabs">
-                <button class="auth-tab active" data-tab="login">Login</button>
-                <button class="auth-tab" data-tab="signup">Sign Up</button>
-            </div>
-            
-            <!-- Login Form -->
-            <form class="auth-form active" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email Address</label>
-                    <input type="email" id="loginEmail" class="form-input" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                </div>
-                
-                <div class="form-checkbox">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">Remember me</label>
-                </div>
-                
-                <button type="submit" class="glass-button" style="width: 100%;">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-                
-                <div class="auth-footer">
-                    Don't have an account? <a href="#" class="switch-to-signup">Sign up here</a>
-                </div>
-            </form>
-            
-            <!-- Sign Up Form -->
-            <form class="auth-form" id="signupForm">
-                <div class="form-group">
-                    <label for="signupName">Full Name</label>
-                    <input type="text" id="signupName" class="form-input" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="signupEmail">Email Address</label>
-                    <input type="email" id="signupEmail" class="form-input" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" class="form-input" placeholder="Create a password" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="signupConfirmPassword">Confirm Password</label>
-                    <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirm your password" required>
-                </div>
-                
-                <div class="form-checkbox">
-                    <input type="checkbox" id="agreeTerms" required>
-                    <label for="agreeTerms">I agree to the Terms & Conditions and Privacy Policy</label>
-                </div>
-                
-                <button type="submit" class="glass-button" style="width: 100%;">
-                    <i class="fas fa-user-plus"></i> Create Account
-                </button>
-                
-                <div class="auth-footer">
-                    Already have an account? <a href="#" class="switch-to-login">Login here</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content glass-card">
-            <div class="cart-header">
-                <h3>Your Shopping Bag</h3>
-                <button class="close-cart" id="closeCart">&times;</button>
-            </div>
-            
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be dynamically added here -->
-                <div class="cart-empty">
-                    <i class="fas fa-shopping-bag"></i>
-                    <h4>Your bag is empty</h4>
-                    <p>Add some products to get started!</p>
-                </div>
-            </div>
-            
-            <div class="cart-summary glass-card" id="cartSummary" style="display: none;">
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span id="cartSubtotal">$0.00</span>
-                </div>
-                <div class="summary-row">
-                    <span>Shipping</span>
-                    <span id="cartShipping">$0.00</span>
-                </div>
-                <div class="summary-row">
-                    <span>Tax</span>
-                    <span id="cartTax">$0.00</span>
-                </div>
-                <div class="summary-row total">
-                    <span>Total</span>
-                    <span id="cartTotal">$0.00</span>
-                </div>
-                
-                <button class="glass-button" style="width: 100%; margin-top: 20px;" id="checkoutBtn">
-                    <i class="fas fa-lock"></i> Proceed to Checkout
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Checkout Modal -->
-    <div class="checkout-modal" id="checkoutModal">
-        <div class="checkout-content glass-card">
-            <div class="checkout-header">
-                <h3>Checkout</h3>
-                <button class="close-checkout" id="closeCheckout">&times;</button>
-            </div>
-            
-            <div class="checkout-steps">
-                <div class="checkout-step active" data-step="1">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Shipping</div>
-                </div>
-                <div class="checkout-step" data-step="2">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Payment</div>
-                </div>
-                <div class="checkout-step" data-step="3">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Review</div>
-                </div>
-            </div>
-            
-            <!-- Step 1: Shipping -->
-            <form class="checkout-form active" id="shippingForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="shippingFirstName">First Name</label>
-                        <input type="text" id="shippingFirstName" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="shippingLastName">Last Name</label>
-                        <input type="text" id="shippingLastName" class="form-input" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="shippingEmail">Email Address</label>
-                    <input type="email" id="shippingEmail" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="shippingPhone">Phone Number</label>
-                    <input type="tel" id="shippingPhone" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="shippingAddress">Address</label>
-                    <input type="text" id="shippingAddress" class="form-input" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="shippingCity">City</label>
-                        <input type="text" id="shippingCity" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="shippingZip">ZIP Code</label>
-                        <input type="text" id="shippingZip" class="form-input" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="shippingCountry">Country</label>
-                    <select id="shippingCountry" class="form-input" required>
-                        <option value="">Select Country</option>
-                        <option value="US">United States</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="CA">Canada</option>
-                        <option value="AU">Australia</option>
-                        <option value="PH">Philippines</option>
-                    </select>
-                </div>
-                
-                <div class="checkout-actions">
-                    <button type="button" class="glass-button" id="backToCart">
-                        <i class="fas fa-arrow-left"></i> Back to Cart
-                    </button>
-                    <button type="button" class="glass-button" id="nextToPayment">
-                        Next <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </form>
-            
-            <!-- Step 2: Payment -->
-            <form class="checkout-form" id="paymentForm">
-                <div class="payment-methods">
-                    <div class="payment-method glass-card selected" data-method="credit">
-                        <i class="fas fa-credit-card"></i>
-                        <h4>Credit Card</h4>
-                        <p>Pay with your credit card</p>
-                    </div>
-                    <div class="payment-method glass-card" data-method="paypal">
-                        <i class="fab fa-paypal"></i>
-                        <h4>PayPal</h4>
-                        <p>Pay with your PayPal account</p>
-                    </div>
-                    <div class="payment-method glass-card" data-method="gcash">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h4>GCash</h4>
-                        <p>Pay with GCash</p>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cardName">Name on Card</label>
-                    <input type="text" id="cardName" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="cardExpiry">Expiry Date</label>
-                        <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cardCVC">CVC</label>
-                        <input type="text" id="cardCVC" class="form-input" placeholder="123" required>
-                    </div>
-                </div>
-                
-                <div class="checkout-actions">
-                    <button type="button" class="glass-button" id="backToShipping">
-                        <i class="fas fa-arrow-left"></i> Back to Shipping
-                    </button>
-                    <button type="button" class="glass-button" id="nextToReview">
-                        Next <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </form>
-            
-            <!-- Step 3: Review -->
-            <div class="checkout-form" id="reviewForm">
-                <div class="checkout-review glass-card">
-                    <h4 style="margin-bottom: 20px; color: var(--primary-color);">Order Summary</h4>
-                    <div id="reviewItems">
-                        <!-- Order items will be dynamically added here -->
-                    </div>
-                    
-                    <div class="summary-row">
-                        <span>Subtotal</span>
-                        <span id="reviewSubtotal">$0.00</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Shipping</span>
-                        <span id="reviewShipping">$0.00</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Tax</span>
-                        <span id="reviewTax">$0.00</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total</span>
-                        <span id="reviewTotal">$0.00</span>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="orderNotes">Order Notes (Optional)</label>
-                    <textarea id="orderNotes" class="form-input" rows="3" placeholder="Add special instructions for your order..."></textarea>
-                </div>
-                
-                <div class="form-checkbox">
-                    <input type="checkbox" id="agreeTermsCheckout" required>
-                    <label for="agreeTermsCheckout">I agree to the Terms & Conditions and Privacy Policy</label>
-                </div>
-                
-                <div class="checkout-actions">
-                    <button type="button" class="glass-button" id="backToPayment">
-                        <i class="fas fa-arrow-left"></i> Back to Payment
-                    </button>
-                    <button type="button" class="glass-button" id="placeOrderBtn">
-                        <i class="fas fa-lock"></i> Place Order
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="success-modal" id="successModal">
-        <div class="success-content glass-card">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="success-message">
-                <h3>Order Confirmed!</h3>
-                <p>Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.</p>
-                <p style="font-size: 1rem; color: var(--accent-color); margin-top: 20px;">
-                    Order ID: <strong>#LFA-<span id="orderId">0000</span></strong>
-                </p>
-                
-                <div style="margin-top: 40px;">
-                    <button class="glass-button" id="continueShopping">
-                        <i class="fas fa-shopping-bag"></i> Continue Shopping
-                    </button>
-                    <button class="glass-button" style="margin-left: 15px; background: rgba(196, 167, 125, 0.3);">
-                        <i class="fas fa-truck"></i> Track Order
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation - UPDATED: Profile button removed -->
+    <!-- Navigation -->
     <nav id="navbar">
         <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
         <div class="nav-links">
@@ -1779,7 +1492,6 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#footer">Contact</a>
         </div>
-        <!-- UPDATED: Only search and shopping bag remain, with proper cart badge positioning -->
         <div class="nav-icons">
             <i class="fas fa-search"></i>
             <div class="cart-container">
@@ -1797,11 +1509,11 @@
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="fade-in">
-                <h1>Discover Your Glow</h1>
-                <p>Lonz Flawls Aura combines science and nature to create premium skincare solutions that reveal your natural radiance. Experience the transformation.</p>
+                <h1>Discover Your Natural Glow</h1>
+                <p>Lonz Flawls Aura offers premium skincare solutions formulated with natural ingredients to reveal your natural radiance. Experience the transformation with our specialized whitening and glow products.</p>
                 <div class="hero-buttons">
                     <button class="glass-button start-qualification"><i class="fas fa-star"></i> Start Your Glow Journey</button>
-                    <button class="glass-button"><i class="fas fa-play-circle"></i> Watch Our Story</button>
+                    <button class="glass-button"><i class="fas fa-shopping-bag"></i> Shop Now</button>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -1810,200 +1522,264 @@
             </div>
         </section>
 
-        <!-- Lead Qualification Wizard -->
-        <section id="qualification">
-            <div class="lead-wizard glass-card fade-in">
-                <div class="wizard-header">
-                    <div class="wizard-avatar">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <div class="wizard-title">
-                        <h3>Skin Analysis Wizard</h3>
-                        <p>Answer a few questions to get personalized recommendations</p>
-                    </div>
-                </div>
-                
-                <div class="wizard-content">
-                    <!-- Step 1: Skin Concern -->
-                    <div class="wizard-step active" id="step1">
-                        <h4>What is your primary skin concern?</h4>
-                        <div class="option-grid">
-                            <div class="option-item glass-card" data-value="acne">
-                                <i class="fas fa-leaf"></i>
-                                <p>Acne & Breakouts</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="dark-spots">
-                                <i class="fas fa-circle"></i>
-                                <p>Dark Spots</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="dry">
-                                <i class="fas fa-tint"></i>
-                                <p>Dryness</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="uneven-tone">
-                                <i class="fas fa-palette"></i>
-                                <p>Uneven Tone</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="glow">
-                                <i class="fas fa-sun"></i>
-                                <p>Glow Maintenance</p>
-                            </div>
-                        </div>
-                        <div class="wizard-actions">
-                            <button class="glass-button wizard-next" data-step="1">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 2: Skin Sensitivity -->
-                    <div class="wizard-step" id="step2">
-                        <h4>How sensitive is your skin?</h4>
-                        <div class="option-grid">
-                            <div class="option-item glass-card" data-value="very-sensitive">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <p>Very Sensitive</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="sensitive">
-                                <i class="fas fa-low-vision"></i>
-                                <p>Sensitive</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="normal">
-                                <i class="fas fa-check-circle"></i>
-                                <p>Normal</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="resilient">
-                                <i class="fas fa-shield-alt"></i>
-                                <p>Resilient</p>
-                            </div>
-                        </div>
-                        <div class="wizard-actions">
-                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="glass-button wizard-next" data-step="2">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 3: Skin Age -->
-                    <div class="wizard-step" id="step3">
-                        <h4>What is your skin age range?</h4>
-                        <div class="option-grid">
-                            <div class="option-item glass-card" data-value="under-25">
-                                <i class="fas fa-child"></i>
-                                <p>Under 25</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="25-35">
-                                <i class="fas fa-user"></i>
-                                <p>25-35</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="36-50">
-                                <i class="fas fa-user-friends"></i>
-                                <p>36-50</p>
-                            </div>
-                            <div class="option-item glass-card" data-value="50-plus">
-                                <i class="fas fa-crown"></i>
-                                <p>50+</p>
-                            </div>
-                        </div>
-                        <div class="wizard-actions">
-                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="glass-button wizard-next" data-step="3">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 4: Photo Upload -->
-                    <div class="wizard-step" id="step4">
-                        <h4>Upload a photo for AI analysis (optional)</h4>
-                        <p>Get a more accurate skin assessment by uploading a clear, well-lit photo of your face.</p>
-                        
-                        <div class="photo-upload glass-card" id="photoUpload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload or drag and drop</p>
-                            <small>JPG or PNG, max 5MB</small>
-                        </div>
-                        
-                        <div class="wizard-actions">
-                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="glass-button" id="skipUpload">Skip and Get Results</button>
-                            <button class="glass-button" id="analyzePhoto">Analyze Photo</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="wizard-progress">
-                    <div class="wizard-progress-bar" id="progressBar"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recommended Combos -->
+        <!-- Whitening Products -->
         <section id="products">
             <div class="section-header fade-in">
-                <h2>Recommended For You</h2>
-                <p>Based on your skin profile, we recommend these combos for optimal results</p>
+                <h2>Whitening Products</h2>
+                <p>Specialized formulas for even skin tone and radiant complexion</p>
             </div>
             
             <div class="products-grid fade-in">
-                <!-- Combo 1 -->
+                <!-- Whitening Oil -->
                 <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">Recommended</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-badge badge-flagship">Flagship</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Glow Revival Combo</h3>
-                        <p>Cleanser + Toner + Serum specifically formulated for radiant, even-toned skin. Perfect for daily use.</p>
-                        <div class="product-price">$89.99 <span>$120.00</span></div>
+                        <h3>Whitening Oil 100ml</h3>
+                        <ul class="benefits-list">
+                            <li>Clear dead skin</li>
+                            <li>Repair damage skin</li>
+                            <li>Improve skin tone</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Usage:</span> Morning and night</div>
+                            <div class="detail-item"><span class="detail-label">Active Ingredients:</span> Vitamin E and C collagen, Gluthathion</div>
+                        </div>
+                        <div class="product-price">R200</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="1" data-name="Glow Revival Combo" data-price="89.99" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <!-- Combo 2 -->
+                <!-- Whitening Cream -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-bestseller">Bestseller</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Anti-Aging Trio</h3>
-                        <p>Advanced formula to reduce fine lines and improve skin elasticity. Includes night cream and eye serum.</p>
-                        <div class="product-price">$129.99 <span>$165.00</span></div>
+                        <h3>Whitening Cream 250g</h3>
+                        <ul class="benefits-list">
+                            <li>Improves skin tone</li>
+                            <li>Strong moisturising</li>
+                            <li>Anti Aging</li>
+                            <li>Treats Acne & Pigmentation</li>
+                            <li>Reduces dark spots & pimples</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Usage:</span> Morning and night</div>
+                            <div class="detail-item"><span class="detail-label">Active Ingredients:</span> Vitamin E and C, Collagen and Glutathione</div>
+                        </div>
+                        <div class="product-price">R150</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="2" data-name="Anti-Aging Trio" data-price="129.99" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <!-- Combo 3 -->
+                <!-- Whitening Soap -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">Recommended</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Acne Control Kit</h3>
-                        <p>Gentle yet effective solution for breakout-prone skin. Includes salicylic acid cleanser and spot treatment.</p>
-                        <div class="product-price">$74.99 <span>$95.00</span></div>
+                        <h3>Whitening Soap</h3>
+                        <ul class="benefits-list">
+                            <li>Skin whitening purposes</li>
+                            <li>Eliminates excess oils</li>
+                            <li>Eliminates blemishes</li>
+                            <li>Gently exfoliates dead skin cells</li>
+                            <li>Treats hyperpigmentation and Acne</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Usage:</span> Morning and night</div>
+                            <div class="detail-item"><span class="detail-label">Active Ingredients:</span> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
+                        </div>
+                        <div class="product-price">R70</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="3" data-name="Acne Control Kit" data-price="74.99" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="3" data-name="Whitening Soap" data-price="70" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
 
-        <!-- Flagship Product -->
-        <section id="flagship">
+        <!-- Extra Glow Products -->
+        <section id="glow-products">
             <div class="section-header fade-in">
-                <h2>Flagship Whitening Oil</h2>
-                <p>Our most advanced formula for radiant, even-toned skin. Experience the transformation.</p>
+                <h2>Extra Glow Collection</h2>
+                <p>Enhance your natural radiance with our glow-enhancing products</p>
             </div>
             
             <div class="products-grid fade-in">
-                <div class="product-card glass-card" style="grid-column: span 2;">
-                    <div class="product-badge badge-flagship">Flagship</div>
-                    <div style="display: flex; gap: 30px; align-items: center;">
-                        <div class="product-image" style="flex: 1; height: 300px; background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="product-info" style="flex: 1;">
-                            <h3>Luminous Whitening Oil</h3>
-                            <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.</p>
-                            <ul style="margin: 20px 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
-                                <li>Reduces dark spots and hyperpigmentation</li>
-                                <li>Improves skin texture and elasticity</li>
-                                <li>Provides intense hydration without greasiness</li>
-                                <li>Suitable for all skin types</li>
-                            </ul>
-                            <div class="product-price">$149.99</div>
-                            <button class="glass-button add-to-cart" data-id="4" data-name="Luminous Whitening Oil" data-price="149.99" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart - Premium</button>
+                <!-- Extra Glow Lotion -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Recommended</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Lotion 250g</h3>
+                        <ul class="benefits-list">
+                            <li>Helps with dry skin</li>
+                            <li>Glowing complexion</li>
+                            <li>Treats dark inner thighs</li>
+                            <li>Helps with sunburn</li>
+                            <li>Reduces stretch marks & blemishes</li>
+                            <li>Helps heal wounds</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Usage:</span> Morning and night</div>
+                            <div class="detail-item"><span class="detail-label">Active Ingredients:</span> Vitamin C, Vegetal glycerin, Sodium lactate</div>
                         </div>
+                        <div class="product-price">R100</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Glow Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Popular</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620916297392-52d68b0e2c61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Soap</h3>
+                        <ul class="benefits-list">
+                            <li>Brings out the glow</li>
+                            <li>Moisturises dry skin</li>
+                            <li>Helps treat stretch marks</li>
+                            <li>Helps fade skin scars</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Usage:</span> Morning and night</div>
+                            <div class="detail-item"><span class="detail-label">Active Ingredients:</span> Tumeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
+                        </div>
+                        <div class="product-price">R70</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="5" data-name="Extra Glow Soap" data-price="70" data-image="https://images.unsplash.com/photo-1620916297392-52d68b0e2c61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Kojic Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Special</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1599043503513-86843c4ce6e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Kojic Soap</h3>
+                        <ul class="benefits-list">
+                            <li>Treats different skin disorders</li>
+                            <li>Cleans whole body</li>
+                            <li>Even skin tone</li>
+                            <li>Reduces dark spots due to acne</li>
+                            <li>Brightens the skin</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item"><span class="detail-label">Benefits:</span> Treats uneven skin tone, dark spots, and brightens skin</div>
+                        </div>
+                        <div class="product-price">R150</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="6" data-name="Kojic Soap" data-price="150" data-image="https://images.unsplash.com/photo-1599043503513-86843c4ce6e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Products -->
+        <section id="additional-products">
+            <div class="section-header fade-in">
+                <h2>Additional Products</h2>
+                <p>Complete your skincare routine with these essentials</p>
+            </div>
+            
+            <div class="products-grid fade-in">
+                <!-- Extra Glow Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228579-6d0c6f30f8c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Oil</h3>
+                        <p>Enhances natural glow and moisturizes skin for a radiant complexion.</p>
+                        <div class="product-price">R100</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="7" data-name="Extra Glow Oil" data-price="100" data-image="https://images.unsplash.com/photo-1556228579-6d0c6f30f8c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Cream -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Cream</h3>
+                        <p>Rich moisturizing cream for deep hydration and skin nourishment.</p>
+                        <div class="product-price">R100</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="8" data-name="Extra Cream" data-price="100" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Whitening Tissue Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Tissue Oil</h3>
+                        <p>Specialized tissue oil for whitening and skin tone evening.</p>
+                        <div class="product-price">R200</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="9" data-name="Whitening Tissue Oil" data-price="200" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combo Packages -->
+        <section id="combos">
+            <div class="section-header fade-in">
+                <h2>Value Combos</h2>
+                <p>Save more with our specially curated skincare packages</p>
+            </div>
+            
+            <div class="products-grid fade-in">
+                <!-- Extra Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Best Value</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Combo</h3>
+                        <p>Complete glow enhancement package including:</p>
+                        <ul class="benefits-list">
+                            <li>1 Extra Glow Soap</li>
+                            <li>2 Extra Glow Oil</li>
+                            <li>3 Extra Glow Cream</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item">Perfect for daily glow maintenance</div>
+                        </div>
+                        <div class="product-price">R270 <span>R310</span></div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="10" data-name="Extra Combo" data-price="270" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Whitening Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Popular</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Combo</h3>
+                        <p>Complete whitening skincare system including:</p>
+                        <ul class="benefits-list">
+                            <li>1 Whitening Oil</li>
+                            <li>2 Whitening Soap</li>
+                            <li>3 Whitening Cream</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item">Complete whitening routine for best results</div>
+                        </div>
+                        <div class="product-price">R420 <span>R470</span></div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="11" data-name="Whitening Combo" data-price="420" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Whitening Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-flagship">Premium</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Whitening Combo</h3>
+                        <p>Advanced whitening treatment package including:</p>
+                        <ul class="benefits-list">
+                            <li>1 Whitening Oil</li>
+                            <li>2 Whitening Cream</li>
+                            <li>3 Kojic Soap</li>
+                        </ul>
+                        <div class="product-details">
+                            <div class="detail-item">Maximum whitening power combination</div>
+                        </div>
+                        <div class="product-price">R500 <span>R570</span></div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="12" data-name="Extra Whitening Combo" data-price="500" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -2011,8 +1787,8 @@
         <!-- Gallery -->
         <section id="gallery">
             <div class="section-header fade-in">
-                <h2>Glow Gallery</h2>
-                <p>See the transformation and lifestyle with Lonz Flawls Aura</p>
+                <h2>Results Gallery</h2>
+                <p>See the transformation with our premium skincare products</p>
             </div>
             
             <div class="gallery-container fade-in">
@@ -2047,7 +1823,7 @@
         <!-- Testimonials -->
         <section id="testimonials">
             <div class="section-header fade-in">
-                <h2>Glowing Testimonials</h2>
+                <h2>Customer Testimonials</h2>
                 <p>See what our customers are saying about their transformation</p>
             </div>
             
@@ -2055,7 +1831,7 @@
                 <!-- Testimonial 1 -->
                 <div class="testimonial-slide glass-card active">
                     <div class="testimonial-text">
-                        After using Lonz Flawls Aura for just 3 weeks, my skin has never looked better. The dark spots that I've had for years have significantly faded and my complexion is so much more even. This is the only skincare that has actually worked for me!
+                        After using the Whitening Oil and Cream combo for just 3 weeks, my skin has never looked better. The dark spots that I've had for years have significantly faded and my complexion is so much more even. This is the only skincare that has actually worked for me!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -2071,7 +1847,7 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-slide glass-card">
                     <div class="testimonial-text">
-                        The Whitening Oil is absolutely worth the investment. I was skeptical at first, but after one bottle, my skin has a natural glow that I haven't had since my 20s. My friends keep asking what I'm using, and I'm happy to recommend this brand!
+                        The Kojic Soap is absolutely worth the investment. I was skeptical at first, but after one month, my skin has a natural glow that I haven't had since my 20s. My friends keep asking what I'm using, and I'm happy to recommend this brand!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -2087,7 +1863,7 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-slide glass-card">
                     <div class="testimonial-text">
-                        I've struggled with sensitive skin my whole life, but the Glow Revival Combo is gentle yet effective. No irritation, just results. My skin feels hydrated, looks brighter, and I finally feel confident without makeup. Thank you Lonz Flawls Aura!
+                        I've struggled with dry skin my whole life, but the Extra Glow Lotion is gentle yet effective. No irritation, just results. My skin feels hydrated, looks brighter, and I finally feel confident without makeup. Thank you Lonz Flawls Aura!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -2107,12 +1883,41 @@
             </div>
         </section>
 
+        <!-- Contact Information -->
+        <section id="contact">
+            <div class="section-header fade-in">
+                <h2>Contact Us</h2>
+                <p>Get in touch for personalized skincare advice and orders</p>
+            </div>
+            
+            <div class="products-grid fade-in">
+                <div class="product-card glass-card" style="grid-column: span 3; text-align: center; padding: 40px;">
+                    <div class="product-info">
+                        <h3>Contact Information</h3>
+                        <div style="margin: 30px 0;">
+                            <div class="detail-item" style="font-size: 1.1rem; margin: 15px 0;">
+                                <i class="fas fa-phone" style="color: var(--accent-color); margin-right: 10px;"></i>
+                                <span class="detail-label">Phone:</span> [Your Contact Number]
+                            </div>
+                            <div class="detail-item" style="font-size: 1.1rem; margin: 15px 0;">
+                                <i class="fas fa-envelope" style="color: var(--accent-color); margin-right: 10px;"></i>
+                                <span class="detail-label">Email:</span> [Your Email Address]
+                            </div>
+                        </div>
+                        <p style="color: rgba(255,255,255,0.8); margin-top: 20px;">
+                            For inquiries about our whitening oil, creams, soaps, or any other products, please don't hesitate to contact us. We're here to help you achieve your skincare goals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer id="footer">
             <div class="footer-content fade-in">
                 <div class="footer-column">
                     <h4>Lonz Flawls Aura</h4>
-                    <p>Premium skincare solutions that combine science and nature to reveal your natural radiance. Start your glow journey today.</p>
+                    <p>Premium skincare solutions that combine natural ingredients and advanced formulations to reveal your natural radiance. Start your glow journey today.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2125,23 +1930,23 @@
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="#hero">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#products">Whitening Products</a></li>
+                        <li><a href="#glow-products">Extra Glow Collection</a></li>
+                        <li><a href="#combos">Value Combos</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Avenue, Glow City</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> hello@lonzflawlsaura.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> [Your Business Address]</p>
+                    <p><i class="fas fa-phone"></i> [Your Contact Number]</p>
+                    <p><i class="fas fa-envelope"></i> [Your Email Address]</p>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Join Our Glow Club</h4>
+                    <h4>Join Our Skincare Club</h4>
                     <p>Subscribe to get exclusive offers, skincare tips, and early access to new products.</p>
                     <div class="newsletter-form">
                         <input type="email" placeholder="Your email address">
@@ -2151,65 +1956,64 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare</p>
+                <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare Solutions</p>
             </div>
         </footer>
     </div>
 
-    <!-- Results Modal -->
-    <div class="results-modal" id="resultsModal">
-        <div class="results-content glass-card">
-            <div class="result-icon">
-                <i class="fas fa-spa"></i>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content glass-card">
+            <div class="cart-header">
+                <h3>Your Shopping Cart</h3>
+                <button class="close-cart" id="closeCart">&times;</button>
             </div>
-            <div class="result-message">
-                <h3>Your Personalized Glow Plan</h3>
-                <p>Based on your skin profile, we recommend starting with the <strong>Glow Revival Combo</strong> to address your primary concerns and prepare your skin for optimal results.</p>
-                <p>For enhanced brightening and even skin tone, add our <strong>Flagship Whitening Oil</strong> to your nightly routine.</p>
-                
-                <div class="result-products">
-                    <div class="result-product glass-card">
-                        <h4>Glow Revival Combo</h4>
-                        <p>$89.99</p>
-                        <button class="glass-button" style="margin-top: 10px;">Add to Cart</button>
-                    </div>
-                    <div class="result-product glass-card">
-                        <h4>Whitening Oil</h4>
-                        <p>$149.99</p>
-                        <button class="glass-button" style="margin-top: 10px; background: rgba(196, 167, 125, 0.3);">Add to Cart</button>
-                    </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>Your cart is empty</h4>
+                    <p>Add some products to get started!</p>
+                </div>
+            </div>
+            
+            <div class="cart-summary glass-card" id="cartSummary" style="display: none;">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">R0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="cartShipping">R0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax</span>
+                    <span id="cartTax">R0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">R0.00</span>
                 </div>
                 
-                <div style="margin-top: 40px;">
-                    <button class="glass-button" id="closeResults">Continue Browsing</button>
-                    <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;"><i class="fab fa-instagram"></i> DM for Your Glow</button>
-                </div>
+                <button class="glass-button" style="width: 100%; margin-top: 20px;" id="checkoutBtn">
+                    <i class="fas fa-lock"></i> Proceed to Checkout
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // DOM Elements - UPDATED: Removed openAuthBtn reference
+        // DOM Elements
         const navbar = document.getElementById('navbar');
         const fadeElements = document.querySelectorAll('.fade-in');
-        const startQualificationBtn = document.querySelector('.start-qualification');
-        const wizardSteps = document.querySelectorAll('.wizard-step');
-        const optionItems = document.querySelectorAll('.option-item');
-        const wizardNextBtns = document.querySelectorAll('.wizard-next');
-        const wizardPrevBtns = document.querySelectorAll('.wizard-prev');
-        const progressBar = document.getElementById('progressBar');
-        const photoUpload = document.getElementById('photoUpload');
-        const skipUploadBtn = document.getElementById('skipUpload');
-        const analyzePhotoBtn = document.getElementById('analyzePhoto');
-        const resultsModal = document.getElementById('resultsModal');
-        const closeResultsBtn = document.getElementById('closeResults');
         const galleryTrack = document.getElementById('galleryTrack');
         const galleryDots = document.querySelectorAll('.gallery-dot');
         const testimonialSlides = document.querySelectorAll('.testimonial-slide');
         const testimonialPrevBtn = document.querySelector('.testimonial-prev');
         const testimonialNextBtn = document.querySelector('.testimonial-next');
         
-        // Cart elements - UPDATED: Only cart functionality remains
+        // Cart elements
         const openCartBtn = document.getElementById('openCart');
         const cartModal = document.getElementById('cartModal');
         const closeCartBtn = document.getElementById('closeCart');
@@ -2219,38 +2023,6 @@
         const addToCartBtns = document.querySelectorAll('.add-to-cart');
         const checkoutBtn = document.getElementById('checkoutBtn');
         
-        // Checkout elements
-        const checkoutModal = document.getElementById('checkoutModal');
-        const closeCheckoutBtn = document.getElementById('closeCheckout');
-        const checkoutSteps = document.querySelectorAll('.checkout-step');
-        const checkoutForms = document.querySelectorAll('.checkout-form');
-        const shippingForm = document.getElementById('shippingForm');
-        const paymentForm = document.getElementById('paymentForm');
-        const reviewForm = document.getElementById('reviewForm');
-        const backToCartBtn = document.getElementById('backToCart');
-        const nextToPaymentBtn = document.getElementById('nextToPayment');
-        const backToShippingBtn = document.getElementById('backToShipping');
-        const nextToReviewBtn = document.getElementById('nextToReview');
-        const backToPaymentBtn = document.getElementById('backToPayment');
-        const placeOrderBtn = document.getElementById('placeOrderBtn');
-        const paymentMethods = document.querySelectorAll('.payment-method');
-        
-        // Success modal elements
-        const successModal = document.getElementById('successModal');
-        const continueShoppingBtn = document.getElementById('continueShopping');
-        
-        // User data for qualification
-        const userData = {
-            skinConcern: '',
-            sensitivity: '',
-            ageRange: '',
-            photoUploaded: false
-        };
-        
-        // Current wizard step
-        let currentStep = 1;
-        const totalSteps = 4;
-        
         // Gallery state
         let currentGallerySlide = 0;
         const gallerySlideCount = 5;
@@ -2259,15 +2031,10 @@
         let currentTestimonial = 0;
         const testimonialCount = testimonialSlides.length;
         
-        // Cart state - UPDATED: This is what controls the cart badge
+        // Cart state
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
         
-        // Checkout state
-        let currentCheckoutStep = 1;
-        let selectedPaymentMethod = 'credit';
-        
-        // Initialize cart badge - UPDATED: This now works correctly
+        // Initialize cart badge
         updateCartBadge();
         
         // Scroll event for navbar and fade animations
@@ -2306,12 +2073,9 @@
                     element.classList.add('visible');
                 }
             });
-            
-            // Set initial progress bar
-            updateProgressBar();
         });
         
-        // Cart functionality - UPDATED: Only cart remains, no profile/auth button
+        // Cart functionality
         openCartBtn.addEventListener('click', () => {
             cartModal.classList.add('active');
             updateCartDisplay();
@@ -2355,7 +2119,7 @@
             });
         });
         
-        // Add item to cart - UPDATED: This now properly updates the badge
+        // Add item to cart
         function addToCart(product) {
             // Check if item already exists in cart
             const existingItem = cart.find(item => item.id === product.id);
@@ -2381,7 +2145,7 @@
             }
         }
         
-        // Update cart badge - UPDATED: This now works correctly
+        // Update cart badge
         function updateCartBadge() {
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             
@@ -2399,7 +2163,7 @@
                 cartItems.innerHTML = `
                     <div class="cart-empty">
                         <i class="fas fa-shopping-bag"></i>
-                        <h4>Your bag is empty</h4>
+                        <h4>Your cart is empty</h4>
                         <p>Add some products to get started!</p>
                     </div>
                 `;
@@ -2419,7 +2183,7 @@
                         <div class="cart-item-image" style="background-image: url('${item.image}');"></div>
                         <div class="cart-item-info">
                             <h4>${item.name}</h4>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-price">R${item.price.toFixed(2)}</div>
                         </div>
                         <div class="cart-item-actions">
                             <div class="quantity-control">
@@ -2438,15 +2202,15 @@
             cartItems.innerHTML = itemsHTML;
             
             // Calculate totals
-            const shipping = subtotal > 100 ? 0 : 9.99;
-            const tax = subtotal * 0.08; // 8% tax
+            const shipping = subtotal > 300 ? 0 : 50;
+            const tax = subtotal * 0.15; // 15% tax
             const total = subtotal + shipping + tax;
             
             // Update summary
-            document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('cartShipping').textContent = `$${shipping.toFixed(2)}`;
-            document.getElementById('cartTax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cartSubtotal').textContent = `R${subtotal.toFixed(2)}`;
+            document.getElementById('cartShipping').textContent = `R${shipping.toFixed(2)}`;
+            document.getElementById('cartTax').textContent = `R${tax.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = `R${total.toFixed(2)}`;
             
             // Show summary
             cartSummary.style.display = 'block';
@@ -2511,355 +2275,15 @@
                 return;
             }
             
+            // Simple checkout alert (in a real app, this would redirect to checkout)
+            alert('Thank you for your order! For real purchases, please contact us directly at [Your Contact Number] or [Your Email Address]');
             cartModal.classList.remove('active');
-            checkoutModal.classList.add('active');
-            updateCheckoutStep(1);
-        });
-        
-        closeCheckoutBtn.addEventListener('click', () => {
-            checkoutModal.classList.remove('active');
-        });
-        
-        // Close checkout modal when clicking outside
-        checkoutModal.addEventListener('click', (e) => {
-            if (e.target === checkoutModal) {
-                checkoutModal.classList.remove('active');
-            }
-        });
-        
-        // Update checkout step
-        function updateCheckoutStep(step) {
-            currentCheckoutStep = step;
             
-            // Update steps visual
-            checkoutSteps.forEach(s => {
-                s.classList.remove('active', 'completed');
-                
-                const stepNum = parseInt(s.getAttribute('data-step'));
-                
-                if (stepNum === step) {
-                    s.classList.add('active');
-                } else if (stepNum < step) {
-                    s.classList.add('completed');
-                }
-            });
-            
-            // Show corresponding form
-            checkoutForms.forEach(form => {
-                form.classList.remove('active');
-            });
-            
-            if (step === 1) {
-                shippingForm.classList.add('active');
-            } else if (step === 2) {
-                paymentForm.classList.add('active');
-            } else if (step === 3) {
-                updateReviewSection();
-                reviewForm.classList.add('active');
-            }
-        }
-        
-        // Checkout navigation
-        nextToPaymentBtn.addEventListener('click', () => {
-            // Validate shipping form
-            if (!validateShippingForm()) {
-                alert('Please fill in all required shipping information');
-                return;
-            }
-            
-            updateCheckoutStep(2);
-        });
-        
-        backToShippingBtn.addEventListener('click', () => {
-            updateCheckoutStep(1);
-        });
-        
-        nextToReviewBtn.addEventListener('click', () => {
-            // Validate payment form
-            if (selectedPaymentMethod === 'credit' && !validatePaymentForm()) {
-                alert('Please fill in all required payment information');
-                return;
-            }
-            
-            updateCheckoutStep(3);
-        });
-        
-        backToPaymentBtn.addEventListener('click', () => {
-            updateCheckoutStep(2);
-        });
-        
-        backToCartBtn.addEventListener('click', () => {
-            checkoutModal.classList.remove('active');
-            cartModal.classList.add('active');
-        });
-        
-        // Payment method selection
-        paymentMethods.forEach(method => {
-            method.addEventListener('click', function() {
-                const methodType = this.getAttribute('data-method');
-                
-                // Update selection
-                paymentMethods.forEach(m => m.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                selectedPaymentMethod = methodType;
-                
-                // Show/hide credit card fields
-                const cardFields = ['cardName', 'cardNumber', 'cardExpiry', 'cardCVC'];
-                cardFields.forEach(fieldId => {
-                    const field = document.getElementById(fieldId);
-                    if (field) {
-                        field.required = (methodType === 'credit');
-                    }
-                });
-            });
-        });
-        
-        // Update review section
-        function updateReviewSection() {
-            // Calculate totals
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            const shipping = subtotal > 100 ? 0 : 9.99;
-            const tax = subtotal * 0.08;
-            const total = subtotal + shipping + tax;
-            
-            // Update order items
-            let reviewItemsHTML = '';
-            cart.forEach(item => {
-                reviewItemsHTML += `
-                    <div class="review-item">
-                        <span>${item.name} × ${item.quantity}</span>
-                        <span>$${(item.price * item.quantity).toFixed(2)}</span>
-                    </div>
-                `;
-            });
-            
-            document.getElementById('reviewItems').innerHTML = reviewItemsHTML;
-            
-            // Update totals
-            document.getElementById('reviewSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('reviewShipping').textContent = `$${shipping.toFixed(2)}`;
-            document.getElementById('reviewTax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('reviewTotal').textContent = `$${total.toFixed(2)}`;
-        }
-        
-        // Place order
-        placeOrderBtn.addEventListener('click', () => {
-            if (!document.getElementById('agreeTermsCheckout').checked) {
-                alert('Please agree to the Terms & Conditions');
-                return;
-            }
-            
-            // Generate order ID
-            const orderId = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('orderId').textContent = orderId;
-            
-            // Clear cart
+            // Clear cart after "checkout"
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
-            
-            // Save order to localStorage (for demo)
-            const order = {
-                id: orderId,
-                date: new Date().toISOString(),
-                items: [...cart],
-                total: parseFloat(document.getElementById('reviewTotal').textContent.replace('$', '')),
-                status: 'Processing'
-            };
-            
-            const orders = JSON.parse(localStorage.getItem('orders')) || [];
-            orders.push(order);
-            localStorage.setItem('orders', JSON.stringify(orders));
-            
-            // Show success modal
-            checkoutModal.classList.remove('active');
-            successModal.classList.add('active');
-        });
-        
-        // Continue shopping
-        continueShoppingBtn.addEventListener('click', () => {
-            successModal.classList.remove('active');
-        });
-        
-        // Validation functions
-        function validateShippingForm() {
-            const requiredFields = [
-                'shippingFirstName',
-                'shippingLastName',
-                'shippingEmail',
-                'shippingPhone',
-                'shippingAddress',
-                'shippingCity',
-                'shippingZip',
-                'shippingCountry'
-            ];
-            
-            for (const fieldId of requiredFields) {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    return false;
-                }
-            }
-            
-            return true;
-        }
-        
-        function validatePaymentForm() {
-            if (selectedPaymentMethod !== 'credit') {
-                return true;
-            }
-            
-            const requiredFields = [
-                'cardName',
-                'cardNumber',
-                'cardExpiry',
-                'cardCVC'
-            ];
-            
-            for (const fieldId of requiredFields) {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    return false;
-                }
-            }
-            
-            return true;
-        }
-        
-        // Start qualification wizard
-        startQualificationBtn.addEventListener('click', () => {
-            document.getElementById('qualification').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Option selection in wizard
-        optionItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove selected class from all options in this step
-                const parentStep = this.closest('.wizard-step');
-                const allOptions = parentStep.querySelectorAll('.option-item');
-                allOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-                
-                // Store the selected value
-                const stepId = parentStep.id;
-                const value = this.getAttribute('data-value');
-                
-                if (stepId === 'step1') {
-                    userData.skinConcern = value;
-                } else if (stepId === 'step2') {
-                    userData.sensitivity = value;
-                } else if (stepId === 'step3') {
-                    userData.ageRange = value;
-                }
-            });
-        });
-        
-        // Wizard navigation
-        wizardNextBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const step = parseInt(this.getAttribute('data-step'));
-                
-                // Validate selection before proceeding
-                if (step === 1 && !userData.skinConcern) {
-                    alert('Please select your primary skin concern');
-                    return;
-                } else if (step === 2 && !userData.sensitivity) {
-                    alert('Please select your skin sensitivity level');
-                    return;
-                } else if (step === 3 && !userData.ageRange) {
-                    alert('Please select your age range');
-                    return;
-                }
-                
-                // Move to next step
-                if (currentStep < totalSteps) {
-                    wizardSteps[currentStep - 1].classList.remove('active');
-                    currentStep++;
-                    wizardSteps[currentStep - 1].classList.add('active');
-                    updateProgressBar();
-                }
-                
-                // If we're on the last step, scroll to it
-                if (currentStep === totalSteps) {
-                    setTimeout(() => {
-                        document.getElementById('qualification').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
-                }
-            });
-        });
-        
-        wizardPrevBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentStep > 1) {
-                    wizardSteps[currentStep - 1].classList.remove('active');
-                    currentStep--;
-                    wizardSteps[currentStep - 1].classList.add('active');
-                    updateProgressBar();
-                }
-            });
-        });
-        
-        // Update progress bar
-        function updateProgressBar() {
-            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
-            progressBar.style.width = `${progress}%`;
-        }
-        
-        // Photo upload handling
-        photoUpload.addEventListener('click', () => {
-            // In a real implementation, this would trigger a file input
-            // For demo, we'll simulate an upload
-            photoUpload.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <p>Photo uploaded successfully!</p>
-                <small>AI analysis ready</small>
-            `;
-            photoUpload.style.borderColor = 'var(--accent-color)';
-            userData.photoUploaded = true;
-        });
-        
-        // Skip photo upload
-        skipUploadBtn.addEventListener('click', showResults);
-        
-        // Analyze photo button
-        analyzePhotoBtn.addEventListener('click', () => {
-            // Simulate AI analysis
-            analyzePhotoBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
-            analyzePhotoBtn.disabled = true;
-            
-            setTimeout(() => {
-                analyzePhotoBtn.innerHTML = '<i class="fas fa-check"></i> Analysis Complete';
-                setTimeout(showResults, 1000);
-            }, 2000);
-        });
-        
-        // Show results modal
-        function showResults() {
-            resultsModal.classList.add('active');
-            
-            // In a real implementation, we would send data to Supabase/DeepSeek
-            console.log('User data to be saved:', userData);
-            
-            // Simulate saving to Supabase
-            setTimeout(() => {
-                console.log('User data saved to Supabase');
-                
-                // Simulate AI analysis with DeepSeek
-                console.log('AI analysis completed with DeepSeek');
-                
-                // Show personalized recommendation
-                console.log('Personalized recommendation generated');
-            }, 500);
-        }
-        
-        // Close results modal
-        closeResultsBtn.addEventListener('click', () => {
-            resultsModal.classList.remove('active');
-            // Scroll to products section
-            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            updateCartDisplay();
         });
         
         // Gallery navigation
@@ -2967,6 +2391,12 @@
                     newsletterInput.style.border = '';
                 }, 2000);
             }
+        });
+        
+        // Start qualification button
+        const startQualificationBtn = document.querySelector('.start-qualification');
+        startQualificationBtn.addEventListener('click', () => {
+            alert('Skin analysis feature coming soon! Browse our products above.');
         });
     </script>
 </body>

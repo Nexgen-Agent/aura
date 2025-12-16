@@ -372,7 +372,7 @@
         }
 
         .search-input.active {
-            width: 300px;
+            width: 250px;
             opacity: 1;
             padding: 16.8px 45px 16.8px 20px;
             border: 1px solid var(--glass-border);
@@ -1092,13 +1092,13 @@
             60% { transform: translateY(-5px) translateX(-50%); }
         }
 
-        /* Enhanced Search Results Styles */
+        /* Search Results */
         .search-results {
             position: absolute;
             top: 100%;
             right: 0;
-            width: 400px;
-            max-height: 600px;
+            width: 350px;
+            max-height: 500px;
             overflow-y: auto;
             background: rgba(10, 25, 41, 0.98);
             backdrop-filter: blur(20px);
@@ -1108,7 +1108,6 @@
             display: none;
             z-index: 1001;
             margin-top: 10px;
-            padding: 15px;
         }
 
         .search-results.active {
@@ -1116,282 +1115,84 @@
             animation: fadeIn 0.3s ease;
         }
 
-        .search-section {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .search-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .search-section-header {
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .search-section-header h5 {
-            color: var(--primary-color);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .search-section-header i {
-            font-size: 12px;
-            color: var(--accent-color);
-        }
-
-        .top-searches-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .top-search-item {
-            padding: 10px;
-            background: rgba(196, 167, 125, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(196, 167, 125, 0.2);
-        }
-
-        .top-search-item:hover {
-            background: rgba(196, 167, 125, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .top-search-item img {
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-
-        .top-search-info {
-            flex: 1;
-        }
-
-        .top-search-info h6 {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .top-search-info .price {
-            font-size: 12px;
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .top-search-stats {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .suggestions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .suggestion-item {
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-color);
-        }
-
-        .suggestion-text {
-            font-size: 14px;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .suggestion-text i {
-            font-size: 12px;
-            color: var(--accent-color);
-            width: 20px;
-        }
-
-        .suggestion-type {
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 12px;
-            background: rgba(196, 167, 125, 0.2);
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .skin-tags, .benefit-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skin-tag, .benefit-tag {
-            background: rgba(196, 167, 125, 0.15);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid rgba(196, 167, 125, 0.2);
-            color: var(--text-light);
-        }
-
-        .skin-tag:hover, .benefit-tag:hover {
-            background: rgba(196, 167, 125, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .skin-tag i, .benefit-tag i {
-            margin-right: 6px;
-            font-size: 12px;
-        }
-
-        .product-results-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
         .search-result-item {
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 15px;
         }
 
         .search-result-item:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-color);
-            transform: translateX(5px);
         }
 
         .search-result-item img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             border-radius: 8px;
-            border: 1px solid var(--glass-border);
         }
 
         .search-result-info {
             flex: 1;
-            min-width: 0;
         }
 
         .search-result-info h4 {
             color: var(--primary-color);
             margin-bottom: 5px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
         }
 
         .search-result-info p {
-            font-size: 12px;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 5px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .search-result-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-
-        .search-result-tag {
-            font-size: 10px;
-            padding: 2px 6px;
-            background: rgba(196, 167, 125, 0.15);
-            border-radius: 10px;
-            color: var(--accent-color);
         }
 
         .search-result-price {
             color: var(--accent-color);
             font-weight: 600;
             font-size: 14px;
-            white-space: nowrap;
         }
 
         .no-results {
-            padding: 40px 20px;
+            padding: 30px;
             text-align: center;
             color: rgba(255, 255, 255, 0.7);
         }
 
-        .no-results i {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.2);
+        .search-skin-issues {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Quick View Button */
-        .quick-view-btn {
-            padding: 6px 12px;
+        .search-skin-issues h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .skin-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skin-tag {
             background: rgba(196, 167, 125, 0.2);
-            border: 1px solid rgba(196, 167, 125, 0.3);
-            color: var(--accent-color);
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 20px;
             font-size: 12px;
             cursor: pointer;
             transition: var(--transition);
-            white-space: nowrap;
         }
 
-        .quick-view-btn:hover {
+        .skin-tag:hover {
             background: rgba(196, 167, 125, 0.3);
-        }
-
-        /* Search input active state with results */
-        .search-input.active + .search-results.active {
-            display: block;
         }
 
         /* Cart Modal - CLEANER DESIGN */
@@ -2058,7 +1859,7 @@
             }
             
             .search-input.active {
-                width: 250px;
+                width: 220px;
             }
             
             .nav-links a {
@@ -2229,11 +2030,6 @@
             .remove-item {
                 padding: 6px 12px;
                 font-size: 0.8rem;
-            }
-            
-            /* Search results responsive */
-            .top-searches-list {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -2625,69 +2421,13 @@
             <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
-            <!-- Enhanced Search Container -->
+            <!-- Search Container -->
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search products, skin problems, or benefits...">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products or skin issues...">
                 <i class="fas fa-search search-icon" id="searchIcon"></i>
                 <i class="fas fa-times search-close" id="searchClose"></i>
-                
-                <!-- Enhanced Search Results Dropdown -->
-                <div class="search-results" id="searchResults">
-                    <!-- Top Searched Products Section -->
-                    <div class="search-section" id="topSearchesSection">
-                        <div class="search-section-header">
-                            <h5><i class="fas fa-fire"></i> Top Searched Products</h5>
-                        </div>
-                        <div class="top-searches-list">
-                            <!-- Top searches will be dynamically added here -->
-                        </div>
-                    </div>
-                    
-                    <!-- Predictive Suggestions Section -->
-                    <div class="search-section" id="suggestionsSection" style="display: none;">
-                        <div class="search-section-header">
-                            <h5><i class="fas fa-lightbulb"></i> Suggestions</h5>
-                        </div>
-                        <div class="suggestions-list">
-                            <!-- Suggestions will be dynamically added here -->
-                        </div>
-                    </div>
-                    
-                    <!-- Skin Issues Section -->
-                    <div class="search-section" id="skinIssuesSection">
-                        <div class="search-section-header">
-                            <h5><i class="fas fa-heartbeat"></i> Search by Skin Issue</h5>
-                        </div>
-                        <div class="skin-tags">
-                            <!-- Skin tags will be dynamically added here -->
-                        </div>
-                    </div>
-                    
-                    <!-- Benefits Section -->
-                    <div class="search-section" id="benefitsSection">
-                        <div class="search-section-header">
-                            <h5><i class="fas fa-spa"></i> Search by Benefit</h5>
-                        </div>
-                        <div class="benefit-tags">
-                            <!-- Benefit tags will be dynamically added here -->
-                        </div>
-                    </div>
-                    
-                    <!-- Product Results Section -->
-                    <div class="search-section" id="productResultsSection" style="display: none;">
-                        <div class="search-section-header">
-                            <h5><i class="fas fa-box"></i> Products</h5>
-                        </div>
-                        <div class="product-results-list">
-                            <!-- Search results will be dynamically added here -->
-                        </div>
-                    </div>
-                    
-                    <!-- No Results -->
-                    <div class="no-results" id="noResults" style="display: none;">
-                        <p>No products found. Try different keywords.</p>
-                    </div>
-                </div>
+                <!-- Search Results -->
+                <div class="search-results" id="searchResults"></div>
             </div>
             <!-- Menu Button -->
             <div class="mobile-menu-btn" id="mobileMenuBtn">
@@ -3465,39 +3205,6 @@
             }
         ];
         
-        // Enhanced Search Data
-        const searchData = {
-            topSearchedProducts: [1, 14, 2, 13], // IDs of top searched products
-            skinIssues: [
-                { name: "Acne", icon: "fas fa-leaf", desc: "Breakouts and pimples" },
-                { name: "Dark Spots", icon: "fas fa-circle", desc: "Hyperpigmentation" },
-                { name: "Dry Skin", icon: "fas fa-tint", desc: "Dehydration and flaking" },
-                { name: "Uneven Tone", icon: "fas fa-palette", desc: "Irregular skin color" },
-                { name: "Aging", icon: "fas fa-clock", desc: "Wrinkles and fine lines" },
-                { name: "Oiliness", icon: "fas fa-oil-can", desc: "Excess oil production" },
-                { name: "Redness", icon: "fas fa-burn", desc: "Irritation and inflammation" },
-                { name: "Pores", icon: "fas fa-dot-circle", desc: "Large or clogged pores" }
-            ],
-            benefits: [
-                { name: "Whitening", icon: "fas fa-star", desc: "Brightens skin tone" },
-                { name: "Moisturizing", icon: "fas fa-tint", desc: "Hydrates skin" },
-                { name: "Anti-Aging", icon: "fas fa-heart", desc: "Reduces wrinkles" },
-                { name: "Glow", icon: "fas fa-sun", desc: "Adds radiance" },
-                { name: "Smooth", icon: "fas fa-wind", desc: "Smoothes texture" },
-                { name: "Firming", icon: "fas fa-hand-rock", desc: "Tightens skin" },
-                { name: "Clearing", icon: "fas fa-check-circle", desc: "Clears imperfections" },
-                { name: "Soothing", icon: "fas fa-spa", desc: "Calms irritation" }
-            ],
-            commonSearches: [
-                { text: "whitening oil for face", type: "product" },
-                { text: "skin brightening cream", type: "product" },
-                { text: "how to remove acne scars", type: "issue" },
-                { text: "best moisturizer for dry skin", type: "benefit" },
-                { text: "glow boosting products", type: "benefit" },
-                { text: "dark spot treatment", type: "issue" }
-            ]
-        };
-        
         // User data for qualification
         const userData = {
             skinConcern: '',
@@ -3530,9 +3237,6 @@
         
         // Initialize cart badge
         updateCartBadge();
-        
-        // Initialize search sections
-        initializeSearchSections();
         
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
@@ -3634,16 +3338,11 @@
             resultsModal.classList.remove('active');
         });
         
-        // Enhanced Search functionality
+        // Search functionality
         searchIcon.addEventListener('click', () => {
             searchInput.classList.add('active');
             searchClose.classList.add('active');
             searchInput.focus();
-            
-            // Show initial search results
-            if (searchInput.value.trim().length === 0) {
-                showInitialSearchResults();
-            }
         });
         
         searchClose.addEventListener('click', () => {
@@ -3654,267 +3353,111 @@
         });
         
         searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.trim();
+            const searchTerm = e.target.value.toLowerCase().trim();
             
             if (searchTerm.length === 0) {
-                showInitialSearchResults();
+                searchResults.classList.remove('active');
                 return;
             }
             
-            performSearch(searchTerm);
-        });
-        
-        // Enhanced Search Functions
-        function initializeSearchSections() {
-            // Load top searched products
-            const topSearchesList = document.querySelector('.top-searches-list');
-            const topProducts = searchData.topSearchedProducts.map(id => 
-                products.find(p => p.id === id)
-            ).filter(p => p);
-            
-            topSearchesList.innerHTML = topProducts.map(product => `
-                <div class="top-search-item" data-id="${product.id}">
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="top-search-info">
-                        <h6>${product.name}</h6>
-                        <div class="price">R${product.price.toFixed(2)}</div>
-                        <div class="top-search-stats">
-                            <i class="fas fa-fire"></i> Highly searched
-                        </div>
-                    </div>
-                    <button class="quick-view-btn">Quick View</button>
-                </div>
-            `).join('');
-            
-            // Load skin issues
-            const skinTags = document.querySelector('.skin-tags');
-            skinTags.innerHTML = searchData.skinIssues.map(issue => `
-                <div class="skin-tag" data-issue="${issue.name.toLowerCase()}">
-                    <i class="${issue.icon}"></i> ${issue.name}
-                </div>
-            `).join('');
-            
-            // Load benefits
-            const benefitTags = document.querySelector('.benefit-tags');
-            benefitTags.innerHTML = searchData.benefits.map(benefit => `
-                <div class="benefit-tag" data-benefit="${benefit.name.toLowerCase()}">
-                    <i class="${benefit.icon}"></i> ${benefit.name}
-                </div>
-            `).join('');
-            
-            // Add event listeners for top search items
-            document.querySelectorAll('.top-search-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('quick-view-btn')) {
-                        const productId = parseInt(this.getAttribute('data-id'));
-                        navigateToProduct(productId);
-                    }
-                });
-                
-                const quickViewBtn = item.querySelector('.quick-view-btn');
-                quickViewBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const productId = parseInt(item.getAttribute('data-id'));
-                    showQuickView(productId);
-                });
-            });
-            
-            // Add event listeners for skin tags
-            document.querySelectorAll('.skin-tag').forEach(tag => {
-                tag.addEventListener('click', function() {
-                    const issue = this.getAttribute('data-issue');
-                    searchInput.value = issue;
-                    performSearch(issue);
-                });
-            });
-            
-            // Add event listeners for benefit tags
-            document.querySelectorAll('.benefit-tag').forEach(tag => {
-                tag.addEventListener('click', function() {
-                    const benefit = this.getAttribute('data-benefit');
-                    searchInput.value = benefit;
-                    performSearch(benefit);
-                });
-            });
-        }
-        
-        function showInitialSearchResults() {
-            document.getElementById('topSearchesSection').style.display = 'block';
-            document.getElementById('skinIssuesSection').style.display = 'block';
-            document.getElementById('benefitsSection').style.display = 'block';
-            document.getElementById('productResultsSection').style.display = 'none';
-            document.getElementById('suggestionsSection').style.display = 'none';
-            document.getElementById('noResults').style.display = 'none';
-            searchResults.classList.add('active');
-        }
-        
-        function performSearch(searchTerm) {
-            const searchTermLower = searchTerm.toLowerCase().trim();
-            
-            // Hide all sections initially
-            document.getElementById('topSearchesSection').style.display = 'none';
-            document.getElementById('skinIssuesSection').style.display = 'none';
-            document.getElementById('benefitsSection').style.display = 'none';
-            document.getElementById('productResultsSection').style.display = 'none';
-            document.getElementById('suggestionsSection').style.display = 'none';
-            document.getElementById('noResults').style.display = 'none';
-            
-            if (searchTermLower.length === 0) {
-                showInitialSearchResults();
-                return;
-            }
-            
-            // Filter products based on search term
             const filteredProducts = products.filter(product => {
                 const searchFields = [
                     product.name.toLowerCase(),
                     product.description.toLowerCase(),
-                    product.benefits ? product.benefits.toLowerCase() : '',
-                    ...(product.skinIssues || []).map(issue => issue.toLowerCase()),
-                    ...(product.benefits ? product.benefits.split(',').map(b => b.trim().toLowerCase()) : [])
+                    product.benefits.toLowerCase(),
+                    ...product.skinIssues.map(issue => issue.toLowerCase())
                 ];
                 
-                return searchFields.some(field => field.includes(searchTermLower));
+                return searchFields.some(field => field.includes(searchTerm));
             });
             
-            // Generate predictive suggestions
-            const suggestions = generateSuggestions(searchTermLower);
+            const matchingSkinIssues = [];
+            products.forEach(product => {
+                product.skinIssues.forEach(issue => {
+                    if (issue.toLowerCase().includes(searchTerm) && !matchingSkinIssues.includes(issue)) {
+                        matchingSkinIssues.push(issue);
+                    }
+                });
+            });
             
-            // Show/hide sections based on results
-            if (filteredProducts.length > 0 || suggestions.length > 0) {
-                if (suggestions.length > 0) {
-                    document.getElementById('suggestionsSection').style.display = 'block';
-                    const suggestionsList = document.querySelector('.suggestions-list');
-                    suggestionsList.innerHTML = suggestions.map(suggestion => `
-                        <div class="suggestion-item" data-search="${suggestion.text}">
-                            <div class="suggestion-text">
-                                <i class="fas fa-search"></i> ${suggestion.text}
-                            </div>
-                            <div class="suggestion-type">${suggestion.type}</div>
-                        </div>
-                    `).join('');
-                    
-                    // Add event listeners to suggestions
-                    document.querySelectorAll('.suggestion-item').forEach(item => {
-                        item.addEventListener('click', function() {
-                            const searchText = this.getAttribute('data-search');
-                            searchInput.value = searchText;
-                            performSearch(searchText);
-                        });
-                    });
-                }
-                
-                if (filteredProducts.length > 0) {
-                    document.getElementById('productResultsSection').style.display = 'block';
-                    const productResultsList = document.querySelector('.product-results-list');
-                    productResultsList.innerHTML = filteredProducts.map(product => `
-                        <div class="search-result-item" data-id="${product.id}">
-                            <img src="${product.image}" alt="${product.name}">
-                            <div class="search-result-info">
-                                <h4>${product.name}</h4>
-                                <p>${product.description.substring(0, 60)}...</p>
-                                <div class="search-result-tags">
-                                    ${product.skinIssues && product.skinIssues.length > 0 ? 
-                                        product.skinIssues.slice(0, 2).map(issue => 
-                                            `<span class="search-result-tag">${issue}</span>`
-                                        ).join('') : ''}
-                                </div>
-                            </div>
+            displaySearchResults(filteredProducts, matchingSkinIssues, searchTerm);
+        });
+        
+        function displaySearchResults(results, skinIssues, searchTerm) {
+            if (results.length === 0 && skinIssues.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <p>No products found for "${searchTerm}"</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Try searching for: acne, dark spots, dry skin, uneven tone</p>
+                    </div>
+                `;
+                searchResults.classList.add('active');
+                return;
+            }
+            
+            let resultsHTML = '';
+            
+            results.forEach(product => {
+                resultsHTML += `
+                    <div class="search-result-item" data-id="${product.id}">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>${product.description.substring(0, 60)}...</p>
                             <div class="search-result-price">R${product.price.toFixed(2)}</div>
                         </div>
-                    `).join('');
+                    </div>
+                `;
+            });
+            
+            if (skinIssues.length > 0) {
+                resultsHTML += `
+                    <div class="search-skin-issues">
+                        <h5>Search by Skin Issue:</h5>
+                        <div class="skin-tags">
+                            ${skinIssues.map(issue => `
+                                <span class="skin-tag" data-issue="${issue}">${issue}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            searchResults.innerHTML = resultsHTML;
+            searchResults.classList.add('active');
+            
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
                     
-                    // Add event listeners to product results
-                    document.querySelectorAll('.search-result-item').forEach(item => {
-                        item.addEventListener('click', function() {
-                            const productId = parseInt(this.getAttribute('data-id'));
-                            navigateToProduct(productId);
-                        });
-                    });
-                }
-                
-                searchResults.classList.add('active');
-            } else {
-                // No results found
-                document.getElementById('noResults').style.display = 'block';
-                searchResults.classList.add('active');
-            }
-        }
-        
-        // Generate predictive suggestions
-        function generateSuggestions(searchTerm) {
-            const suggestions = [];
-            
-            // Check for matching common searches
-            searchData.commonSearches.forEach(search => {
-                if (search.text.includes(searchTerm)) {
-                    suggestions.push({
-                        text: search.text,
-                        type: search.type
-                    });
-                }
+                    if (product) {
+                        searchInput.classList.remove('active');
+                        searchClose.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.classList.remove('active');
+                        
+                        document.getElementById('all-products').scrollIntoView({ behavior: 'smooth' });
+                        
+                        const productElement = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
+                        if (productElement) {
+                            const originalBackground = productElement.style.background;
+                            productElement.style.background = 'rgba(196, 167, 125, 0.5)';
+                            setTimeout(() => {
+                                productElement.style.background = originalBackground;
+                            }, 2000);
+                        }
+                    }
+                });
             });
             
-            // Check for matching skin issues
-            searchData.skinIssues.forEach(issue => {
-                if (issue.name.toLowerCase().includes(searchTerm) || 
-                    issue.desc.toLowerCase().includes(searchTerm)) {
-                    suggestions.push({
-                        text: `Products for ${issue.name.toLowerCase()}`,
-                        type: 'issue'
-                    });
-                }
+            document.querySelectorAll('.skin-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const issue = this.getAttribute('data-issue');
+                    searchInput.value = issue;
+                    searchInput.dispatchEvent(new Event('input'));
+                });
             });
-            
-            // Check for matching benefits
-            searchData.benefits.forEach(benefit => {
-                if (benefit.name.toLowerCase().includes(searchTerm) || 
-                    benefit.desc.toLowerCase().includes(searchTerm)) {
-                    suggestions.push({
-                        text: `Products that ${benefit.desc.toLowerCase()}`,
-                        type: 'benefit'
-                    });
-                }
-            });
-            
-            return suggestions.slice(0, 5); // Limit to 5 suggestions
-        }
-        
-        // Navigate to product
-        function navigateToProduct(productId) {
-            const product = products.find(p => p.id === productId);
-            
-            if (product) {
-                searchInput.classList.remove('active');
-                searchClose.classList.remove('active');
-                searchInput.value = '';
-                searchResults.classList.remove('active');
-                
-                document.getElementById('all-products').scrollIntoView({ behavior: 'smooth' });
-                
-                // Highlight the product
-                const productElement = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
-                if (productElement) {
-                    const originalBackground = productElement.style.background;
-                    productElement.style.background = 'rgba(196, 167, 125, 0.5)';
-                    productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    setTimeout(() => {
-                        productElement.style.background = originalBackground;
-                    }, 2000);
-                }
-            }
-        }
-        
-        // Show quick view
-        function showQuickView(productId) {
-            const product = products.find(p => p.id === productId);
-            
-            if (product) {
-                // You can implement a quick view modal here
-                // For now, just show an alert
-                alert(`Quick view for: ${product.name}\nPrice: R${product.price.toFixed(2)}\n\nDescription: ${product.description}`);
-            }
         }
         
         document.addEventListener('click', (e) => {

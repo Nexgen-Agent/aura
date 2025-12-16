@@ -166,6 +166,7 @@
         .nav-icons {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-icons i {
@@ -183,6 +184,169 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-container {
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-header h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .close-search {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-search:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(196, 167, 125, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        .search-results {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .search-result-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 12px;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .search-result-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .search-result-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .search-result-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-result-price {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .search-result-category {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(196, 167, 125, 0.2);
+            color: var(--accent-color);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Product Highlight Animation */
+        .product-highlight {
+            animation: highlightPulse 2s ease-in-out;
+            box-shadow: 0 0 30px rgba(196, 167, 125, 0.5) !important;
+        }
+
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 5px rgba(196, 167, 125, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(196, 167, 125, 0.7); }
+            100% { box-shadow: 0 0 5px rgba(196, 167, 125, 0.2); }
         }
 
         /* Main Content */
@@ -755,6 +919,10 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .search-modal {
+                padding-top: 100px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -799,6 +967,14 @@
             
             .lead-wizard {
                 padding: 25px;
+            }
+            
+            .search-modal {
+                padding-top: 80px;
+            }
+            
+            .search-container {
+                width: 95%;
             }
         }
 
@@ -872,6 +1048,29 @@
     </video>
     <div class="video-overlay"></div>
 
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-header">
+                <h3>Search Products</h3>
+                <button class="close-search" id="closeSearch">&times;</button>
+            </div>
+            <div class="search-input-container">
+                <input type="text" id="searchInput" class="search-input glass-card" placeholder="Search for products, ingredients, or concerns...">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="search-results glass-card" id="searchResults">
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h4>Search for products</h4>
+                    <p>Type in the search bar above to find products by name, description, or ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
@@ -883,7 +1082,7 @@
             <a href="#footer">Contact</a>
         </div>
         <div class="nav-icons">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search" id="openSearch"></i>
             <i class="fas fa-shopping-bag"></i>
             <i class="fas fa-user"></i>
         </div>
@@ -1042,36 +1241,36 @@
             
             <div class="products-grid fade-in">
                 <!-- Combo 1 -->
-                <div class="product-card glass-card">
+                <div class="product-card glass-card" data-search-id="glow-revival">
                     <div class="product-badge badge-recommended">Recommended</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Glow Revival Combo</h3>
-                        <p>Cleanser + Toner + Serum specifically formulated for radiant, even-toned skin. Perfect for daily use.</p>
+                        <p>Cleanser + Toner + Serum specifically formulated for radiant, even-toned skin. Perfect for daily use. Contains vitamin C, hyaluronic acid, and natural botanical extracts.</p>
                         <div class="product-price">$89.99 <span>$120.00</span></div>
                     </div>
                     <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Combo 2 -->
-                <div class="product-card glass-card">
+                <div class="product-card glass-card" data-search-id="anti-aging-trio">
                     <div class="product-badge badge-bestseller">Bestseller</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Anti-Aging Trio</h3>
-                        <p>Advanced formula to reduce fine lines and improve skin elasticity. Includes night cream and eye serum.</p>
+                        <p>Advanced formula to reduce fine lines and improve skin elasticity. Includes night cream and eye serum with retinol, peptides, and ceramides.</p>
                         <div class="product-price">$129.99 <span>$165.00</span></div>
                     </div>
                     <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Combo 3 -->
-                <div class="product-card glass-card">
+                <div class="product-card glass-card" data-search-id="acne-control">
                     <div class="product-badge badge-recommended">Recommended</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Acne Control Kit</h3>
-                        <p>Gentle yet effective solution for breakout-prone skin. Includes salicylic acid cleanser and spot treatment.</p>
+                        <p>Gentle yet effective solution for breakout-prone skin. Includes salicylic acid cleanser, niacinamide serum, and spot treatment with tea tree oil.</p>
                         <div class="product-price">$74.99 <span>$95.00</span></div>
                     </div>
                     <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -1087,13 +1286,13 @@
             </div>
             
             <div class="products-grid fade-in">
-                <div class="product-card glass-card" style="grid-column: span 2;">
+                <div class="product-card glass-card" style="grid-column: span 2;" data-search-id="whitening-oil">
                     <div class="product-badge badge-flagship">Flagship</div>
                     <div style="display: flex; gap: 30px; align-items: center;">
                         <div class="product-image" style="flex: 1; height: 300px; background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="product-info" style="flex: 1;">
                             <h3>Luminous Whitening Oil</h3>
-                            <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.</p>
+                            <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing. Contains licorice root extract, tranexamic acid, and vitamin B3.</p>
                             <ul style="margin: 20px 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
                                 <li>Reduces dark spots and hyperpigmentation</li>
                                 <li>Improves skin texture and elasticity</li>
@@ -1104,6 +1303,45 @@
                             <button class="glass-button" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart - Premium</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Additional Products -->
+            <div class="products-grid fade-in" style="margin-top: 40px;">
+                <!-- Additional Product 1 -->
+                <div class="product-card glass-card" data-search-id="hydrating-serum">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228852-6d35a585d5c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Hydrating Serum</h3>
+                        <p>Intense hydration serum with hyaluronic acid and squalane. Plumps skin and reduces fine lines for a dewy, youthful appearance.</p>
+                        <div class="product-price">$49.99</div>
+                    </div>
+                    <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Additional Product 2 -->
+                <div class="product-card glass-card" data-search-id="cleansing-oil">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228720-1957b8e17f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Gentle Cleansing Oil</h3>
+                        <p>Oil-based cleanser that melts away makeup and impurities without stripping skin. Formulated with jojoba oil and chamomile extract.</p>
+                        <div class="product-price">$39.99</div>
+                    </div>
+                    <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Additional Product 3 -->
+                <div class="product-card glass-card" data-search-id="eye-cream">
+                    <div class="product-badge badge-recommended">Recommended</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-7d0f8f8b9b6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Brightening Eye Cream</h3>
+                        <p>Targets dark circles and puffiness with caffeine and vitamin K. Lightweight formula that absorbs quickly without greasiness.</p>
+                        <div class="product-price">$59.99</div>
+                    </div>
+                    <button class="glass-button"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -1309,6 +1547,13 @@
         const testimonialPrevBtn = document.querySelector('.testimonial-prev');
         const testimonialNextBtn = document.querySelector('.testimonial-next');
         
+        // Search functionality elements
+        const openSearchBtn = document.getElementById('openSearch');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearchBtn = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
         // User data for qualification
         const userData = {
             skinConcern: '',
@@ -1328,6 +1573,87 @@
         // Testimonial state
         let currentTestimonial = 0;
         const testimonialCount = testimonialSlides.length;
+        
+        // Product data for search functionality
+        const products = [
+            {
+                id: 'glow-revival',
+                name: 'Glow Revival Combo',
+                description: 'Cleanser + Toner + Serum specifically formulated for radiant, even-toned skin. Perfect for daily use. Contains vitamin C, hyaluronic acid, and natural botanical extracts.',
+                price: '$89.99',
+                originalPrice: '$120.00',
+                category: 'Combo',
+                ingredients: ['vitamin c', 'hyaluronic acid', 'botanical extracts'],
+                concerns: ['uneven tone', 'glow', 'radiance'],
+                section: 'products'
+            },
+            {
+                id: 'anti-aging-trio',
+                name: 'Anti-Aging Trio',
+                description: 'Advanced formula to reduce fine lines and improve skin elasticity. Includes night cream and eye serum with retinol, peptides, and ceramides.',
+                price: '$129.99',
+                originalPrice: '$165.00',
+                category: 'Combo',
+                ingredients: ['retinol', 'peptides', 'ceramides'],
+                concerns: ['aging', 'fine lines', 'elasticity'],
+                section: 'products'
+            },
+            {
+                id: 'acne-control',
+                name: 'Acne Control Kit',
+                description: 'Gentle yet effective solution for breakout-prone skin. Includes salicylic acid cleanser, niacinamide serum, and spot treatment with tea tree oil.',
+                price: '$74.99',
+                originalPrice: '$95.00',
+                category: 'Combo',
+                ingredients: ['salicylic acid', 'niacinamide', 'tea tree oil'],
+                concerns: ['acne', 'breakouts', 'blemishes'],
+                section: 'products'
+            },
+            {
+                id: 'whitening-oil',
+                name: 'Luminous Whitening Oil',
+                description: 'Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing. Contains licorice root extract, tranexamic acid, and vitamin B3.',
+                price: '$149.99',
+                originalPrice: '',
+                category: 'Flagship',
+                ingredients: ['licorice root', 'tranexamic acid', 'vitamin b3'],
+                concerns: ['dark spots', 'hyperpigmentation', 'uneven tone'],
+                section: 'flagship'
+            },
+            {
+                id: 'hydrating-serum',
+                name: 'Hydrating Serum',
+                description: 'Intense hydration serum with hyaluronic acid and squalane. Plumps skin and reduces fine lines for a dewy, youthful appearance.',
+                price: '$49.99',
+                originalPrice: '',
+                category: 'Serum',
+                ingredients: ['hyaluronic acid', 'squalane'],
+                concerns: ['dryness', 'hydration', 'fine lines'],
+                section: 'flagship'
+            },
+            {
+                id: 'cleansing-oil',
+                name: 'Gentle Cleansing Oil',
+                description: 'Oil-based cleanser that melts away makeup and impurities without stripping skin. Formulated with jojoba oil and chamomile extract.',
+                price: '$39.99',
+                originalPrice: '',
+                category: 'Cleanser',
+                ingredients: ['jojoba oil', 'chamomile'],
+                concerns: ['sensitive skin', 'makeup removal', 'gentle cleansing'],
+                section: 'flagship'
+            },
+            {
+                id: 'eye-cream',
+                name: 'Brightening Eye Cream',
+                description: 'Targets dark circles and puffiness with caffeine and vitamin K. Lightweight formula that absorbs quickly without greasiness.',
+                price: '$59.99',
+                originalPrice: '',
+                category: 'Eye Care',
+                ingredients: ['caffeine', 'vitamin k'],
+                concerns: ['dark circles', 'puffiness', 'brightening'],
+                section: 'flagship'
+            }
+        ];
         
         // Scroll event for navbar and fade animations
         window.addEventListener('scroll', () => {
@@ -1369,6 +1695,149 @@
             // Set initial progress bar
             updateProgressBar();
         });
+        
+        // Search functionality
+        openSearchBtn.addEventListener('click', () => {
+            searchModal.classList.add('active');
+            searchInput.focus();
+        });
+        
+        closeSearchBtn.addEventListener('click', () => {
+            searchModal.classList.remove('active');
+            searchInput.value = '';
+            displayNoResults();
+        });
+        
+        // Close search modal when clicking outside
+        searchModal.addEventListener('click', (e) => {
+            if (e.target === searchModal) {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                displayNoResults();
+            }
+        });
+        
+        // Search input event listener
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            if (searchTerm.length === 0) {
+                displayNoResults();
+                return;
+            }
+            
+            // Filter products based on search term
+            const filteredProducts = products.filter(product => {
+                return (
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm) ||
+                    product.ingredients.some(ingredient => ingredient.includes(searchTerm)) ||
+                    product.concerns.some(concern => concern.includes(searchTerm))
+                );
+            });
+            
+            // Display search results
+            displaySearchResults(filteredProducts, searchTerm);
+        });
+        
+        // Function to display search results
+        function displaySearchResults(results, searchTerm) {
+            if (results.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h4>No products found</h4>
+                        <p>No products match "${searchTerm}". Try searching for something else.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let resultsHTML = '';
+            
+            results.forEach(product => {
+                // Highlight the search term in the product name
+                const highlightedName = highlightText(product.name, searchTerm);
+                // Highlight the search term in the description
+                const highlightedDescription = highlightText(truncateText(product.description, 120), searchTerm);
+                
+                resultsHTML += `
+                    <div class="search-result-item glass-card" data-product-id="${product.id}">
+                        <h4>${highlightedName}</h4>
+                        <p>${highlightedDescription}</p>
+                        <div class="search-result-meta">
+                            <div class="search-result-price">${product.price} ${product.originalPrice ? `<span style="text-decoration: line-through; font-size: 0.9rem; color: rgba(255,255,255,0.6);">${product.originalPrice}</span>` : ''}</div>
+                            <div class="search-result-category">${product.category}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            searchResults.innerHTML = resultsHTML;
+            
+            // Add click event listeners to search result items
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    navigateToProduct(productId);
+                });
+            });
+        }
+        
+        // Function to highlight search term in text
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) return text;
+            
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span style="background-color: rgba(196, 167, 125, 0.3); padding: 2px 4px; border-radius: 4px;">$1</span>');
+        }
+        
+        // Function to truncate text
+        function truncateText(text, maxLength) {
+            if (text.length <= maxLength) return text;
+            return text.substring(0, maxLength) + '...';
+        }
+        
+        // Function to display no results message
+        function displayNoResults() {
+            searchResults.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h4>Search for products</h4>
+                    <p>Type in the search bar above to find products by name, description, or ingredients.</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.5);">Try searching for: "glow", "acne", "whitening", "serum", "cleanser"</p>
+                </div>
+            `;
+        }
+        
+        // Function to navigate to a product
+        function navigateToProduct(productId) {
+            // Close search modal
+            searchModal.classList.remove('active');
+            searchInput.value = '';
+            displayNoResults();
+            
+            // Find the product element
+            const productElement = document.querySelector(`[data-search-id="${productId}"]`);
+            
+            if (productElement) {
+                // Scroll to the product section
+                if (productId === 'whitening-oil' || productId === 'hydrating-serum' || productId === 'cleansing-oil' || productId === 'eye-cream') {
+                    document.getElementById('flagship').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Highlight the product
+                productElement.classList.add('product-highlight');
+                
+                // Remove highlight after 3 seconds
+                setTimeout(() => {
+                    productElement.classList.remove('product-highlight');
+                }, 3000);
+            }
+        }
         
         // Start qualification wizard
         startQualificationBtn.addEventListener('click', () => {
@@ -1627,6 +2096,22 @@
                 }, 2000);
             }
         });
+        
+        // Keyboard shortcut for search (Ctrl/Cmd + K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchModal.classList.add('active');
+                searchInput.focus();
+            }
+            
+            // Escape key to close search modal
+            if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                searchModal.classList.remove('active');
+                searchInput.value = '';
+                displayNoResults();
+            }
+        });
     </script>
 </body>
-  </html>
+</html>

@@ -63,11 +63,11 @@
             z-index: -1;
         }
 
-        /* Floating Shopping Bag - MOVED UP BY 220px */
+        /* Floating Shopping Bag - MOVED UP BY TWICE ITS SIZE */
         .floating-cart {
             position: fixed;
             left: 50%;
-            top: calc(50% - 500px); /* Changed from -120px to -340px (moved up 220px more) */
+            top: calc(50% - 120px); /* Moved up by 120px (twice its 60px size) */
             transform: translate(-50%, -50%);
             z-index: 1000;
             display: flex;
@@ -347,30 +347,12 @@
             width: 100%;
         }
 
-        /* Redesigned Search Container */
+        /* Search container */
         .search-container {
             position: relative;
             display: flex;
             align-items: center;
             margin-right: 20px;
-            z-index: 1001;
-        }
-
-        .search-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 50px;
-            transition: var(--transition);
-            border-radius: 50px;
-        }
-
-        .search-wrapper.active {
-            width: 300px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
         }
 
         .search-input {
@@ -378,276 +360,52 @@
             opacity: 0;
             padding: 0;
             border: none;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             color: var(--text-light);
-            font-size: 14px;
+            border-radius: 20px;
             transition: all 0.3s ease;
             position: absolute;
-            left: 20px;
+            right: 100%;
             top: 50%;
             transform: translateY(-50%);
-            outline: none;
+            font-size: 16.8px;
         }
 
-        .search-wrapper.active .search-input {
-            width: calc(100% - 60px);
+        .search-input.active {
+            width: 250px;
             opacity: 1;
-            padding: 5px 0;
-        }
-
-        .search-button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--glass-bg);
+            padding: 16.8px 45px 16.8px 20px;
+            border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+
+        .search-icon {
+            font-size: 25.2px;
             cursor: pointer;
             transition: var(--transition);
+            padding: 8px;
             z-index: 2;
-            margin-left: auto;
         }
 
-        .search-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+        .search-icon:hover {
+            color: var(--primary-color);
         }
 
-        .search-wrapper.active .search-button {
-            background: var(--accent-color);
-            color: var(--text-dark);
-        }
-
-        .search-dropdown {
+        .search-close {
             position: absolute;
-            top: 120%;
-            right: 0;
-            width: 350px;
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(10, 25, 41, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            cursor: pointer;
             opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1000;
-        }
-
-        .search-wrapper.active .search-dropdown {
-            max-height: 400px;
-            opacity: 1;
-            visibility: visible;
-            top: 110%;
-        }
-
-        .dropdown-section {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .dropdown-section:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-section h5 {
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .concern-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 5px;
-        }
-
-        .concern-tag {
-            background: rgba(196, 167, 125, 0.15);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
             transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .concern-tag:hover {
-            background: rgba(196, 167, 125, 0.3);
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
-        }
-
-        .quick-products {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .quick-product {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .quick-product:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--primary-color);
-        }
-
-        .quick-product i {
-            color: var(--accent-color);
-            width: 20px;
-        }
-
-        /* Enhanced Search Results */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-            background: rgba(10, 25, 41, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
-            display: none;
-            z-index: 1001;
-            margin-top: 10px;
-        }
-
-        .search-results.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .search-result-item {
-            padding: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .search-result-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            padding-left: 20px;
-        }
-
-        .search-result-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .search-result-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .search-result-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .search-result-description {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .search-result-benefits {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 8px;
-        }
-
-        .benefit-tag {
-            background: rgba(40, 167, 69, 0.2);
-            color: #28a745;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: 500;
-        }
-
-        .search-result-price {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        .no-results {
-            padding: 40px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .no-results i {
-            font-size: 40px;
-            color: rgba(255, 255, 255, 0.2);
-            margin-bottom: 15px;
-        }
-
-        .search-categories {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .search-categories h5 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .search-hint {
-            position: absolute;
-            bottom: -25px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            z-index: 3;
+            font-size: 16.8px;
             padding: 5px;
-            background: rgba(10, 25, 41, 0.9);
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .search-wrapper.active .search-hint {
+        .search-close.active {
             opacity: 1;
         }
 
@@ -1334,6 +1092,109 @@
             60% { transform: translateY(-5px) translateX(-50%); }
         }
 
+        /* Search Results */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 350px;
+            max-height: 500px;
+            overflow-y: auto;
+            background: rgba(10, 25, 41, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 1001;
+            margin-top: 10px;
+        }
+
+        .search-results.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .search-result-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .search-result-info {
+            flex: 1;
+        }
+
+        .search-result-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .search-result-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .search-result-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .no-results {
+            padding: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-skin-issues {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-skin-issues h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .skin-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skin-tag {
+            background: rgba(196, 167, 125, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .skin-tag:hover {
+            background: rgba(196, 167, 125, 0.3);
+        }
+
         /* Cart Modal - CLEANER DESIGN */
         .cart-modal {
             position: fixed;
@@ -1997,6 +1858,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .search-input.active {
+                width: 220px;
+            }
+            
             .nav-links a {
                 padding: 10px 0;
             }
@@ -2040,32 +1905,21 @@
                 font-size: 19.6px;
             }
             
-            .search-wrapper.active {
+            .search-input.active {
+                width: 200px;
                 position: fixed;
-                top: 80px;
                 left: 20px;
                 right: 20px;
-                width: calc(100% - 40px);
-                z-index: 1002;
-            }
-            
-            .search-dropdown {
-                width: calc(100% - 40px);
-                left: 0;
-                right: 0;
-                margin: 0 auto;
+                top: 95px;
+                transform: none;
+                z-index: 1001;
             }
             
             .search-results {
                 width: calc(100% - 40px);
-                left: 0;
-                right: 0;
-                margin: 10px auto 0;
-                top: 110%;
-            }
-            
-            .concern-tags {
-                justify-content: center;
+                left: 20px;
+                right: 20px;
+                top: 120px;
             }
             
             section {
@@ -2184,6 +2038,10 @@
                 font-size: 16px;
             }
             
+            .search-input.active {
+                width: 180px;
+            }
+            
             .nav-icons {
                 gap: 10px;
             }
@@ -2195,7 +2053,7 @@
     </style>
 </head>
 <body>
-    <!-- Floating Cart - MOVED UP 220px -->
+    <!-- Floating Cart - MOVED UP -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="floatingCartBtn">
             <i class="fas fa-shopping-bag"></i>
@@ -2563,47 +2421,11 @@
             <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
-            <!-- Redesigned Search Container -->
+            <!-- Search Container -->
             <div class="search-container">
-                <div class="search-wrapper" id="searchWrapper">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Search products or describe your skin concern...">
-                    <button class="search-button" id="searchButton">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <div class="search-dropdown" id="searchDropdown">
-                        <div class="dropdown-section">
-                            <h5>Common Skin Concerns</h5>
-                            <div class="concern-tags">
-                                <span class="concern-tag" data-issue="acne">Acne</span>
-                                <span class="concern-tag" data-issue="dark spots">Dark Spots</span>
-                                <span class="concern-tag" data-issue="dry skin">Dry Skin</span>
-                                <span class="concern-tag" data-issue="oily skin">Oily Skin</span>
-                                <span class="concern-tag" data-issue="aging">Anti-Aging</span>
-                                <span class="concern-tag" data-issue="pigmentation">Pigmentation</span>
-                                <span class="concern-tag" data-issue="sensitive">Sensitive Skin</span>
-                                <span class="concern-tag" data-issue="glow">Glow & Radiance</span>
-                                <span class="concern-tag" data-issue="uneven tone">Uneven Skin Tone</span>
-                            </div>
-                        </div>
-                        <div class="dropdown-section">
-                            <h5>Popular Products</h5>
-                            <div class="quick-products">
-                                <div class="quick-product" data-id="1">
-                                    <i class="fas fa-gem"></i>
-                                    <span>Whitening Oil</span>
-                                </div>
-                                <div class="quick-product" data-id="14">
-                                    <i class="fas fa-star"></i>
-                                    <span>Whitening Combo</span>
-                                </div>
-                                <div class="quick-product" data-id="2">
-                                    <i class="fas fa-cream"></i>
-                                    <span>Whitening Cream</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products or skin issues...">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+                <i class="fas fa-times search-close" id="searchClose"></i>
                 <!-- Search Results -->
                 <div class="search-results" id="searchResults"></div>
             </div>
@@ -3186,14 +3008,11 @@
         const testimonialPrevBtn = document.querySelector('.testimonial-prev');
         const testimonialNextBtn = document.querySelector('.testimonial-next');
         
-        // Enhanced Search elements
-        const searchButton = document.getElementById('searchButton');
-        const searchWrapper = document.getElementById('searchWrapper');
+        // Search elements
+        const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
-        const searchDropdown = document.getElementById('searchDropdown');
+        const searchClose = document.getElementById('searchClose');
         const searchResults = document.getElementById('searchResults');
-        const concernTags = document.querySelectorAll('.concern-tag');
-        const quickProducts = document.querySelectorAll('.quick-product');
         
         // Cart elements
         const floatingCartBtn = document.getElementById('floatingCartBtn');
@@ -3250,7 +3069,7 @@
                 usage: "Morning and night",
                 ingredients: "Vitamin E and C collagen, Gluthathion",
                 category: "oil",
-                skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation", "dull complexion"]
+                skinIssues: ["dark spots", "uneven skin tone", "dull skin", "hyperpigmentation"]
             },
             {
                 id: 2,
@@ -3419,227 +3238,6 @@
         // Initialize cart badge
         updateCartBadge();
         
-        // Enhanced Search Functionality
-        searchButton.addEventListener('click', () => {
-            searchWrapper.classList.toggle('active');
-            if (searchWrapper.classList.contains('active')) {
-                searchInput.focus();
-            } else {
-                searchResults.classList.remove('active');
-            }
-        });
-
-        // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchWrapper.contains(e.target) && !searchResults.contains(e.target)) {
-                searchWrapper.classList.remove('active');
-                searchResults.classList.remove('active');
-            }
-        });
-
-        // Skin concern tags
-        concernTags.forEach(tag => {
-            tag.addEventListener('click', function() {
-                const issue = this.getAttribute('data-issue');
-                searchInput.value = issue;
-                searchInput.focus();
-                performSearch(issue);
-            });
-        });
-
-        // Quick product search
-        quickProducts.forEach(product => {
-            product.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const product = products.find(p => p.id === parseInt(productId));
-                if (product) {
-                    searchInput.value = product.name;
-                    searchInput.focus();
-                    performSearch(product.name);
-                }
-            });
-        });
-
-        // Enhanced search function
-        function performSearch(term) {
-            const searchTerm = term.toLowerCase().trim();
-            
-            if (searchTerm.length === 0) {
-                searchResults.classList.remove('active');
-                return;
-            }
-            
-            // Search in multiple fields
-            const filteredProducts = products.filter(product => {
-                const searchFields = [
-                    product.name.toLowerCase(),
-                    product.description.toLowerCase(),
-                    product.benefits.toLowerCase(),
-                    product.ingredients.toLowerCase(),
-                    product.category.toLowerCase(),
-                    ...product.skinIssues.map(issue => issue.toLowerCase())
-                ];
-                
-                // Check for direct matches
-                const directMatch = searchFields.some(field => field.includes(searchTerm));
-                
-                // Check for partial matches
-                const partialMatch = searchTerm.split(' ').every(word => {
-                    if (word.length < 3) return true; // Ignore short words
-                    return searchFields.some(field => field.includes(word));
-                });
-                
-                return directMatch || partialMatch;
-            });
-            
-            // Also find products by skin issue categories
-            const relatedIssues = products.filter(product => 
-                product.skinIssues.some(issue => 
-                    issue.toLowerCase().includes(searchTerm) || 
-                    searchTerm.includes(issue.toLowerCase())
-                )
-            );
-            
-            // Combine and deduplicate results
-            const allResults = [...filteredProducts, ...relatedIssues]
-                .filter((product, index, self) => 
-                    self.findIndex(p => p.id === product.id) === index
-                );
-            
-            displaySearchResults(allResults, searchTerm);
-        }
-
-        function displaySearchResults(results, searchTerm) {
-            if (results.length === 0) {
-                searchResults.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h4>No products found for "${searchTerm}"</h4>
-                        <p>Try searching by skin concern or product name</p>
-                        <div class="search-categories">
-                            <h5>Try these instead:</h5>
-                            <div class="concern-tags">
-                                <span class="concern-tag" data-issue="acne">Acne</span>
-                                <span class="concern-tag" data-issue="dark spots">Dark Spots</span>
-                                <span class="concern-tag" data-issue="dry skin">Dry Skin</span>
-                                <span class="concern-tag" data-issue="glow">Glow</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                searchResults.classList.add('active');
-                return;
-            }
-            
-            let resultsHTML = '';
-            
-            results.forEach(product => {
-                // Create benefit tags from skin issues
-                const benefitTags = product.skinIssues.slice(0, 3).map(issue => 
-                    `<span class="benefit-tag">${issue}</span>`
-                ).join('');
-                
-                resultsHTML += `
-                    <div class="search-result-item" data-id="${product.id}">
-                        <img src="${product.image}" alt="${product.name}">
-                        <div class="search-result-info">
-                            <h4>${product.name}</h4>
-                            <div class="search-result-description">${product.description}</div>
-                            <div class="search-result-benefits">${benefitTags}</div>
-                        </div>
-                        <div class="search-result-price">R${product.price.toFixed(2)}</div>
-                    </div>
-                `;
-            });
-            
-            // Add search categories section
-            resultsHTML += `
-                <div class="search-categories">
-                    <h5>Related Skin Concerns</h5>
-                    <div class="concern-tags">
-                        ${['acne', 'dark spots', 'dry skin', 'glow', 'anti-aging', 'sensitive skin']
-                            .filter(issue => 
-                                issue.includes(searchTerm) || 
-                                searchTerm.includes(issue) ||
-                                results.some(p => p.skinIssues.includes(issue))
-                            )
-                            .map(issue => `
-                                <span class="concern-tag" data-issue="${issue}">${issue}</span>
-                            `).join('')}
-                    </div>
-                </div>
-            `;
-            
-            searchResults.innerHTML = resultsHTML;
-            searchResults.classList.add('active');
-            
-            // Add click event to search results
-            document.querySelectorAll('.search-result-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const product = products.find(p => p.id === productId);
-                    
-                    if (product) {
-                        searchWrapper.classList.remove('active');
-                        searchResults.classList.remove('active');
-                        searchInput.value = '';
-                        
-                        // Scroll to product section
-                        document.getElementById('all-products').scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                        
-                        // Highlight the product
-                        const productElement = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
-                        if (productElement) {
-                            const originalBackground = productElement.style.background;
-                            productElement.style.background = 'rgba(196, 167, 125, 0.5)';
-                            productElement.innerHTML = '<i class="fas fa-check"></i> Found!';
-                            
-                            setTimeout(() => {
-                                productElement.style.background = originalBackground;
-                                productElement.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                            }, 3000);
-                        }
-                    }
-                });
-            });
-            
-            // Re-attach concern tag events
-            document.querySelectorAll('.search-categories .concern-tag').forEach(tag => {
-                tag.addEventListener('click', function() {
-                    const issue = this.getAttribute('data-issue');
-                    searchInput.value = issue;
-                    performSearch(issue);
-                });
-            });
-        }
-
-        // Update search input event listener
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.trim();
-            if (searchTerm.length >= 2) {
-                performSearch(searchTerm);
-            } else {
-                searchResults.classList.remove('active');
-            }
-        });
-
-        // Add search by pressing Enter
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                performSearch(searchInput.value);
-            }
-        });
-
-        // Add search hint
-        const searchHint = document.createElement('div');
-        searchHint.className = 'search-hint';
-        searchHint.innerHTML = 'Tip: Search by skin concern or product name';
-        searchWrapper.appendChild(searchHint);
-        
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
             cartModal.classList.add('active');
@@ -3738,6 +3336,136 @@
         
         closeResultsBtn2.addEventListener('click', () => {
             resultsModal.classList.remove('active');
+        });
+        
+        // Search functionality
+        searchIcon.addEventListener('click', () => {
+            searchInput.classList.add('active');
+            searchClose.classList.add('active');
+            searchInput.focus();
+        });
+        
+        searchClose.addEventListener('click', () => {
+            searchInput.classList.remove('active');
+            searchClose.classList.remove('active');
+            searchInput.value = '';
+            searchResults.classList.remove('active');
+        });
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (searchTerm.length === 0) {
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => {
+                const searchFields = [
+                    product.name.toLowerCase(),
+                    product.description.toLowerCase(),
+                    product.benefits.toLowerCase(),
+                    ...product.skinIssues.map(issue => issue.toLowerCase())
+                ];
+                
+                return searchFields.some(field => field.includes(searchTerm));
+            });
+            
+            const matchingSkinIssues = [];
+            products.forEach(product => {
+                product.skinIssues.forEach(issue => {
+                    if (issue.toLowerCase().includes(searchTerm) && !matchingSkinIssues.includes(issue)) {
+                        matchingSkinIssues.push(issue);
+                    }
+                });
+            });
+            
+            displaySearchResults(filteredProducts, matchingSkinIssues, searchTerm);
+        });
+        
+        function displaySearchResults(results, skinIssues, searchTerm) {
+            if (results.length === 0 && skinIssues.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <p>No products found for "${searchTerm}"</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Try searching for: acne, dark spots, dry skin, uneven tone</p>
+                    </div>
+                `;
+                searchResults.classList.add('active');
+                return;
+            }
+            
+            let resultsHTML = '';
+            
+            results.forEach(product => {
+                resultsHTML += `
+                    <div class="search-result-item" data-id="${product.id}">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>${product.description.substring(0, 60)}...</p>
+                            <div class="search-result-price">R${product.price.toFixed(2)}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (skinIssues.length > 0) {
+                resultsHTML += `
+                    <div class="search-skin-issues">
+                        <h5>Search by Skin Issue:</h5>
+                        <div class="skin-tags">
+                            ${skinIssues.map(issue => `
+                                <span class="skin-tag" data-issue="${issue}">${issue}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            searchResults.innerHTML = resultsHTML;
+            searchResults.classList.add('active');
+            
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    
+                    if (product) {
+                        searchInput.classList.remove('active');
+                        searchClose.classList.remove('active');
+                        searchInput.value = '';
+                        searchResults.classList.remove('active');
+                        
+                        document.getElementById('all-products').scrollIntoView({ behavior: 'smooth' });
+                        
+                        const productElement = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
+                        if (productElement) {
+                            const originalBackground = productElement.style.background;
+                            productElement.style.background = 'rgba(196, 167, 125, 0.5)';
+                            setTimeout(() => {
+                                productElement.style.background = originalBackground;
+                            }, 2000);
+                        }
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.skin-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const issue = this.getAttribute('data-issue');
+                    searchInput.value = issue;
+                    searchInput.dispatchEvent(new Event('input'));
+                });
+            });
+        }
+        
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchIcon.contains(e.target) && !searchResults.contains(e.target)) {
+                searchInput.classList.remove('active');
+                searchClose.classList.remove('active');
+                searchResults.classList.remove('active');
+            }
         });
         
         // Scroll event for navbar and fade animations

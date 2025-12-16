@@ -63,11 +63,11 @@
             z-index: -1;
         }
 
-        /* Floating Shopping Bag - MOVED UP BY 180px (60px + 120px) */
+        /* Floating Shopping Bag - MOVED UP BY TWICE ITS SIZE */
         .floating-cart {
             position: fixed;
             left: 50%;
-            top: calc(50% - 180px);
+            top: calc(50% - 120px); /* Moved up by 120px (twice its 60px size) */
             transform: translate(-50%, -50%);
             z-index: 1000;
             display: flex;
@@ -218,6 +218,29 @@
         .social-button:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Social Media Links in Footer */
+        .footer-social-section {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .footer-social-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         /* Close Buttons */
@@ -1968,6 +1991,22 @@
                 padding-top: 105px;
             }
             
+            /* Footer Social Section */
+            .footer-social-section {
+                padding: 30px 0;
+                margin-bottom: 30px;
+            }
+            
+            .footer-social-links {
+                gap: 10px;
+            }
+            
+            .social-button {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
             /* Cart items responsive */
             .cart-item {
                 grid-template-columns: 60px 1fr;
@@ -2011,15 +2050,10 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Remove duplicated social links from footer */
-        footer .social-links-container {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Floating Cart - MOVED UP BY 180px -->
+    <!-- Floating Cart - MOVED UP -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="floatingCartBtn">
             <i class="fas fa-shopping-bag"></i>
@@ -2372,7 +2406,7 @@
         <a href="#all-products" class="mobile-nav-link">All Products</a>
         <a href="#gallery" class="mobile-nav-link">Gallery</a>
         <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
-        <a href="#footer" class="mobile-nav-link">Connect</a>
+        <a href="#social" class="mobile-nav-link">Connect</a>
     </div>
 
     <!-- Navigation - ENLARGED -->
@@ -2384,7 +2418,7 @@
             <a href="#all-products">All Products</a>
             <a href="#gallery">Gallery</a>
             <a href="#testimonials">Testimonials</a>
-            <a href="#footer">Connect</a>
+            <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
             <!-- Search Container -->
@@ -2852,6 +2886,33 @@
 
         <!-- Footer -->
         <footer id="footer">
+            <!-- Social Media Links Section in Footer -->
+            <div class="footer-social-section fade-in">
+                <h4>Connect With Us</h4>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">Follow us for skincare tips, promotions, and updates</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div style="margin-top: 30px; text-align: center;">
+                    <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
+                </div>
+            </div>
+
             <div class="footer-content fade-in">
                 <div class="footer-column">
                     <h4>Lonz Flawls Aura</h4>
@@ -2866,7 +2927,6 @@
                         <li><a href="#all-products">All Products</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#footer">Connect</a></li>
                     </ul>
                 </div>
                 
@@ -2886,37 +2946,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Social Links Section - MOVED TO FOOTER -->
-            <section id="social" class="social-section">
-                <div class="section-header fade-in">
-                    <h2>Connect With Us</h2>
-                    <p>Follow us on social media for skincare tips, promotions, and updates</p>
-                </div>
-                
-                <div class="social-links-container fade-in">
-                    <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                
-                <div class="fade-in" style="margin-top: 30px; text-align: center;">
-                    <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
-                    <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
-                </div>
-            </section>
             
             <div class="copyright">
                 <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare</p>

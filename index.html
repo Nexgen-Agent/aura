@@ -270,12 +270,12 @@
             color: var(--accent-color);
         }
 
-        /* Navigation - ENLARGED BY 40% */
+        /* Navigation - ENLARGED BY 40% and THEN ADDITIONAL 50% */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 28px 40px;
+            padding: 42px 40px; /* Increased by 50% from 28px */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -285,19 +285,19 @@
             background: rgba(10, 25, 41, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            height: 80px;
+            height: 120px; /* Increased by 50% from 80px */
         }
 
         nav.scrolled {
             background: rgba(10, 25, 41, 0.95);
             backdrop-filter: blur(20px);
-            padding: 21px 40px;
-            height: 70px;
+            padding: 31.5px 40px; /* Increased by 50% from 21px */
+            height: 105px; /* Increased by 50% from 70px */
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 33.6px;
+            font-size: 30.2px; /* Search button is 25.2px + 5px = 30.2px */
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
@@ -306,6 +306,9 @@
             gap: 10px;
             white-space: nowrap;
             flex-shrink: 0;
+            line-height: 1.2;
+            max-height: 100%;
+            overflow: visible;
         }
 
         .logo i {
@@ -352,7 +355,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            margin-right: 20px;
+            margin-right: 10px; /* Reduced from 20px */
         }
 
         .search-input {
@@ -412,7 +415,7 @@
 
         .nav-icons {
             display: flex;
-            gap: 25px;
+            gap: 15px; /* Reduced from 25px */
             align-items: center;
             position: relative;
         }
@@ -823,7 +826,7 @@
 
         /* Main Content */
         .main-content {
-            padding-top: 140px;
+            padding-top: 160px; /* Increased to accommodate taller navbar */
             position: relative;
             z-index: 1;
         }
@@ -841,7 +844,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding-top: 150px;
+            padding-top: 130px; /* Adjusted for new navbar height */
         }
 
         .hero h1 {
@@ -2143,7 +2146,7 @@
             }
             
             .logo {
-                font-size: 28px;
+                font-size: 30.2px; /* Maintain 5px bigger than search button (25.2px + 5px) */
             }
             
             .search-input.active {
@@ -2186,7 +2189,7 @@
             }
             
             .nav-icons {
-                gap: 20px;
+                gap: 15px; /* Maintain reduced gap */
             }
         }
 
@@ -2200,27 +2203,31 @@
             }
             
             .logo {
-                font-size: 23.8px;
+                font-size: 30.2px; /* Maintain 5px bigger than search button */
             }
             
             .search-input.active {
                 width: 220px;
             }
+            
+            .nav-icons {
+                gap: 10px; /* Further reduced on smaller screens */
+            }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 21px 20px;
-                height: 70px;
+                padding: 31.5px 20px; /* Increased by 50% from 21px */
+                height: 105px; /* Increased by 50% from 70px */
             }
             
             nav.scrolled {
-                padding: 16.8px 20px;
-                height: 60px;
+                padding: 25.2px 20px; /* Increased by 50% from 16.8px */
+                height: 90px; /* Increased by 50% from 60px */
             }
             
             .logo {
-                font-size: 19.6px;
+                font-size: 24.2px; /* Search button is 19.2px on mobile + 5px = 24.2px */
             }
             
             /* Hide desktop search input on mobile */
@@ -2268,7 +2275,7 @@
             }
             
             .nav-icons {
-                gap: 15px;
+                gap: 10px; /* Reduced gap on mobile */
             }
             
             .mobile-menu-btn {
@@ -2298,7 +2305,7 @@
             }
             
             .main-content {
-                padding-top: 105px;
+                padding-top: 125px; /* Increased to accommodate taller navbar */
             }
             
             /* Footer Social Section */
@@ -2373,15 +2380,22 @@
                 margin-left: 0 !important;
                 margin-bottom: 10px;
             }
+            
+            .hero {
+                padding-top: 130px; /* Adjusted for new navbar height */
+            }
         }
 
         @media (max-width: 480px) {
             .logo {
-                font-size: 16px;
+                font-size: 22px; /* Adjusted for very small screens */
+                max-width: 150px; /* Prevent overflow */
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             
             .nav-icons {
-                gap: 10px;
+                gap: 8px; /* Further reduced on very small screens */
             }
             
             .search-results {

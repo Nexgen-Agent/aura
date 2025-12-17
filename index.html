@@ -979,27 +979,6 @@
             margin-top: 40px;
         }
 
-        .photo-upload {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 20px;
-        }
-
-        .photo-upload:hover {
-            border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .photo-upload i {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-
         .wizard-progress {
             height: 4px;
             background: rgba(255, 255, 255, 0.1);
@@ -2787,25 +2766,7 @@
                         </div>
                         <div class="wizard-actions">
                             <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="glass-button wizard-next" data-step="3">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 4: Photo Upload -->
-                    <div class="wizard-step" id="step4">
-                        <h4>Upload a photo for AI analysis (optional)</h4>
-                        <p>Get a more accurate skin assessment by uploading a clear, well-lit photo of your face.</p>
-                        
-                        <div class="photo-upload glass-card" id="photoUpload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload or drag and drop</p>
-                            <small>JPG or PNG, max 5MB</small>
-                        </div>
-                        
-                        <div class="wizard-actions">
-                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="glass-button" id="skipUpload">Skip and Get Results</button>
-                            <button class="glass-button" id="analyzePhoto">Analyze Photo</button>
+                            <button class="glass-button wizard-next" data-step="3">Get Recommendations</button>
                         </div>
                     </div>
                 </div>
@@ -3200,25 +3161,17 @@
             </div>
             <div class="result-message">
                 <h3>Your Personalized Glow Plan</h3>
-                <p>Based on your skin profile, we recommend starting with the <strong>Whitening Combo</strong> to address your primary concerns and prepare your skin for optimal results.</p>
-                <p>For enhanced brightening and even skin tone, add our <strong>Flagship Whitening Oil</strong> to your nightly routine.</p>
+                <p id="resultDescription"></p>
                 
-                <div class="result-products">
-                    <div class="result-product glass-card">
-                        <h4>Whitening Combo</h4>
-                        <p>R420.00</p>
-                        <button class="glass-button add-to-cart" style="margin-top: 10px;" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">Add to Cart</button>
-                    </div>
-                    <div class="result-product glass-card">
-                        <h4>Whitening Oil</h4>
-                        <p>R200.00</p>
-                        <button class="glass-button add-to-cart" style="margin-top: 10px; background: rgba(196, 167, 125, 0.3);" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">Add to Cart</button>
-                    </div>
+                <div class="result-products" id="personalizedProducts">
+                    <!-- Personalized products will be dynamically added here -->
                 </div>
                 
                 <div style="margin-top: 40px;">
                     <button class="glass-button" id="closeResultsBtn">Continue Browsing</button>
-                    <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;"><i class="fab fa-instagram"></i> DM for Your Glow</button>
+                    <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;" id="addAllToCart">
+                        <i class="fas fa-shopping-cart"></i> Add All to Cart
+                    </button>
                 </div>
             </div>
         </div>
@@ -3234,12 +3187,10 @@
         const wizardNextBtns = document.querySelectorAll('.wizard-next');
         const wizardPrevBtns = document.querySelectorAll('.wizard-prev');
         const progressBar = document.getElementById('progressBar');
-        const photoUpload = document.getElementById('photoUpload');
-        const skipUploadBtn = document.getElementById('skipUpload');
-        const analyzePhotoBtn = document.getElementById('analyzePhoto');
         const resultsModal = document.getElementById('resultsModal');
         const closeResultsBtn = document.getElementById('closeResults');
         const closeResultsBtn2 = document.getElementById('closeResultsBtn');
+        const addAllToCartBtn = document.getElementById('addAllToCart');
         const galleryTrack = document.getElementById('galleryTrack');
         const galleryDots = document.querySelectorAll('.gallery-dot');
         const testimonialSlides = document.querySelectorAll('.testimonial-slide');
@@ -3316,7 +3267,7 @@
                 skinIssues: ["dark spots", "uneven skin tone", "dull skin", "hyperpigmentation", "aging skin"],
                 benefitsList: ["brightening", "moisturizing", "anti-aging", "skin repair"],
                 searchScore: 95,
-                section: "flagship" // Added to identify which section the product is in
+                section: "flagship"
             },
             {
                 id: 2,
@@ -3485,6 +3436,40 @@
             }
         ];
         
+        // Enhanced product recommendation logic based on skin issues
+        const recommendationLogic = {
+            "acne": {
+                description: "For acne-prone skin, we recommend gentle yet effective products that combat breakouts while soothing inflammation.",
+                products: [3, 2, 5], // Kojic Soap, Whitening Cream, Whitening Soap
+                primaryCombo: null,
+                explanation: "These products work together to cleanse, treat, and prevent breakouts without harsh chemicals."
+            },
+            "dark-spots": {
+                description: "For dark spots and hyperpigmentation, we recommend targeted brightening products that fade spots and even skin tone.",
+                products: [1, 2, 3], // Whitening Oil, Whitening Cream, Kojic Soap
+                primaryCombo: 14, // Whitening Combo
+                explanation: "This combination delivers maximum brightening power to fade dark spots and reveal radiant skin."
+            },
+            "dry": {
+                description: "For dry skin, we recommend intensive hydration and nourishment to restore moisture barrier and glow.",
+                products: [4, 8, 9], // Extra Glow Lotion, Extra Glow Oil, Extra Cream
+                primaryCombo: 13, // Extra Combo
+                explanation: "These deeply hydrating products work together to quench thirsty skin and restore natural radiance."
+            },
+            "uneven-tone": {
+                description: "For uneven skin tone, we recommend products that balance complexion and deliver consistent results.",
+                products: [1, 2, 5], // Whitening Oil, Whitening Cream, Whitening Soap
+                primaryCombo: 14, // Whitening Combo
+                explanation: "This combination evens out skin tone and delivers a balanced, radiant complexion."
+            },
+            "glow": {
+                description: "For glow maintenance, we recommend products that enhance natural radiance and protect skin health.",
+                products: [4, 6, 8], // Extra Glow Lotion, Extra Glow Soap, Extra Glow Oil
+                primaryCombo: 13, // Extra Combo
+                explanation: "These glow-enhancing products work together to maintain your skin's natural luminosity."
+            }
+        };
+        
         // Top searched products (anchor buys)
         const topSearchedProducts = [1, 14, 2, 13, 3, 4];
         
@@ -3509,13 +3494,15 @@
         const userData = {
             skinConcern: '',
             sensitivity: '',
-            ageRange: '',
-            photoUploaded: false
+            ageRange: ''
         };
+        
+        // Personalized recommendations for current user
+        let personalizedRecommendations = [];
         
         // Current wizard step
         let currentStep = 1;
-        const totalSteps = 4;
+        const totalSteps = 3; // Changed from 4 to 3 after removing photo upload
         
         // Gallery state
         let currentGallerySlide = 0;
@@ -3619,7 +3606,6 @@
             userData.skinConcern = '';
             userData.sensitivity = '';
             userData.ageRange = '';
-            userData.photoUploaded = false;
         });
         
         closeCartBtn.addEventListener('click', () => {
@@ -3640,6 +3626,54 @@
         
         closeResultsBtn2.addEventListener('click', () => {
             resultsModal.classList.remove('active');
+        });
+        
+        // Add all recommended products to cart
+        addAllToCartBtn.addEventListener('click', () => {
+            if (personalizedRecommendations.length === 0) {
+                alert('No recommendations to add to cart');
+                return;
+            }
+            
+            personalizedRecommendations.forEach(productId => {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    addToCart({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image
+                    });
+                }
+            });
+            
+            // Also add the primary combo if it exists
+            const logic = recommendationLogic[userData.skinConcern];
+            if (logic && logic.primaryCombo) {
+                const comboProduct = products.find(p => p.id === logic.primaryCombo);
+                if (comboProduct) {
+                    addToCart({
+                        id: comboProduct.id,
+                        name: comboProduct.name,
+                        price: comboProduct.price,
+                        image: comboProduct.image
+                    });
+                }
+            }
+            
+            addAllToCartBtn.innerHTML = '<i class="fas fa-check"></i> All Added!';
+            addAllToCartBtn.style.background = 'rgba(40, 167, 69, 0.3)';
+            
+            setTimeout(() => {
+                addAllToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Add All to Cart';
+                addAllToCartBtn.style.background = '';
+            }, 2000);
+            
+            // Open cart modal
+            setTimeout(() => {
+                resultsModal.classList.remove('active');
+                cartModal.classList.add('active');
+            }, 500);
         });
         
         // Enhanced Search functionality
@@ -4066,7 +4100,7 @@
             });
         }
         
-        // Function to navigate to product and highlight it - FIXED VERSION
+        // Function to navigate to product and highlight it
         function navigateToProduct(product) {
             // Close desktop search if open
             searchInput.classList.remove('active');
@@ -4116,7 +4150,7 @@
                         productCard.style.transform = '';
                     }, 3000);
                 }
-            }, 800); // Increased delay to ensure scroll completes
+            }, 800);
         }
         
         // Close search when clicking outside (desktop only)
@@ -4493,10 +4527,6 @@
             const orderId = Math.floor(1000 + Math.random() * 9000);
             document.getElementById('orderId').textContent = orderId;
             
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartBadge();
-            
             const order = {
                 id: orderId,
                 date: new Date().toISOString(),
@@ -4508,6 +4538,11 @@
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
             orders.push(order);
             localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Clear cart after successful order
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
             
             checkoutModal.classList.remove('active');
             successModal.classList.add('active');
@@ -4606,17 +4641,17 @@
                     return;
                 }
                 
+                if (step === 3) {
+                    // This is the last step - generate and show recommendations
+                    generatePersonalizedRecommendations();
+                    return;
+                }
+                
                 if (currentStep < totalSteps) {
                     wizardSteps[currentStep - 1].classList.remove('active');
                     currentStep++;
                     wizardSteps[currentStep - 1].classList.add('active');
                     updateProgressBar();
-                }
-                
-                if (currentStep === totalSteps) {
-                    setTimeout(() => {
-                        document.getElementById('qualification').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
                 }
             });
         });
@@ -4638,42 +4673,149 @@
             progressBar.style.width = `${progress}%`;
         }
         
-        // Photo upload handling
-        photoUpload.addEventListener('click', () => {
-            photoUpload.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <p>Photo uploaded successfully!</p>
-                <small>AI analysis ready</small>
-            `;
-            photoUpload.style.borderColor = 'var(--accent-color)';
-            userData.photoUploaded = true;
-        });
-        
-        // Skip photo upload
-        skipUploadBtn.addEventListener('click', showResults);
-        
-        // Analyze photo button
-        analyzePhotoBtn.addEventListener('click', () => {
-            analyzePhotoBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
-            analyzePhotoBtn.disabled = true;
+        // Generate personalized recommendations based on user data
+        function generatePersonalizedRecommendations() {
+            const logic = recommendationLogic[userData.skinConcern];
             
-            setTimeout(() => {
-                analyzePhotoBtn.innerHTML = '<i class="fas fa-check"></i> Analysis Complete';
-                setTimeout(showResults, 1000);
-            }, 2000);
-        });
+            if (!logic) {
+                // Fallback to default recommendation
+                personalizedRecommendations = [1, 14]; // Whitening Oil and Whitening Combo
+                showResults("Based on your skin profile, we recommend our best-selling Whitening Combo to address your concerns and deliver radiant results.", [1, 14]);
+                return;
+            }
+            
+            personalizedRecommendations = [...logic.products];
+            
+            // Adjust recommendations based on sensitivity
+            if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
+                // Remove potentially harsh products for sensitive skin
+                personalizedRecommendations = personalizedRecommendations.filter(id => id !== 3 && id !== 5); // Remove Kojic Soap and Whitening Soap
+                
+                // Add gentle alternatives
+                if (userData.skinConcern === 'acne') {
+                    personalizedRecommendations.push(4); // Extra Glow Lotion for gentle hydration
+                }
+            }
+            
+            // Adjust recommendations based on age
+            if (userData.ageRange === '50-plus' || userData.ageRange === '36-50') {
+                // Add anti-aging products for mature skin
+                if (!personalizedRecommendations.includes(1)) {
+                    personalizedRecommendations.push(1); // Whitening Oil for anti-aging benefits
+                }
+                if (!personalizedRecommendations.includes(2)) {
+                    personalizedRecommendations.push(2); // Whitening Cream for anti-aging
+                }
+            }
+            
+            // Show results with personalized description
+            let description = logic.description + " " + logic.explanation;
+            
+            // Add sensitivity note if applicable
+            if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
+                description += " We've selected gentle formulas suitable for sensitive skin.";
+            }
+            
+            // Add age-specific note if applicable
+            if (userData.ageRange === '50-plus') {
+                description += " These products are specially chosen for mature skin needs.";
+            } else if (userData.ageRange === '36-50') {
+                description += " These formulas address both your primary concern and early signs of aging.";
+            }
+            
+            showResults(description, personalizedRecommendations, logic.primaryCombo);
+        }
         
-        // Show results modal
-        function showResults() {
+        // Show results modal with personalized recommendations
+        function showResults(description, productIds, primaryComboId = null) {
+            // Update result description
+            document.getElementById('resultDescription').textContent = description;
+            
+            // Clear previous products
+            const personalizedProductsDiv = document.getElementById('personalizedProducts');
+            personalizedProductsDiv.innerHTML = '';
+            
+            // Add individual products
+            productIds.forEach(productId => {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    const productHTML = `
+                        <div class="result-product glass-card">
+                            <h4>${product.name}</h4>
+                            <p>R${product.price.toFixed(2)}</p>
+                            <button class="glass-button add-to-cart" style="margin-top: 10px;" 
+                                data-id="${product.id}" 
+                                data-name="${product.name}" 
+                                data-price="${product.price}" 
+                                data-image="${product.image}">
+                                Add to Cart
+                            </button>
+                        </div>
+                    `;
+                    personalizedProductsDiv.innerHTML += productHTML;
+                }
+            });
+            
+            // Add primary combo if it exists
+            if (primaryComboId) {
+                const comboProduct = products.find(p => p.id === primaryComboId);
+                if (comboProduct) {
+                    const comboHTML = `
+                        <div class="result-product glass-card" style="border: 2px solid var(--accent-color);">
+                            <div style="color: var(--accent-color); font-size: 12px; margin-bottom: 5px;">RECOMMENDED COMBO</div>
+                            <h4>${comboProduct.name}</h4>
+                            <p>R${comboProduct.price.toFixed(2)}</p>
+                            <button class="glass-button add-to-cart" style="margin-top: 10px; background: rgba(196, 167, 125, 0.3);" 
+                                data-id="${comboProduct.id}" 
+                                data-name="${comboProduct.name}" 
+                                data-price="${comboProduct.price}" 
+                                data-image="${comboProduct.image}">
+                                <i class="fas fa-star"></i> Add Combo
+                            </button>
+                        </div>
+                    `;
+                    personalizedProductsDiv.innerHTML += comboHTML;
+                    
+                    // Add combo to personalized recommendations
+                    if (!personalizedRecommendations.includes(primaryComboId)) {
+                        personalizedRecommendations.push(primaryComboId);
+                    }
+                }
+            }
+            
+            // Re-attach add to cart event listeners for the new buttons
+            personalizedProductsDiv.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    const productImage = this.getAttribute('data-image');
+                    
+                    addToCart({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        image: productImage
+                    });
+                    
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Added!';
+                    this.style.background = 'rgba(40, 167, 69, 0.3)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+            
+            // Show the results modal
             resultsModal.classList.add('active');
             
-            console.log('User data to be saved:', userData);
-            
+            // Scroll to results modal
             setTimeout(() => {
-                console.log('User data saved to Supabase');
-                console.log('AI analysis completed with DeepSeek');
-                console.log('Personalized recommendation generated');
-            }, 500);
+                resultsModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
         }
         
         // Gallery navigation

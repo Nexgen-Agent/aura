@@ -1804,7 +1804,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Results Modal */
+        /* Results Modal - MODIFIED */
         .results-modal {
             position: fixed;
             top: 0;
@@ -1829,42 +1829,166 @@
 
         .results-content {
             width: 90%;
-            max-width: 700px;
+            max-width: 900px;
+            max-height: 90vh;
             padding: 40px;
-            text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .result-icon {
-            font-size: 80px;
+            font-size: 60px;
             color: var(--accent-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result-message {
+            text-align: center;
             margin-bottom: 30px;
         }
 
         .result-message h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
         }
 
         .result-message p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.6;
             margin-bottom: 30px;
             color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .result-products {
+        /* Personalized Products Section - MODIFIED to match search results style */
+        .personalized-products-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            padding-right: 10px;
+        }
+
+        .personalized-products-container .search-result-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .personalized-products-container .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--glass-border);
+            transform: translateY(-3px);
+        }
+
+        .personalized-products-container .search-result-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .personalized-products-container .search-result-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .personalized-products-container .search-result-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .personalized-products-container .search-result-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .personalized-products-container .search-result-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .personalized-products-container .search-result-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .personalized-products-container .search-result-tag {
+            background: rgba(196, 167, 125, 0.2);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            color: var(--accent-color);
+            border: 1px solid rgba(196, 167, 125, 0.3);
+        }
+
+        .personalized-products-container .search-result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 120px;
+        }
+
+        .personalized-products-container .add-to-cart-btn {
+            background: rgba(196, 167, 125, 0.2);
+            border: 1px solid rgba(196, 167, 125, 0.3);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .personalized-products-container .add-to-cart-btn:hover {
+            background: rgba(196, 167, 125, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .personalized-products-container .add-to-cart-btn.added {
+            background: rgba(40, 167, 69, 0.2);
+            border-color: rgba(40, 167, 69, 0.3);
+            color: #28a745;
+        }
+
+        .result-actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .result-product {
-            width: 180px;
-            padding: 20px;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Authentication Modal */
@@ -2216,6 +2340,38 @@
             .remove-item {
                 padding: 6px 12px;
                 font-size: 0.8rem;
+            }
+            
+            /* Results Modal Responsive */
+            .personalized-products-container .search-result-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            
+            .personalized-products-container .search-result-item img {
+                width: 100%;
+                height: 150px;
+                margin-bottom: 15px;
+            }
+            
+            .personalized-products-container .search-result-actions {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .result-actions .glass-button {
+                width: 100%;
+                max-width: 300px;
+                margin-left: 0 !important;
+                margin-bottom: 10px;
             }
         }
 
@@ -3152,7 +3308,7 @@
         </footer>
     </div>
 
-    <!-- Results Modal -->
+    <!-- Results Modal - MODIFIED with search result-style cards -->
     <div class="results-modal" id="resultsModal">
         <div class="results-content glass-card">
             <button class="close-button" id="closeResults">&times;</button>
@@ -3163,11 +3319,11 @@
                 <h3>Your Personalized Glow Plan</h3>
                 <p id="resultDescription"></p>
                 
-                <div class="result-products" id="personalizedProducts">
-                    <!-- Personalized products will be dynamically added here -->
+                <div class="personalized-products-container" id="personalizedProducts">
+                    <!-- Personalized products will be dynamically added here as search result-style cards -->
                 </div>
                 
-                <div style="margin-top: 40px;">
+                <div class="result-actions">
                     <button class="glass-button" id="closeResultsBtn">Continue Browsing</button>
                     <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;" id="addAllToCart">
                         <i class="fas fa-shopping-cart"></i> Add All to Cart
@@ -4726,7 +4882,7 @@
             showResults(description, personalizedRecommendations, logic.primaryCombo);
         }
         
-        // Show results modal with personalized recommendations
+        // Show results modal with personalized recommendations - MODIFIED to use search result-style cards
         function showResults(description, productIds, primaryComboId = null) {
             // Update result description
             document.getElementById('resultDescription').textContent = description;
@@ -4735,21 +4891,30 @@
             const personalizedProductsDiv = document.getElementById('personalizedProducts');
             personalizedProductsDiv.innerHTML = '';
             
-            // Add individual products
+            // Add individual products as search result-style cards
             productIds.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
                     const productHTML = `
-                        <div class="result-product glass-card">
-                            <h4>${product.name}</h4>
-                            <p>R${product.price.toFixed(2)}</p>
-                            <button class="glass-button add-to-cart" style="margin-top: 10px;" 
-                                data-id="${product.id}" 
-                                data-name="${product.name}" 
-                                data-price="${product.price}" 
-                                data-image="${product.image}">
-                                Add to Cart
-                            </button>
+                        <div class="search-result-item" data-id="${product.id}">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="search-result-info">
+                                <h4>${product.name}</h4>
+                                <p>${product.description.substring(0, 80)}...</p>
+                                <div class="search-result-tags">
+                                    <span class="search-result-tag">${product.category}</span>
+                                    ${product.searchScore > 85 ? '<span class="search-result-tag" style="background: rgba(255,193,7,0.2);">Popular</span>' : ''}
+                                </div>
+                                <div class="search-result-price">R${product.price.toFixed(2)}</div>
+                            </div>
+                            <div class="search-result-actions">
+                                <button class="add-to-cart-btn" data-id="${product.id}" 
+                                    data-name="${product.name}" 
+                                    data-price="${product.price}" 
+                                    data-image="${product.image}">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart
+                                </button>
+                            </div>
                         </div>
                     `;
                     personalizedProductsDiv.innerHTML += productHTML;
@@ -4761,17 +4926,29 @@
                 const comboProduct = products.find(p => p.id === primaryComboId);
                 if (comboProduct) {
                     const comboHTML = `
-                        <div class="result-product glass-card" style="border: 2px solid var(--accent-color);">
-                            <div style="color: var(--accent-color); font-size: 12px; margin-bottom: 5px;">RECOMMENDED COMBO</div>
-                            <h4>${comboProduct.name}</h4>
-                            <p>R${comboProduct.price.toFixed(2)}</p>
-                            <button class="glass-button add-to-cart" style="margin-top: 10px; background: rgba(196, 167, 125, 0.3);" 
-                                data-id="${comboProduct.id}" 
-                                data-name="${comboProduct.name}" 
-                                data-price="${comboProduct.price}" 
-                                data-image="${comboProduct.image}">
-                                <i class="fas fa-star"></i> Add Combo
-                            </button>
+                        <div class="search-result-item" data-id="${comboProduct.id}" style="border: 2px solid var(--accent-color); background: rgba(196, 167, 125, 0.1);">
+                            <img src="${comboProduct.image}" alt="${comboProduct.name}">
+                            <div class="search-result-info">
+                                <h4>${comboProduct.name}</h4>
+                                <div style="color: var(--accent-color); font-size: 12px; margin-bottom: 5px; display: flex; align-items: center; gap: 5px;">
+                                    <i class="fas fa-star"></i> RECOMMENDED COMBO
+                                </div>
+                                <p>${comboProduct.description.substring(0, 80)}...</p>
+                                <div class="search-result-tags">
+                                    <span class="search-result-tag">${comboProduct.category}</span>
+                                    <span class="search-result-tag" style="background: rgba(40, 167, 69, 0.2); color: #28a745;">Best Value</span>
+                                </div>
+                                <div class="search-result-price">R${comboProduct.price.toFixed(2)}</div>
+                            </div>
+                            <div class="search-result-actions">
+                                <button class="add-to-cart-btn" data-id="${comboProduct.id}" 
+                                    data-name="${comboProduct.name}" 
+                                    data-price="${comboProduct.price}" 
+                                    data-image="${comboProduct.image}"
+                                    style="background: rgba(196, 167, 125, 0.3);">
+                                    <i class="fas fa-star"></i> Add Combo
+                                </button>
+                            </div>
                         </div>
                     `;
                     personalizedProductsDiv.innerHTML += comboHTML;
@@ -4784,7 +4961,7 @@
             }
             
             // Re-attach add to cart event listeners for the new buttons
-            personalizedProductsDiv.querySelectorAll('.add-to-cart').forEach(btn => {
+            personalizedProductsDiv.querySelectorAll('.add-to-cart-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const productName = this.getAttribute('data-name');
@@ -4800,11 +4977,11 @@
                     
                     const originalText = this.innerHTML;
                     this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                    this.style.background = 'rgba(40, 167, 69, 0.3)';
+                    this.classList.add('added');
                     
                     setTimeout(() => {
                         this.innerHTML = originalText;
-                        this.style.background = '';
+                        this.classList.remove('added');
                     }, 2000);
                 });
             });

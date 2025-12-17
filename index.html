@@ -347,7 +347,7 @@
             width: 100%;
         }
 
-        /* UPDATED Search container - Enhanced design */
+        /* Enhanced Search Container - NEW DESIGN */
         .search-container {
             position: relative;
             display: flex;
@@ -369,10 +369,11 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 16.8px;
+            z-index: 1002;
         }
 
         .search-input.active {
-            width: 350px; /* Increased width for better search experience */
+            width: 300px;
             opacity: 1;
             padding: 16.8px 45px 16.8px 20px;
             border: 1px solid var(--glass-border);
@@ -385,7 +386,6 @@
             transition: var(--transition);
             padding: 8px;
             z-index: 2;
-            color: var(--text-light);
         }
 
         .search-icon:hover {
@@ -443,6 +443,247 @@
 
         .mobile-menu-btn.active i {
             transform: rotate(90deg);
+        }
+
+        /* Enhanced Search Results - NEW DESIGN */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: rgba(10, 25, 41, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 1001;
+            margin-top: 10px;
+            padding: 20px;
+        }
+
+        .search-results.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Top Searched Products Section */
+        .top-searched-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-searched-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-searched-section h5 i {
+            color: var(--accent-color);
+        }
+
+        .top-searched-products {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-searched-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .top-searched-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .top-searched-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .top-searched-info h6 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 3px;
+        }
+
+        .top-searched-price {
+            font-size: 12px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Search Suggestions */
+        .search-suggestions {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-suggestions h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-suggestions h5 i {
+            color: var(--accent-color);
+        }
+
+        .suggestions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .suggestion-tag {
+            background: rgba(196, 167, 125, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(196, 167, 125, 0.2);
+        }
+
+        .suggestion-tag:hover {
+            background: rgba(196, 167, 125, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Search Results Items */
+        .search-results-list {
+            margin-top: 15px;
+        }
+
+        .search-results-list h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .search-result-item {
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--glass-border);
+        }
+
+        .search-result-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .search-result-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-result-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .search-result-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .search-result-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .search-result-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .search-result-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+
+        .no-results {
+            padding: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Search categories */
+        .search-categories {
+            margin-bottom: 15px;
+        }
+
+        .search-categories h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-tab {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-tab.active {
+            background: rgba(196, 167, 125, 0.3);
+            color: var(--primary-color);
         }
 
         /* Mobile Menu Overlay */
@@ -1093,248 +1334,6 @@
             60% { transform: translateY(-5px) translateX(-50%); }
         }
 
-        /* ENHANCED Search Results */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-            background: rgba(10, 25, 41, 0.98);
-            backdrop-filter: blur(25px);
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            display: none;
-            z-index: 1001;
-            margin-top: 10px;
-            padding: 20px;
-        }
-
-        .search-results.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .search-section {
-            margin-bottom: 20px;
-        }
-
-        .search-section h5 {
-            font-size: 14px;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .top-products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .top-product-item {
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .top-product-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .top-product-item img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .top-product-info h6 {
-            font-size: 13px;
-            color: var(--primary-color);
-            margin-bottom: 3px;
-        }
-
-        .top-product-info p {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .suggestions-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .suggestion-tag {
-            padding: 6px 12px;
-            background: rgba(196, 167, 125, 0.1);
-            border: 1px solid rgba(196, 167, 125, 0.2);
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .suggestion-tag:hover {
-            background: rgba(196, 167, 125, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .skin-issue-tag {
-            background: rgba(220, 53, 69, 0.1);
-            border-color: rgba(220, 53, 69, 0.2);
-        }
-
-        .benefit-tag {
-            background: rgba(40, 167, 69, 0.1);
-            border-color: rgba(40, 167, 69, 0.2);
-        }
-
-        .product-name-tag {
-            background: rgba(0, 123, 255, 0.1);
-            border-color: rgba(0, 123, 255, 0.2);
-        }
-
-        .search-result-item {
-            padding: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .search-result-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .search-result-item img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .search-result-info {
-            flex: 1;
-        }
-
-        .search-result-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-
-        .search-result-info p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-        }
-
-        .search-result-price {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .search-result-meta {
-            display: flex;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .search-meta-item {
-            font-size: 11px;
-            padding: 2px 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .no-results {
-            padding: 30px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Quick View Modal */
-        .quick-view-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .quick-view-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .quick-view-content {
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 40px;
-            position: relative;
-        }
-
-        .quick-view-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .quick-view-image {
-            height: 400px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 16px;
-        }
-
-        .quick-view-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .quick-view-price {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .quick-view-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
         /* Cart Modal - CLEANER DESIGN */
         .cart-modal {
             position: fixed;
@@ -1981,7 +1980,7 @@
             }
             
             .search-input.active {
-                width: 300px;
+                width: 280px;
             }
         }
 
@@ -2003,7 +2002,11 @@
             }
             
             .search-input.active {
-                width: 280px;
+                width: 240px;
+            }
+            
+            .search-results {
+                width: 350px;
             }
             
             .nav-links a {
@@ -2018,10 +2021,6 @@
             .nav-icons {
                 gap: 20px;
             }
-            
-            .search-results {
-                width: 350px;
-            }
         }
 
         @media (max-width: 850px) {
@@ -2035,6 +2034,10 @@
             
             .logo {
                 font-size: 23.8px;
+            }
+            
+            .search-input.active {
+                width: 220px;
             }
         }
 
@@ -2054,7 +2057,7 @@
             }
             
             .search-input.active {
-                width: 250px;
+                width: 200px;
                 position: fixed;
                 left: 20px;
                 right: 20px;
@@ -2068,6 +2071,7 @@
                 left: 20px;
                 right: 20px;
                 top: 120px;
+                max-height: 60vh;
             }
             
             section {
@@ -2179,18 +2183,6 @@
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            
-            .top-products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .quick-view-body {
-                grid-template-columns: 1fr;
-            }
-            
-            .quick-view-image {
-                height: 300px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2199,34 +2191,40 @@
             }
             
             .search-input.active {
-                width: 220px;
+                width: 180px;
+                font-size: 14px;
+                padding: 14px 40px 14px 15px;
             }
             
             .nav-icons {
                 gap: 10px;
             }
             
-            .form-row {
-                grid-template-columns: 1fr;
+            .search-results {
+                padding: 15px;
             }
             
-            .search-input.active {
-                width: 180px;
+            .top-searched-item {
+                padding: 8px;
+            }
+            
+            .top-searched-item img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .suggestion-tag {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Quick View Modal -->
-    <div class="quick-view-modal" id="quickViewModal">
-        <div class="quick-view-content glass-card">
-            <button class="close-button" id="closeQuickView">&times;</button>
-            <div class="quick-view-body" id="quickViewBody">
-                <!-- Content will be dynamically filled -->
-            </div>
-        </div>
-    </div>
-
     <!-- Floating Cart - MOVED UP -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="floatingCartBtn">
@@ -2595,14 +2593,14 @@
             <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
-            <!-- Search Container - UPDATED DESIGN -->
+            <!-- Search Container -->
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search skin problems, benefits, or products...">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products or skin issues...">
                 <i class="fas fa-search search-icon" id="searchIcon"></i>
                 <i class="fas fa-times search-close" id="searchClose"></i>
                 <!-- Enhanced Search Results -->
                 <div class="search-results" id="searchResults">
-                    <!-- Content will be dynamically filled -->
+                    <!-- Content will be populated dynamically -->
                 </div>
             </div>
             <!-- Menu Button -->
@@ -2776,9 +2774,6 @@
                         <div class="product-price">R420.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="14" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Combo -->
@@ -2795,9 +2790,6 @@
                         <div class="product-price">R270.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="13" data-name="Extra Combo" data-price="270.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="13" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Whitening Combo -->
@@ -2814,9 +2806,6 @@
                         <div class="product-price">R500.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="15" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
             </div>
         </section>
@@ -2843,9 +2832,6 @@
                             </div>
                             <div class="product-price">R200.00</div>
                             <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart</button>
-                            <button class="glass-button quick-view-btn" data-id="1" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                                <i class="fas fa-eye"></i> Quick View
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -2874,9 +2860,6 @@
                         <div class="product-price">R150.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="2" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Kojic Soap -->
@@ -2891,9 +2874,6 @@
                         <div class="product-price">R150.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="3" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Glow Lotion -->
@@ -2910,9 +2890,6 @@
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="4" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Whitening Soap -->
@@ -2929,9 +2906,6 @@
                         <div class="product-price">R70.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="5" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Glow Soap -->
@@ -2948,9 +2922,6 @@
                         <div class="product-price">R70.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="6" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Whitening Tissue Oil -->
@@ -2962,9 +2933,6 @@
                         <div class="product-price">R200.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="7" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Glow Oil -->
@@ -2976,9 +2944,6 @@
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="8" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
                 
                 <!-- Extra Cream -->
@@ -2990,9 +2955,6 @@
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="9" data-name="Extra Cream" data-price="100.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    <button class="glass-button quick-view-btn" data-id="9" style="margin-top: 10px; background: rgba(255, 255, 255, 0.05);">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
                 </div>
             </div>
         </section>
@@ -3220,7 +3182,7 @@
         const testimonialPrevBtn = document.querySelector('.testimonial-prev');
         const testimonialNextBtn = document.querySelector('.testimonial-next');
         
-        // Enhanced Search elements
+        // Search elements
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
         const searchClose = document.getElementById('searchClose');
@@ -3235,12 +3197,6 @@
         const cartSummary = document.getElementById('cartSummary');
         const addToCartBtns = document.querySelectorAll('.add-to-cart');
         const checkoutBtn = document.getElementById('checkoutBtn');
-        
-        // Quick View elements
-        const quickViewModal = document.getElementById('quickViewModal');
-        const quickViewBody = document.getElementById('quickViewBody');
-        const closeQuickViewBtn = document.getElementById('closeQuickView');
-        const quickViewBtns = document.querySelectorAll('.quick-view-btn');
         
         // Close buttons
         const closeAuthBtn = document.getElementById('closeAuth');
@@ -3282,15 +3238,14 @@
                 name: "Whitening Oil 100ml",
                 price: 200.00,
                 image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.",
+                description: "Our premium whitening oil is formulated with natural extracts and advanced brightening agents.",
                 benefits: "Clear dead skin, Repair damage skin, Improve skin tone",
                 usage: "Morning and night",
                 ingredients: "Vitamin E and C collagen, Gluthathion",
                 category: "oil",
-                skinIssues: ["dark spots", "uneven skin tone", "dull skin", "hyperpigmentation", "age spots"],
-                benefitsList: ["brightening", "even tone", "radiant glow", "repair", "moisturizing"],
-                searchCount: 156,
-                topProduct: true
+                skinIssues: ["dark spots", "uneven skin tone", "dull skin", "hyperpigmentation", "aging skin"],
+                benefitsList: ["brightening", "moisturizing", "anti-aging", "skin repair"],
+                searchScore: 95
             },
             {
                 id: 2,
@@ -3302,10 +3257,9 @@
                 usage: "Morning and night",
                 ingredients: "Vitamin E and C, Collagen and Glutathione",
                 category: "cream",
-                skinIssues: ["acne", "dark spots", "pigmentation", "uneven skin tone", "pimples", "aging", "wrinkles"],
-                benefitsList: ["moisturizing", "anti-aging", "acne treatment", "brightening", "even tone"],
-                searchCount: 142,
-                topProduct: true
+                skinIssues: ["acne", "dark spots", "pigmentation", "uneven skin tone", "pimples", "aging"],
+                benefitsList: ["moisturizing", "anti-acne", "brightening", "anti-aging"],
+                searchScore: 90
             },
             {
                 id: 3,
@@ -3317,10 +3271,9 @@
                 usage: "",
                 ingredients: "",
                 category: "soap",
-                skinIssues: ["uneven skin tone", "dark spots", "acne scars", "dull skin", "acne", "blemishes"],
-                benefitsList: ["brightening", "exfoliating", "cleansing", "acne treatment", "even tone"],
-                searchCount: 98,
-                topProduct: true
+                skinIssues: ["uneven skin tone", "dark spots", "acne scars", "dull skin", "hyperpigmentation"],
+                benefitsList: ["cleansing", "brightening", "exfoliating", "acne treatment"],
+                searchScore: 85
             },
             {
                 id: 4,
@@ -3332,9 +3285,9 @@
                 usage: "Morning and Night",
                 ingredients: "Vitamin C, Vegetal glycerin, Sodium lactate",
                 category: "lotion",
-                skinIssues: ["dry skin", "stretch marks", "blemishes", "sunburn", "dull skin", "dark inner thighs", "rough skin"],
-                benefitsList: ["moisturizing", "glowing", "healing", "hydrating", "repair"],
-                searchCount: 87
+                skinIssues: ["dry skin", "stretch marks", "blemishes", "sunburn", "dull skin", "dark inner thighs"],
+                benefitsList: ["hydration", "glowing skin", "skin repair", "moisturizing"],
+                searchScore: 80
             },
             {
                 id: 5,
@@ -3346,9 +3299,9 @@
                 usage: "Morning and Night",
                 ingredients: "Collagen extract, Licorice, Glutathione extract and Arbutin extract",
                 category: "soap",
-                skinIssues: ["excess oil", "blemishes", "hyperpigmentation", "acne", "dull skin", "oily skin"],
-                benefitsList: ["cleansing", "exfoliating", "oil control", "brightening", "acne treatment"],
-                searchCount: 76
+                skinIssues: ["excess oil", "blemishes", "hyperpigmentation", "acne", "dull skin"],
+                benefitsList: ["cleansing", "brightening", "oil control", "exfoliating"],
+                searchScore: 75
             },
             {
                 id: 6,
@@ -3360,9 +3313,9 @@
                 usage: "Morning and Night",
                 ingredients: "Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey",
                 category: "soap",
-                skinIssues: ["dry skin", "stretch marks", "skin scars", "dull skin", "rough skin"],
-                benefitsList: ["moisturizing", "glowing", "scar treatment", "nourishing", "hydrating"],
-                searchCount: 65
+                skinIssues: ["dry skin", "stretch marks", "skin scars", "dull skin"],
+                benefitsList: ["glowing skin", "moisturizing", "skin repair", "nourishing"],
+                searchScore: 70
             },
             {
                 id: 7,
@@ -3374,9 +3327,9 @@
                 usage: "",
                 ingredients: "",
                 category: "oil",
-                skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation", "age spots"],
-                benefitsList: ["brightening", "targeted treatment", "lightweight", "fast-absorbing"],
-                searchCount: 54
+                skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation"],
+                benefitsList: ["targeted treatment", "brightening", "skin repair"],
+                searchScore: 65
             },
             {
                 id: 8,
@@ -3388,9 +3341,9 @@
                 usage: "",
                 ingredients: "",
                 category: "oil",
-                skinIssues: ["dull skin", "dry skin", "lack of glow", "tired-looking skin"],
-                benefitsList: ["radiant glow", "luminous", "hydrating", "revitalizing"],
-                searchCount: 48
+                skinIssues: ["dull skin", "dry skin", "lack of glow"],
+                benefitsList: ["glowing skin", "radiance", "moisturizing"],
+                searchScore: 60
             },
             {
                 id: 9,
@@ -3402,9 +3355,9 @@
                 usage: "",
                 ingredients: "",
                 category: "cream",
-                skinIssues: ["dry skin", "dehydrated skin", "rough texture", "flaky skin"],
-                benefitsList: ["intensive moisture", "nourishing", "hydration", "skin repair"],
-                searchCount: 42
+                skinIssues: ["dry skin", "dehydrated skin", "rough texture"],
+                benefitsList: ["intensive moisture", "nourishing", "skin repair"],
+                searchScore: 55
             },
             {
                 id: 13,
@@ -3417,9 +3370,8 @@
                 ingredients: "Extra glow soap, extra glow oil, extra glow cream",
                 category: "combo",
                 skinIssues: ["dull skin", "dry skin", "lack of radiance", "dehydrated skin"],
-                benefitsList: ["complete regimen", "radiant glow", "hydrated skin", "value set"],
-                searchCount: 89,
-                topProduct: true
+                benefitsList: ["complete routine", "glowing skin", "hydration", "radiance"],
+                searchScore: 88
             },
             {
                 id: 14,
@@ -3432,9 +3384,8 @@
                 ingredients: "Whitening oil, whitening soap, whitening cream",
                 category: "combo",
                 skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation", "dull complexion"],
-                benefitsList: ["complete regimen", "brightening", "even tone", "value set"],
-                searchCount: 134,
-                topProduct: true
+                benefitsList: ["complete routine", "brightening", "even skin tone", "radiance"],
+                searchScore: 92
             },
             {
                 id: 15,
@@ -3447,27 +3398,28 @@
                 ingredients: "Whitening oil, whitening cream, kojic soap",
                 category: "combo",
                 skinIssues: ["severe hyperpigmentation", "dark spots", "acne scars", "uneven skin tone"],
-                benefitsList: ["premium regimen", "enhanced brightening", "scar treatment", "complete care"],
-                searchCount: 112,
-                topProduct: true
+                benefitsList: ["premium routine", "intensive brightening", "skin repair", "radiance"],
+                searchScore: 89
             }
         ];
         
-        // Search suggestions data
+        // Top searched products (anchor buys)
+        const topSearchedProducts = [1, 14, 2, 13, 3, 4];
+        
+        // Common skin issues and benefits for suggestions
         const searchSuggestions = {
             skinIssues: [
-                "acne", "dark spots", "dry skin", "uneven tone", "hyperpigmentation",
-                "wrinkles", "aging", "pimples", "blemishes", "oily skin",
-                "stretch marks", "sunburn", "rough skin", "dull skin", "scarring"
+                "acne", "dark spots", "dry skin", "oily skin", "aging skin", 
+                "hyperpigmentation", "uneven skin tone", "dull skin", "sensitive skin",
+                "stretch marks", "sun damage", "wrinkles", "fine lines", "redness"
             ],
             benefits: [
-                "brightening", "moisturizing", "anti-aging", "glowing", "radiant",
-                "even tone", "hydrating", "cleansing", "exfoliating", "repair",
-                "nourishing", "soothing", "revitalizing", "firming", "smoothing"
+                "brightening", "moisturizing", "anti-aging", "hydration", 
+                "glowing skin", "radiance", "skin repair", "exfoliating",
+                "cleansing", "firming", "soothing", "protective", "nourishing"
             ],
             productTypes: [
-                "oil", "cream", "soap", "lotion", "combo",
-                "whitening", "glow", "kojic", "tissue oil", "face wash"
+                "oil", "cream", "soap", "lotion", "combo", "serum", "toner"
             ]
         };
         
@@ -3502,6 +3454,7 @@
         let isMobileMenuOpen = false;
         
         // Search state
+        let currentSearchCategory = 'all';
         let searchTimeout = null;
         
         // Initialize cart badge
@@ -3607,18 +3560,16 @@
             resultsModal.classList.remove('active');
         });
         
-        closeQuickViewBtn.addEventListener('click', () => {
-            quickViewModal.classList.remove('active');
-        });
-        
-        // ENHANCED Search functionality
+        // Enhanced Search functionality
         searchIcon.addEventListener('click', () => {
             searchInput.classList.add('active');
             searchClose.classList.add('active');
             searchInput.focus();
             
             // Show top products when search is opened
-            showTopProducts();
+            if (!searchInput.value.trim()) {
+                displayTopSearchedProducts();
+            }
         });
         
         searchClose.addEventListener('click', () => {
@@ -3628,68 +3579,98 @@
             searchResults.classList.remove('active');
         });
         
+        searchInput.addEventListener('focus', () => {
+            if (!searchInput.value.trim()) {
+                displayTopSearchedProducts();
+            }
+        });
+        
         searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            
             clearTimeout(searchTimeout);
             
-            if (searchTerm.length === 0) {
-                showTopProducts();
-                return;
-            }
-            
             searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                
+                if (searchTerm.length === 0) {
+                    displayTopSearchedProducts();
+                    return;
+                }
+                
                 performSearch(searchTerm);
             }, 300);
         });
         
-        searchInput.addEventListener('focus', () => {
-            if (searchInput.value.length === 0) {
-                showTopProducts();
-            }
-        });
-        
-        function showTopProducts() {
-            const topProducts = products.filter(p => p.topProduct)
-                                        .sort((a, b) => b.searchCount - a.searchCount)
-                                        .slice(0, 4);
-            
-            let suggestionsHTML = generateSuggestionsHTML('');
-            
+        // Function to display top searched products
+        function displayTopSearchedProducts() {
             let resultsHTML = `
-                <div class="search-section">
-                    <h5>Top Searched Products</h5>
-                    <div class="top-products-grid">
-                        ${topProducts.map(product => `
-                            <div class="top-product-item" data-id="${product.id}">
-                                <img src="${product.image}" alt="${product.name}">
-                                <div class="top-product-info">
-                                    <h6>${product.name}</h6>
-                                    <p>R${product.price.toFixed(2)}</p>
-                                </div>
+                <div class="top-searched-section">
+                    <h5><i class="fas fa-fire"></i> Top Searched Products</h5>
+                    <div class="top-searched-products">
+            `;
+            
+            topSearchedProducts.forEach(productId => {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    resultsHTML += `
+                        <div class="top-searched-item" data-id="${product.id}">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="top-searched-info">
+                                <h6>${product.name}</h6>
+                                <div class="top-searched-price">R${product.price.toFixed(2)}</div>
                             </div>
-                        `).join('')}
+                        </div>
+                    `;
+                }
+            });
+            
+            resultsHTML += `
                     </div>
                 </div>
                 
-                <div class="search-section">
-                    <h5>Quick Search Suggestions</h5>
-                    ${suggestionsHTML}
+                <div class="search-suggestions">
+                    <h5><i class="fas fa-lightbulb"></i> Search by Skin Concern</h5>
+                    <div class="suggestions-grid">
+            `;
+            
+            // Add skin issue suggestions
+            searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
+                resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
+            });
+            
+            resultsHTML += `
+                    </div>
+                </div>
+                
+                <div class="search-suggestions">
+                    <h5><i class="fas fa-star"></i> Search by Benefits</h5>
+                    <div class="suggestions-grid">
+            `;
+            
+            // Add benefit suggestions
+            searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
+                resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
+            });
+            
+            resultsHTML += `
+                    </div>
                 </div>
             `;
             
             searchResults.innerHTML = resultsHTML;
             searchResults.classList.add('active');
             
-            // Add event listeners to top products
-            document.querySelectorAll('.top-product-item').forEach(item => {
+            // Add event listeners to top products and suggestions
+            document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
-                    openQuickView(productId);
+                    const product = products.find(p => p.id === productId);
+                    
+                    if (product) {
+                        navigateToProduct(product);
+                    }
                 });
             });
             
-            // Add event listeners to suggestion tags
             document.querySelectorAll('.suggestion-tag').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
@@ -3699,148 +3680,166 @@
             });
         }
         
-        function generateSuggestionsHTML(searchTerm) {
-            let suggestions = [];
-            
-            // Add matching skin issues
-            if (searchTerm.length > 0) {
-                const matchingSkinIssues = searchSuggestions.skinIssues.filter(issue => 
-                    issue.toLowerCase().includes(searchTerm)
-                );
-                suggestions = suggestions.concat(matchingSkinIssues.map(issue => ({
-                    text: issue,
-                    type: 'skin-issue'
-                })));
-                
-                // Add matching benefits
-                const matchingBenefits = searchSuggestions.benefits.filter(benefit => 
-                    benefit.toLowerCase().includes(searchTerm)
-                );
-                suggestions = suggestions.concat(matchingBenefits.map(benefit => ({
-                    text: benefit,
-                    type: 'benefit'
-                })));
-                
-                // Add matching product types
-                const matchingTypes = searchSuggestions.productTypes.filter(type => 
-                    type.toLowerCase().includes(searchTerm)
-                );
-                suggestions = suggestions.concat(matchingTypes.map(type => ({
-                    text: type,
-                    type: 'product-type'
-                })));
-            } else {
-                // Show popular suggestions when no search term
-                suggestions = [
-                    { text: 'acne', type: 'skin-issue' },
-                    { text: 'dark spots', type: 'skin-issue' },
-                    { text: 'brightening', type: 'benefit' },
-                    { text: 'moisturizing', type: 'benefit' },
-                    { text: 'whitening', type: 'product-type' },
-                    { text: 'glow', type: 'product-type' }
-                ];
-            }
-            
-            // Limit suggestions
-            suggestions = suggestions.slice(0, 6);
-            
-            if (suggestions.length === 0) {
-                return '<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px;">No suggestions found</p>';
-            }
-            
-            return `
-                <div class="suggestions-list">
-                    ${suggestions.map(suggestion => `
-                        <span class="suggestion-tag ${suggestion.type}" data-suggestion="${suggestion.text}">
-                            ${suggestion.text}
-                        </span>
-                    `).join('')}
-                </div>
-            `;
-        }
-        
+        // Function to perform search with predictive suggestions
         function performSearch(searchTerm) {
-            const filteredProducts = products.filter(product => {
-                const searchFields = [
-                    product.name.toLowerCase(),
-                    product.description.toLowerCase(),
-                    product.benefits.toLowerCase(),
-                    ...product.skinIssues.map(issue => issue.toLowerCase()),
-                    ...product.benefitsList.map(benefit => benefit.toLowerCase())
-                ];
-                
-                return searchFields.some(field => field.includes(searchTerm));
-            });
+            const filteredProducts = [];
+            const suggestions = new Set();
             
-            displaySearchResults(filteredProducts, searchTerm);
-        }
-        
-        function displaySearchResults(results, searchTerm) {
-            if (results.length === 0) {
-                let suggestionsHTML = generateSuggestionsHTML(searchTerm);
+            products.forEach(product => {
+                let score = 0;
+                let matchedFields = [];
                 
-                searchResults.innerHTML = `
-                    <div class="search-section">
-                        <h5>No products found for "${searchTerm}"</h5>
-                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px;">Try one of these suggestions:</p>
-                        ${suggestionsHTML}
-                    </div>
-                `;
+                // Check product name
+                if (product.name.toLowerCase().includes(searchTerm)) {
+                    score += 30;
+                    matchedFields.push('name');
+                }
                 
-                searchResults.classList.add('active');
+                // Check description
+                if (product.description.toLowerCase().includes(searchTerm)) {
+                    score += 20;
+                    matchedFields.push('description');
+                }
                 
-                // Add event listeners to suggestion tags
-                document.querySelectorAll('.suggestion-tag').forEach(tag => {
-                    tag.addEventListener('click', function() {
-                        const suggestion = this.getAttribute('data-suggestion');
-                        searchInput.value = suggestion;
-                        performSearch(suggestion);
-                    });
+                // Check benefits
+                if (product.benefits.toLowerCase().includes(searchTerm)) {
+                    score += 15;
+                    matchedFields.push('benefits');
+                }
+                
+                // Check skin issues
+                product.skinIssues.forEach(issue => {
+                    if (issue.toLowerCase().includes(searchTerm)) {
+                        score += 10;
+                        matchedFields.push('skin issue: ' + issue);
+                        
+                        // Add similar skin issues to suggestions
+                        searchSuggestions.skinIssues.forEach(si => {
+                            if (si.includes(searchTerm) && si !== issue) {
+                                suggestions.add(si);
+                            }
+                        });
+                    }
                 });
                 
+                // Check benefits list
+                product.benefitsList.forEach(benefit => {
+                    if (benefit.toLowerCase().includes(searchTerm)) {
+                        score += 10;
+                        matchedFields.push('benefit: ' + benefit);
+                        
+                        // Add similar benefits to suggestions
+                        searchSuggestions.benefits.forEach(b => {
+                            if (b.includes(searchTerm) && b !== benefit) {
+                                suggestions.add(b);
+                            }
+                        });
+                    }
+                });
+                
+                // Check category
+                if (product.category.toLowerCase().includes(searchTerm)) {
+                    score += 5;
+                    matchedFields.push('category');
+                }
+                
+                if (score > 0) {
+                    filteredProducts.push({
+                        product: product,
+                        score: score + product.searchScore, // Boost by search popularity
+                        matchedFields: matchedFields
+                    });
+                }
+            });
+            
+            // Sort by relevance score
+            filteredProducts.sort((a, b) => b.score - a.score);
+            
+            // Get unique suggestions and limit to 5
+            const suggestionArray = Array.from(suggestions).slice(0, 5);
+            
+            displaySearchResults(filteredProducts, suggestionArray, searchTerm);
+        }
+        
+        // Function to display search results with suggestions
+        function displaySearchResults(filteredProducts, suggestions, searchTerm) {
+            if (filteredProducts.length === 0 && suggestions.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>No products found for "${searchTerm}"</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Try searching for: acne, dark spots, brightening, moisturizing</p>
+                    </div>
+                `;
+                searchResults.classList.add('active');
                 return;
             }
             
-            let resultsHTML = `
-                <div class="search-section">
-                    <h5>Search Results (${results.length} found)</h5>
-                    <div class="suggestions-list" style="margin-bottom: 20px;">
-                        ${generateSuggestionsHTML(searchTerm)}
-                    </div>
-                </div>
+            let resultsHTML = '';
+            
+            // Add suggestions if available
+            if (suggestions.length > 0) {
+                resultsHTML += `
+                    <div class="search-suggestions">
+                        <h5><i class="fas fa-lightbulb"></i> Try Searching For</h5>
+                        <div class="suggestions-grid">
+                `;
                 
-                <div class="search-section">
-                    <h5>Products</h5>
-                    ${results.map(product => `
+                suggestions.forEach(suggestion => {
+                    resultsHTML += `<span class="suggestion-tag" data-suggestion="${suggestion}">${suggestion}</span>`;
+                });
+                
+                resultsHTML += `
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add search results
+            if (filteredProducts.length > 0) {
+                resultsHTML += `
+                    <div class="search-results-list">
+                        <h5><i class="fas fa-check-circle"></i> ${filteredProducts.length} Products Found</h5>
+                `;
+                
+                filteredProducts.forEach((item, index) => {
+                    const product = item.product;
+                    const matchedFields = item.matchedFields.slice(0, 2).join(', ');
+                    
+                    resultsHTML += `
                         <div class="search-result-item" data-id="${product.id}">
                             <img src="${product.image}" alt="${product.name}">
                             <div class="search-result-info">
                                 <h4>${product.name}</h4>
-                                <p>${product.description.substring(0, 80)}...</p>
-                                <div class="search-result-meta">
-                                    ${product.skinIssues.slice(0, 3).map(issue => `
-                                        <span class="search-meta-item">${issue}</span>
-                                    `).join('')}
+                                <p>${product.description.substring(0, 60)}...</p>
+                                <div class="search-result-tags">
+                                    <span class="search-result-tag">${product.category}</span>
+                                    ${item.score > 100 ? '<span class="search-result-tag" style="background: rgba(255,193,7,0.2);">Popular</span>' : ''}
                                 </div>
                                 <div class="search-result-price">R${product.price.toFixed(2)}</div>
                             </div>
                         </div>
-                    `).join('')}
-                </div>
-            `;
+                    `;
+                });
+                
+                resultsHTML += `</div>`;
+            }
             
             searchResults.innerHTML = resultsHTML;
             searchResults.classList.add('active');
             
-            // Add event listeners to search result items
+            // Add event listeners
             document.querySelectorAll('.search-result-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
-                    openQuickView(productId);
+                    const product = products.find(p => p.id === productId);
+                    
+                    if (product) {
+                        navigateToProduct(product);
+                    }
                 });
             });
             
-            // Add event listeners to suggestion tags
             document.querySelectorAll('.suggestion-tag').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
@@ -3850,120 +3849,46 @@
             });
         }
         
-        function openQuickView(productId) {
-            const product = products.find(p => p.id === productId);
-            
-            if (!product) return;
-            
-            // Update search count
-            product.searchCount = (product.searchCount || 0) + 1;
-            
-            quickViewBody.innerHTML = `
-                <div class="quick-view-image" style="background-image: url('${product.image}');"></div>
-                <div class="quick-view-info">
-                    <h3>${product.name}</h3>
-                    <div class="quick-view-price">R${product.price.toFixed(2)}</div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <p>${product.description}</p>
-                    </div>
-                    
-                    ${product.benefits ? `
-                        <div style="margin-bottom: 20px;">
-                            <h5 style="color: var(--primary-color); margin-bottom: 10px;">Benefits:</h5>
-                            <p>${product.benefits}</p>
-                        </div>
-                    ` : ''}
-                    
-                    ${product.usage ? `
-                        <div style="margin-bottom: 20px;">
-                            <h5 style="color: var(--primary-color); margin-bottom: 10px;">Usage:</h5>
-                            <p>${product.usage}</p>
-                        </div>
-                    ` : ''}
-                    
-                    ${product.ingredients ? `
-                        <div style="margin-bottom: 20px;">
-                            <h5 style="color: var(--primary-color); margin-bottom: 10px;">Ingredients:</h5>
-                            <p>${product.ingredients}</p>
-                        </div>
-                    ` : ''}
-                    
-                    ${product.skinIssues && product.skinIssues.length > 0 ? `
-                        <div style="margin-bottom: 20px;">
-                            <h5 style="color: var(--primary-color); margin-bottom: 10px;">Treats:</h5>
-                            <div class="suggestions-list">
-                                ${product.skinIssues.map(issue => `
-                                    <span class="suggestion-tag skin-issue-tag">${issue}</span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="quick-view-buttons">
-                        <button class="glass-button add-to-cart" 
-                                data-id="${product.id}" 
-                                data-name="${product.name}" 
-                                data-price="${product.price}" 
-                                data-image="${product.image}">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
-                        <button class="glass-button" onclick="document.querySelector('#all-products').scrollIntoView({behavior: 'smooth'})">
-                            <i class="fas fa-info-circle"></i> View Details
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            quickViewModal.classList.add('active');
-            
-            // Close search
+        // Function to navigate to product and highlight it
+        function navigateToProduct(product) {
             searchInput.classList.remove('active');
             searchClose.classList.remove('active');
+            searchInput.value = '';
             searchResults.classList.remove('active');
             
-            // Add event listener to the add to cart button in quick view
-            const quickViewAddToCartBtn = quickViewBody.querySelector('.add-to-cart');
-            if (quickViewAddToCartBtn) {
-                quickViewAddToCartBtn.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const productName = this.getAttribute('data-name');
-                    const productPrice = parseFloat(this.getAttribute('data-price'));
-                    const productImage = this.getAttribute('data-image');
+            // Scroll to all products section
+            document.getElementById('all-products').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Find and highlight the product
+            setTimeout(() => {
+                const productElement = document.querySelector(`.add-to-cart[data-id="${product.id}"]`);
+                if (productElement) {
+                    const productCard = productElement.closest('.product-card');
                     
-                    addToCart({
-                        id: productId,
-                        name: productName,
-                        price: productPrice,
-                        image: productImage
-                    });
+                    // Highlight animation
+                    productCard.style.animation = 'none';
+                    void productCard.offsetWidth; // Trigger reflow
+                    productCard.style.animation = 'pulse 2s';
                     
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                    this.style.background = 'rgba(40, 167, 69, 0.3)';
-                    
+                    // Add temporary highlight
+                    productCard.style.boxShadow = '0 0 0 2px var(--accent-color)';
                     setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.background = '';
+                        productCard.style.boxShadow = '';
                     }, 2000);
-                });
-            }
+                }
+            }, 500);
         }
         
+        // Close search when clicking outside
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchIcon.contains(e.target) && !searchResults.contains(e.target)) {
                 searchInput.classList.remove('active');
                 searchClose.classList.remove('active');
                 searchResults.classList.remove('active');
             }
-        });
-        
-        // Quick view buttons
-        quickViewBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = parseInt(this.getAttribute('data-id'));
-                openQuickView(productId);
-            });
         });
         
         // Scroll event for navbar and fade animations
@@ -4009,6 +3934,17 @@
                     element.style.cursor = 'pointer';
                 });
             }
+            
+            // Add pulse animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(196, 167, 125, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0); }
+                }
+            `;
+            document.head.appendChild(style);
         });
         
         // Cart functionality

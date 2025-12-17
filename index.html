@@ -469,6 +469,187 @@
             animation: fadeIn 0.3s ease;
         }
 
+        /* Full Screen Search for Mobile */
+        @media (max-width: 768px) {
+            .search-container.fullscreen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(10, 25, 41, 0.98);
+                backdrop-filter: blur(20px);
+                z-index: 3000;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                transform: translateY(100%);
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            
+            .search-container.fullscreen.active {
+                transform: translateY(0);
+            }
+            
+            .search-container.fullscreen .search-input {
+                width: 100% !important;
+                position: relative !important;
+                left: 0 !important;
+                right: 0 !important;
+                top: 0 !important;
+                transform: none !important;
+                margin-top: 40px;
+                padding: 20px 50px 20px 20px !important;
+                font-size: 18px !important;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid var(--glass-border);
+                border-radius: 12px;
+                backdrop-filter: blur(10px);
+            }
+            
+            .search-container.fullscreen .search-icon {
+                position: absolute;
+                top: 50px;
+                left: 20px;
+                z-index: 3001;
+                font-size: 24px;
+            }
+            
+            .search-container.fullscreen .search-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 3001;
+                opacity: 1 !important;
+                font-size: 24px;
+                background: rgba(255, 255, 255, 0.1);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .search-container.fullscreen .search-results {
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                top: 120px !important;
+                max-height: calc(100% - 140px) !important;
+                position: relative;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 20px;
+            }
+            
+            /* Hide regular search on mobile when fullscreen is active */
+            .search-container:not(.fullscreen) .search-input.active {
+                display: none;
+            }
+            
+            .search-container:not(.fullscreen) .search-results.active {
+                display: none;
+            }
+        }
+
+        /* Enhanced predictive search suggestions */
+        .search-suggestions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .suggestion-item {
+            background: rgba(196, 167, 125, 0.15);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(196, 167, 125, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .suggestion-item:hover {
+            background: rgba(196, 167, 125, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .suggestion-item i {
+            font-size: 12px;
+            color: var(--accent-color);
+        }
+
+        /* Search history */
+        .search-history-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-history-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-history-section h5 i {
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .search-history-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .search-history-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-history-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .search-history-item i {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* High match product */
+        .high-match {
+            border: 2px solid var(--accent-color) !important;
+            background: rgba(196, 167, 125, 0.1) !important;
+        }
+
+        .high-match-badge {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
         /* Top Searched Products Section */
         .top-searched-section {
             margin-bottom: 20px;
@@ -684,6 +865,45 @@
         .category-tab.active {
             background: rgba(196, 167, 125, 0.3);
             color: var(--primary-color);
+        }
+
+        /* Animation for product highlight */
+        @keyframes highlightProduct {
+            0% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(196, 167, 125, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0); }
+        }
+
+        .product-highlight {
+            animation: highlightProduct 2s ease;
+        }
+
+        /* Enhanced mobile search results */
+        @media (max-width: 768px) {
+            .search-result-item {
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .search-result-item:hover {
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateY(-5px);
+            }
+            
+            .suggestion-item, .search-history-item {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+            
+            .top-searched-item {
+                padding: 15px;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.05);
+                margin-bottom: 10px;
+            }
         }
 
         /* Mobile Menu Overlay */
@@ -3187,6 +3407,9 @@
         const searchInput = document.getElementById('searchInput');
         const searchClose = document.getElementById('searchClose');
         const searchResults = document.getElementById('searchResults');
+        const searchContainer = document.querySelector('.search-container');
+        let isMobileFullscreen = false;
+        let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
         
         // Cart elements
         const floatingCartBtn = document.getElementById('floatingCartBtn');
@@ -3562,21 +3785,63 @@
         
         // Enhanced Search functionality
         searchIcon.addEventListener('click', () => {
-            searchInput.classList.add('active');
-            searchClose.classList.add('active');
-            searchInput.focus();
-            
-            // Show top products when search is opened
-            if (!searchInput.value.trim()) {
-                displayTopSearchedProducts();
+            if (window.innerWidth <= 768) {
+                // Mobile - open fullscreen
+                searchContainer.classList.add('fullscreen');
+                setTimeout(() => {
+                    searchContainer.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }, 10);
+                searchInput.focus();
+                isMobileFullscreen = true;
+                
+                // Show top products when search is opened
+                if (!searchInput.value.trim()) {
+                    displayTopSearchedProducts();
+                }
+            } else {
+                // Desktop - normal behavior
+                searchInput.classList.add('active');
+                searchClose.classList.add('active');
+                searchInput.focus();
+                
+                if (!searchInput.value.trim()) {
+                    displayTopSearchedProducts();
+                }
             }
         });
         
         searchClose.addEventListener('click', () => {
-            searchInput.classList.remove('active');
-            searchClose.classList.remove('active');
+            if (window.innerWidth <= 768 && isMobileFullscreen) {
+                // Mobile - close fullscreen
+                searchContainer.classList.remove('active');
+                setTimeout(() => {
+                    searchContainer.classList.remove('fullscreen');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }, 400);
+                isMobileFullscreen = false;
+            } else {
+                // Desktop - normal behavior
+                searchInput.classList.remove('active');
+                searchClose.classList.remove('active');
+            }
+            
             searchInput.value = '';
             searchResults.classList.remove('active');
+        });
+        
+        // Close mobile search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMobileFullscreen && !searchContainer.contains(e.target) && !searchIcon.contains(e.target)) {
+                searchContainer.classList.remove('active');
+                setTimeout(() => {
+                    searchContainer.classList.remove('fullscreen');
+                    document.body.style.overflow = '';
+                }, 400);
+                isMobileFullscreen = false;
+                searchInput.value = '';
+                searchResults.classList.remove('active');
+            }
         });
         
         searchInput.addEventListener('focus', () => {
@@ -3600,7 +3865,7 @@
             }, 300);
         });
         
-        // Function to display top searched products
+        // Function to display top searched products with history
         function displayTopSearchedProducts() {
             let resultsHTML = `
                 <div class="top-searched-section">
@@ -3608,6 +3873,7 @@
                     <div class="top-searched-products">
             `;
             
+            // Show top searched products
             topSearchedProducts.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -3626,32 +3892,74 @@
             resultsHTML += `
                     </div>
                 </div>
-                
-                <div class="search-suggestions">
-                    <h5><i class="fas fa-lightbulb"></i> Search by Skin Concern</h5>
-                    <div class="suggestions-grid">
             `;
             
-            // Add skin issue suggestions
-            searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
-                resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
-            });
+            // Add search history if available
+            if (searchHistory.length > 0) {
+                resultsHTML += `
+                    <div class="search-history-section">
+                        <h5>
+                            <span><i class="fas fa-history"></i> Recent Searches</span>
+                            <i class="fas fa-trash" id="clearHistory"></i>
+                        </h5>
+                        <div class="search-history-items">
+                `;
+                
+                // Show last 5 searches
+                searchHistory.slice(0, 5).forEach(term => {
+                    resultsHTML += `
+                        <span class="search-history-item" data-history="${term}">
+                            <i class="fas fa-search"></i> ${term}
+                        </span>
+                    `;
+                });
+                
+                resultsHTML += `
+                        </div>
+                    </div>
+                `;
+            }
             
             resultsHTML += `
+                <div class="search-suggestions">
+                    <h5><i class="fas fa-lightbulb"></i> Popular Skin Concerns</h5>
+                    <div class="search-suggestions-grid">
+                        <span class="suggestion-item" data-suggestion="acne">
+                            <i class="fas fa-leaf"></i> Acne
+                        </span>
+                        <span class="suggestion-item" data-suggestion="dark spots">
+                            <i class="fas fa-circle"></i> Dark Spots
+                        </span>
+                        <span class="suggestion-item" data-suggestion="dry skin">
+                            <i class="fas fa-tint"></i> Dry Skin
+                        </span>
+                        <span class="suggestion-item" data-suggestion="glowing skin">
+                            <i class="fas fa-sun"></i> Glowing Skin
+                        </span>
+                        <span class="suggestion-item" data-suggestion="aging skin">
+                            <i class="fas fa-clock"></i> Anti-Aging
+                        </span>
+                        <span class="suggestion-item" data-suggestion="brightening">
+                            <i class="fas fa-star"></i> Brightening
+                        </span>
                     </div>
                 </div>
                 
                 <div class="search-suggestions">
-                    <h5><i class="fas fa-star"></i> Search by Benefits</h5>
-                    <div class="suggestions-grid">
-            `;
-            
-            // Add benefit suggestions
-            searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
-                resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
-            });
-            
-            resultsHTML += `
+                    <h5><i class="fas fa-tags"></i> Popular Products</h5>
+                    <div class="search-suggestions-grid">
+                        <span class="suggestion-item" data-suggestion="whitening oil">
+                            <i class="fas fa-gem"></i> Whitening Oil
+                        </span>
+                        <span class="suggestion-item" data-suggestion="kojic soap">
+                            <i class="fas fa-soap"></i> Kojic Soap
+                        </span>
+                        <span class="suggestion-item" data-suggestion="whitening combo">
+                            <i class="fas fa-box"></i> Whitening Combo
+                        </span>
+                        <span class="suggestion-item" data-suggestion="extra glow">
+                            <i class="fas fa-sparkles"></i> Extra Glow
+                        </span>
                     </div>
                 </div>
             `;
@@ -3659,40 +3967,90 @@
             searchResults.innerHTML = resultsHTML;
             searchResults.classList.add('active');
             
-            // Add event listeners to top products and suggestions
+            // Add event listeners
             document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const product = products.find(p => p.id === productId);
                     
                     if (product) {
+                        addToSearchHistory(product.name);
                         navigateToProduct(product);
                     }
                 });
             });
             
-            document.querySelectorAll('.suggestion-tag').forEach(tag => {
+            document.querySelectorAll('.suggestion-item').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
                     searchInput.value = suggestion;
                     performSearch(suggestion);
+                    addToSearchHistory(suggestion);
                 });
             });
+            
+            document.querySelectorAll('.search-history-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const historyTerm = this.getAttribute('data-history');
+                    searchInput.value = historyTerm;
+                    performSearch(historyTerm);
+                    addToSearchHistory(historyTerm);
+                });
+            });
+            
+            // Clear history button
+            const clearHistoryBtn = document.getElementById('clearHistory');
+            if (clearHistoryBtn) {
+                clearHistoryBtn.addEventListener('click', () => {
+                    searchHistory = [];
+                    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+                    displayTopSearchedProducts();
+                });
+            }
         }
         
-        // Function to perform search with predictive suggestions
+        // Function to add to search history
+        function addToSearchHistory(term) {
+            term = term.toLowerCase().trim();
+            
+            // Remove if already exists
+            searchHistory = searchHistory.filter(item => item !== term);
+            
+            // Add to beginning
+            searchHistory.unshift(term);
+            
+            // Keep only last 10 searches
+            if (searchHistory.length > 10) {
+                searchHistory = searchHistory.slice(0, 10);
+            }
+            
+            localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        }
+        
+        // Enhanced search function with better matching
         function performSearch(searchTerm) {
             const filteredProducts = [];
             const suggestions = new Set();
             
+            // Store search term for high match
+            const exactMatchTerm = searchTerm.toLowerCase();
+            
             products.forEach(product => {
                 let score = 0;
                 let matchedFields = [];
+                let isHighMatch = false;
                 
-                // Check product name
-                if (product.name.toLowerCase().includes(searchTerm)) {
+                // Check exact product name match (highest priority)
+                if (product.name.toLowerCase().includes(exactMatchTerm)) {
+                    score += 50;
+                    matchedFields.push('exact name match');
+                    isHighMatch = true;
+                }
+                
+                // Check partial product name match
+                if (product.name.toLowerCase().includes(exactMatchTerm.split(' ')[0])) {
                     score += 30;
-                    matchedFields.push('name');
+                    matchedFields.push('partial name match');
                 }
                 
                 // Check description
@@ -3707,33 +4065,27 @@
                     matchedFields.push('benefits');
                 }
                 
-                // Check skin issues
+                // Check skin issues (exact matches get higher score)
                 product.skinIssues.forEach(issue => {
-                    if (issue.toLowerCase().includes(searchTerm)) {
+                    if (issue.toLowerCase() === exactMatchTerm) {
+                        score += 25;
+                        matchedFields.push('exact skin issue');
+                        isHighMatch = true;
+                    } else if (issue.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('skin issue: ' + issue);
-                        
-                        // Add similar skin issues to suggestions
-                        searchSuggestions.skinIssues.forEach(si => {
-                            if (si.includes(searchTerm) && si !== issue) {
-                                suggestions.add(si);
-                            }
-                        });
                     }
                 });
                 
                 // Check benefits list
                 product.benefitsList.forEach(benefit => {
-                    if (benefit.toLowerCase().includes(searchTerm)) {
+                    if (benefit.toLowerCase() === exactMatchTerm) {
+                        score += 25;
+                        matchedFields.push('exact benefit');
+                        isHighMatch = true;
+                    } else if (benefit.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('benefit: ' + benefit);
-                        
-                        // Add similar benefits to suggestions
-                        searchSuggestions.benefits.forEach(b => {
-                            if (b.includes(searchTerm) && b !== benefit) {
-                                suggestions.add(b);
-                            }
-                        });
                     }
                 });
                 
@@ -3746,8 +4098,9 @@
                 if (score > 0) {
                     filteredProducts.push({
                         product: product,
-                        score: score + product.searchScore, // Boost by search popularity
-                        matchedFields: matchedFields
+                        score: score + product.searchScore,
+                        matchedFields: matchedFields,
+                        isHighMatch: isHighMatch
                     });
                 }
             });
@@ -3755,13 +4108,13 @@
             // Sort by relevance score
             filteredProducts.sort((a, b) => b.score - a.score);
             
-            // Get unique suggestions and limit to 5
+            // Get unique suggestions
             const suggestionArray = Array.from(suggestions).slice(0, 5);
             
             displaySearchResults(filteredProducts, suggestionArray, searchTerm);
         }
         
-        // Function to display search results with suggestions
+        // Enhanced display search results
         function displaySearchResults(filteredProducts, suggestions, searchTerm) {
             if (filteredProducts.length === 0 && suggestions.length === 0) {
                 searchResults.innerHTML = `
@@ -3769,6 +4122,11 @@
                         <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px; opacity: 0.5;"></i>
                         <p>No products found for "${searchTerm}"</p>
                         <p style="margin-top: 10px; font-size: 14px;">Try searching for: acne, dark spots, brightening, moisturizing</p>
+                        <div style="margin-top: 20px;">
+                            <button class="suggestion-item" onclick="document.querySelector('#all-products').scrollIntoView({behavior: 'smooth'})">
+                                <i class="fas fa-store"></i> Browse All Products
+                            </button>
+                        </div>
                     </div>
                 `;
                 searchResults.classList.add('active');
@@ -3777,11 +4135,39 @@
             
             let resultsHTML = '';
             
+            // Add high match section if available
+            const highMatches = filteredProducts.filter(item => item.isHighMatch);
+            if (highMatches.length > 0) {
+                resultsHTML += `
+                    <div class="top-searched-section">
+                        <h5><i class="fas fa-bolt"></i> High Match Results</h5>
+                        <div class="top-searched-products">
+                `;
+                
+                highMatches.slice(0, 3).forEach((item, index) => {
+                    const product = item.product;
+                    resultsHTML += `
+                        <div class="top-searched-item high-match" data-id="${product.id}">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="top-searched-info">
+                                <h6>${product.name} <span class="high-match-badge">Best Match</span></h6>
+                                <div class="top-searched-price">R${product.price.toFixed(2)}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                resultsHTML += `
+                        </div>
+                    </div>
+                `;
+            }
+            
             // Add suggestions if available
             if (suggestions.length > 0) {
                 resultsHTML += `
                     <div class="search-suggestions">
-                        <h5><i class="fas fa-lightbulb"></i> Try Searching For</h5>
+                        <h5><i class="fas fa-lightbulb"></i> Related Searches</h5>
                         <div class="suggestions-grid">
                 `;
                 
@@ -3807,7 +4193,7 @@
                     const matchedFields = item.matchedFields.slice(0, 2).join(', ');
                     
                     resultsHTML += `
-                        <div class="search-result-item" data-id="${product.id}">
+                        <div class="search-result-item ${item.isHighMatch ? 'high-match' : ''}" data-id="${product.id}">
                             <img src="${product.image}" alt="${product.name}">
                             <div class="search-result-info">
                                 <h4>${product.name}</h4>
@@ -3815,6 +4201,7 @@
                                 <div class="search-result-tags">
                                     <span class="search-result-tag">${product.category}</span>
                                     ${item.score > 100 ? '<span class="search-result-tag" style="background: rgba(255,193,7,0.2);">Popular</span>' : ''}
+                                    ${item.isHighMatch ? '<span class="search-result-tag" style="background: rgba(196,167,125,0.3);">High Match</span>' : ''}
                                 </div>
                                 <div class="search-result-price">R${product.price.toFixed(2)}</div>
                             </div>
@@ -3829,12 +4216,13 @@
             searchResults.classList.add('active');
             
             // Add event listeners
-            document.querySelectorAll('.search-result-item').forEach(item => {
+            document.querySelectorAll('.search-result-item, .top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const product = products.find(p => p.id === productId);
                     
                     if (product) {
+                        addToSearchHistory(product.name);
                         navigateToProduct(product);
                     }
                 });
@@ -3845,51 +4233,62 @@
                     const suggestion = this.getAttribute('data-suggestion');
                     searchInput.value = suggestion;
                     performSearch(suggestion);
+                    addToSearchHistory(suggestion);
                 });
             });
         }
         
-        // Function to navigate to product and highlight it
+        // Enhanced navigate to product with smooth scroll
         function navigateToProduct(product) {
-            searchInput.classList.remove('active');
-            searchClose.classList.remove('active');
+            // Close search interface
+            if (window.innerWidth <= 768 && isMobileFullscreen) {
+                searchContainer.classList.remove('active');
+                setTimeout(() => {
+                    searchContainer.classList.remove('fullscreen');
+                    document.body.style.overflow = '';
+                    isMobileFullscreen = false;
+                }, 400);
+            } else {
+                searchInput.classList.remove('active');
+                searchClose.classList.remove('active');
+            }
+            
             searchInput.value = '';
             searchResults.classList.remove('active');
             
             // Scroll to all products section
-            document.getElementById('all-products').scrollIntoView({ 
+            const allProductsSection = document.getElementById('all-products');
+            allProductsSection.scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
             });
             
-            // Find and highlight the product
+            // Wait for scroll to complete, then highlight product
             setTimeout(() => {
                 const productElement = document.querySelector(`.add-to-cart[data-id="${product.id}"]`);
                 if (productElement) {
                     const productCard = productElement.closest('.product-card');
                     
                     // Highlight animation
-                    productCard.style.animation = 'none';
-                    void productCard.offsetWidth; // Trigger reflow
-                    productCard.style.animation = 'pulse 2s';
+                    productCard.classList.add('product-highlight');
                     
-                    // Add temporary highlight
-                    productCard.style.boxShadow = '0 0 0 2px var(--accent-color)';
+                    // Scroll to the specific product with offset for header
                     setTimeout(() => {
-                        productCard.style.boxShadow = '';
+                        const headerHeight = document.querySelector('nav').offsetHeight;
+                        const productPosition = productCard.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                            top: productPosition - headerHeight - 20,
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                    
+                    // Remove highlight after animation
+                    setTimeout(() => {
+                        productCard.classList.remove('product-highlight');
                     }, 2000);
                 }
             }, 500);
         }
-        
-        // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchIcon.contains(e.target) && !searchResults.contains(e.target)) {
-                searchInput.classList.remove('active');
-                searchClose.classList.remove('active');
-                searchResults.classList.remove('active');
-            }
-        });
         
         // Scroll event for navbar and fade animations
         window.addEventListener('scroll', () => {
@@ -3935,16 +4334,47 @@
                 });
             }
             
-            // Add pulse animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes pulse {
-                    0% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0.4); }
-                    70% { box-shadow: 0 0 0 10px rgba(196, 167, 125, 0); }
-                    100% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0); }
+            // Add search input placeholder text for mobile
+            if (window.innerWidth <= 768) {
+                searchInput.placeholder = "Search products, skin issues, or benefits...";
+            }
+        });
+        
+        // Listen for window resize to update search behavior
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && isMobileFullscreen) {
+                // If resized to desktop while mobile search is open, close it
+                searchContainer.classList.remove('active', 'fullscreen');
+                document.body.style.overflow = '';
+                isMobileFullscreen = false;
+            }
+        });
+        
+        // Add keyboard shortcuts for search
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchIcon.click();
+            }
+            
+            // Escape to close search
+            if (e.key === 'Escape' && (searchInput.classList.contains('active') || isMobileFullscreen)) {
+                if (window.innerWidth <= 768 && isMobileFullscreen) {
+                    searchContainer.classList.remove('active');
+                    setTimeout(() => {
+                        searchContainer.classList.remove('fullscreen');
+                        document.body.style.overflow = '';
+                        isMobileFullscreen = false;
+                    }, 400);
+                } else {
+                    searchInput.classList.remove('active');
+                    searchClose.classList.remove('active');
                 }
-            `;
-            document.head.appendChild(style);
+                
+                searchInput.value = '';
+                searchResults.classList.remove('active');
+            }
         });
         
         // Cart functionality

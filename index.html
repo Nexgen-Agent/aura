@@ -3315,7 +3315,8 @@
                 category: "oil",
                 skinIssues: ["dark spots", "uneven skin tone", "dull skin", "hyperpigmentation", "aging skin"],
                 benefitsList: ["brightening", "moisturizing", "anti-aging", "skin repair"],
-                searchScore: 95
+                searchScore: 95,
+                section: "flagship" // Added to identify which section the product is in
             },
             {
                 id: 2,
@@ -3329,7 +3330,8 @@
                 category: "cream",
                 skinIssues: ["acne", "dark spots", "pigmentation", "uneven skin tone", "pimples", "aging"],
                 benefitsList: ["moisturizing", "anti-acne", "brightening", "anti-aging"],
-                searchScore: 90
+                searchScore: 90,
+                section: "all-products"
             },
             {
                 id: 3,
@@ -3343,7 +3345,8 @@
                 category: "soap",
                 skinIssues: ["uneven skin tone", "dark spots", "acne scars", "dull skin", "hyperpigmentation"],
                 benefitsList: ["cleansing", "brightening", "exfoliating", "acne treatment"],
-                searchScore: 85
+                searchScore: 85,
+                section: "all-products"
             },
             {
                 id: 4,
@@ -3357,7 +3360,8 @@
                 category: "lotion",
                 skinIssues: ["dry skin", "stretch marks", "blemishes", "sunburn", "dull skin", "dark inner thighs"],
                 benefitsList: ["hydration", "glowing skin", "skin repair", "moisturizing"],
-                searchScore: 80
+                searchScore: 80,
+                section: "all-products"
             },
             {
                 id: 5,
@@ -3371,7 +3375,8 @@
                 category: "soap",
                 skinIssues: ["excess oil", "blemishes", "hyperpigmentation", "acne", "dull skin"],
                 benefitsList: ["cleansing", "brightening", "oil control", "exfoliating"],
-                searchScore: 75
+                searchScore: 75,
+                section: "all-products"
             },
             {
                 id: 6,
@@ -3385,7 +3390,8 @@
                 category: "soap",
                 skinIssues: ["dry skin", "stretch marks", "skin scars", "dull skin"],
                 benefitsList: ["glowing skin", "moisturizing", "skin repair", "nourishing"],
-                searchScore: 70
+                searchScore: 70,
+                section: "all-products"
             },
             {
                 id: 7,
@@ -3399,7 +3405,8 @@
                 category: "oil",
                 skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation"],
                 benefitsList: ["targeted treatment", "brightening", "skin repair"],
-                searchScore: 65
+                searchScore: 65,
+                section: "all-products"
             },
             {
                 id: 8,
@@ -3413,7 +3420,8 @@
                 category: "oil",
                 skinIssues: ["dull skin", "dry skin", "lack of glow"],
                 benefitsList: ["glowing skin", "radiance", "moisturizing"],
-                searchScore: 60
+                searchScore: 60,
+                section: "all-products"
             },
             {
                 id: 9,
@@ -3427,7 +3435,8 @@
                 category: "cream",
                 skinIssues: ["dry skin", "dehydrated skin", "rough texture"],
                 benefitsList: ["intensive moisture", "nourishing", "skin repair"],
-                searchScore: 55
+                searchScore: 55,
+                section: "all-products"
             },
             {
                 id: 13,
@@ -3441,7 +3450,8 @@
                 category: "combo",
                 skinIssues: ["dull skin", "dry skin", "lack of radiance", "dehydrated skin"],
                 benefitsList: ["complete routine", "glowing skin", "hydration", "radiance"],
-                searchScore: 88
+                searchScore: 88,
+                section: "products"
             },
             {
                 id: 14,
@@ -3455,7 +3465,8 @@
                 category: "combo",
                 skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation", "dull complexion"],
                 benefitsList: ["complete routine", "brightening", "even skin tone", "radiance"],
-                searchScore: 92
+                searchScore: 92,
+                section: "products"
             },
             {
                 id: 15,
@@ -3469,7 +3480,8 @@
                 category: "combo",
                 skinIssues: ["severe hyperpigmentation", "dark spots", "acne scars", "uneven skin tone"],
                 benefitsList: ["premium routine", "intensive brightening", "skin repair", "radiance"],
-                searchScore: 89
+                searchScore: 89,
+                section: "products"
             }
         ];
         
@@ -4054,7 +4066,7 @@
             });
         }
         
-        // Function to navigate to product and highlight it
+        // Function to navigate to product and highlight it - FIXED VERSION
         function navigateToProduct(product) {
             // Close desktop search if open
             searchInput.classList.remove('active');
@@ -4062,8 +4074,18 @@
             searchInput.value = '';
             searchResults.classList.remove('active');
             
-            // Scroll to all products section
-            document.getElementById('all-products').scrollIntoView({ 
+            // Determine which section the product is in
+            let targetSectionId;
+            if (product.section === "products") {
+                targetSectionId = "products";
+            } else if (product.section === "flagship") {
+                targetSectionId = "flagship";
+            } else {
+                targetSectionId = "all-products";
+            }
+            
+            // Scroll to the correct section
+            document.getElementById(targetSectionId).scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
             });
@@ -4074,18 +4096,27 @@
                 if (productElement) {
                     const productCard = productElement.closest('.product-card');
                     
+                    // Scroll to the specific product card
+                    productCard.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
                     // Highlight animation
                     productCard.style.animation = 'none';
                     void productCard.offsetWidth; // Trigger reflow
                     productCard.style.animation = 'pulse 2s';
                     
                     // Add temporary highlight
-                    productCard.style.boxShadow = '0 0 0 2px var(--accent-color)';
+                    productCard.style.boxShadow = '0 0 0 3px var(--accent-color)';
+                    productCard.style.transform = 'scale(1.02)';
+                    
                     setTimeout(() => {
                         productCard.style.boxShadow = '';
-                    }, 2000);
+                        productCard.style.transform = '';
+                    }, 3000);
                 }
-            }, 500);
+            }, 800); // Increased delay to ensure scroll completes
         }
         
         // Close search when clicking outside (desktop only)
@@ -4148,7 +4179,7 @@
             style.textContent = `
                 @keyframes pulse {
                     0% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0.4); }
-                    70% { box-shadow: 0 0 0 10px rgba(196, 167, 125, 0); }
+                    70% { box-shadow: 0 0 0 15px rgba(196, 167, 125, 0); }
                     100% { box-shadow: 0 0 0 0 rgba(196, 167, 125, 0); }
                 }
             `;

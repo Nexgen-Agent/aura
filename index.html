@@ -1819,7 +1819,7 @@
             margin: 0 !important;
         }
 
-        /* Results Modal - MODIFIED */
+        /* Results Modal - UPDATED LAYOUT */
         .results-modal {
             position: fixed;
             top: 0;
@@ -1829,12 +1829,15 @@
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            padding: 120px 20px 40px;
+            overflow-y: auto;
         }
 
         .results-modal.active {
@@ -1842,35 +1845,34 @@
             visibility: visible;
         }
 
-        .results-content {
-            width: 90%;
+        /* Affirmations Section - FREE STANDING LIKE HERO */
+        .affirmations-section {
+            text-align: center;
+            width: 100%;
             max-width: 900px;
-            max-height: 90vh;
-            padding: 40px;
+            margin-bottom: 40px;
             position: relative;
-            overflow: hidden;
+            z-index: 10;
         }
 
-        .result-icon {
+        .affirmations-section .result-icon {
             font-size: 60px;
             color: var(--accent-color);
             margin-bottom: 20px;
+        }
+
+        .affirmations-section .result-message {
             text-align: center;
         }
 
-        .result-message {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .result-message h3 {
-            font-size: 2.2rem;
+        .affirmations-section .result-message h3 {
+            font-size: 2.5rem;
             margin-bottom: 15px;
             color: var(--primary-color);
         }
 
-        .result-message p {
-            font-size: 1.1rem;
+        .affirmations-section .result-message p {
+            font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 30px;
             color: rgba(255, 255, 255, 0.9);
@@ -1879,122 +1881,125 @@
             margin-right: auto;
         }
 
-        /* Personalized Products Section - MODIFIED to match search results style */
-        .personalized-products-container {
-            max-height: 400px;
-            overflow-y: auto;
-            margin-top: 20px;
-            padding-right: 10px;
+        /* Results Products Section - NOW IN GLASS CARD */
+        .results-products-section {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 10;
         }
 
-        .personalized-products-container .search-result-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 12px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .results-products-container {
+            padding: 40px;
             position: relative;
         }
 
-        .personalized-products-container .search-result-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--glass-border);
-            transform: translateY(-3px);
+        /* Close button for results modal */
+        .results-modal .close-button {
+            position: fixed;
+            top: 140px;
+            right: 40px;
+            z-index: 2001;
         }
 
-        .personalized-products-container .search-result-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
+        /* Personalized Products Container - NOW USING PRODUCT CARD STYLE */
+        .personalized-products-container {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .personalized-products-container .search-result-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .personalized-products-container .search-result-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 18px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .personalized-products-container .search-result-info p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.4;
-        }
-
-        .personalized-products-container .search-result-price {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 16px;
-            margin-top: 5px;
-        }
-
-        .personalized-products-container .search-result-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 5px;
-        }
-
-        .personalized-products-container .search-result-tag {
-            background: rgba(196, 167, 125, 0.2);
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 11px;
-            color: var(--accent-color);
-            border: 1px solid rgba(196, 167, 125, 0.3);
-        }
-
-        .personalized-products-container .search-result-actions {
+        /* Product cards in personalized recommendations - SAME AS ALL PRODUCTS SECTION */
+        .personalized-products-container .product-card {
+            padding: 25px;
+            transition: var(--transition);
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            min-width: 120px;
+            position: relative;
         }
 
-        .personalized-products-container .add-to-cart-btn {
-            background: rgba(196, 167, 125, 0.2);
-            border: 1px solid rgba(196, 167, 125, 0.3);
-            color: var(--primary-color);
-            padding: 8px 15px;
+        .personalized-products-container .product-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .personalized-products-container .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 15px;
             border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            white-space: nowrap;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .personalized-products-container .add-to-cart-btn:hover {
-            background: rgba(196, 167, 125, 0.3);
-            transform: translateY(-2px);
+        .personalized-products-container .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
 
-        .personalized-products-container .add-to-cart-btn.added {
-            background: rgba(40, 167, 69, 0.2);
-            border-color: rgba(40, 167, 69, 0.3);
+        .personalized-products-container .product-info {
+            flex-grow: 1;
+        }
+
+        .personalized-products-container .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .personalized-products-container .product-info p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .personalized-products-container .product-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .personalized-products-container .product-details {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .personalized-products-container .product-benefits,
+        .personalized-products-container .product-usage,
+        .personalized-products-container .product-ingredients {
+            margin-bottom: 10px;
+        }
+
+        .personalized-products-container .product-benefits strong,
+        .personalized-products-container .product-usage strong,
+        .personalized-products-container .product-ingredients strong {
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Special combo card styling */
+        .personalized-products-container .product-card.combo-card {
+            border: 2px solid var(--accent-color);
+            background: rgba(196, 167, 125, 0.1);
+        }
+
+        .personalized-products-container .product-card.combo-card .product-badge {
+            background: rgba(40, 167, 69, 0.3);
             color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.5);
         }
 
         .result-actions {
@@ -2264,6 +2269,23 @@
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            /* Results modal responsive */
+            .results-modal {
+                padding: 100px 15px 30px;
+            }
+            
+            .affirmations-section .result-message h3 {
+                font-size: 2rem;
+            }
+            
+            .affirmations-section .result-message p {
+                font-size: 1.1rem;
+            }
+            
+            .personalized-products-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 850px) {
@@ -2315,6 +2337,24 @@
             
             .testimonials-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Results modal mobile */
+            .personalized-products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .affirmations-section .result-message h3 {
+                font-size: 1.8rem;
+            }
+            
+            .affirmations-section .result-message p {
+                font-size: 1rem;
+            }
+            
+            .results-modal .close-button {
+                top: 120px;
+                right: 20px;
             }
         }
 
@@ -2454,23 +2494,29 @@
             }
             
             /* Results Modal Responsive */
-            .personalized-products-container .search-result-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px;
+            .results-modal {
+                padding: 100px 10px 20px;
             }
             
-            .personalized-products-container .search-result-item img {
-                width: 100%;
-                height: 150px;
-                margin-bottom: 15px;
+            .affirmations-section .result-icon {
+                font-size: 50px;
             }
             
-            .personalized-products-container .search-result-actions {
-                width: 100%;
-                flex-direction: row;
-                justify-content: space-between;
-                margin-top: 15px;
+            .affirmations-section .result-message h3 {
+                font-size: 1.6rem;
+            }
+            
+            .affirmations-section .result-message p {
+                font-size: 0.95rem;
+            }
+            
+            .results-products-container {
+                padding: 20px;
+            }
+            
+            .personalized-products-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .result-actions {
@@ -2505,6 +2551,14 @@
             
             .testimonial-card {
                 padding: 25px;
+            }
+            
+            .results-modal .close-button {
+                top: 110px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
             }
         }
 
@@ -2573,6 +2627,19 @@
                 min-width: 100%;
                 max-width: 100%;
                 padding: 14px 20px;
+            }
+            
+            /* Results modal small mobile */
+            .affirmations-section .result-message h3 {
+                font-size: 1.4rem;
+            }
+            
+            .affirmations-section .result-message p {
+                font-size: 0.9rem;
+            }
+            
+            .results-products-container {
+                padding: 15px;
             }
         }
     </style>
@@ -3339,6 +3406,114 @@
             </div>
         </section>
 
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <div class="section-header fade-in">
+                <h2>Glow Stories</h2>
+                <p>See what our customers are saying about their transformation</p>
+            </div>
+            
+            <div class="testimonials-grid fade-in">
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-text">
+                        "I've struggled with dark spots for years. After using the Whitening Combo for just 2 months, my skin is more even-toned and radiant than ever before. This is the only skincare that has actually worked for me!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Verified Customer • 2 months</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-text">
+                        "The Extra Glow Combo transformed my dry, dull skin into a glowing masterpiece. The lotion is so hydrating without feeling greasy. My friends keep asking what I'm using!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="James L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>James L.</h4>
+                            <p>Verified Customer • 3 months</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-text">
+                        "As someone with sensitive skin, I was hesitant to try new products. The Skin Analysis Wizard recommended the perfect routine for me. No irritation, just amazing results. My acne scars have faded significantly!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Priya K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya K.</h4>
+                            <p>Verified Customer • 4 months</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                4.5
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links Section -->
+        <section id="social" class="social-section">
+            <div class="fade-in">
+                <h3>Join Our Glow Community</h3>
+                <p>Follow us for skincare tips, behind-the-scenes, and exclusive offers</p>
+                <div class="social-links-container">
+                    <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div style="margin-top: 30px;">
+                    <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
+                </div>
+            </div>
+        </section>
+
        <!-- Footer -->
         <footer id="footer">
             <!-- Social Media Links Section in Footer -->
@@ -3408,19 +3583,26 @@
         </footer>
     </div>
 
-    <!-- Results Modal - MODIFIED with search result-style cards -->
+    <!-- Results Modal - UPDATED LAYOUT -->
     <div class="results-modal" id="resultsModal">
-        <div class="results-content glass-card">
-            <button class="close-button" id="closeResults">&times;</button>
+        <button class="close-button" id="closeResults">&times;</button>
+        
+        <!-- Affirmations Section - FREE STANDING -->
+        <div class="affirmations-section fade-in">
             <div class="result-icon">
                 <i class="fas fa-spa"></i>
             </div>
             <div class="result-message">
                 <h3>Your Personalized Glow Plan</h3>
                 <p id="resultDescription"></p>
-                
+            </div>
+        </div>
+        
+        <!-- Products Section - IN GLASS CARD -->
+        <div class="results-products-section">
+            <div class="results-products-container glass-card">
                 <div class="personalized-products-container" id="personalizedProducts">
-                    <!-- Personalized products will be dynamically added here as search result-style cards -->
+                    <!-- Personalized products will be dynamically added here as product cards -->
                 </div>
                 
                 <div class="result-actions">
@@ -5014,7 +5196,7 @@
             showResults(description, personalizedRecommendations, logic.primaryCombo);
         }
         
-        // Show results modal with personalized recommendations - MODIFIED to use search result-style cards
+        // Show results modal with personalized recommendations - UPDATED to use product cards
         function showResults(description, productIds, primaryComboId = null) {
             // Update result description
             document.getElementById('resultDescription').textContent = description;
@@ -5023,30 +5205,38 @@
             const personalizedProductsDiv = document.getElementById('personalizedProducts');
             personalizedProductsDiv.innerHTML = '';
             
-            // Add individual products as search result-style cards
+            // Add individual products as product cards
             productIds.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
+                    let detailsHTML = '';
+                    if (product.benefits || product.usage || product.ingredients) {
+                        detailsHTML = `
+                            <div class="product-details">
+                                ${product.benefits ? `<div class="product-benefits"><strong>Benefits:</strong> ${product.benefits}</div>` : ''}
+                                ${product.usage ? `<div class="product-usage"><strong>Usage:</strong> ${product.usage}</div>` : ''}
+                                ${product.ingredients ? `<div class="product-ingredients"><strong>Active Ingredients:</strong> ${product.ingredients}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                    
                     const productHTML = `
-                        <div class="search-result-item" data-id="${product.id}">
-                            <img src="${product.image}" alt="${product.name}">
-                            <div class="search-result-info">
-                                <h4>${product.name}</h4>
-                                <p>${product.description.substring(0, 80)}...</p>
-                                <div class="search-result-tags">
-                                    <span class="search-result-tag">${product.category}</span>
-                                    ${product.searchScore > 85 ? '<span class="search-result-tag" style="background: rgba(255,193,7,0.2);">Popular</span>' : ''}
-                                </div>
-                                <div class="search-result-price">R${product.price.toFixed(2)}</div>
+                        <div class="product-card glass-card">
+                            ${product.section === "flagship" ? '<div class="product-badge badge-flagship">Flagship</div>' : ''}
+                            <div class="product-image" style="background-image: url('${product.image}');"></div>
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <p>${product.description.substring(0, 100)}...</p>
+                                ${detailsHTML}
+                                <div class="product-price">R${product.price.toFixed(2)}</div>
                             </div>
-                            <div class="search-result-actions">
-                                <button class="add-to-cart-btn" data-id="${product.id}" 
-                                    data-name="${product.name}" 
-                                    data-price="${product.price}" 
-                                    data-image="${product.image}">
-                                    <i class="fas fa-cart-plus"></i> Add to Cart
-                                </button>
-                            </div>
+                            <button class="glass-button add-to-cart-btn" 
+                                data-id="${product.id}" 
+                                data-name="${product.name}" 
+                                data-price="${product.price}" 
+                                data-image="${product.image}">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     `;
                     personalizedProductsDiv.innerHTML += productHTML;
@@ -5057,30 +5247,35 @@
             if (primaryComboId) {
                 const comboProduct = products.find(p => p.id === primaryComboId);
                 if (comboProduct) {
+                    let comboDetailsHTML = '';
+                    if (comboProduct.benefits || comboProduct.usage || comboProduct.ingredients) {
+                        comboDetailsHTML = `
+                            <div class="product-details">
+                                ${comboProduct.benefits ? `<div class="product-benefits"><strong>Benefits:</strong> ${comboProduct.benefits}</div>` : ''}
+                                ${comboProduct.usage ? `<div class="product-usage"><strong>Usage:</strong> ${comboProduct.usage}</div>` : ''}
+                                ${comboProduct.ingredients ? `<div class="product-ingredients"><strong>Contains:</strong> ${comboProduct.ingredients}</div>` : ''}
+                            </div>
+                        `;
+                    }
+                    
                     const comboHTML = `
-                        <div class="search-result-item" data-id="${comboProduct.id}" style="border: 2px solid var(--accent-color); background: rgba(196, 167, 125, 0.1);">
-                            <img src="${comboProduct.image}" alt="${comboProduct.name}">
-                            <div class="search-result-info">
-                                <h4>${comboProduct.name}</h4>
-                                <div style="color: var(--accent-color); font-size: 12px; margin-bottom: 5px; display: flex; align-items: center; gap: 5px;">
-                                    <i class="fas fa-star"></i> RECOMMENDED COMBO
-                                </div>
-                                <p>${comboProduct.description.substring(0, 80)}...</p>
-                                <div class="search-result-tags">
-                                    <span class="search-result-tag">${comboProduct.category}</span>
-                                    <span class="search-result-tag" style="background: rgba(40, 167, 69, 0.2); color: #28a745;">Best Value</span>
-                                </div>
-                                <div class="search-result-price">R${comboProduct.price.toFixed(2)}</div>
+                        <div class="product-card glass-card combo-card">
+                            <div class="product-badge badge-recommended">Recommended Combo</div>
+                            <div class="product-image" style="background-image: url('${comboProduct.image}');"></div>
+                            <div class="product-info">
+                                <h3>${comboProduct.name}</h3>
+                                <p>${comboProduct.description.substring(0, 100)}...</p>
+                                ${comboDetailsHTML}
+                                <div class="product-price">R${comboProduct.price.toFixed(2)}</div>
                             </div>
-                            <div class="search-result-actions">
-                                <button class="add-to-cart-btn" data-id="${comboProduct.id}" 
-                                    data-name="${comboProduct.name}" 
-                                    data-price="${comboProduct.price}" 
-                                    data-image="${comboProduct.image}"
-                                    style="background: rgba(196, 167, 125, 0.3);">
-                                    <i class="fas fa-star"></i> Add Combo
-                                </button>
-                            </div>
+                            <button class="glass-button add-to-cart-btn" 
+                                data-id="${comboProduct.id}" 
+                                data-name="${comboProduct.name}" 
+                                data-price="${comboProduct.price}" 
+                                data-image="${comboProduct.image}"
+                                style="background: rgba(196, 167, 125, 0.3);">
+                                <i class="fas fa-star"></i> Add Combo
+                            </button>
                         </div>
                     `;
                     personalizedProductsDiv.innerHTML += comboHTML;
@@ -5109,11 +5304,11 @@
                     
                     const originalText = this.innerHTML;
                     this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                    this.classList.add('added');
+                    this.style.background = 'rgba(40, 167, 69, 0.3)';
                     
                     setTimeout(() => {
                         this.innerHTML = originalText;
-                        this.classList.remove('added');
+                        this.style.background = '';
                     }, 2000);
                 });
             });

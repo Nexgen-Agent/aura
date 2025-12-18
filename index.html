@@ -1184,69 +1184,44 @@
             transform: scale(1.2);
         }
 
-        /* Enhanced Testimonials */
-        .testimonial-carousel {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            height: 500px;
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .testimonial-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        .testimonial-card {
+            padding: 35px;
+            transition: var(--transition);
             height: 100%;
-            padding: 40px;
-            opacity: 0;
-            transition: opacity 0.8s ease;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
-        .testimonial-slide.active {
-            opacity: 1;
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .testimonial-text {
-            font-size: 1.3rem;
-            font-style: italic;
+            font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            flex-grow: 1;
             position: relative;
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .testimonial-text:before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -20px;
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.5;
-            font-family: serif;
-        }
-
-        .testimonial-text:after {
-            content: '"';
-            position: absolute;
-            right: 0;
-            bottom: -40px;
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.5;
-            font-family: serif;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-color);
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .author-avatar {
@@ -1254,7 +1229,7 @@
             height: 70px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--accent-color);
+            border: 2px solid var(--accent-color);
             flex-shrink: 0;
         }
 
@@ -1273,88 +1248,19 @@
         .author-info p {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-
-        .testimonial-metrics {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .metric-tag {
-            background: rgba(196, 167, 125, 0.15);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .metric-tag i {
-            font-size: 0.7rem;
         }
 
         .testimonial-stats {
             display: flex;
-            justify-content: space-around;
-            margin: 40px auto;
-            max-width: 800px;
-            padding: 30px;
-            text-align: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .stat-item {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        /* Testimonial dots for mobile */
-        .testimonial-dots {
-            display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 10px;
-            margin-top: 20px;
-            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
         }
-        
-        .testimonial-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-dot.active {
-            background: var(--accent-color);
-            transform: scale(1.2);
+
+        .testimonial-stats i {
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -2337,6 +2243,10 @@
             .nav-icons {
                 gap: 15px; /* Maintain reduced gap */
             }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 850px) {
@@ -2384,6 +2294,10 @@
             
             .flagship-details.collapsed {
                 max-height: 60px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -2553,6 +2467,14 @@
                 margin-left: 0 !important;
                 margin-bottom: 10px;
             }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2599,6 +2521,16 @@
             
             .flagship-image {
                 height: 180px;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-avatar {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -3364,137 +3296,157 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
+        <!-- Testimonials Section -->
         <section id="testimonials">
             <div class="section-header fade-in">
-                <h2>Real Transformations</h2>
-                <p>Join thousands of women who have discovered their glow with Lonz Flawls Aura</p>
+                <h2>Real Stories, Real Results</h2>
+                <p>Join thousands of women who have transformed their skin with Lonz Flawls Aura</p>
             </div>
             
-            <div class="testimonial-carousel fade-in">
-                <!-- Testimonial 1: The Professional Woman -->
-                <div class="testimonial-slide glass-card active">
+            <div class="testimonials-grid fade-in">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card glass-card">
                     <div class="testimonial-text">
-                        As a marketing executive, I need my skin to look flawless on camera. After just 4 weeks with the Whitening Combo, my colleagues keep asking what I'm using. My dark spots have faded 70% and my confidence has skyrocketed. This isn't just skincare - it's a career investment.
+                        "After struggling with acne scars for years, I finally found a solution with Lonz Flawls Aura. The Whitening Combo completely transformed my skin in just 6 weeks. My confidence has skyrocketed!"
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thandi Mbeki">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sarah Johnson">
                         </div>
                         <div class="author-info">
-                            <h4>Thandi Mbeki</h4>
-                            <p>Marketing Director • Used Whitening Combo for 6 weeks</p>
-                            <div class="testimonial-metrics">
-                                <span class="metric-tag"><i class="fas fa-star"></i> Dark spots reduced by 70%</span>
-                                <span class="metric-tag"><i class="fas fa-arrow-up"></i> Confidence increased</span>
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Executive, 28</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>6 months customer</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 2: The Busy Mom -->
-                <div class="testimonial-slide glass-card">
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card glass-card">
                     <div class="testimonial-text">
-                        Between running a business and raising three kids, my skin was exhausted. The Extra Glow Combo gave me back my pre-pregnancy glow in 3 weeks. Now I look refreshed even after sleepless nights! It's become my 5-minute daily ritual that makes me feel like myself again.
+                        "As a busy mom of two, I needed skincare that actually works. The Extra Glow Combo gives me that radiant look without spending hours on routines. My husband says I look younger than when we got married!"
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nomsa Khumalo">
+                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Maya Rodriguez">
                         </div>
                         <div class="author-info">
-                            <h4>Nomsa Khumalo</h4>
-                            <p>Entrepreneur & Mother • Used Extra Glow Combo for 1 month</p>
-                            <div class="testimonial-metrics">
-                                <span class="metric-tag"><i class="fas fa-baby"></i> Post-pregnancy glow restored</span>
-                                <span class="metric-tag"><i class="fas fa-clock"></i> 5-minute daily routine</span>
+                            <h4>Maya Rodriguez</h4>
+                            <p>Entrepreneur & Mom, 35</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>4 months customer</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 3: The Bride-to-Be -->
-                <div class="testimonial-slide glass-card">
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card glass-card">
                     <div class="testimonial-text">
-                        I needed my skin to be perfect for my wedding, and nothing was working on my acne scars. The Whitening Oil transformed my skin in 8 weeks - my makeup artist said she'd never seen such a flawless canvas! I've referred 8 bridesmaids who all ordered for their own weddings.
+                        "I've spent thousands on luxury skincare brands with minimal results. Lonz Flawls Aura gave me visible changes in just 2 weeks! The Whitening Oil is now a permanent part of my nighttime routine."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Zanele Ndlovu">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Jessica Chen">
                         </div>
                         <div class="author-info">
-                            <h4>Zanele Ndlovu</h4>
-                            <p>Bride • Used Whitening Oil for 2 months</p>
-                            <div class="testimonial-metrics">
-                                <span class="metric-tag"><i class="fas fa-heart"></i> Wedding-ready skin</span>
-                                <span class="metric-tag"><i class="fas fa-users"></i> 8 referrals made</span>
+                            <h4>Jessica Chen</h4>
+                            <p>Lawyer, 42</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>8 months customer</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 4: The Content Creator -->
-                <div class="testimonial-slide glass-card">
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card glass-card">
                     <div class="testimonial-text">
-                        As a beauty influencer, I've tried everything. Lonz Flawls Aura is the only brand that consistently delivers REAL results my followers can see. My engagement tripled when I shared my 30-day transformation. This brand understands what modern women want - visible, fast results.
+                        "My wedding was approaching and I needed my skin to be flawless. The Whitening Cream worked wonders on my dark spots and uneven tone. I walked down the aisle with the most radiant skin of my life!"
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lerato Molefe">
+                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Amanda Williams">
                         </div>
                         <div class="author-info">
-                            <h4>Lerato Molefe</h4>
-                            <p>Beauty Influencer • Brand Ambassador for 4 months</p>
-                            <div class="testimonial-metrics">
-                                <span class="metric-tag"><i class="fas fa-chart-line"></i> Engagement tripled</span>
-                                <span class="metric-tag"><i class="fas fa-video"></i> 30-day transformation documented</span>
+                            <h4>Amanda Williams</h4>
+                            <p>Event Planner, 29</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5 months customer</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 5: The Professional with Sensitive Skin -->
-                <div class="testimonial-slide glass-card">
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card glass-card">
                     <div class="testimonial-text">
-                        After years of chemical peels and expensive treatments that irritated my sensitive skin, I was skeptical. The Kojic Soap and Whitening Cream combination cleared my hyperpigmentation without any redness or reaction. My dermatologist now recommends your products to her patients.
+                        "After menopause, my skin lost its glow and elasticity. The Kojic Soap and Whitening Oil combo restored moisture and faded age spots. At 55, I'm getting compliments on my skin from women half my age!"
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Amara Okeke">
+                            <img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Linda Brown">
                         </div>
                         <div class="author-info">
-                            <h4>Dr. Amara Okeke</h4>
-                            <p>Medical Doctor • Sensitive Skin User for 3 months</p>
-                            <div class="testimonial-metrics">
-                                <span class="metric-tag"><i class="fas fa-shield-alt"></i> Zero irritation</span>
-                                <span class="metric-tag"><i class="fas fa-user-md"></i> Dermatologist-approved</span>
+                            <h4>Linda Brown</h4>
+                            <p>Retired Teacher, 55</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>1 year customer</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="testimonial-stats glass-card fade-in">
-                <div class="stat-item">
-                    <div class="stat-number">2,500+</div>
-                    <div class="stat-label">Women Transformed</div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card glass-card">
+                    <div class="testimonial-text">
+                        "Working in healthcare means wearing masks all day, which caused terrible breakouts. The Extra Whitening Combo cleared my skin and prevented future acne. I recommend this to all my nurse colleagues!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Rachel Kim">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rachel Kim</h4>
+                            <p>Registered Nurse, 31</p>
+                            <div class="testimonial-stats">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>7 months customer</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">94%</div>
-                    <div class="stat-label">Report Visible Results</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">68%</div>
-                    <div class="stat-label">Refer Friends & Family</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4.9/5</div>
-                    <div class="stat-label">Average Rating</div>
-                </div>
-            </div>
-            
-            <div class="testimonial-nav">
-                <button class="glass-button testimonial-prev"><i class="fas fa-chevron-left"></i> Previous</button>
-                <button class="glass-button testimonial-next">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -3667,11 +3619,6 @@
         // Flagship product elements
         const seeMoreBtn = document.querySelector('.see-more-btn');
         const flagshipDetails = document.querySelector('.flagship-details');
-        
-        // Testimonial elements
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const testimonialPrevBtn = document.querySelector('.testimonial-prev');
-        const testimonialNextBtn = document.querySelector('.testimonial-next');
         
         // Enhanced Product data with skin issues and benefits
         const products = [
@@ -3913,10 +3860,6 @@
         // Gallery state
         let currentGallerySlide = 0;
         const gallerySlideCount = 5;
-        
-        // Testimonial state
-        let currentTestimonial = 0;
-        const testimonialCount = testimonialSlides.length;
         
         // Cart state
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -4627,9 +4570,6 @@
             
             // Initialize flagship product "See More" functionality
             initializeFlagshipProduct();
-            
-            // Initialize testimonial functionality
-            initializeTestimonials();
         });
         
         // Flagship product "See More" functionality
@@ -4677,102 +4617,6 @@
                     }
                 });
             }
-        }
-        
-        // Enhanced Testimonial functionality
-        function initializeTestimonials() {
-            // Auto-rotate testimonials with pause on hover
-            let testimonialInterval;
-            
-            function startTestimonialAutoRotate() {
-                testimonialInterval = setInterval(() => {
-                    let newIndex = (currentTestimonial + 1) % testimonialCount;
-                    showTestimonial(newIndex);
-                }, 8000);
-            }
-            
-            function showTestimonial(index) {
-                testimonialSlides.forEach(slide => {
-                    slide.classList.remove('active');
-                });
-                
-                testimonialSlides[index].classList.add('active');
-                currentTestimonial = index;
-                
-                // Update dots if they exist
-                updateTestimonialDots();
-            }
-            
-            // Pause auto-rotate when hovering over testimonials
-            const testimonialCarousel = document.querySelector('.testimonial-carousel');
-            testimonialCarousel.addEventListener('mouseenter', () => {
-                clearInterval(testimonialInterval);
-            });
-            
-            testimonialCarousel.addEventListener('mouseleave', () => {
-                startTestimonialAutoRotate();
-            });
-            
-            // Manual navigation
-            testimonialPrevBtn.addEventListener('click', () => {
-                clearInterval(testimonialInterval);
-                let newIndex = currentTestimonial - 1;
-                if (newIndex < 0) newIndex = testimonialCount - 1;
-                showTestimonial(newIndex);
-                startTestimonialAutoRotate();
-            });
-            
-            testimonialNextBtn.addEventListener('click', () => {
-                clearInterval(testimonialInterval);
-                let newIndex = (currentTestimonial + 1) % testimonialCount;
-                showTestimonial(newIndex);
-                startTestimonialAutoRotate();
-            });
-            
-            // Create testimonial dots for mobile navigation
-            function createTestimonialDots() {
-                if (window.innerWidth <= 768) {
-                    const testimonialContainer = document.querySelector('.testimonial-carousel');
-                    const existingDots = testimonialContainer.querySelector('.testimonial-dots');
-                    
-                    if (existingDots) {
-                        existingDots.remove();
-                    }
-                    
-                    const dotsContainer = document.createElement('div');
-                    dotsContainer.className = 'testimonial-dots';
-                    
-                    for (let i = 0; i < testimonialCount; i++) {
-                        const dot = document.createElement('div');
-                        dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
-                        dot.dataset.index = i;
-                        dot.addEventListener('click', () => {
-                            clearInterval(testimonialInterval);
-                            showTestimonial(i);
-                            startTestimonialAutoRotate();
-                        });
-                        dotsContainer.appendChild(dot);
-                    }
-                    
-                    testimonialContainer.appendChild(dotsContainer);
-                }
-            }
-            
-            function updateTestimonialDots() {
-                const dots = document.querySelectorAll('.testimonial-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentTestimonial);
-                });
-            }
-            
-            // Initialize dots on mobile
-            createTestimonialDots();
-            
-            // Update dots on window resize
-            window.addEventListener('resize', createTestimonialDots);
-            
-            // Start auto-rotate
-            startTestimonialAutoRotate();
         }
         
         // Cart functionality

@@ -2213,6 +2213,199 @@
             background: rgba(196, 167, 125, 0.1);
         }
 
+        /* Address Selection Styles - NEW */
+        .address-selection-container {
+            margin-bottom: 20px;
+        }
+
+        .address-step {
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .address-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .address-progress {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .address-progress-step {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .address-progress-step.active {
+            color: var(--primary-color);
+        }
+
+        .address-progress-step.completed {
+            color: var(--accent-color);
+        }
+
+        .address-progress-step .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .address-progress-step.active .step-number {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .address-progress-step.completed .step-number {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        .address-progress-separator {
+            width: 30px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 10px;
+        }
+
+        .address-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .address-option {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .address-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .address-option.selected {
+            background: rgba(196, 167, 125, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .address-option i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .address-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .address-confirmation {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .address-confirmation h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .address-details {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Google Maps Integration */
+        .google-maps-container {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .google-maps-placeholder {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .google-maps-placeholder i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .google-maps-placeholder p {
+            font-size: 14px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .address-search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .address-search-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+        }
+
+        .address-search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* ZIP Code Validation */
+        .zip-validation {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .zip-validation.valid {
+            color: #28a745;
+        }
+
+        .zip-validation.invalid {
+            color: #dc3545;
+        }
+
         /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
@@ -2225,6 +2418,10 @@
             
             .search-input.active {
                 width: 280px;
+            }
+            
+            .address-options {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -2284,6 +2481,10 @@
             }
             
             .personalized-products-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .address-options {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -2355,6 +2556,20 @@
             .results-modal .close-button {
                 top: 120px;
                 right: 20px;
+            }
+            
+            .address-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .address-progress {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .address-progress-separator {
+                display: none;
             }
         }
 
@@ -2560,6 +2775,16 @@
                 height: 35px;
                 font-size: 18px;
             }
+            
+            /* Address selection mobile */
+            .address-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .address-navigation .glass-button {
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2640,6 +2865,11 @@
             
             .results-products-container {
                 padding: 15px;
+            }
+            
+            /* Address selection small mobile */
+            .address-progress-step {
+                font-size: 12px;
             }
         }
     </style>
@@ -2816,7 +3046,7 @@
                 </div>
             </div>
             
-            <!-- Step 1: Shipping -->
+            <!-- Step 1: Shipping - UPDATED WITH NEW ADDRESS SELECTION SYSTEM -->
             <form class="checkout-form active" id="shippingForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -2839,32 +3069,145 @@
                     <input type="tel" id="shippingPhone" class="form-input" required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="shippingAddress">Address</label>
-                    <input type="text" id="shippingAddress" class="form-input" required>
+                <!-- NEW ADDRESS SELECTION SYSTEM -->
+                <div class="address-selection-container">
+                    <div class="address-progress">
+                        <div class="address-progress-step active" data-step="country">
+                            <div class="step-number">1</div>
+                            Country
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="state">
+                            <div class="step-number">2</div>
+                            State/Province
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="city">
+                            <div class="step-number">3</div>
+                            City/Town
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="village">
+                            <div class="step-number">4</div>
+                            Village/Suburb
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="zip">
+                            <div class="step-number">5</div>
+                            ZIP Code
+                        </div>
+                    </div>
+                    
+                    <!-- Country Selection -->
+                    <div class="address-step active" id="countryStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Country</h4>
+                        <div class="address-options" id="countryOptions">
+                            <!-- Country options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- State/Province Selection -->
+                    <div class="address-step" id="stateStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your State/Province</h4>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="stateSearch" placeholder="Search for your state/province...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchStates()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="stateOptions">
+                            <!-- State options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- City/Town Selection -->
+                    <div class="address-step" id="cityStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your City/Town</h4>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="citySearch" placeholder="Search for your city/town...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchCities()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="cityOptions">
+                            <!-- City options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Village/Suburb Selection -->
+                    <div class="address-step" id="villageStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Village/Suburb</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery</p>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="villageSearch" placeholder="Search for your village/suburb...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchVillages()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="villageOptions">
+                            <!-- Village options will be populated by JavaScript -->
+                        </div>
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="skipVillage()">
+                                <i class="fas fa-forward"></i>
+                                <p>Skip this step</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">I don't have a village/suburb</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ZIP Code Entry -->
+                    <div class="address-step" id="zipStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Enter Your ZIP/Postal Code</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px;">Enter your ZIP code for accurate shipping calculation</p>
+                        
+                        <div class="form-group">
+                            <label for="shippingZip">ZIP/Postal Code</label>
+                            <input type="text" id="shippingZip" class="form-input" placeholder="Enter ZIP code" required>
+                            <div class="zip-validation" id="zipValidation">
+                                <!-- Validation message will appear here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Google Maps Integration -->
+                        <div class="google-maps-container">
+                            <div class="google-maps-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Google Maps integration for address verification</p>
+                                <small style="margin-top: 10px;">Your address will be verified for shipping accuracy</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Address Confirmation -->
+                        <div class="address-confirmation" id="addressConfirmation">
+                            <h5>Selected Address</h5>
+                            <div class="address-details" id="addressDetails">
+                                <!-- Address details will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Address Navigation -->
+                    <div class="address-navigation">
+                        <button type="button" class="glass-button" id="prevAddressStep" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="glass-button" id="nextAddressStep">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="shippingCity">City</label>
-                        <input type="text" id="shippingCity" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="shippingZip">ZIP Code</label>
-                        <input type="text" id="shippingZip" class="form-input" required>
-                    </div>
+                <!-- Street Address -->
+                <div class="form-group">
+                    <label for="shippingAddress">Street Address</label>
+                    <input type="text" id="shippingAddress" class="form-input" placeholder="House number, street name, building" required>
                 </div>
                 
+                <!-- Apartment/Suite (Optional) -->
                 <div class="form-group">
-                    <label for="shippingCountry">Country</label>
-                    <select id="shippingCountry" class="form-input" required>
-                        <option value="">Select Country</option>
-                        <option value="US">United States</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="CA">Canada</option>
-                        <option value="AU">Australia</option>
-                        <option value="ZA">South Africa</option>
-                    </select>
+                    <label for="shippingApartment">Apartment, Suite, Unit (Optional)</label>
+                    <input type="text" id="shippingApartment" class="form-input" placeholder="Apartment, suite, unit, etc.">
                 </div>
                 
                 <div class="checkout-actions">
@@ -3946,8 +4289,79 @@
         let currentSearchCategory = 'all';
         let searchTimeout = null;
         
+        // NEW: Address Selection State
+        let currentAddressStep = 'country';
+        let selectedCountry = '';
+        let selectedState = '';
+        let selectedCity = '';
+        let selectedVillage = '';
+        let selectedZip = '';
+        
+        // Address data structure (mock data for demonstration)
+        const addressData = {
+            countries: [
+                { code: 'ZA', name: 'South Africa', flag: '🇿🇦', currency: 'ZAR' },
+                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' },
+                { code: 'UK', name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' },
+                { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD' },
+                { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD' },
+                { code: 'DE', name: 'Germany', flag: '🇩🇪', currency: 'EUR' },
+                { code: 'FR', name: 'France', flag: '🇫🇷', currency: 'EUR' },
+                { code: 'JP', name: 'Japan', flag: '🇯🇵', currency: 'JPY' },
+                { code: 'CN', name: 'China', flag: '🇨🇳', currency: 'CNY' },
+                { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR' }
+            ],
+            states: {
+                'ZA': [
+                    'Gauteng', 'Western Cape', 'KwaZulu-Natal', 'Eastern Cape', 
+                    'Limpopo', 'Mpumalanga', 'North West', 'Free State', 'Northern Cape'
+                ],
+                'US': [
+                    'California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
+                    'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan'
+                ],
+                'UK': [
+                    'England', 'Scotland', 'Wales', 'Northern Ireland'
+                ],
+                'CA': [
+                    'Ontario', 'Quebec', 'British Columbia', 'Alberta', 'Manitoba',
+                    'Saskatchewan', 'Nova Scotia', 'New Brunswick', 'Newfoundland and Labrador'
+                ],
+                'AU': [
+                    'New South Wales', 'Victoria', 'Queensland', 'Western Australia',
+                    'South Australia', 'Tasmania', 'Australian Capital Territory', 'Northern Territory'
+                ]
+            },
+            cities: {
+                'Gauteng': ['Johannesburg', 'Pretoria', 'Sandton', 'Randburg', 'Centurion'],
+                'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl', 'Worcester', 'George'],
+                'California': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose'],
+                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth'],
+                'England': ['London', 'Manchester', 'Birmingham', 'Liverpool', 'Leeds'],
+                'Ontario': ['Toronto', 'Ottawa', 'Mississauga', 'Hamilton', 'London'],
+                'New South Wales': ['Sydney', 'Newcastle', 'Wollongong', 'Central Coast', 'Blue Mountains']
+            },
+            villages: {
+                'Johannesburg': ['Sandton CBD', 'Randburg CBD', 'Rosebank', 'Parktown', 'Melville'],
+                'Cape Town': ['City Bowl', 'Atlantic Seaboard', 'Southern Suburbs', 'Northern Suburbs'],
+                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice'],
+                'London': ['Westminster', 'Camden', 'Kensington', 'Chelsea', 'Greenwich'],
+                'Toronto': ['Downtown Toronto', 'North York', 'Scarborough', 'Etobicoke', 'York']
+            },
+            zipCodes: {
+                'Johannesburg': ['2000', '2001', '2196', '2193', '2194'],
+                'Cape Town': ['8000', '8001', '7700', '7800', '7925'],
+                'Los Angeles': ['90001', '90002', '90003', '90004', '90005'],
+                'London': ['SW1A', 'EC1A', 'W1', 'NW1', 'SE1'],
+                'Toronto': ['M5H', 'M5J', 'M5K', 'M5L', 'M5V']
+            }
+        };
+        
         // Initialize cart badge
         updateCartBadge();
+        
+        // Initialize address selection
+        initializeAddressSelection();
         
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
@@ -4034,6 +4448,8 @@
         
         closeCheckoutBtn.addEventListener('click', () => {
             checkoutModal.classList.remove('active');
+            // Reset address selection
+            resetAddressSelection();
         });
         
         closeSuccessBtn.addEventListener('click', () => {
@@ -4873,11 +5289,15 @@
             cartModal.classList.remove('active');
             checkoutModal.classList.add('active');
             updateCheckoutStep(1);
+            
+            // Initialize address selection when checkout opens
+            initializeAddressSelection();
         });
         
         checkoutModal.addEventListener('click', (e) => {
             if (e.target === checkoutModal) {
                 checkoutModal.classList.remove('active');
+                resetAddressSelection();
             }
         });
         
@@ -4911,8 +5331,15 @@
             }
         }
         
-        // Checkout navigation
+        // Checkout navigation - UPDATED FOR ADDRESS VALIDATION
         nextToPaymentBtn.addEventListener('click', () => {
+            // Check if address selection is complete
+            if (!validateAddressSelection()) {
+                alert('Please complete the address selection process before proceeding');
+                return;
+            }
+            
+            // Validate other shipping fields
             if (!validateShippingForm()) {
                 alert('Please fill in all required shipping information');
                 return;
@@ -4994,6 +5421,12 @@
                 return;
             }
             
+            // Validate address before placing order
+            if (!validateAddressSelection()) {
+                alert('Please complete the address selection process');
+                return;
+            }
+            
             const orderId = Math.floor(1000 + Math.random() * 9000);
             document.getElementById('orderId').textContent = orderId;
             
@@ -5002,7 +5435,16 @@
                 date: new Date().toISOString(),
                 items: [...cart],
                 total: parseFloat(document.getElementById('reviewTotal').textContent.replace('R', '')),
-                status: 'Processing'
+                status: 'Processing',
+                shippingAddress: {
+                    country: selectedCountry,
+                    state: selectedState,
+                    city: selectedCity,
+                    village: selectedVillage,
+                    zip: selectedZip,
+                    street: document.getElementById('shippingAddress').value,
+                    apartment: document.getElementById('shippingApartment').value
+                }
             };
             
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -5016,6 +5458,9 @@
             
             checkoutModal.classList.remove('active');
             successModal.classList.add('active');
+            
+            // Reset address selection for next time
+            resetAddressSelection();
         });
         
         // Continue shopping
@@ -5030,10 +5475,7 @@
                 'shippingLastName',
                 'shippingEmail',
                 'shippingPhone',
-                'shippingAddress',
-                'shippingCity',
-                'shippingZip',
-                'shippingCountry'
+                'shippingAddress'
             ];
             
             for (const fieldId of requiredFields) {
@@ -5066,6 +5508,533 @@
             }
             
             return true;
+        }
+        
+        // NEW: Address Selection Functions
+        
+        function initializeAddressSelection() {
+            // Populate country options
+            populateCountryOptions();
+            
+            // Set up event listeners for address navigation
+            document.getElementById('nextAddressStep').addEventListener('click', goToNextAddressStep);
+            document.getElementById('prevAddressStep').addEventListener('click', goToPrevAddressStep);
+            
+            // Set up ZIP code validation
+            document.getElementById('shippingZip').addEventListener('input', validateZipCode);
+        }
+        
+        function populateCountryOptions() {
+            const countryOptions = document.getElementById('countryOptions');
+            countryOptions.innerHTML = '';
+            
+            addressData.countries.forEach(country => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-globe-americas"></i>
+                    <p>${country.flag} ${country.name}</p>
+                    <small style="color: rgba(255, 255, 255, 0.6);">${country.currency}</small>
+                `;
+                option.addEventListener('click', () => selectCountry(country.code));
+                countryOptions.appendChild(option);
+            });
+        }
+        
+        function selectCountry(countryCode) {
+            selectedCountry = countryCode;
+            const country = addressData.countries.find(c => c.code === countryCode);
+            
+            // Update UI
+            document.querySelectorAll('#countryOptions .address-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.address-option').classList.add('selected');
+            
+            // Update progress
+            updateAddressProgress('country');
+            
+            // Populate states for this country
+            populateStateOptions(countryCode);
+            
+            // Go to next step
+            setTimeout(() => goToNextAddressStep(), 500);
+        }
+        
+        function populateStateOptions(countryCode) {
+            const stateOptions = document.getElementById('stateOptions');
+            stateOptions.innerHTML = '';
+            
+            const states = addressData.states[countryCode] || [];
+            
+            if (states.length === 0) {
+                stateOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No states/provinces available for this country.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            states.forEach(state => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>${state}</p>
+                `;
+                option.addEventListener('click', () => selectState(state));
+                stateOptions.appendChild(option);
+            });
+        }
+        
+        function selectState(state) {
+            selectedState = state;
+            
+            // Update UI
+            document.querySelectorAll('#stateOptions .address-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.address-option').classList.add('selected');
+            
+            // Update progress
+            updateAddressProgress('state');
+            
+            // Populate cities for this state
+            populateCityOptions(state);
+            
+            // Go to next step
+            setTimeout(() => goToNextAddressStep(), 500);
+        }
+        
+        function populateCityOptions(state) {
+            const cityOptions = document.getElementById('cityOptions');
+            cityOptions.innerHTML = '';
+            
+            const cities = addressData.cities[state] || [];
+            
+            if (cities.length === 0) {
+                cityOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No cities available for this state.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            cities.forEach(city => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-city"></i>
+                    <p>${city}</p>
+                `;
+                option.addEventListener('click', () => selectCity(city));
+                cityOptions.appendChild(option);
+            });
+        }
+        
+        function selectCity(city) {
+            selectedCity = city;
+            
+            // Update UI
+            document.querySelectorAll('#cityOptions .address-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.address-option').classList.add('selected');
+            
+            // Update progress
+            updateAddressProgress('city');
+            
+            // Populate villages for this city
+            populateVillageOptions(city);
+            
+            // Go to next step
+            setTimeout(() => goToNextAddressStep(), 500);
+        }
+        
+        function populateVillageOptions(city) {
+            const villageOptions = document.getElementById('villageOptions');
+            villageOptions.innerHTML = '';
+            
+            const villages = addressData.villages[city] || [];
+            
+            if (villages.length === 0) {
+                villageOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No villages/suburbs available for this city.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">You can skip this step.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            villages.forEach(village => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-home"></i>
+                    <p>${village}</p>
+                `;
+                option.addEventListener('click', () => selectVillage(village));
+                villageOptions.appendChild(option);
+            });
+        }
+        
+        function selectVillage(village) {
+            selectedVillage = village;
+            
+            // Update UI
+            document.querySelectorAll('#villageOptions .address-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.address-option').classList.add('selected');
+            
+            // Update progress
+            updateAddressProgress('village');
+            
+            // Go to next step
+            setTimeout(() => goToNextAddressStep(), 500);
+        }
+        
+        function skipVillage() {
+            selectedVillage = '';
+            
+            // Update progress
+            updateAddressProgress('village');
+            
+            // Go to next step
+            goToNextAddressStep();
+        }
+        
+        function validateZipCode() {
+            const zipInput = document.getElementById('shippingZip');
+            const zipValidation = document.getElementById('zipValidation');
+            selectedZip = zipInput.value.trim();
+            
+            if (!selectedZip) {
+                zipValidation.innerHTML = '';
+                return false;
+            }
+            
+            // Simple validation - check if it matches any known zip for the selected city
+            const validZips = addressData.zipCodes[selectedCity] || [];
+            const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2)));
+            
+            if (isValid) {
+                zipValidation.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>Valid ZIP code for ${selectedCity}</span>
+                `;
+                zipValidation.className = 'zip-validation valid';
+                
+                // Update address confirmation
+                updateAddressConfirmation();
+                return true;
+            } else {
+                zipValidation.innerHTML = `
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>ZIP code may not match ${selectedCity}</span>
+                `;
+                zipValidation.className = 'zip-validation invalid';
+                return false;
+            }
+        }
+        
+        function updateAddressConfirmation() {
+            const addressDetails = document.getElementById('addressDetails');
+            const addressConfirmation = document.getElementById('addressConfirmation');
+            
+            if (selectedCountry && selectedState && selectedCity && selectedZip) {
+                let addressText = `
+                    <strong>${selectedCity}, ${selectedState}</strong><br>
+                    ${selectedCountry}<br>
+                    ZIP: ${selectedZip}
+                `;
+                
+                if (selectedVillage) {
+                    addressText = `
+                        <strong>${selectedVillage}, ${selectedCity}</strong><br>
+                        ${selectedState}, ${selectedCountry}<br>
+                        ZIP: ${selectedZip}
+                    `;
+                }
+                
+                addressDetails.innerHTML = addressText;
+                addressConfirmation.style.display = 'block';
+            } else {
+                addressConfirmation.style.display = 'none';
+            }
+        }
+        
+        function updateAddressProgress(step) {
+            // Update progress steps
+            document.querySelectorAll('.address-progress-step').forEach(stepEl => {
+                stepEl.classList.remove('active', 'completed');
+                
+                const stepName = stepEl.getAttribute('data-step');
+                
+                if (stepName === step) {
+                    stepEl.classList.add('active');
+                } else if (
+                    (stepName === 'country' && selectedCountry) ||
+                    (stepName === 'state' && selectedState) ||
+                    (stepName === 'city' && selectedCity) ||
+                    (stepName === 'village' && selectedVillage !== undefined) ||
+                    (stepName === 'zip' && selectedZip)
+                ) {
+                    stepEl.classList.add('completed');
+                }
+            });
+            
+            // Update address confirmation
+            updateAddressConfirmation();
+        }
+        
+        function goToNextAddressStep() {
+            const steps = ['country', 'state', 'city', 'village', 'zip'];
+            const currentIndex = steps.indexOf(currentAddressStep);
+            
+            // Validate current step before proceeding
+            if (!validateCurrentAddressStep()) {
+                return;
+            }
+            
+            if (currentIndex < steps.length - 1) {
+                // Hide current step
+                document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
+                
+                // Update current step
+                currentAddressStep = steps[currentIndex + 1];
+                
+                // Show next step
+                document.getElementById(`${currentAddressStep}Step`).classList.add('active');
+                
+                // Update navigation buttons
+                updateAddressNavigation();
+                
+                // Update progress
+                updateAddressProgress(currentAddressStep);
+                
+                // If moving to ZIP step, trigger validation
+                if (currentAddressStep === 'zip') {
+                    validateZipCode();
+                }
+            }
+        }
+        
+        function goToPrevAddressStep() {
+            const steps = ['country', 'state', 'city', 'village', 'zip'];
+            const currentIndex = steps.indexOf(currentAddressStep);
+            
+            if (currentIndex > 0) {
+                // Hide current step
+                document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
+                
+                // Update current step
+                currentAddressStep = steps[currentIndex - 1];
+                
+                // Show previous step
+                document.getElementById(`${currentAddressStep}Step`).classList.add('active');
+                
+                // Update navigation buttons
+                updateAddressNavigation();
+            }
+        }
+        
+        function updateAddressNavigation() {
+            const prevBtn = document.getElementById('prevAddressStep');
+            const nextBtn = document.getElementById('nextAddressStep');
+            
+            // Show/hide previous button
+            if (currentAddressStep === 'country') {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-flex';
+            }
+            
+            // Update next button text
+            if (currentAddressStep === 'zip') {
+                nextBtn.innerHTML = 'Complete Address Selection <i class="fas fa-check"></i>';
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+            }
+        }
+        
+        function validateCurrentAddressStep() {
+            switch (currentAddressStep) {
+                case 'country':
+                    if (!selectedCountry) {
+                        alert('Please select a country');
+                        return false;
+                    }
+                    break;
+                case 'state':
+                    if (!selectedState) {
+                        // Check if country has states
+                        const states = addressData.states[selectedCountry] || [];
+                        if (states.length === 0) {
+                            // Skip state selection if no states available
+                            selectedState = 'N/A';
+                            return true;
+                        }
+                        alert('Please select a state/province');
+                        return false;
+                    }
+                    break;
+                case 'city':
+                    if (!selectedCity) {
+                        alert('Please select a city/town');
+                        return false;
+                    }
+                    break;
+                case 'village':
+                    // Village is optional, so always valid
+                    break;
+                case 'zip':
+                    if (!validateZipCode()) {
+                        alert('Please enter a valid ZIP code');
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+        
+        function validateAddressSelection() {
+            return selectedCountry && selectedState && selectedCity && selectedZip;
+        }
+        
+        function resetAddressSelection() {
+            currentAddressStep = 'country';
+            selectedCountry = '';
+            selectedState = '';
+            selectedCity = '';
+            selectedVillage = '';
+            selectedZip = '';
+            
+            // Reset UI
+            document.querySelectorAll('.address-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('countryStep').classList.add('active');
+            
+            document.querySelectorAll('.address-progress-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            document.querySelector('[data-step="country"]').classList.add('active');
+            
+            document.querySelectorAll('.address-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            document.getElementById('shippingZip').value = '';
+            document.getElementById('zipValidation').innerHTML = '';
+            document.getElementById('addressConfirmation').style.display = 'none';
+            
+            updateAddressNavigation();
+        }
+        
+        // Search functions for address selection
+        function searchStates() {
+            const searchTerm = document.getElementById('stateSearch').value.toLowerCase();
+            const states = addressData.states[selectedCountry] || [];
+            const filteredStates = states.filter(state => 
+                state.toLowerCase().includes(searchTerm)
+            );
+            
+            const stateOptions = document.getElementById('stateOptions');
+            stateOptions.innerHTML = '';
+            
+            if (filteredStates.length === 0) {
+                stateOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No states found for "${searchTerm}"</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredStates.forEach(state => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>${state}</p>
+                `;
+                option.addEventListener('click', () => selectState(state));
+                stateOptions.appendChild(option);
+            });
+        }
+        
+        function searchCities() {
+            const searchTerm = document.getElementById('citySearch').value.toLowerCase();
+            const cities = addressData.cities[selectedState] || [];
+            const filteredCities = cities.filter(city => 
+                city.toLowerCase().includes(searchTerm)
+            );
+            
+            const cityOptions = document.getElementById('cityOptions');
+            cityOptions.innerHTML = '';
+            
+            if (filteredCities.length === 0) {
+                cityOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No cities found for "${searchTerm}"</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredCities.forEach(city => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-city"></i>
+                    <p>${city}</p>
+                `;
+                option.addEventListener('click', () => selectCity(city));
+                cityOptions.appendChild(option);
+            });
+        }
+        
+        function searchVillages() {
+            const searchTerm = document.getElementById('villageSearch').value.toLowerCase();
+            const villages = addressData.villages[selectedCity] || [];
+            const filteredVillages = villages.filter(village => 
+                village.toLowerCase().includes(searchTerm)
+            );
+            
+            const villageOptions = document.getElementById('villageOptions');
+            villageOptions.innerHTML = '';
+            
+            if (filteredVillages.length === 0) {
+                villageOptions.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
+                        <p>No villages found for "${searchTerm}"</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredVillages.forEach(village => {
+                const option = document.createElement('div');
+                option.className = 'address-option';
+                option.innerHTML = `
+                    <i class="fas fa-home"></i>
+                    <p>${village}</p>
+                `;
+                option.addEventListener('click', () => selectVillage(village));
+                villageOptions.appendChild(option);
+            });
         }
         
         // Start qualification wizard

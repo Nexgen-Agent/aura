@@ -2138,6 +2138,65 @@
             text-decoration: underline;
         }
 
+        /* FLAGSHIP PRODUCT SPECIFIC STYLES */
+        .flagship-card {
+            grid-column: span 2 !important;
+        }
+
+        .flagship-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .flagship-image {
+            flex: 1;
+            height: 300px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            min-width: 0;
+        }
+
+        .flagship-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .flagship-details {
+            margin-top: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .flagship-details.collapsed {
+            max-height: 80px;
+        }
+
+        .flagship-details.expanded {
+            max-height: 500px;
+        }
+
+        .see-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .see-more-btn:hover {
+            background: rgba(196, 167, 125, 0.1);
+        }
+
         /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
@@ -2218,6 +2277,25 @@
             nav.scrolled {
                 padding: 28px 20px; /* Adjusted for mobile */
                 height: 75px; /* 50px * 1.5 = 75px */
+            }
+            
+            /* Flagship product mobile adjustments */
+            .flagship-card {
+                grid-column: span 1 !important;
+            }
+            
+            .flagship-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .flagship-image {
+                height: 200px;
+                width: 100%;
+            }
+            
+            .flagship-details.collapsed {
+                max-height: 60px;
             }
         }
 
@@ -2429,6 +2507,10 @@
             nav.scrolled {
                 padding: 25px 15px;
                 height: 70px;
+            }
+            
+            .flagship-image {
+                height: 180px;
             }
         }
     </style>
@@ -2842,7 +2924,7 @@
                 <h1>Discover Your Glow</h1>
                 <p>Lonz Flawls Aura combines science and nature to create premium skincare solutions that reveal your natural radiance. Experience the transformation.</p>
                 <div class="hero-buttons">
-                    <button class="glass-button start-qualification"><i class="fas fa-star"></i> Start Your Glow Journey</button>
+                    <button class="glass-button start-qualification"><i class="fas fa-star"></i> Start Now</button>
                     <button class="glass-button"><i class="fas fa-play-circle"></i> Watch Our Story</button>
                 </div>
             </div>
@@ -2982,20 +3064,20 @@
                     <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <!-- Extra Combo -->
+                <!-- Extra Glow Combo -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-bestseller">Bestseller</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Extra Combo</h3>
+                        <h3>Extra Glow Combo</h3>
                         <p>Complete extra glow set for radiant, hydrated skin.</p>
                         <div class="product-details">
                             <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
                             <div class="product-ingredients"><strong>Contains:</strong> Extra glow soap, extra glow oil, extra glow cream</div>
                         </div>
-                        <div class="product-price">R270.00</div>
+                        <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Combo" data-price="270.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Extra Whitening Combo -->
@@ -3024,18 +3106,21 @@
             </div>
             
             <div class="products-grid fade-in">
-                <div class="product-card glass-card" style="grid-column: span 2;">
+                <div class="product-card glass-card flagship-card">
                     <div class="product-badge badge-flagship">Flagship</div>
-                    <div style="display: flex; gap: 30px; align-items: center;">
-                        <div class="product-image" style="flex: 1; height: 300px; background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                        <div class="product-info" style="flex: 1;">
+                    <div class="flagship-container">
+                        <div class="flagship-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="flagship-info">
                             <h3>Whitening Oil 100ml</h3>
                             <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.</p>
-                            <div class="product-details">
+                            <div class="flagship-details collapsed">
                                 <div class="product-benefits"><strong>Benefits:</strong> Clear dead skin, Repair damage skin, Improve skin tone</div>
                                 <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
                                 <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C collagen, Gluthathion</div>
                             </div>
+                            <button class="see-more-btn">
+                                <i class="fas fa-chevron-down"></i> See More
+                            </button>
                             <div class="product-price">R200.00</div>
                             <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart</button>
                         </div>
@@ -3152,15 +3237,15 @@
                     <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <!-- Extra Cream -->
+                <!-- Extra Cream (renamed to Extra Glow Oil with corrected price) -->
                 <div class="product-card glass-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Extra Cream</h3>
-                        <p>Intensive moisturizing cream for extra nourishment.</p>
-                        <div class="product-price">R100.00</div>
+                        <h3>Extra Glow Oil</h3>
+                        <p>Intensive moisturizing oil for extra nourishment and glow.</p>
+                        <div class="product-price">R70.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="9" data-name="Extra Cream" data-price="100.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="9" data-name="Extra Glow Oil" data-price="70.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -3433,6 +3518,10 @@
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         const mobileNavLinksItems = document.querySelectorAll('.mobile-nav-link');
         
+        // Flagship product elements
+        const seeMoreBtn = document.querySelector('.see-more-btn');
+        const flagshipDetails = document.querySelector('.flagship-details');
+        
         // Enhanced Product data with skin issues and benefits
         const products = [
             {
@@ -3557,23 +3646,23 @@
             },
             {
                 id: 9,
-                name: "Extra Cream",
-                price: 100.00,
+                name: "Extra Glow Oil",
+                price: 70.00,
                 image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "Intensive moisturizing cream for extra nourishment.",
+                description: "Intensive moisturizing oil for extra nourishment and glow.",
                 benefits: "",
                 usage: "",
                 ingredients: "",
-                category: "cream",
-                skinIssues: ["dry skin", "dehydrated skin", "rough texture"],
-                benefitsList: ["intensive moisture", "nourishing", "skin repair"],
+                category: "oil",
+                skinIssues: ["dry skin", "dehydrated skin", "rough texture", "dull skin"],
+                benefitsList: ["intensive moisture", "nourishing", "skin repair", "glowing"],
                 searchScore: 55,
                 section: "all-products"
             },
             {
                 id: 13,
-                name: "Extra Combo",
-                price: 270.00,
+                name: "Extra Glow Combo",
+                price: 250.00,
                 image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 description: "Complete extra glow set for radiant, hydrated skin.",
                 benefits: "",
@@ -3633,8 +3722,8 @@
             },
             "dry": {
                 description: "For dry skin, we recommend intensive hydration and nourishment to restore moisture barrier and glow.",
-                products: [4, 8, 9], // Extra Glow Lotion, Extra Glow Oil, Extra Cream
-                primaryCombo: 13, // Extra Combo
+                products: [4, 8, 9], // Extra Glow Lotion, Extra Glow Oil, Extra Glow Oil
+                primaryCombo: 13, // Extra Glow Combo
                 explanation: "These deeply hydrating products work together to quench thirsty skin and restore natural radiance."
             },
             "uneven-tone": {
@@ -3646,7 +3735,7 @@
             "glow": {
                 description: "For glow maintenance, we recommend products that enhance natural radiance and protect skin health.",
                 products: [4, 6, 8], // Extra Glow Lotion, Extra Glow Soap, Extra Glow Oil
-                primaryCombo: 13, // Extra Combo
+                primaryCombo: 13, // Extra Glow Combo
                 explanation: "These glow-enhancing products work together to maintain your skin's natural luminosity."
             }
         };
@@ -4399,7 +4488,57 @@
                 }
             `;
             document.head.appendChild(style);
+            
+            // Initialize flagship product "See More" functionality
+            initializeFlagshipProduct();
         });
+        
+        // Flagship product "See More" functionality
+        function initializeFlagshipProduct() {
+            const seeMoreBtn = document.querySelector('.see-more-btn');
+            const flagshipDetails = document.querySelector('.flagship-details');
+            
+            if (seeMoreBtn && flagshipDetails) {
+                // Set initial state based on screen size
+                const isMobile = window.innerWidth <= 850;
+                if (isMobile) {
+                    flagshipDetails.classList.add('collapsed');
+                    flagshipDetails.classList.remove('expanded');
+                    seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                } else {
+                    flagshipDetails.classList.add('expanded');
+                    flagshipDetails.classList.remove('collapsed');
+                    seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
+                }
+                
+                // Toggle functionality
+                seeMoreBtn.addEventListener('click', () => {
+                    const isCollapsed = flagshipDetails.classList.contains('collapsed');
+                    
+                    if (isCollapsed) {
+                        flagshipDetails.classList.remove('collapsed');
+                        flagshipDetails.classList.add('expanded');
+                        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
+                    } else {
+                        flagshipDetails.classList.remove('expanded');
+                        flagshipDetails.classList.add('collapsed');
+                        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                    }
+                });
+                
+                // Update on window resize
+                window.addEventListener('resize', () => {
+                    const isMobile = window.innerWidth <= 850;
+                    
+                    // Only auto-collapse on mobile, not on desktop
+                    if (isMobile && flagshipDetails.classList.contains('expanded')) {
+                        flagshipDetails.classList.remove('expanded');
+                        flagshipDetails.classList.add('collapsed');
+                        seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                    }
+                });
+            }
+        }
         
         // Cart functionality
         function updateCartBadge() {

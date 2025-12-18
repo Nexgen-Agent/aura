@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Maps API with Places Library -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4u6QmYElw8tWjXq8YJ7y5M8p5Q4eN3tU&libraries=places&callback=initAutocomplete" async defer></script>
     <style>
         * {
             margin: 0;
@@ -2213,7 +2215,7 @@
             background: rgba(196, 167, 125, 0.1);
         }
 
-        /* Address Selection Styles - NEW */
+        /* Address Selection Styles - UPDATED WITH GOOGLE MAPS AUTOCOMPLETE */
         .address-selection-container {
             margin-bottom: 20px;
         }
@@ -2338,7 +2340,7 @@
             line-height: 1.6;
         }
 
-        /* Google Maps Integration */
+        /* Google Maps Integration - UPDATED FOR AUTOCOMPLETE */
         .google-maps-container {
             height: 200px;
             border-radius: 10px;
@@ -2369,26 +2371,6 @@
             text-align: center;
         }
 
-        .address-search {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .address-search-input {
-            flex: 1;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: var(--text-light);
-        }
-
-        .address-search-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
         /* ZIP Code Validation */
         .zip-validation {
             display: flex;
@@ -2404,6 +2386,45 @@
 
         .zip-validation.invalid {
             color: #dc3545;
+        }
+
+        /* Google Maps Autocomplete Styles */
+        .pac-container {
+            background: rgba(10, 25, 41, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            margin-top: 5px;
+            z-index: 2001 !important;
+        }
+
+        .pac-item {
+            padding: 10px 15px;
+            color: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pac-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pac-item-selected, .pac-item-selected:hover {
+            background: rgba(196, 167, 125, 0.2);
+        }
+
+        .pac-icon {
+            margin-right: 10px;
+        }
+
+        .pac-item-query {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        .pac-matched {
+            color: var(--accent-color);
         }
 
         /* Responsive */
@@ -3046,7 +3067,7 @@
                 </div>
             </div>
             
-            <!-- Step 1: Shipping - UPDATED WITH NEW ADDRESS SELECTION SYSTEM -->
+            <!-- Step 1: Shipping - UPDATED WITH GOOGLE MAPS AUTOCOMPLETE -->
             <form class="checkout-form active" id="shippingForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -3069,7 +3090,7 @@
                     <input type="tel" id="shippingPhone" class="form-input" required>
                 </div>
                 
-                <!-- NEW ADDRESS SELECTION SYSTEM -->
+                <!-- UPDATED ADDRESS SELECTION SYSTEM WITH GOOGLE MAPS AUTOCOMPLETE -->
                 <div class="address-selection-container">
                     <div class="address-progress">
                         <div class="address-progress-step active" data-step="country">
@@ -3077,23 +3098,18 @@
                             Country
                         </div>
                         <div class="address-progress-separator"></div>
-                        <div class="address-progress-step" data-step="state">
-                            <div class="step-number">2</div>
-                            State/Province
-                        </div>
-                        <div class="address-progress-separator"></div>
                         <div class="address-progress-step" data-step="city">
-                            <div class="step-number">3</div>
+                            <div class="step-number">2</div>
                             City/Town
                         </div>
                         <div class="address-progress-separator"></div>
                         <div class="address-progress-step" data-step="village">
-                            <div class="step-number">4</div>
+                            <div class="step-number">3</div>
                             Village/Suburb
                         </div>
                         <div class="address-progress-separator"></div>
                         <div class="address-progress-step" data-step="zip">
-                            <div class="step-number">5</div>
+                            <div class="step-number">4</div>
                             ZIP Code
                         </div>
                     </div>
@@ -3106,48 +3122,38 @@
                         </div>
                     </div>
                     
-                    <!-- State/Province Selection -->
-                    <div class="address-step" id="stateStep">
-                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your State/Province</h4>
-                        <div class="address-search">
-                            <input type="text" class="address-search-input" id="stateSearch" placeholder="Search for your state/province...">
-                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchStates()">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        <div class="address-options" id="stateOptions">
-                            <!-- State options will be populated by JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <!-- City/Town Selection -->
+                    <!-- City/Town Selection - UPDATED WITH GOOGLE AUTOCOMPLETE -->
                     <div class="address-step" id="cityStep">
-                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your City/Town</h4>
-                        <div class="address-search">
-                            <input type="text" class="address-search-input" id="citySearch" placeholder="Search for your city/town...">
-                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchCities()">
-                                <i class="fas fa-search"></i>
-                            </button>
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Enter Your City/Town</h4>
+                        <div class="form-group">
+                            <label for="autocompleteCity">Search City/Town</label>
+                            <!-- This input is connected to Google Maps Autocomplete -->
+                            <input type="text" id="autocompleteCity" class="form-input pac-input" placeholder="Start typing your city or town..." required>
+                            <p style="color: rgba(255, 255, 255, 0.7); margin-top: 10px; font-size: 14px;">Begin typing to see suggestions from all over South Africa, including Tzaneen and other towns.</p>
                         </div>
-                        <div class="address-options" id="cityOptions">
-                            <!-- City options will be populated by JavaScript -->
+                        <div class="address-confirmation" id="cityConfirmation" style="display: none; margin-top: 15px;">
+                            <h5>Selected Location</h5>
+                            <div class="address-details" id="cityDetails"></div>
                         </div>
                     </div>
                     
-                    <!-- Village/Suburb Selection -->
+                    <!-- Village/Suburb Selection - UPDATED WITH GOOGLE AUTOCOMPLETE -->
                     <div class="address-step" id="villageStep">
-                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Village/Suburb</h4>
-                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery</p>
-                        <div class="address-search">
-                            <input type="text" class="address-search-input" id="villageSearch" placeholder="Search for your village/suburb...">
-                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchVillages()">
-                                <i class="fas fa-search"></i>
-                            </button>
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Enter Your Village/Suburb (Optional)</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Enter your village or suburb for precise delivery. You can skip this step if you don't have one.</p>
+                        
+                        <div class="form-group">
+                            <label for="autocompleteVillage">Search Village/Suburb</label>
+                            <!-- This input is connected to Google Maps Autocomplete -->
+                            <input type="text" id="autocompleteVillage" class="form-input pac-input" placeholder="Start typing your village or suburb...">
                         </div>
-                        <div class="address-options" id="villageOptions">
-                            <!-- Village options will be populated by JavaScript -->
+                        
+                        <div class="address-confirmation" id="villageConfirmation" style="display: none; margin-top: 15px;">
+                            <h5>Selected Location</h5>
+                            <div class="address-details" id="villageDetails"></div>
                         </div>
-                        <div class="address-options" style="margin-top: 15px;">
+                        
+                        <div class="address-options" style="margin-top: 20px;">
                             <div class="address-option" onclick="skipVillage()">
                                 <i class="fas fa-forward"></i>
                                 <p>Skip this step</p>
@@ -4289,73 +4295,16 @@
         let currentSearchCategory = 'all';
         let searchTimeout = null;
         
-        // NEW: Address Selection State
+        // UPDATED: Address Selection State with Google Maps Autocomplete
         let currentAddressStep = 'country';
         let selectedCountry = '';
-        let selectedState = '';
         let selectedCity = '';
         let selectedVillage = '';
         let selectedZip = '';
         
-        // Address data structure (mock data for demonstration)
-        const addressData = {
-            countries: [
-                { code: 'ZA', name: 'South Africa', flag: '🇿🇦', currency: 'ZAR' },
-                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' },
-                { code: 'UK', name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' },
-                { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD' },
-                { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD' },
-                { code: 'DE', name: 'Germany', flag: '🇩🇪', currency: 'EUR' },
-                { code: 'FR', name: 'France', flag: '🇫🇷', currency: 'EUR' },
-                { code: 'JP', name: 'Japan', flag: '🇯🇵', currency: 'JPY' },
-                { code: 'CN', name: 'China', flag: '🇨🇳', currency: 'CNY' },
-                { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR' }
-            ],
-            states: {
-                'ZA': [
-                    'Gauteng', 'Western Cape', 'KwaZulu-Natal', 'Eastern Cape', 
-                    'Limpopo', 'Mpumalanga', 'North West', 'Free State', 'Northern Cape'
-                ],
-                'US': [
-                    'California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
-                    'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan'
-                ],
-                'UK': [
-                    'England', 'Scotland', 'Wales', 'Northern Ireland'
-                ],
-                'CA': [
-                    'Ontario', 'Quebec', 'British Columbia', 'Alberta', 'Manitoba',
-                    'Saskatchewan', 'Nova Scotia', 'New Brunswick', 'Newfoundland and Labrador'
-                ],
-                'AU': [
-                    'New South Wales', 'Victoria', 'Queensland', 'Western Australia',
-                    'South Australia', 'Tasmania', 'Australian Capital Territory', 'Northern Territory'
-                ]
-            },
-            cities: {
-                'Gauteng': ['Johannesburg', 'Pretoria', 'Sandton', 'Randburg', 'Centurion'],
-                'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl', 'Worcester', 'George'],
-                'California': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose'],
-                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth'],
-                'England': ['London', 'Manchester', 'Birmingham', 'Liverpool', 'Leeds'],
-                'Ontario': ['Toronto', 'Ottawa', 'Mississauga', 'Hamilton', 'London'],
-                'New South Wales': ['Sydney', 'Newcastle', 'Wollongong', 'Central Coast', 'Blue Mountains']
-            },
-            villages: {
-                'Johannesburg': ['Sandton CBD', 'Randburg CBD', 'Rosebank', 'Parktown', 'Melville'],
-                'Cape Town': ['City Bowl', 'Atlantic Seaboard', 'Southern Suburbs', 'Northern Suburbs'],
-                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice'],
-                'London': ['Westminster', 'Camden', 'Kensington', 'Chelsea', 'Greenwich'],
-                'Toronto': ['Downtown Toronto', 'North York', 'Scarborough', 'Etobicoke', 'York']
-            },
-            zipCodes: {
-                'Johannesburg': ['2000', '2001', '2196', '2193', '2194'],
-                'Cape Town': ['8000', '8001', '7700', '7800', '7925'],
-                'Los Angeles': ['90001', '90002', '90003', '90004', '90005'],
-                'London': ['SW1A', 'EC1A', 'W1', 'NW1', 'SE1'],
-                'Toronto': ['M5H', 'M5J', 'M5K', 'M5L', 'M5V']
-            }
-        };
+        // UPDATED: Google Maps Autocomplete Objects
+        let autocompleteCity;
+        let autocompleteVillage;
         
         // Initialize cart badge
         updateCartBadge();
@@ -5438,7 +5387,6 @@
                 status: 'Processing',
                 shippingAddress: {
                     country: selectedCountry,
-                    state: selectedState,
                     city: selectedCity,
                     village: selectedVillage,
                     zip: selectedZip,
@@ -5510,7 +5458,61 @@
             return true;
         }
         
-        // NEW: Address Selection Functions
+        // UPDATED: Google Maps Autocomplete Initialization
+        function initAutocomplete() {
+            console.log("Google Maps Autocomplete initialized");
+            
+            // Options to restrict searches to South Africa
+            const options = {
+                componentRestrictions: { country: "za" },
+                fields: ["address_components", "formatted_address", "geometry", "name"],
+                types: ["locality", "sublocality"] // Focus on cities and districts
+            };
+            
+            // Initialize autocomplete for the city input
+            const cityInput = document.getElementById("autocompleteCity");
+            if (cityInput) {
+                autocompleteCity = new google.maps.places.Autocomplete(cityInput, options);
+                // When a user selects a place, populate the hidden field and show confirmation
+                autocompleteCity.addListener("place_changed", function() {
+                    const place = autocompleteCity.getPlace();
+                    if (place && place.address_components) {
+                        selectedCity = place.name;
+                        updateAddressConfirmation('city', place.formatted_address);
+                        // Automatically proceed to the next step for better UX
+                        setTimeout(() => goToNextAddressStep(), 800);
+                    }
+                });
+            }
+            
+            // Initialize autocomplete for the village input (similar setup)
+            const villageInput = document.getElementById("autocompleteVillage");
+            if (villageInput) {
+                autocompleteVillage = new google.maps.places.Autocomplete(villageInput, options);
+                autocompleteVillage.addListener("place_changed", function() {
+                    const place = autocompleteVillage.getPlace();
+                    if (place && place.address_components) {
+                        selectedVillage = place.name;
+                        updateAddressConfirmation('village', place.formatted_address);
+                    }
+                });
+            }
+            
+            // Make function globally accessible
+            window.initAutocomplete = initAutocomplete;
+        }
+        
+        // Helper function to show what was selected
+        function updateAddressConfirmation(type, address) {
+            const confirmationDiv = document.getElementById(type + 'Confirmation');
+            const detailsDiv = document.getElementById(type + 'Details');
+            if (confirmationDiv && detailsDiv) {
+                detailsDiv.innerHTML = `<strong>${address}</strong>`;
+                confirmationDiv.style.display = 'block';
+            }
+        }
+        
+        // UPDATED: Address Selection Functions with Google Maps Autocomplete
         
         function initializeAddressSelection() {
             // Populate country options
@@ -5528,7 +5530,14 @@
             const countryOptions = document.getElementById('countryOptions');
             countryOptions.innerHTML = '';
             
-            addressData.countries.forEach(country => {
+            // Simplified country list with South Africa as primary
+            const countries = [
+                { code: 'ZA', name: 'South Africa', flag: '🇿🇦', currency: 'ZAR' },
+                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' },
+                { code: 'UK', name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' }
+            ];
+            
+            countries.forEach(country => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
                 option.innerHTML = `
@@ -5543,7 +5552,6 @@
         
         function selectCountry(countryCode) {
             selectedCountry = countryCode;
-            const country = addressData.countries.find(c => c.code === countryCode);
             
             // Update UI
             document.querySelectorAll('#countryOptions .address-option').forEach(option => {
@@ -5554,162 +5562,8 @@
             // Update progress
             updateAddressProgress('country');
             
-            // Populate states for this country
-            populateStateOptions(countryCode);
-            
             // Go to next step
             setTimeout(() => goToNextAddressStep(), 500);
-        }
-        
-        function populateStateOptions(countryCode) {
-            const stateOptions = document.getElementById('stateOptions');
-            stateOptions.innerHTML = '';
-            
-            const states = addressData.states[countryCode] || [];
-            
-            if (states.length === 0) {
-                stateOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No states/provinces available for this country.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            states.forEach(state => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>${state}</p>
-                `;
-                option.addEventListener('click', () => selectState(state));
-                stateOptions.appendChild(option);
-            });
-        }
-        
-        function selectState(state) {
-            selectedState = state;
-            
-            // Update UI
-            document.querySelectorAll('#stateOptions .address-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.target.closest('.address-option').classList.add('selected');
-            
-            // Update progress
-            updateAddressProgress('state');
-            
-            // Populate cities for this state
-            populateCityOptions(state);
-            
-            // Go to next step
-            setTimeout(() => goToNextAddressStep(), 500);
-        }
-        
-        function populateCityOptions(state) {
-            const cityOptions = document.getElementById('cityOptions');
-            cityOptions.innerHTML = '';
-            
-            const cities = addressData.cities[state] || [];
-            
-            if (cities.length === 0) {
-                cityOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No cities available for this state.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            cities.forEach(city => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-city"></i>
-                    <p>${city}</p>
-                `;
-                option.addEventListener('click', () => selectCity(city));
-                cityOptions.appendChild(option);
-            });
-        }
-        
-        function selectCity(city) {
-            selectedCity = city;
-            
-            // Update UI
-            document.querySelectorAll('#cityOptions .address-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.target.closest('.address-option').classList.add('selected');
-            
-            // Update progress
-            updateAddressProgress('city');
-            
-            // Populate villages for this city
-            populateVillageOptions(city);
-            
-            // Go to next step
-            setTimeout(() => goToNextAddressStep(), 500);
-        }
-        
-        function populateVillageOptions(city) {
-            const villageOptions = document.getElementById('villageOptions');
-            villageOptions.innerHTML = '';
-            
-            const villages = addressData.villages[city] || [];
-            
-            if (villages.length === 0) {
-                villageOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No villages/suburbs available for this city.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">You can skip this step.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            villages.forEach(village => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-home"></i>
-                    <p>${village}</p>
-                `;
-                option.addEventListener('click', () => selectVillage(village));
-                villageOptions.appendChild(option);
-            });
-        }
-        
-        function selectVillage(village) {
-            selectedVillage = village;
-            
-            // Update UI
-            document.querySelectorAll('#villageOptions .address-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.target.closest('.address-option').classList.add('selected');
-            
-            // Update progress
-            updateAddressProgress('village');
-            
-            // Go to next step
-            setTimeout(() => goToNextAddressStep(), 500);
-        }
-        
-        function skipVillage() {
-            selectedVillage = '';
-            
-            // Update progress
-            updateAddressProgress('village');
-            
-            // Go to next step
-            goToNextAddressStep();
         }
         
         function validateZipCode() {
@@ -5722,37 +5576,36 @@
                 return false;
             }
             
-            // Simple validation - check if it matches any known zip for the selected city
-            const validZips = addressData.zipCodes[selectedCity] || [];
-            const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2)));
+            // Simple validation - check if it's a valid South African ZIP (4 digits)
+            const isValid = /^\d{4}$/.test(selectedZip);
             
             if (isValid) {
                 zipValidation.innerHTML = `
                     <i class="fas fa-check-circle"></i>
-                    <span>Valid ZIP code for ${selectedCity}</span>
+                    <span>Valid South African ZIP code</span>
                 `;
                 zipValidation.className = 'zip-validation valid';
                 
                 // Update address confirmation
-                updateAddressConfirmation();
+                updateAddressConfirmationFinal();
                 return true;
             } else {
                 zipValidation.innerHTML = `
                     <i class="fas fa-exclamation-triangle"></i>
-                    <span>ZIP code may not match ${selectedCity}</span>
+                    <span>Please enter a valid 4-digit ZIP code</span>
                 `;
                 zipValidation.className = 'zip-validation invalid';
                 return false;
             }
         }
         
-        function updateAddressConfirmation() {
+        function updateAddressConfirmationFinal() {
             const addressDetails = document.getElementById('addressDetails');
             const addressConfirmation = document.getElementById('addressConfirmation');
             
-            if (selectedCountry && selectedState && selectedCity && selectedZip) {
+            if (selectedCountry && selectedCity && selectedZip) {
                 let addressText = `
-                    <strong>${selectedCity}, ${selectedState}</strong><br>
+                    <strong>${selectedCity}</strong><br>
                     ${selectedCountry}<br>
                     ZIP: ${selectedZip}
                 `;
@@ -5760,7 +5613,7 @@
                 if (selectedVillage) {
                     addressText = `
                         <strong>${selectedVillage}, ${selectedCity}</strong><br>
-                        ${selectedState}, ${selectedCountry}<br>
+                        ${selectedCountry}<br>
                         ZIP: ${selectedZip}
                     `;
                 }
@@ -5783,7 +5636,6 @@
                     stepEl.classList.add('active');
                 } else if (
                     (stepName === 'country' && selectedCountry) ||
-                    (stepName === 'state' && selectedState) ||
                     (stepName === 'city' && selectedCity) ||
                     (stepName === 'village' && selectedVillage !== undefined) ||
                     (stepName === 'zip' && selectedZip)
@@ -5793,11 +5645,11 @@
             });
             
             // Update address confirmation
-            updateAddressConfirmation();
+            updateAddressConfirmationFinal();
         }
         
         function goToNextAddressStep() {
-            const steps = ['country', 'state', 'city', 'village', 'zip'];
+            const steps = ['country', 'city', 'village', 'zip'];
             const currentIndex = steps.indexOf(currentAddressStep);
             
             // Validate current step before proceeding
@@ -5829,7 +5681,7 @@
         }
         
         function goToPrevAddressStep() {
-            const steps = ['country', 'state', 'city', 'village', 'zip'];
+            const steps = ['country', 'city', 'village', 'zip'];
             const currentIndex = steps.indexOf(currentAddressStep);
             
             if (currentIndex > 0) {
@@ -5874,22 +5726,9 @@
                         return false;
                     }
                     break;
-                case 'state':
-                    if (!selectedState) {
-                        // Check if country has states
-                        const states = addressData.states[selectedCountry] || [];
-                        if (states.length === 0) {
-                            // Skip state selection if no states available
-                            selectedState = 'N/A';
-                            return true;
-                        }
-                        alert('Please select a state/province');
-                        return false;
-                    }
-                    break;
                 case 'city':
                     if (!selectedCity) {
-                        alert('Please select a city/town');
+                        alert('Please enter your city/town');
                         return false;
                     }
                     break;
@@ -5907,13 +5746,12 @@
         }
         
         function validateAddressSelection() {
-            return selectedCountry && selectedState && selectedCity && selectedZip;
+            return selectedCountry && selectedCity && selectedZip;
         }
         
         function resetAddressSelection() {
             currentAddressStep = 'country';
             selectedCountry = '';
-            selectedState = '';
             selectedCity = '';
             selectedVillage = '';
             selectedZip = '';
@@ -5933,108 +5771,28 @@
                 option.classList.remove('selected');
             });
             
+            // Clear Google Autocomplete inputs
+            document.getElementById('autocompleteCity').value = '';
+            document.getElementById('autocompleteVillage').value = '';
             document.getElementById('shippingZip').value = '';
             document.getElementById('zipValidation').innerHTML = '';
+            
+            // Hide confirmation sections
+            document.getElementById('cityConfirmation').style.display = 'none';
+            document.getElementById('villageConfirmation').style.display = 'none';
             document.getElementById('addressConfirmation').style.display = 'none';
             
             updateAddressNavigation();
         }
         
-        // Search functions for address selection
-        function searchStates() {
-            const searchTerm = document.getElementById('stateSearch').value.toLowerCase();
-            const states = addressData.states[selectedCountry] || [];
-            const filteredStates = states.filter(state => 
-                state.toLowerCase().includes(searchTerm)
-            );
+        function skipVillage() {
+            selectedVillage = '';
             
-            const stateOptions = document.getElementById('stateOptions');
-            stateOptions.innerHTML = '';
+            // Update progress
+            updateAddressProgress('village');
             
-            if (filteredStates.length === 0) {
-                stateOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No states found for "${searchTerm}"</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            filteredStates.forEach(state => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>${state}</p>
-                `;
-                option.addEventListener('click', () => selectState(state));
-                stateOptions.appendChild(option);
-            });
-        }
-        
-        function searchCities() {
-            const searchTerm = document.getElementById('citySearch').value.toLowerCase();
-            const cities = addressData.cities[selectedState] || [];
-            const filteredCities = cities.filter(city => 
-                city.toLowerCase().includes(searchTerm)
-            );
-            
-            const cityOptions = document.getElementById('cityOptions');
-            cityOptions.innerHTML = '';
-            
-            if (filteredCities.length === 0) {
-                cityOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No cities found for "${searchTerm}"</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            filteredCities.forEach(city => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-city"></i>
-                    <p>${city}</p>
-                `;
-                option.addEventListener('click', () => selectCity(city));
-                cityOptions.appendChild(option);
-            });
-        }
-        
-        function searchVillages() {
-            const searchTerm = document.getElementById('villageSearch').value.toLowerCase();
-            const villages = addressData.villages[selectedCity] || [];
-            const filteredVillages = villages.filter(village => 
-                village.toLowerCase().includes(searchTerm)
-            );
-            
-            const villageOptions = document.getElementById('villageOptions');
-            villageOptions.innerHTML = '';
-            
-            if (filteredVillages.length === 0) {
-                villageOptions.innerHTML = `
-                    <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
-                        <i class="fas fa-search" style="font-size: 40px; margin-bottom: 15px;"></i>
-                        <p>No villages found for "${searchTerm}"</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            filteredVillages.forEach(village => {
-                const option = document.createElement('div');
-                option.className = 'address-option';
-                option.innerHTML = `
-                    <i class="fas fa-home"></i>
-                    <p>${village}</p>
-                `;
-                option.addEventListener('click', () => selectVillage(village));
-                villageOptions.appendChild(option);
-            });
+            // Go to next step
+            goToNextAddressStep();
         }
         
         // Start qualification wizard

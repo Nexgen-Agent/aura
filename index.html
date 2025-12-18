@@ -3215,6 +3215,17 @@
                     <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
+                <!-- Whitening Tissue Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Tissue Oil</h3>
+                        <p>Lightweight tissue oil for targeted whitening treatment.</p>
+                        <div class="product-price">R200.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
                 <!-- Extra Glow Oil -->
                 <div class="product-card glass-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
@@ -3224,6 +3235,17 @@
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Cream (renamed to Extra Glow Oil with corrected price) -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Oil</h3>
+                        <p>Intensive moisturizing oil for extra nourishment and glow.</p>
+                        <div class="product-price">R70.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="9" data-name="Extra Glow Oil" data-price="70.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -3500,7 +3522,7 @@
         const seeMoreBtn = document.querySelector('.see-more-btn');
         const flagshipDetails = document.querySelector('.flagship-details');
         
-        // Enhanced Product data with skin issues and benefits - REMOVED DUPLICATES
+        // Enhanced Product data with skin issues and benefits
         const products = [
             {
                 id: 1,
@@ -3593,6 +3615,21 @@
                 section: "all-products"
             },
             {
+                id: 7,
+                name: "Whitening Tissue Oil",
+                price: 200.00,
+                image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Lightweight tissue oil for targeted whitening treatment.",
+                benefits: "",
+                usage: "",
+                ingredients: "",
+                category: "oil",
+                skinIssues: ["dark spots", "uneven skin tone", "hyperpigmentation"],
+                benefitsList: ["targeted treatment", "brightening", "skin repair"],
+                searchScore: 65,
+                section: "all-products"
+            },
+            {
                 id: 8,
                 name: "Extra Glow Oil",
                 price: 100.00,
@@ -3605,6 +3642,21 @@
                 skinIssues: ["dull skin", "dry skin", "lack of glow"],
                 benefitsList: ["glowing skin", "radiance", "moisturizing"],
                 searchScore: 60,
+                section: "all-products"
+            },
+            {
+                id: 9,
+                name: "Extra Glow Oil",
+                price: 70.00,
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Intensive moisturizing oil for extra nourishment and glow.",
+                benefits: "",
+                usage: "",
+                ingredients: "",
+                category: "oil",
+                skinIssues: ["dry skin", "dehydrated skin", "rough texture", "dull skin"],
+                benefitsList: ["intensive moisture", "nourishing", "skin repair", "glowing"],
+                searchScore: 55,
                 section: "all-products"
             },
             {
@@ -3670,7 +3722,7 @@
             },
             "dry": {
                 description: "For dry skin, we recommend intensive hydration and nourishment to restore moisture barrier and glow.",
-                products: [4, 8], // Extra Glow Lotion, Extra Glow Oil (REMOVED duplicate id=9)
+                products: [4, 8, 9], // Extra Glow Lotion, Extra Glow Oil, Extra Glow Oil
                 primaryCombo: 13, // Extra Glow Combo
                 explanation: "These deeply hydrating products work together to quench thirsty skin and restore natural radiance."
             },
@@ -3688,7 +3740,7 @@
             }
         };
         
-        // Top searched products (anchor buys) - REMOVED duplicates
+        // Top searched products (anchor buys)
         const topSearchedProducts = [1, 14, 2, 13, 3, 4];
         
         // Common skin issues and benefits for suggestions

@@ -1070,7 +1070,8 @@
 
         .product-image {
             height: 200px;
-            background-size: contain;
+            width: 100%;
+            object-fit: contain;
             background-position: center;
             background-repeat: no-repeat;
             margin-bottom: 20px;
@@ -2152,9 +2153,7 @@
         .flagship-image {
             flex: 1;
             height: 300px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            object-fit: contain;
             border-radius: 10px;
             min-width: 0;
         }
@@ -3109,7 +3108,8 @@
                 <div class="product-card glass-card flagship-card">
                     <div class="product-badge badge-flagship">Flagship</div>
                     <div class="flagship-container">
-                        <div class="flagship-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <!-- UPDATED: Changed from background-image div to img tag -->
+                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Whitening Oil 100ml" class="flagship-image">
                         <div class="flagship-info">
                             <h3>Whitening Oil 100ml</h3>
                             <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.</p>

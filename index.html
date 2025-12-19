@@ -4580,19 +4580,11 @@
         let selectedVillage = '';
         let selectedZip = '';
         
-        // Address data structure (mock data for demonstration)
+        // Address data structure (mock data for demonstration) - MODIFIED: Only South Africa and United States
         const addressData = {
             countries: [
                 { code: 'ZA', name: 'South Africa', flag: '🇿🇦', currency: 'ZAR' },
-                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' },
-                { code: 'UK', name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' },
-                { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD' },
-                { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD' },
-                { code: 'DE', name: 'Germany', flag: '🇩🇪', currency: 'EUR' },
-                { code: 'FR', name: 'France', flag: '🇫🇷', currency: 'EUR' },
-                { code: 'JP', name: 'Japan', flag: '🇯🇵', currency: 'JPY' },
-                { code: 'CN', name: 'China', flag: '🇨🇳', currency: 'CNY' },
-                { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR' }
+                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' }
             ],
             states: {
                 'ZA': [
@@ -4602,41 +4594,23 @@
                 'US': [
                     'California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
                     'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan'
-                ],
-                'UK': [
-                    'England', 'Scotland', 'Wales', 'Northern Ireland'
-                ],
-                'CA': [
-                    'Ontario', 'Quebec', 'British Columbia', 'Alberta', 'Manitoba',
-                    'Saskatchewan', 'Nova Scotia', 'New Brunswick', 'Newfoundland and Labrador'
-                ],
-                'AU': [
-                    'New South Wales', 'Victoria', 'Queensland', 'Western Australia',
-                    'South Australia', 'Tasmania', 'Australian Capital Territory', 'Northern Territory'
                 ]
             },
             cities: {
                 'Gauteng': ['Johannesburg', 'Pretoria', 'Sandton', 'Randburg', 'Centurion'],
                 'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl', 'Worcester', 'George'],
                 'California': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose'],
-                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth'],
-                'England': ['London', 'Manchester', 'Birmingham', 'Liverpool', 'Leeds'],
-                'Ontario': ['Toronto', 'Ottawa', 'Mississauga', 'Hamilton', 'London'],
-                'New South Wales': ['Sydney', 'Newcastle', 'Wollongong', 'Central Coast', 'Blue Mountains']
+                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth']
             },
             villages: {
                 'Johannesburg': ['Sandton CBD', 'Randburg CBD', 'Rosebank', 'Parktown', 'Melville'],
                 'Cape Town': ['City Bowl', 'Atlantic Seaboard', 'Southern Suburbs', 'Northern Suburbs'],
-                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice'],
-                'London': ['Westminster', 'Camden', 'Kensington', 'Chelsea', 'Greenwich'],
-                'Toronto': ['Downtown Toronto', 'North York', 'Scarborough', 'Etobicoke', 'York']
+                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice']
             },
             zipCodes: {
                 'Johannesburg': ['2000', '2001', '2196', '2193', '2194'],
                 'Cape Town': ['8000', '8001', '7700', '7800', '7925'],
-                'Los Angeles': ['90001', '90002', '90003', '90004', '90005'],
-                'London': ['SW1A', 'EC1A', 'W1', 'NW1', 'SE1'],
-                'Toronto': ['M5H', 'M5J', 'M5K', 'M5L', 'M5V']
+                'Los Angeles': ['90001', '90002', '90003', '90004', '90005']
             }
         };
         

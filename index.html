@@ -220,29 +220,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Social Media Links in Footer */
-        .footer-social-section {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 40px;
-        }
-
-        .footer-social-section h4 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .footer-social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
         /* Close Buttons */
         .close-button {
             position: absolute;
@@ -1182,85 +1159,6 @@
         .gallery-dot.active {
             background: var(--accent-color);
             transform: scale(1.2);
-        }
-
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .testimonial-card {
-            padding: 35px;
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
-            flex-grow: 1;
-            position: relative;
-            padding-left: 20px;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .author-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--accent-color);
-            flex-shrink: 0;
-        }
-
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-        }
-
-        .author-info p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-stats {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-        }
-
-        .testimonial-stats i {
-            font-size: 1rem;
         }
 
         /* Footer */
@@ -2463,25 +2361,22 @@
                 gap: 15px; /* Maintain reduced gap */
             }
             
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .flagship-card {
+                grid-column: span 1 !important;
             }
             
-            /* Results modal responsive */
-            .results-modal {
-                padding: 100px 15px 30px;
+            .flagship-container {
+                flex-direction: column;
+                gap: 20px;
             }
             
-            .affirmations-section .result-message h3 {
-                font-size: 2rem;
+            .flagship-image {
+                height: 200px;
+                width: 100%;
             }
             
-            .affirmations-section .result-message p {
-                font-size: 1.1rem;
-            }
-            
-            .personalized-products-container {
-                grid-template-columns: repeat(2, 1fr);
+            .flagship-details.collapsed {
+                max-height: 60px;
             }
             
             .address-options {
@@ -2534,10 +2429,6 @@
             
             .flagship-details.collapsed {
                 max-height: 60px;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
             }
             
             /* Results modal mobile */
@@ -2667,22 +2558,6 @@
                 padding-top: 135px; /* Increased for larger mobile nav */
             }
             
-            /* Footer Social Section */
-            .footer-social-section {
-                padding: 30px 0;
-                margin-bottom: 30px;
-            }
-            
-            .footer-social-links {
-                gap: 10px;
-            }
-            
-            .social-button {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            
             /* Cart items responsive */
             .cart-item {
                 grid-template-columns: 60px 1fr;
@@ -2760,14 +2635,6 @@
                 margin-bottom: 0;
             }
             
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonial-card {
-                padding: 25px;
-            }
-            
             .results-modal .close-button {
                 top: 110px;
                 right: 15px;
@@ -2831,16 +2698,6 @@
             
             .flagship-image {
                 height: 180px;
-            }
-            
-            .testimonial-author {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .author-avatar {
-                width: 60px;
-                height: 60px;
             }
             
             /* Success Modal Button Container - SMALL MOBILE */
@@ -3356,7 +3213,6 @@
         <a href="#products" class="mobile-nav-link">Products</a>
         <a href="#all-products" class="mobile-nav-link">All Products</a>
         <a href="#gallery" class="mobile-nav-link">Gallery</a>
-        <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
         <a href="#social" class="mobile-nav-link">Connect</a>
     </div>
 
@@ -3368,7 +3224,6 @@
             <a href="#products">Products</a>
             <a href="#all-products">All Products</a>
             <a href="#gallery">Gallery</a>
-            <a href="#testimonials">Testimonials</a>
             <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
@@ -4026,85 +3881,6 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section id="testimonials">
-            <div class="section-header fade-in">
-                <h2>Glow Stories</h2>
-                <p>See what our customers are saying about their transformation</p>
-            </div>
-            
-            <div class="testimonials-grid fade-in">
-                <div class="testimonial-card glass-card">
-                    <div class="testimonial-text">
-                        "I've struggled with dark spots for years. After using the Whitening Combo for just 2 months, my skin is more even-toned and radiant than ever before. This is the only skincare that has actually worked for me!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah M.</h4>
-                            <p>Verified Customer • 2 months</p>
-                            <div class="testimonial-stats">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                5.0
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card glass-card">
-                    <div class="testimonial-text">
-                        "The Extra Glow Combo transformed my dry, dull skin into a glowing masterpiece. The lotion is so hydrating without feeling greasy. My friends keep asking what I'm using!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="James L.">
-                        </div>
-                        <div class="author-info">
-                            <h4>James L.</h4>
-                            <p>Verified Customer • 3 months</p>
-                            <div class="testimonial-stats">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                5.0
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card glass-card">
-                    <div class="testimonial-text">
-                        "As someone with sensitive skin, I was hesitant to try new products. The Skin Analysis Wizard recommended the perfect routine for me. No irritation, just amazing results. My acne scars have faded significantly!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Priya K.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Priya K.</h4>
-                            <p>Verified Customer • 4 months</p>
-                            <div class="testimonial-stats">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                4.5
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Social Links Section -->
         <section id="social" class="social-section">
             <div class="fade-in">
@@ -4134,35 +3910,8 @@
             </div>
         </section>
 
-       <!-- Footer -->
+        <!-- Footer -->
         <footer id="footer">
-            <!-- Social Media Links Section in Footer -->
-            <div class="footer-social-section fade-in">
-                <h4>Connect With Us</h4>
-                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">Follow us for skincare tips, promotions, and updates</p>
-                <div class="footer-social-links">
-                    <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <div style="margin-top: 30px; text-align: center;">
-                    <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
-                    <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
-                </div>
-            </div>
-
             <div class="footer-content fade-in">
                 <div class="footer-column">
                     <h4>Lonz Flawls Aura</h4>
@@ -4176,7 +3925,7 @@
                         <li><a href="#products">Products</a></li>
                         <li><a href="#all-products">All Products</a></li>
                         <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#social">Connect</a></li>
                     </ul>
                 </div>
                 

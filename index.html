@@ -2304,6 +2304,75 @@
             color: #dc3545;
         }
 
+        /* Manual Village Entry */
+        .manual-village-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .manual-village-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .manual-village-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .manual-village-header i {
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        .manual-village-header h5 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .manual-village-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .manual-village-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Global Shipping Option */
+        .global-shipping-note {
+            padding: 15px;
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .global-shipping-note p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-shipping-note i {
+            color: #28a745;
+        }
+
         /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
@@ -2320,6 +2389,10 @@
             
             .address-options {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .manual-village-fields {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -2458,6 +2531,10 @@
             
             .address-progress-separator {
                 display: none;
+            }
+            
+            .manual-village-fields {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -2641,6 +2718,14 @@
             }
             
             .address-navigation .glass-button {
+                width: 100%;
+            }
+            
+            .manual-village-actions {
+                flex-direction: column;
+            }
+            
+            .manual-village-actions .glass-button {
                 width: 100%;
             }
         }
@@ -2913,7 +2998,12 @@
                     <input type="tel" id="shippingPhone" class="form-input" required>
                 </div>
                 
-                <!-- NEW ADDRESS SELECTION SYSTEM -->
+                <!-- Global Shipping Note -->
+                <div class="global-shipping-note">
+                    <p><i class="fas fa-globe-americas"></i> We ship worldwide! Don't see your village? You can enter it manually below.</p>
+                </div>
+                
+                <!-- NEW ADDRESS SELECTION SYSTEM WITH MANUAL ENTRY -->
                 <div class="address-selection-container">
                     <div class="address-progress">
                         <div class="address-progress-step active" data-step="country">
@@ -2962,6 +3052,13 @@
                         <div class="address-options" id="stateOptions">
                             <!-- State options will be populated by JavaScript -->
                         </div>
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="enterStateManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter State Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">Can't find your state?</small>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- City/Town Selection -->
@@ -2976,12 +3073,19 @@
                         <div class="address-options" id="cityOptions">
                             <!-- City options will be populated by JavaScript -->
                         </div>
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="enterCityManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter City Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">Can't find your city?</small>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Village/Suburb Selection -->
                     <div class="address-step" id="villageStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Village/Suburb</h4>
-                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery</p>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery. Can't find yours? Enter it manually below.</p>
                         <div class="address-search">
                             <input type="text" class="address-search-input" id="villageSearch" placeholder="Search for your village/suburb...">
                             <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchVillages()">
@@ -2991,11 +3095,43 @@
                         <div class="address-options" id="villageOptions">
                             <!-- Village options will be populated by JavaScript -->
                         </div>
+                        
+                        <!-- Manual Village Entry -->
+                        <div class="manual-village-container" id="manualVillageContainer">
+                            <div class="manual-village-header">
+                                <i class="fas fa-map-pin"></i>
+                                <h5>Enter Village/Suburb Details Manually</h5>
+                            </div>
+                            <div class="manual-village-fields">
+                                <div class="form-group">
+                                    <label for="manualVillageName">Village/Suburb Name</label>
+                                    <input type="text" id="manualVillageName" class="form-input" placeholder="Enter village or suburb name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="manualVillageZip">ZIP/Postal Code</label>
+                                    <input type="text" id="manualVillageZip" class="form-input" placeholder="Enter ZIP code">
+                                </div>
+                            </div>
+                            <div class="manual-village-actions">
+                                <button type="button" class="glass-button" onclick="cancelManualVillage()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button type="button" class="glass-button" onclick="saveManualVillage()" style="background: rgba(196, 167, 125, 0.3);">
+                                    <i class="fas fa-save"></i> Save & Continue
+                                </button>
+                            </div>
+                        </div>
+                        
                         <div class="address-options" style="margin-top: 15px;">
                             <div class="address-option" onclick="skipVillage()">
                                 <i class="fas fa-forward"></i>
-                                <p>Skip this step</p>
+                                <p>Skip Village/Suburb</p>
                                 <small style="color: rgba(255, 255, 255, 0.6);">I don't have a village/suburb</small>
+                            </div>
+                            <div class="address-option" onclick="enterVillageManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter Village Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">My village is not listed</small>
                             </div>
                         </div>
                     </div>
@@ -3010,6 +3146,13 @@
                             <input type="text" id="shippingZip" class="form-input" placeholder="Enter ZIP code" required>
                             <div class="zip-validation" id="zipValidation">
                                 <!-- Validation message will appear here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Note for manual village entry -->
+                        <div id="manualVillageNote" style="display: none;">
+                            <div class="global-shipping-note">
+                                <p><i class="fas fa-info-circle"></i> Using manually entered village and ZIP code. Shipping will be calculated based on this information.</p>
                             </div>
                         </div>
                         
@@ -3052,6 +3195,12 @@
                 <div class="form-group">
                     <label for="shippingApartment">Apartment, Suite, Unit (Optional)</label>
                     <input type="text" id="shippingApartment" class="form-input" placeholder="Apartment, suite, unit, etc.">
+                </div>
+                
+                <!-- Additional Notes -->
+                <div class="form-group">
+                    <label for="shippingNotes">Delivery Instructions (Optional)</label>
+                    <textarea id="shippingNotes" class="form-input" rows="3" placeholder="Any special delivery instructions?"></textarea>
                 </div>
                 
                 <div class="checkout-actions">
@@ -4559,19 +4708,25 @@
         let currentSearchCategory = 'all';
         let searchTimeout = null;
         
-        // NEW: Address Selection State
+        // NEW: Address Selection State with manual entry support
         let currentAddressStep = 'country';
         let selectedCountry = '';
         let selectedState = '';
         let selectedCity = '';
         let selectedVillage = '';
         let selectedZip = '';
+        let isManualEntry = false;
+        let manualState = '';
+        let manualCity = '';
+        let manualVillage = '';
+        let manualZip = '';
         
         // Address data structure (mock data for demonstration) - MODIFIED: Only South Africa and United States
         const addressData = {
             countries: [
                 { code: 'ZA', name: 'South Africa', flag: '🇿🇦', currency: 'ZAR' },
-                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' }
+                { code: 'US', name: 'United States', flag: '🇺🇸', currency: 'USD' },
+                { code: 'OTHER', name: 'Other Country', flag: '🌍', currency: 'USD' }
             ],
             states: {
                 'ZA': [
@@ -4581,23 +4736,27 @@
                 'US': [
                     'California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
                     'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan'
-                ]
+                ],
+                'OTHER': []
             },
             cities: {
                 'Gauteng': ['Johannesburg', 'Pretoria', 'Sandton', 'Randburg', 'Centurion'],
                 'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl', 'Worcester', 'George'],
                 'California': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento', 'San Jose'],
-                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth']
+                'Texas': ['Houston', 'Dallas', 'Austin', 'San Antonio', 'Fort Worth'],
+                'OTHER': []
             },
             villages: {
                 'Johannesburg': ['Sandton CBD', 'Randburg CBD', 'Rosebank', 'Parktown', 'Melville'],
                 'Cape Town': ['City Bowl', 'Atlantic Seaboard', 'Southern Suburbs', 'Northern Suburbs'],
-                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice']
+                'Los Angeles': ['Hollywood', 'Downtown LA', 'Beverly Hills', 'Santa Monica', 'Venice'],
+                'OTHER': []
             },
             zipCodes: {
                 'Johannesburg': ['2000', '2001', '2196', '2193', '2194'],
                 'Cape Town': ['8000', '8001', '7700', '7800', '7925'],
-                'Los Angeles': ['90001', '90002', '90003', '90004', '90005']
+                'Los Angeles': ['90001', '90002', '90003', '90004', '90005'],
+                'OTHER': []
             }
         };
         
@@ -5667,12 +5826,14 @@
                 status: 'Processing',
                 shippingAddress: {
                     country: selectedCountry,
-                    state: selectedState,
-                    city: selectedCity,
-                    village: selectedVillage,
-                    zip: selectedZip,
+                    state: selectedState || manualState,
+                    city: selectedCity || manualCity,
+                    village: selectedVillage || manualVillage,
+                    zip: selectedZip || manualZip,
                     street: document.getElementById('shippingAddress').value,
-                    apartment: document.getElementById('shippingApartment').value
+                    apartment: document.getElementById('shippingApartment').value,
+                    notes: document.getElementById('shippingNotes').value,
+                    isManualEntry: isManualEntry
                 }
             };
             
@@ -5737,7 +5898,7 @@
             return true;
         }
         
-        // NEW: Address Selection Functions
+        // NEW: Address Selection Functions with manual entry support
         
         function initializeAddressSelection() {
             populateCountryOptions();
@@ -5792,7 +5953,7 @@
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
                         <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
                         <p>No states/provinces available for this country.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">You can enter state manually.</p>
                     </div>
                 `;
                 return;
@@ -5812,6 +5973,8 @@
         
         function selectState(state) {
             selectedState = state;
+            manualState = '';
+            isManualEntry = false;
             
             document.querySelectorAll('#stateOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
@@ -5825,6 +5988,22 @@
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
+        function enterStateManually() {
+            isManualEntry = true;
+            selectedState = '';
+            manualState = prompt('Please enter your state/province name:');
+            
+            if (manualState && manualState.trim()) {
+                manualState = manualState.trim();
+                selectedState = manualState;
+                updateAddressProgress('state');
+                
+                populateCityOptions(manualState);
+                
+                setTimeout(() => goToNextAddressStep(), 500);
+            }
+        }
+        
         function populateCityOptions(state) {
             const cityOptions = document.getElementById('cityOptions');
             cityOptions.innerHTML = '';
@@ -5836,7 +6015,7 @@
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
                         <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
                         <p>No cities available for this state.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">Please proceed to the next step.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">You can enter city manually.</p>
                     </div>
                 `;
                 return;
@@ -5856,6 +6035,8 @@
         
         function selectCity(city) {
             selectedCity = city;
+            manualCity = '';
+            isManualEntry = false;
             
             document.querySelectorAll('#cityOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
@@ -5869,6 +6050,22 @@
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
+        function enterCityManually() {
+            isManualEntry = true;
+            selectedCity = '';
+            manualCity = prompt('Please enter your city/town name:');
+            
+            if (manualCity && manualCity.trim()) {
+                manualCity = manualCity.trim();
+                selectedCity = manualCity;
+                updateAddressProgress('city');
+                
+                populateVillageOptions(manualCity);
+                
+                setTimeout(() => goToNextAddressStep(), 500);
+            }
+        }
+        
         function populateVillageOptions(city) {
             const villageOptions = document.getElementById('villageOptions');
             villageOptions.innerHTML = '';
@@ -5880,7 +6077,7 @@
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
                         <i class="fas fa-exclamation-circle" style="font-size: 40px; margin-bottom: 15px;"></i>
                         <p>No villages/suburbs available for this city.</p>
-                        <p style="margin-top: 10px; font-size: 14px;">You can skip this step.</p>
+                        <p style="margin-top: 10px; font-size: 14px;">You can enter village manually below.</p>
                     </div>
                 `;
                 return;
@@ -5900,6 +6097,9 @@
         
         function selectVillage(village) {
             selectedVillage = village;
+            manualVillage = '';
+            manualZip = '';
+            isManualEntry = false;
             
             document.querySelectorAll('#villageOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
@@ -5908,11 +6108,87 @@
             
             updateAddressProgress('village');
             
+            // Clear manual village input if shown
+            document.getElementById('manualVillageContainer').classList.remove('active');
+            document.getElementById('manualVillageName').value = '';
+            document.getElementById('manualVillageZip').value = '';
+            
             setTimeout(() => goToNextAddressStep(), 500);
+        }
+        
+        function enterVillageManually() {
+            // Hide village options and show manual input
+            document.getElementById('villageOptions').style.display = 'none';
+            document.getElementById('villageSearch').style.display = 'none';
+            document.getElementById('manualVillageContainer').classList.add('active');
+            document.querySelectorAll('#villageStep .address-option').forEach(opt => {
+                opt.style.display = 'none';
+            });
+        }
+        
+        function cancelManualVillage() {
+            // Show village options and hide manual input
+            document.getElementById('villageOptions').style.display = 'block';
+            document.getElementById('villageSearch').style.display = 'flex';
+            document.getElementById('manualVillageContainer').classList.remove('active');
+            document.querySelectorAll('#villageStep .address-option').forEach(opt => {
+                opt.style.display = 'flex';
+            });
+            
+            // Clear manual input
+            document.getElementById('manualVillageName').value = '';
+            document.getElementById('manualVillageZip').value = '';
+        }
+        
+        function saveManualVillage() {
+            const villageName = document.getElementById('manualVillageName').value.trim();
+            const villageZip = document.getElementById('manualVillageZip').value.trim();
+            
+            if (!villageName) {
+                alert('Please enter village/suburb name');
+                return;
+            }
+            
+            if (!villageZip) {
+                alert('Please enter ZIP/postal code');
+                return;
+            }
+            
+            // Set manual values
+            manualVillage = villageName;
+            manualZip = villageZip;
+            selectedVillage = villageName;
+            selectedZip = villageZip;
+            isManualEntry = true;
+            
+            // Show manual village note in ZIP step
+            document.getElementById('manualVillageNote').style.display = 'block';
+            
+            updateAddressProgress('village');
+            
+            // Go to ZIP step directly since we already have ZIP
+            document.getElementById('villageStep').classList.remove('active');
+            currentAddressStep = 'zip';
+            document.getElementById('zipStep').classList.add('active');
+            
+            // Set the ZIP input value
+            document.getElementById('shippingZip').value = villageZip;
+            
+            // Update address confirmation
+            updateAddressConfirmation();
+            
+            // Update navigation
+            updateAddressNavigation();
+            
+            // Validate ZIP
+            validateZipCode();
         }
         
         function skipVillage() {
             selectedVillage = '';
+            manualVillage = '';
+            manualZip = '';
+            isManualEntry = false;
             
             updateAddressProgress('village');
             
@@ -5929,8 +6205,21 @@
                 return false;
             }
             
+            // If manual entry, accept any ZIP code
+            if (isManualEntry && manualZip) {
+                zipValidation.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>Manual ZIP code accepted</span>
+                `;
+                zipValidation.className = 'zip-validation valid';
+                
+                updateAddressConfirmation();
+                return true;
+            }
+            
+            // For regular entries, validate against list if available
             const validZips = addressData.zipCodes[selectedCity] || [];
-            const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2)));
+            const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2))) || validZips.length === 0;
             
             if (isValid) {
                 zipValidation.innerHTML = `
@@ -5955,16 +6244,20 @@
             const addressDetails = document.getElementById('addressDetails');
             const addressConfirmation = document.getElementById('addressConfirmation');
             
-            if (selectedCountry && selectedState && selectedCity && selectedZip) {
-                let addressText = `
-                    <strong>${selectedCity}, ${selectedState}</strong><br>
-                    ${selectedCountry}<br>
-                    ZIP: ${selectedZip}
-                `;
+            if ((selectedCountry && selectedState && selectedCity) || (selectedCountry && (manualState || manualCity))) {
+                let addressText = '';
                 
-                if (selectedVillage) {
+                if (isManualEntry) {
                     addressText = `
-                        <strong>${selectedVillage}, ${selectedCity}</strong><br>
+                        <strong>${manualVillage || 'N/A'}</strong><br>
+                        ${manualCity || selectedCity}, ${manualState || selectedState}<br>
+                        ${selectedCountry}<br>
+                        ZIP: ${manualZip || selectedZip}<br>
+                        <small style="color: var(--accent-color);"><i class="fas fa-edit"></i> Manually entered</small>
+                    `;
+                } else {
+                    addressText = `
+                        <strong>${selectedVillage || 'N/A'}, ${selectedCity}</strong><br>
                         ${selectedState}, ${selectedCountry}<br>
                         ZIP: ${selectedZip}
                     `;
@@ -5987,10 +6280,10 @@
                     stepEl.classList.add('active');
                 } else if (
                     (stepName === 'country' && selectedCountry) ||
-                    (stepName === 'state' && selectedState) ||
-                    (stepName === 'city' && selectedCity) ||
-                    (stepName === 'village' && selectedVillage !== undefined) ||
-                    (stepName === 'zip' && selectedZip)
+                    (stepName === 'state' && (selectedState || manualState)) ||
+                    (stepName === 'city' && (selectedCity || manualCity)) ||
+                    (stepName === 'village' && (selectedVillage !== undefined || manualVillage)) ||
+                    (stepName === 'zip' && (selectedZip || manualZip))
                 ) {
                     stepEl.classList.add('completed');
                 }
@@ -6036,6 +6329,16 @@
                 document.getElementById(`${currentAddressStep}Step`).classList.add('active');
                 
                 updateAddressNavigation();
+                
+                // Reset manual village display if going back to village step
+                if (currentAddressStep === 'village') {
+                    document.getElementById('villageOptions').style.display = 'block';
+                    document.getElementById('villageSearch').style.display = 'flex';
+                    document.getElementById('manualVillageContainer').classList.remove('active');
+                    document.querySelectorAll('#villageStep .address-option').forEach(opt => {
+                        opt.style.display = 'flex';
+                    });
+                }
             }
         }
         
@@ -6065,23 +6368,19 @@
                     }
                     break;
                 case 'state':
-                    if (!selectedState) {
-                        const states = addressData.states[selectedCountry] || [];
-                        if (states.length === 0) {
-                            selectedState = 'N/A';
-                            return true;
-                        }
-                        alert('Please select a state/province');
+                    if (!selectedState && !manualState) {
+                        alert('Please select or enter a state/province');
                         return false;
                     }
                     break;
                 case 'city':
-                    if (!selectedCity) {
-                        alert('Please select a city/town');
+                    if (!selectedCity && !manualCity) {
+                        alert('Please select or enter a city/town');
                         return false;
                     }
                     break;
                 case 'village':
+                    // Village is optional
                     break;
                 case 'zip':
                     if (!validateZipCode()) {
@@ -6094,6 +6393,12 @@
         }
         
         function validateAddressSelection() {
+            // For manual entry, we need at least country, state (manual), city (manual), and zip
+            if (isManualEntry) {
+                return selectedCountry && (manualState || selectedState) && (manualCity || selectedCity) && (manualZip || selectedZip);
+            }
+            
+            // For regular entry, we need country, state, city, and zip
             return selectedCountry && selectedState && selectedCity && selectedZip;
         }
         
@@ -6104,6 +6409,11 @@
             selectedCity = '';
             selectedVillage = '';
             selectedZip = '';
+            isManualEntry = false;
+            manualState = '';
+            manualCity = '';
+            manualVillage = '';
+            manualZip = '';
             
             document.querySelectorAll('.address-step').forEach(step => {
                 step.classList.remove('active');
@@ -6119,9 +6429,20 @@
                 option.classList.remove('selected');
             });
             
+            // Reset manual village container
+            document.getElementById('villageOptions').style.display = 'block';
+            document.getElementById('villageSearch').style.display = 'flex';
+            document.getElementById('manualVillageContainer').classList.remove('active');
+            document.getElementById('manualVillageName').value = '';
+            document.getElementById('manualVillageZip').value = '';
+            document.querySelectorAll('#villageStep .address-option').forEach(opt => {
+                opt.style.display = 'flex';
+            });
+            
             document.getElementById('shippingZip').value = '';
             document.getElementById('zipValidation').innerHTML = '';
             document.getElementById('addressConfirmation').style.display = 'none';
+            document.getElementById('manualVillageNote').style.display = 'none';
             
             updateAddressNavigation();
         }
@@ -6161,7 +6482,8 @@
         
         function searchCities() {
             const searchTerm = document.getElementById('citySearch').value.toLowerCase();
-            const cities = addressData.cities[selectedState] || [];
+            const stateName = selectedState || manualState;
+            const cities = addressData.cities[stateName] || [];
             const filteredCities = cities.filter(city => 
                 city.toLowerCase().includes(searchTerm)
             );
@@ -6193,7 +6515,8 @@
         
         function searchVillages() {
             const searchTerm = document.getElementById('villageSearch').value.toLowerCase();
-            const villages = addressData.villages[selectedCity] || [];
+            const cityName = selectedCity || manualCity;
+            const villages = addressData.villages[cityName] || [];
             const filteredVillages = villages.filter(village => 
                 village.toLowerCase().includes(searchTerm)
             );

@@ -67,7 +67,7 @@
         .floating-cart {
             position: fixed;
             left: 50%;
-            top: calc(50% - 400px);
+            top: calc(50% - 400px); /* MOVED UP 400px */
             transform: translate(-50%, -50%);
             z-index: 1000;
             display: flex;
@@ -262,19 +262,19 @@
             background: rgba(10, 25, 41, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            height: 120px;
+            height: 120px; /* Increased by 50% from 80px */
         }
 
         nav.scrolled {
             background: rgba(10, 25, 41, 0.95);
             backdrop-filter: blur(20px);
             padding: 32px 40px;
-            height: 90px;
+            height: 90px; /* Increased by 50% from 60px */
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 35.2px;
+            font-size: 35.2px; /* Increased by 5px from search button (30.2px) */
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
@@ -283,12 +283,12 @@
             gap: 10px;
             white-space: nowrap;
             flex-shrink: 0;
-            line-height: 1;
+            line-height: 1; /* Prevent text overflow */
         }
 
         .logo i {
             color: var(--accent-color);
-            font-size: 35.2px;
+            font-size: 35.2px; /* Increased logo icon size */
         }
 
         .nav-links {
@@ -331,7 +331,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            margin-right: 15px;
+            margin-right: 15px; /* Reduced margin to fit better */
         }
 
         .search-input {
@@ -360,7 +360,7 @@
         }
 
         .search-icon {
-            font-size: 30.2px;
+            font-size: 30.2px; /* Base size for search button */
             cursor: pointer;
             transition: var(--transition);
             padding: 8px;
@@ -391,13 +391,13 @@
 
         .nav-icons {
             display: flex;
-            gap: 15px;
+            gap: 15px; /* Reduced gap from 25px to fit better */
             align-items: center;
             position: relative;
         }
 
         .nav-icons i {
-            font-size: 30.2px;
+            font-size: 30.2px; /* Increased to match new proportions */
             cursor: pointer;
             transition: var(--transition);
         }
@@ -412,7 +412,7 @@
             font-size: 33.6px;
             cursor: pointer;
             padding: 8px;
-            margin-left: 10px;
+            margin-left: 10px; /* Reduced margin */
             transition: var(--transition);
         }
 
@@ -695,7 +695,7 @@
             backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
-            padding: 150px 30px 30px;
+            padding: 150px 30px 30px; /* Increased padding for larger nav */
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
@@ -722,7 +722,7 @@
 
         .mobile-menu-close {
             position: absolute;
-            top: 55px;
+            top: 55px; /* Adjusted for larger nav */
             right: 25px;
             font-size: 28px;
             color: var(--text-light);
@@ -758,7 +758,7 @@
         }
 
         .search-header {
-            padding: 30px 20px;
+            padding: 30px 20px; /* Increased padding */
             display: flex;
             align-items: center;
             gap: 15px;
@@ -769,7 +769,7 @@
             background: none;
             border: none;
             color: var(--text-light);
-            font-size: 28px;
+            font-size: 28px; /* Increased size */
             cursor: pointer;
             padding: 5px;
         }
@@ -779,9 +779,9 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--glass-border);
             border-radius: 25px;
-            padding: 18px 20px;
+            padding: 18px 20px; /* Increased padding */
             color: var(--text-light);
-            font-size: 18px;
+            font-size: 18px; /* Increased font size */
             outline: none;
         }
 
@@ -802,7 +802,7 @@
 
         /* Main Content - Adjusted for larger nav */
         .main-content {
-            padding-top: 180px;
+            padding-top: 180px; /* Increased from 140px for larger nav */
             position: relative;
             z-index: 1;
         }
@@ -1057,6 +1057,10 @@
 
         .product-info {
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 220px;
         }
 
         .product-info h3 {
@@ -1067,7 +1071,7 @@
         .product-info p {
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.5;
         }
 
@@ -1089,6 +1093,14 @@
         .product-details {
             margin-top: 10px;
             font-size: 0.9rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .product-details.expanded {
+            max-height: 500px;
+            overflow-y: auto;
         }
 
         .product-benefits, .product-usage, .product-ingredients {
@@ -1099,6 +1111,26 @@
             color: var(--accent-color);
             display: block;
             margin-bottom: 5px;
+        }
+
+        .see-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .see-more-btn:hover {
+            background: rgba(196, 167, 125, 0.1);
         }
 
         /* Gallery */
@@ -2092,25 +2124,6 @@
             max-height: 500px;
         }
 
-        .see-more-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 10px;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .see-more-btn:hover {
-            background: rgba(196, 167, 125, 0.1);
-        }
-
         /* Address Selection Styles - NEW */
         .address-selection-container {
             margin-bottom: 20px;
@@ -2304,6 +2317,93 @@
             color: #dc3545;
         }
 
+        /* NEW: VERTICAL COLLECTION STYLES */
+        .vertical-collection {
+            position: relative;
+            margin: 40px 0;
+            padding: 20px 0;
+        }
+
+        .collection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .collection-header h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .collection-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-arrow.disabled:hover {
+            background: var(--glass-bg);
+            transform: none;
+        }
+
+        .vertical-track-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .vertical-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 0 20px;
+            touch-action: pan-y;
+        }
+
+        .vertical-card {
+            min-width: 300px;
+            flex-shrink: 0;
+            height: 500px;
+        }
+
+        .vertical-card .product-card {
+            height: 100%;
+            position: relative;
+        }
+
+        .vertical-card .product-info {
+            min-height: 180px;
+        }
+
         /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
@@ -2311,7 +2411,7 @@
             }
             
             .logo {
-                font-size: 32px;
+                font-size: 32px; /* Adjusted for responsive */
             }
             
             .search-input.active {
@@ -2358,7 +2458,7 @@
             }
             
             .nav-icons {
-                gap: 15px;
+                gap: 15px; /* Maintain reduced gap */
             }
             
             .flagship-card {
@@ -2394,23 +2494,25 @@
             }
             
             .logo {
-                font-size: 28px;
+                font-size: 28px; /* Adjusted for mobile */
             }
             
             .search-input.active {
                 width: 220px;
             }
             
+            /* Adjust nav for mobile with 50% increase */
             nav {
-                padding: 38px 20px;
-                height: 105px;
+                padding: 38px 20px; /* Adjusted for mobile */
+                height: 105px; /* 70px * 1.5 = 105px */
             }
             
             nav.scrolled {
-                padding: 28px 20px;
-                height: 75px;
+                padding: 28px 20px; /* Adjusted for mobile */
+                height: 75px; /* 50px * 1.5 = 75px */
             }
             
+            /* Flagship product mobile adjustments */
             .flagship-card {
                 grid-column: span 1 !important;
             }
@@ -2429,6 +2531,7 @@
                 max-height: 60px;
             }
             
+            /* Results modal mobile */
             .personalized-products-container {
                 grid-template-columns: 1fr;
             }
@@ -2464,18 +2567,19 @@
         @media (max-width: 768px) {
             nav {
                 padding: 38px 20px;
-                height: 105px;
+                height: 105px; /* 70px * 1.5 = 105px */
             }
             
             nav.scrolled {
                 padding: 28px 20px;
-                height: 75px;
+                height: 75px; /* 50px * 1.5 = 75px */
             }
             
             .logo {
-                font-size: 24px;
+                font-size: 24px; /* Adjusted for smaller mobile */
             }
             
+            /* Hide desktop search input on mobile */
             .search-input.active {
                 display: none;
             }
@@ -2520,14 +2624,15 @@
             }
             
             .nav-icons {
-                gap: 12px;
+                gap: 12px; /* Further reduced for mobile */
             }
             
             .mobile-menu-btn {
-                margin-left: 8px;
-                font-size: 28px;
+                margin-left: 8px; /* Reduced margin */
+                font-size: 28px; /* Adjusted size */
             }
             
+            /* Floating cart for mobile */
             .floating-cart {
                 left: auto;
                 right: 20px;
@@ -2550,9 +2655,10 @@
             }
             
             .main-content {
-                padding-top: 135px;
+                padding-top: 135px; /* Increased for larger mobile nav */
             }
             
+            /* Cart items responsive */
             .cart-item {
                 grid-template-columns: 60px 1fr;
                 gap: 15px;
@@ -2577,6 +2683,7 @@
                 font-size: 0.8rem;
             }
             
+            /* Results Modal Responsive */
             .results-modal {
                 padding: 100px 10px 20px;
             }
@@ -2614,6 +2721,7 @@
                 margin-bottom: 10px;
             }
             
+            /* Success Modal Button Container - MOBILE FIX */
             .success-button-container {
                 flex-direction: column;
                 align-items: center;
@@ -2635,6 +2743,7 @@
                 font-size: 18px;
             }
             
+            /* Address selection mobile */
             .address-navigation {
                 flex-direction: column;
                 gap: 15px;
@@ -2647,11 +2756,11 @@
 
         @media (max-width: 480px) {
             .logo {
-                font-size: 20px;
+                font-size: 20px; /* Minimum size to prevent overflow */
             }
             
             .nav-icons {
-                gap: 8px;
+                gap: 8px; /* Minimum gap */
             }
             
             .search-results {
@@ -2676,6 +2785,7 @@
                 grid-template-columns: 1fr;
             }
             
+            /* Further adjust nav for very small screens */
             nav {
                 padding: 35px 15px;
                 height: 100px;
@@ -2690,6 +2800,7 @@
                 height: 180px;
             }
             
+            /* Success Modal Button Container - SMALL MOBILE */
             .success-button-container {
                 gap: 12px;
             }
@@ -2700,6 +2811,7 @@
                 padding: 14px 20px;
             }
             
+            /* Results modal small mobile */
             .affirmations-section .result-message h3 {
                 font-size: 1.4rem;
             }
@@ -2712,6 +2824,7 @@
                 padding: 15px;
             }
             
+            /* Address selection small mobile */
             .address-progress-step {
                 font-size: 12px;
             }
@@ -3355,64 +3468,6 @@
             </div>
         </section>
 
-        <!-- Recommended Combos -->
-        <section id="products">
-            <div class="section-header fade-in">
-                <h2>Recommended For You</h2>
-                <p>Based on your skin profile, we recommend these combos for optimal results</p>
-            </div>
-            
-            <div class="products-grid fade-in">
-                <!-- Whitening Combo -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">Recommended</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Whitening Combo</h3>
-                        <p>Complete whitening set for radiant, even-toned skin. Perfect for daily use.</p>
-                        <div class="product-details">
-                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                            <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening soap, whitening cream</div>
-                        </div>
-                        <div class="product-price">R420.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Extra Glow Combo -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Extra Glow Combo</h3>
-                        <p>Complete extra glow set for radiant, hydrated skin.</p>
-                        <div class="product-details">
-                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                            <div class="product-ingredients"><strong>Contains:</strong> Extra glow soap, extra glow oil, extra glow cream</div>
-                        </div>
-                        <div class="product-price">R250.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Extra Whitening Combo -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">Recommended</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Extra Whitening Combo</h3>
-                        <p>Premium whitening set with kojic soap for enhanced results.</p>
-                        <div class="product-details">
-                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                            <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening cream, kojic soap</div>
-                        </div>
-                        <div class="product-price">R500.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-            </div>
-        </section>
-
         <!-- Flagship Product -->
         <section id="flagship">
             <div class="section-header fade-in">
@@ -3424,7 +3479,6 @@
                 <div class="product-card glass-card flagship-card">
                     <div class="product-badge badge-flagship">Flagship</div>
                     <div class="flagship-container">
-                        <!-- UPDATED: Changed from background-image div to img tag -->
                         <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Whitening Oil 100ml" class="flagship-image">
                         <div class="flagship-info">
                             <h3>Whitening Oil 100ml</h3>
@@ -3439,6 +3493,399 @@
                             </button>
                             <div class="product-price">R200.00</div>
                             <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Extra Glow Collection Vertical -->
+        <section id="extra-glow-collection" class="vertical-collection">
+            <div class="collection-header fade-in">
+                <h3>Extra Glow Collection</h3>
+                <div class="collection-nav">
+                    <button class="nav-arrow left" id="extraGlowPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow right" id="extraGlowNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vertical-track-container">
+                <div class="vertical-track" id="extraGlowTrack">
+                    <!-- Extra Glow Oil -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Extra Glow Oil</h3>
+                                <p>Radiant glow oil for luminous, healthy-looking skin. Lightweight formula that absorbs quickly.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Provides intense glow, Hydrates skin, Improves skin texture</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Apply daily after cleansing</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Jojoba oil, Argan oil</div>
+                                </div>
+                                <button class="see-more-btn" data-target="extra-glow-oil">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R100.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Extra Glow Soap -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Extra Glow Soap</h3>
+                                <p>Nourishing soap for glowing, moisturized skin. Gently cleanses while providing radiance.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Brings out the glow, Moisturises dry skin, Helps treat Stretch marks, Helps fade skin scars</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
+                                </div>
+                                <button class="see-more-btn" data-target="extra-glow-soap">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R70.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Extra Glow Lotion -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Extra Glow Lotion 250g</h3>
+                                <p>Hydrating lotion for glowing, healthy-looking skin. Provides all-day moisture and radiance.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Helps with dry skin, Glowing, Dark inner thighs, Sunburn, Stretch marks, Blemishes, Wounds</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Vegetal glycerin, Sodium lactate</div>
+                                </div>
+                                <button class="see-more-btn" data-target="extra-glow-lotion">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R100.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Whitening Collection Vertical -->
+        <section id="whitening-collection" class="vertical-collection">
+            <div class="collection-header fade-in">
+                <h3>Whitening Collection</h3>
+                <div class="collection-nav">
+                    <button class="nav-arrow left" id="whiteningPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow right" id="whiteningNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vertical-track-container">
+                <div class="vertical-track" id="whiteningTrack">
+                    <!-- Whitening Oil -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Whitening Tissue Oil</h3>
+                                <p>Lightweight tissue oil for targeted whitening treatment. Evens skin tone and reduces dark spots.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Brightens skin, Reduces dark spots, Evens skin tone</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Apply to targeted areas daily</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Kojic acid, Licorice extract</div>
+                                </div>
+                                <button class="see-more-btn" data-target="whitening-oil">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R200.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitening Soap -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Whitening Soap</h3>
+                                <p>Gentle cleansing soap for skin whitening purposes. Removes impurities while brightening skin.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Skin whitening purposes, Eliminates excess oils, Eliminates blemishes, Gently exfoliates dead skin cells, Treats hyperpigmentation and Acne</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
+                                </div>
+                                <button class="see-more-btn" data-target="whitening-soap">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R70.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Whitening Cream -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Whitening Cream 250g</h3>
+                                <p>Advanced whitening cream for even skin tone and radiant complexion. Provides deep hydration.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Improves skin tone, Strong moisturising, Anti Aging, Acne, Pigmentation, Dark spot, Pimples</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C, Collagen and Glutathione</div>
+                                </div>
+                                <button class="see-more-btn" data-target="whitening-cream">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R150.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Combo - UPDATED TO VERTICAL -->
+        <section id="products" class="vertical-collection">
+            <div class="collection-header fade-in">
+                <h3>Recommended Combo</h3>
+                <div class="collection-nav">
+                    <button class="nav-arrow left" id="comboPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow right" id="comboNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vertical-track-container">
+                <div class="vertical-track" id="comboTrack">
+                    <!-- Whitening Combo -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-recommended">Recommended</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Whitening Combo</h3>
+                                <p>Complete whitening set for radiant, even-toned skin. Perfect for daily use.</p>
+                                <div class="product-details">
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                                    <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening soap, whitening cream</div>
+                                </div>
+                                <button class="see-more-btn" data-target="whitening-combo">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R420.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Extra Glow Combo -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-bestseller">Bestseller</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Extra Glow Combo</h3>
+                                <p>Complete extra glow set for radiant, hydrated skin.</p>
+                                <div class="product-details">
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                                    <div class="product-ingredients"><strong>Contains:</strong> Extra glow soap, extra glow oil, extra glow cream</div>
+                                </div>
+                                <button class="see-more-btn" data-target="extra-glow-combo">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R250.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Extra Whitening Combo -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-recommended">Recommended</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Extra Whitening Combo</h3>
+                                <p>Premium whitening set with kojic soap for enhanced results.</p>
+                                <div class="product-details">
+                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                                    <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening cream, kojic soap</div>
+                                </div>
+                                <button class="see-more-btn" data-target="extra-whitening-combo">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R500.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kojic Vertical -->
+        <section id="kojic" class="vertical-collection">
+            <div class="collection-header fade-in">
+                <h3>Kojic Collection</h3>
+                <div class="collection-nav">
+                    <button class="nav-arrow left" id="kojicPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow right" id="kojicNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vertical-track-container">
+                <div class="vertical-track" id="kojicTrack">
+                    <!-- Kojic Soap -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Kojic Soap</h3>
+                                <p>Treats different skin disorders and cleans whole body. Powerful formula for skin brightening.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Benefits:</strong> Treats uneven skin tone, Dark spots due to acne, Brightens the skin</div>
+                                    <div class="product-usage"><strong>Usage:</strong> Use daily for best results</div>
+                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Kojic acid, Glycerin, Essential oils</div>
+                                </div>
+                                <button class="see-more-btn" data-target="kojic-soap">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R150.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Amal Collections Vertical -->
+        <section id="amal-collections" class="vertical-collection">
+            <div class="collection-header fade-in">
+                <h3>Amal Collections</h3>
+                <div class="collection-nav">
+                    <button class="nav-arrow left" id="amalPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow right" id="amalNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="vertical-track-container">
+                <div class="vertical-track" id="amalTrack">
+                    <!-- Black Oud (100ml) -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-recommended">New</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Black Oud (100ml)</h3>
+                                <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                                </div>
+                                <button class="see-more-btn" data-target="black-oud">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R450.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- White Oud (100ml) -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-recommended">New</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>White Oud (100ml)</h3>
+                                <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                                </div>
+                                <button class="see-more-btn" data-target="white-oud">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R450.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium Oud (100ml) -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-flagship">Premium</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>Premium Oud (100ml)</h3>
+                                <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
+                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                                </div>
+                                <button class="see-more-btn" data-target="premium-oud">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R1500.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- OUD JOY (100ml) -->
+                    <div class="vertical-card">
+                        <div class="product-card glass-card">
+                            <div class="product-badge badge-bestseller">Bestseller</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                            <div class="product-info">
+                                <h3>OUD JOY (100ml)</h3>
+                                <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
+                                <div class="product-details">
+                                    <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
+                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                                </div>
+                                <button class="see-more-btn" data-target="oud-joy">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
+                                <div class="product-price">R600.00</div>
+                            </div>
+                            <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -3464,6 +3911,9 @@
                             <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
                             <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C, Collagen and Glutathione</div>
                         </div>
+                        <button class="see-more-btn" data-target="whitening-cream-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R150.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3478,6 +3928,9 @@
                         <div class="product-details">
                             <div class="product-benefits"><strong>Benefits:</strong> Treats uneven skin tone, Dark spots due to acne, Brightens the skin</div>
                         </div>
+                        <button class="see-more-btn" data-target="kojic-soap-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R150.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3494,6 +3947,9 @@
                             <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
                             <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Vegetal glycerin, Sodium lactate</div>
                         </div>
+                        <button class="see-more-btn" data-target="extra-glow-lotion-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3510,6 +3966,9 @@
                             <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
                             <div class="product-ingredients"><strong>Active Ingredients:</strong> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
                         </div>
+                        <button class="see-more-btn" data-target="whitening-soap-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R70.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3526,6 +3985,9 @@
                             <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
                             <div class="product-ingredients"><strong>Active Ingredients:</strong> Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
                         </div>
+                        <button class="see-more-btn" data-target="extra-glow-soap-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R70.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3537,6 +3999,12 @@
                     <div class="product-info">
                         <h3>Whitening Tissue Oil</h3>
                         <p>Lightweight tissue oil for targeted whitening treatment.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Brightens targeted areas, Reduces dark spots, Evens skin tone</div>
+                        </div>
+                        <button class="see-more-btn" data-target="whitening-tissue-oil">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R200.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
@@ -3548,286 +4016,15 @@
                     <div class="product-info">
                         <h3>Extra Glow Oil</h3>
                         <p>Radiant glow oil for luminous, healthy-looking skin.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Provides intense glow, Hydrates skin, Improves skin texture</div>
+                        </div>
+                        <button class="see-more-btn" data-target="extra-glow-oil-all">
+                            <i class="fas fa-chevron-down"></i> See More
+                        </button>
                         <div class="product-price">R100.00</div>
                     </div>
                     <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- AMAL FRAGRANCES SECTION -->
-                <!-- Collection 1: THE EXCLUSIVE OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Black Oud (30ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R180.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Black Oud (50ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R250.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Black Oud (100ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R450.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>White Oud (30ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R180.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>White Oud (50ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R250.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>White Oud (100ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R450.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Symphony Oud (30ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R180.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="106" data-name="Symphony Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Symphony Oud (50ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R250.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="107" data-name="Symphony Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Symphony Oud (100ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R450.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="108" data-name="Symphony Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 2: THE EXCLUSIVE OUD SPRING COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>OUD JOY (50ml)</h3>
-                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
-                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R350.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>OUD JOY (100ml)</h3>
-                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
-                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R600.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 3: THE PREMIUM OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-flagship">Premium</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Premium Oud (50ml)</h3>
-                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R900.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-flagship">Premium</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Premium Oud (100ml)</h3>
-                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
-                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R1500.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 5: THE HOME DIFFUSER OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-badge badge-recommended">Home Fragrance</div>
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Home Diffuser Oud</h3>
-                        <p>THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Type:</strong> Home Diffuser</div>
-                            <div class="product-usage"><strong>Use:</strong> Home fragrance</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R350.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 6: THE CAR DIFFUSER OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Car Diffuser Oud</h3>
-                        <p>THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Type:</strong> Car Diffuser</div>
-                            <div class="product-usage"><strong>Use:</strong> Car fragrance</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R80.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 7: THE BODY LOTION OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Body Lotion Oud</h3>
-                        <p>THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Type:</strong> Body Lotion</div>
-                            <div class="product-usage"><strong>Use:</strong> Daily moisturizer</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R200.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                </div>
-                
-                <!-- Collection 8: THE DEODORANT OUD COLLECTION -->
-                <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="product-info">
-                        <h3>Deodorant Oud</h3>
-                        <p>THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.</p>
-                        <div class="product-details">
-                            <div class="product-benefits"><strong>Type:</strong> Deodorant</div>
-                            <div class="product-usage"><strong>Use:</strong> Daily protection</div>
-                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                        </div>
-                        <div class="product-price">R100.00</div>
-                    </div>
-                    <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -4047,6 +4244,50 @@
         const seeMoreBtn = document.querySelector('.see-more-btn');
         const flagshipDetails = document.querySelector('.flagship-details');
         
+        // NEW: Vertical Collection Elements
+        const verticalCollections = [
+            {
+                id: 'extraGlow',
+                track: document.getElementById('extraGlowTrack'),
+                prevBtn: document.getElementById('extraGlowPrev'),
+                nextBtn: document.getElementById('extraGlowNext'),
+                cards: [],
+                currentIndex: 0
+            },
+            {
+                id: 'whitening',
+                track: document.getElementById('whiteningTrack'),
+                prevBtn: document.getElementById('whiteningPrev'),
+                nextBtn: document.getElementById('whiteningNext'),
+                cards: [],
+                currentIndex: 0
+            },
+            {
+                id: 'combo',
+                track: document.getElementById('comboTrack'),
+                prevBtn: document.getElementById('comboPrev'),
+                nextBtn: document.getElementById('comboNext'),
+                cards: [],
+                currentIndex: 0
+            },
+            {
+                id: 'kojic',
+                track: document.getElementById('kojicTrack'),
+                prevBtn: document.getElementById('kojicPrev'),
+                nextBtn: document.getElementById('kojicNext'),
+                cards: [],
+                currentIndex: 0
+            },
+            {
+                id: 'amal',
+                track: document.getElementById('amalTrack'),
+                prevBtn: document.getElementById('amalPrev'),
+                nextBtn: document.getElementById('amalNext'),
+                cards: [],
+                currentIndex: 0
+            }
+        ];
+        
         // Enhanced Product data with skin issues and benefits - UPDATED WITH AMAL FRAGRANCES
         const products = [
             {
@@ -4216,36 +4457,6 @@
             },
             // AMAL FRAGRANCES PRODUCTS
             {
-                id: 100,
-                name: "Black Oud (30ml)",
-                price: 180.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.",
-                benefits: "Fragrance: Black Oud",
-                usage: "Size: 30ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "luxury"],
-                benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 101,
-                name: "Black Oud (50ml)",
-                price: 250.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.",
-                benefits: "Fragrance: Black Oud",
-                usage: "Size: 50ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "luxury"],
-                benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
                 id: 102,
                 name: "Black Oud (100ml)",
                 price: 450.00,
@@ -4257,36 +4468,6 @@
                 category: "perfume",
                 skinIssues: ["fragrance", "oud", "perfume", "luxury"],
                 benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 103,
-                name: "White Oud (30ml)",
-                price: 180.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.",
-                benefits: "Fragrance: White Oud",
-                usage: "Size: 30ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "floral"],
-                benefitsList: ["long-lasting", "floral notes", "subtle fragrance"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 104,
-                name: "White Oud (50ml)",
-                price: 250.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.",
-                benefits: "Fragrance: White Oud",
-                usage: "Size: 50ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "floral"],
-                benefitsList: ["long-lasting", "floral notes", "subtle fragrance"],
                 searchScore: 85,
                 section: "all-products"
             },
@@ -4306,63 +4487,18 @@
                 section: "all-products"
             },
             {
-                id: 106,
-                name: "Symphony Oud (30ml)",
-                price: 180.00,
+                id: 112,
+                name: "Premium Oud (100ml)",
+                price: 1500.00,
                 image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
-                usage: "Size: 30ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 107,
-                name: "Symphony Oud (50ml)",
-                price: 250.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
-                usage: "Size: 50ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 108,
-                name: "Symphony Oud (100ml)",
-                price: 450.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
+                description: "THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.",
+                benefits: "Collection: Premium Oud",
                 usage: "Size: 100ml",
-                ingredients: "Collection: Amal Fragrances",
+                ingredients: "Category: Amal Fragrances",
                 category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
-                searchScore: 85,
-                section: "all-products"
-            },
-            {
-                id: 109,
-                name: "OUD JOY (50ml)",
-                price: 350.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.",
-                benefits: "Fragrance: OUD JOY",
-                usage: "Size: 50ml",
-                ingredients: "Collection: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "spring"],
-                benefitsList: ["fresh", "uplifting", "spring fragrance"],
-                searchScore: 85,
+                skinIssues: ["fragrance", "oud", "perfume", "premium", "luxury"],
+                benefitsList: ["luxury", "premium ingredients", "exclusive"],
+                searchScore: 90,
                 section: "all-products"
             },
             {
@@ -4379,96 +4515,6 @@
                 benefitsList: ["fresh", "uplifting", "spring fragrance"],
                 searchScore: 85,
                 section: "all-products"
-            },
-            {
-                id: 111,
-                name: "Premium Oud (50ml)",
-                price: 900.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.",
-                benefits: "Collection: Premium Oud",
-                usage: "Size: 50ml",
-                ingredients: "Category: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "premium", "luxury"],
-                benefitsList: ["luxury", "premium ingredients", "exclusive"],
-                searchScore: 90,
-                section: "all-products"
-            },
-            {
-                id: 112,
-                name: "Premium Oud (100ml)",
-                price: 1500.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.",
-                benefits: "Collection: Premium Oud",
-                usage: "Size: 100ml",
-                ingredients: "Category: Amal Fragrances",
-                category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "premium", "luxury"],
-                benefitsList: ["luxury", "premium ingredients", "exclusive"],
-                searchScore: 90,
-                section: "all-products"
-            },
-            {
-                id: 113,
-                name: "Home Diffuser Oud",
-                price: 350.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.",
-                benefits: "Type: Home Diffuser",
-                usage: "Use: Home fragrance",
-                ingredients: "Category: Amal Fragrances",
-                category: "home fragrance",
-                skinIssues: ["fragrance", "oud", "home", "diffuser"],
-                benefitsList: ["home fragrance", "creates ambiance", "long-lasting"],
-                searchScore: 80,
-                section: "all-products"
-            },
-            {
-                id: 114,
-                name: "Car Diffuser Oud",
-                price: 80.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.",
-                benefits: "Type: Car Diffuser",
-                usage: "Use: Car fragrance",
-                ingredients: "Category: Amal Fragrances",
-                category: "car fragrance",
-                skinIssues: ["fragrance", "oud", "car", "travel"],
-                benefitsList: ["car fragrance", "travel-friendly", "refreshing"],
-                searchScore: 75,
-                section: "all-products"
-            },
-            {
-                id: 115,
-                name: "Body Lotion Oud",
-                price: 200.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.",
-                benefits: "Type: Body Lotion",
-                usage: "Use: Daily moisturizer",
-                ingredients: "Category: Amal Fragrances",
-                category: "body care",
-                skinIssues: ["fragrance", "oud", "body lotion", "moisturizer"],
-                benefitsList: ["moisturizing", "fragrant", "skin care"],
-                searchScore: 80,
-                section: "all-products"
-            },
-            {
-                id: 116,
-                name: "Deodorant Oud",
-                price: 100.00,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.",
-                benefits: "Type: Deodorant",
-                usage: "Use: Daily protection",
-                ingredients: "Category: Amal Fragrances",
-                category: "personal care",
-                skinIssues: ["fragrance", "oud", "deodorant", "personal care"],
-                benefitsList: ["long-lasting", "protection", "fragrant"],
-                searchScore: 75,
-                section: "all-products"
             }
         ];
         
@@ -4476,38 +4522,38 @@
         const recommendationLogic = {
             "acne": {
                 description: "For acne-prone skin, we recommend gentle yet effective products that combat breakouts while soothing inflammation.",
-                products: [3, 2, 5],
+                products: [3, 2, 5], // Kojic Soap, Whitening Cream, Whitening Soap
                 primaryCombo: null,
                 explanation: "These products work together to cleanse, treat, and prevent breakouts without harsh chemicals."
             },
             "dark-spots": {
                 description: "For dark spots and hyperpigmentation, we recommend targeted brightening products that fade spots and even skin tone.",
-                products: [1, 2, 3],
-                primaryCombo: 14,
+                products: [1, 2, 3], // Whitening Oil, Whitening Cream, Kojic Soap
+                primaryCombo: 14, // Whitening Combo
                 explanation: "This combination delivers maximum brightening power to fade dark spots and reveal radiant skin."
             },
             "dry": {
                 description: "For dry skin, we recommend intensive hydration and nourishment to restore moisture barrier and glow.",
-                products: [4, 8],
-                primaryCombo: 13,
+                products: [4, 8], // Extra Glow Lotion, Extra Glow Oil
+                primaryCombo: 13, // Extra Glow Combo
                 explanation: "These deeply hydrating products work together to quench thirsty skin and restore natural radiance."
             },
             "uneven-tone": {
                 description: "For uneven skin tone, we recommend products that balance complexion and deliver consistent results.",
-                products: [1, 2, 5],
-                primaryCombo: 14,
+                products: [1, 2, 5], // Whitening Oil, Whitening Cream, Whitening Soap
+                primaryCombo: 14, // Whitening Combo
                 explanation: "This combination evens out skin tone and delivers a balanced, radiant complexion."
             },
             "glow": {
                 description: "For glow maintenance, we recommend products that enhance natural radiance and protect skin health.",
-                products: [4, 6, 8],
-                primaryCombo: 13,
+                products: [4, 6, 8], // Extra Glow Lotion, Extra Glow Soap, Extra Glow Oil
+                primaryCombo: 13, // Extra Glow Combo
                 explanation: "These glow-enhancing products work together to maintain your skin's natural luminosity."
             }
         };
         
         // Top searched products (anchor buys) - UPDATED TO INCLUDE AMAL FRAGRANCES
-        const topSearchedProducts = [1, 14, 2, 13, 3, 4, 100, 109, 111, 113];
+        const topSearchedProducts = [1, 14, 2, 13, 3, 4, 102, 110, 112, 105];
         
         // Common skin issues and benefits for suggestions - UPDATED WITH FRAGRANCE TERMS
         const searchSuggestions = {
@@ -4539,7 +4585,7 @@
         
         // Current wizard step
         let currentStep = 1;
-        const totalSteps = 3;
+        const totalSteps = 3; // Changed from 4 to 3 after removing photo upload
         
         // Gallery state
         let currentGallerySlide = 0;
@@ -4606,6 +4652,9 @@
         
         // Initialize address selection
         initializeAddressSelection();
+        
+        // Initialize vertical collections
+        initializeVerticalCollections();
         
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
@@ -4692,6 +4741,7 @@
         
         closeCheckoutBtn.addEventListener('click', () => {
             checkoutModal.classList.remove('active');
+            // Reset address selection
             resetAddressSelection();
         });
         
@@ -4726,6 +4776,7 @@
                 }
             });
             
+            // Also add the primary combo if it exists
             const logic = recommendationLogic[userData.skinConcern];
             if (logic && logic.primaryCombo) {
                 const comboProduct = products.find(p => p.id === logic.primaryCombo);
@@ -4747,6 +4798,7 @@
                 addAllToCartBtn.style.background = '';
             }, 2000);
             
+            // Open cart modal
             setTimeout(() => {
                 resultsModal.classList.remove('active');
                 cartModal.classList.add('active');
@@ -4755,19 +4807,24 @@
         
         // Enhanced Search functionality
         searchIcon.addEventListener('click', () => {
+            // Check if mobile
             if (window.innerWidth <= 768) {
+                // Open full screen search overlay
                 searchOverlay.classList.add('active');
                 searchOverlayInput.focus();
                 document.body.style.overflow = 'hidden';
                 
+                // Show top products when search is opened
                 if (!searchOverlayInput.value.trim()) {
                     displayTopSearchedProductsInOverlay();
                 }
             } else {
+                // Desktop behavior
                 searchInput.classList.add('active');
                 searchClose.classList.add('active');
                 searchInput.focus();
                 
+                // Show top products when search is opened
                 if (!searchInput.value.trim()) {
                     displayTopSearchedProducts();
                 }
@@ -4856,6 +4913,7 @@
                     <div class="suggestions-grid">
             `;
             
+            // Add skin issue suggestions
             searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
             });
@@ -4869,6 +4927,7 @@
                     <div class="suggestions-grid">
             `;
             
+            // Add benefit suggestions
             searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
             });
@@ -4880,6 +4939,7 @@
             
             searchOverlayResults.innerHTML = resultsHTML;
             
+            // Add event listeners to top products and suggestions
             document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
@@ -4934,6 +4994,7 @@
                     <div class="suggestions-grid">
             `;
             
+            // Add skin issue suggestions
             searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
             });
@@ -4947,6 +5008,7 @@
                     <div class="suggestions-grid">
             `;
             
+            // Add benefit suggestions
             searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
             });
@@ -4959,6 +5021,7 @@
             searchResults.innerHTML = resultsHTML;
             searchResults.classList.add('active');
             
+            // Add event listeners to top products and suggestions
             document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
@@ -4988,26 +5051,31 @@
                 let score = 0;
                 let matchedFields = [];
                 
+                // Check product name
                 if (product.name.toLowerCase().includes(searchTerm)) {
                     score += 30;
                     matchedFields.push('name');
                 }
                 
+                // Check description
                 if (product.description.toLowerCase().includes(searchTerm)) {
                     score += 20;
                     matchedFields.push('description');
                 }
                 
+                // Check benefits
                 if (product.benefits.toLowerCase().includes(searchTerm)) {
                     score += 15;
                     matchedFields.push('benefits');
                 }
                 
+                // Check skin issues
                 product.skinIssues.forEach(issue => {
                     if (issue.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('skin issue: ' + issue);
                         
+                        // Add similar skin issues to suggestions
                         searchSuggestions.skinIssues.forEach(si => {
                             if (si.includes(searchTerm) && si !== issue) {
                                 suggestions.add(si);
@@ -5016,11 +5084,13 @@
                     }
                 });
                 
+                // Check benefits list
                 product.benefitsList.forEach(benefit => {
                     if (benefit.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('benefit: ' + benefit);
                         
+                        // Add similar benefits to suggestions
                         searchSuggestions.benefits.forEach(b => {
                             if (b.includes(searchTerm) && b !== benefit) {
                                 suggestions.add(b);
@@ -5029,6 +5099,7 @@
                     }
                 });
                 
+                // Check category
                 if (product.category.toLowerCase().includes(searchTerm)) {
                     score += 5;
                     matchedFields.push('category');
@@ -5037,14 +5108,16 @@
                 if (score > 0) {
                     filteredProducts.push({
                         product: product,
-                        score: score + product.searchScore,
+                        score: score + product.searchScore, // Boost by search popularity
                         matchedFields: matchedFields
                     });
                 }
             });
             
+            // Sort by relevance score
             filteredProducts.sort((a, b) => b.score - a.score);
             
+            // Get unique suggestions and limit to 5
             const suggestionArray = Array.from(suggestions).slice(0, 5);
             
             displaySearchResults(filteredProducts, suggestionArray, searchTerm, resultsContainer);
@@ -5069,6 +5142,7 @@
             
             let resultsHTML = '';
             
+            // Add suggestions if available
             if (suggestions.length > 0) {
                 resultsHTML += `
                     <div class="search-suggestions">
@@ -5086,6 +5160,7 @@
                 `;
             }
             
+            // Add search results
             if (filteredProducts.length > 0) {
                 resultsHTML += `
                     <div class="search-results-list">
@@ -5122,6 +5197,7 @@
                 searchResults.classList.add('active');
             }
             
+            // Add event listeners
             resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
@@ -5130,6 +5206,7 @@
                     if (product) {
                         navigateToProduct(product);
                         
+                        // Close search overlay if open
                         if (searchOverlay.classList.contains('active')) {
                             searchOverlay.classList.remove('active');
                             document.body.style.overflow = '';
@@ -5155,11 +5232,13 @@
         
         // Function to navigate to product and highlight it
         function navigateToProduct(product) {
+            // Close desktop search if open
             searchInput.classList.remove('active');
             searchClose.classList.remove('active');
             searchInput.value = '';
             searchResults.classList.remove('active');
             
+            // Determine which section the product is in
             let targetSectionId;
             if (product.section === "products") {
                 targetSectionId = "products";
@@ -5169,25 +5248,30 @@
                 targetSectionId = "all-products";
             }
             
+            // Scroll to the correct section
             document.getElementById(targetSectionId).scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
             });
             
+            // Find and highlight the product
             setTimeout(() => {
                 const productElement = document.querySelector(`.add-to-cart[data-id="${product.id}"]`);
                 if (productElement) {
                     const productCard = productElement.closest('.product-card');
                     
+                    // Scroll to the specific product card
                     productCard.scrollIntoView({ 
                         behavior: 'smooth',
                         block: 'center'
                     });
                     
+                    // Highlight animation
                     productCard.style.animation = 'none';
-                    void productCard.offsetWidth;
+                    void productCard.offsetWidth; // Trigger reflow
                     productCard.style.animation = 'pulse 2s';
                     
+                    // Add temporary highlight
                     productCard.style.boxShadow = '0 0 0 3px var(--accent-color)';
                     productCard.style.transform = 'scale(1.02)';
                     
@@ -5254,6 +5338,7 @@
                 });
             }
             
+            // Add pulse animation
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes pulse {
@@ -5264,9 +5349,14 @@
             `;
             document.head.appendChild(style);
             
+            // Initialize flagship product "See More" functionality
             initializeFlagshipProduct();
             
+            // Initialize all add to cart buttons (including new Amal Fragrances products)
             initializeAddToCartButtons();
+            
+            // Initialize "See More" buttons for product details
+            initializeSeeMoreButtons();
         });
         
         // Initialize all add to cart buttons
@@ -5297,12 +5387,33 @@
             });
         }
         
+        // Initialize "See More" buttons for product details
+        function initializeSeeMoreButtons() {
+            document.querySelectorAll('.see-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    const details = this.previousElementSibling;
+                    
+                    if (details.classList.contains('product-details')) {
+                        if (details.classList.contains('expanded')) {
+                            details.classList.remove('expanded');
+                            this.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                        } else {
+                            details.classList.add('expanded');
+                            this.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
+                        }
+                    }
+                });
+            });
+        }
+        
         // Flagship product "See More" functionality
         function initializeFlagshipProduct() {
             const seeMoreBtn = document.querySelector('.see-more-btn');
             const flagshipDetails = document.querySelector('.flagship-details');
             
             if (seeMoreBtn && flagshipDetails) {
+                // Set initial state based on screen size
                 const isMobile = window.innerWidth <= 850;
                 if (isMobile) {
                     flagshipDetails.classList.add('collapsed');
@@ -5314,6 +5425,7 @@
                     seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
                 }
                 
+                // Toggle functionality
                 seeMoreBtn.addEventListener('click', () => {
                     const isCollapsed = flagshipDetails.classList.contains('collapsed');
                     
@@ -5328,15 +5440,112 @@
                     }
                 });
                 
+                // Update on window resize
                 window.addEventListener('resize', () => {
                     const isMobile = window.innerWidth <= 850;
                     
+                    // Only auto-collapse on mobile, not on desktop
                     if (isMobile && flagshipDetails.classList.contains('expanded')) {
                         flagshipDetails.classList.remove('expanded');
                         flagshipDetails.classList.add('collapsed');
                         seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
                     }
                 });
+            }
+        }
+        
+        // NEW: Initialize vertical collections
+        function initializeVerticalCollections() {
+            verticalCollections.forEach(collection => {
+                // Get all cards in the track
+                collection.cards = Array.from(collection.track.querySelectorAll('.vertical-card'));
+                
+                // Calculate total width and card width
+                const cardWidth = 330; // 300px card + 30px gap
+                const trackWidth = collection.cards.length * cardWidth;
+                collection.track.style.width = `${trackWidth}px`;
+                
+                // Add event listeners for navigation
+                collection.prevBtn.addEventListener('click', () => {
+                    if (collection.currentIndex > 0) {
+                        collection.currentIndex--;
+                        updateVerticalTrackPosition(collection);
+                    }
+                    updateNavButtons(collection);
+                });
+                
+                collection.nextBtn.addEventListener('click', () => {
+                    if (collection.currentIndex < collection.cards.length - 1) {
+                        collection.currentIndex++;
+                        updateVerticalTrackPosition(collection);
+                    }
+                    updateNavButtons(collection);
+                });
+                
+                // Initialize button states
+                updateNavButtons(collection);
+                
+                // Add touch/swipe support
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+                
+                collection.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+                
+                collection.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                    const diff = startX - currentX;
+                    
+                    // Only allow horizontal dragging
+                    if (Math.abs(diff) > 10) {
+                        e.preventDefault();
+                    }
+                });
+                
+                collection.track.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    
+                    const diff = startX - currentX;
+                    const threshold = 50;
+                    
+                    if (diff > threshold && collection.currentIndex < collection.cards.length - 1) {
+                        // Swipe left - go to next
+                        collection.currentIndex++;
+                    } else if (diff < -threshold && collection.currentIndex > 0) {
+                        // Swipe right - go to previous
+                        collection.currentIndex--;
+                    }
+                    
+                    updateVerticalTrackPosition(collection);
+                    updateNavButtons(collection);
+                    isDragging = false;
+                });
+            });
+        }
+        
+        function updateVerticalTrackPosition(collection) {
+            const cardWidth = 330; // 300px card + 30px gap
+            const translateX = -collection.currentIndex * cardWidth;
+            collection.track.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        function updateNavButtons(collection) {
+            // Update previous button
+            if (collection.currentIndex === 0) {
+                collection.prevBtn.classList.add('disabled');
+            } else {
+                collection.prevBtn.classList.remove('disabled');
+            }
+            
+            // Update next button
+            if (collection.currentIndex === collection.cards.length - 1) {
+                collection.nextBtn.classList.add('disabled');
+            } else {
+                collection.nextBtn.classList.remove('disabled');
             }
         }
         
@@ -5464,6 +5673,7 @@
             
             cartSummary.style.display = 'block';
             
+            // Re-attach event listeners
             document.querySelectorAll('.decrease-quantity').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
@@ -5523,6 +5733,7 @@
             checkoutModal.classList.add('active');
             updateCheckoutStep(1);
             
+            // Initialize address selection when checkout opens
             initializeAddressSelection();
         });
         
@@ -5565,11 +5776,13 @@
         
         // Checkout navigation - UPDATED FOR ADDRESS VALIDATION
         nextToPaymentBtn.addEventListener('click', () => {
+            // Check if address selection is complete
             if (!validateAddressSelection()) {
                 alert('Please complete the address selection process before proceeding');
                 return;
             }
             
+            // Validate other shipping fields
             if (!validateShippingForm()) {
                 alert('Please fill in all required shipping information');
                 return;
@@ -5651,6 +5864,7 @@
                 return;
             }
             
+            // Validate address before placing order
             if (!validateAddressSelection()) {
                 alert('Please complete the address selection process');
                 return;
@@ -5680,6 +5894,7 @@
             orders.push(order);
             localStorage.setItem('orders', JSON.stringify(orders));
             
+            // Clear cart after successful order
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
@@ -5687,6 +5902,7 @@
             checkoutModal.classList.remove('active');
             successModal.classList.add('active');
             
+            // Reset address selection for next time
             resetAddressSelection();
         });
         
@@ -5740,11 +5956,14 @@
         // NEW: Address Selection Functions
         
         function initializeAddressSelection() {
+            // Populate country options
             populateCountryOptions();
             
+            // Set up event listeners for address navigation
             document.getElementById('nextAddressStep').addEventListener('click', goToNextAddressStep);
             document.getElementById('prevAddressStep').addEventListener('click', goToPrevAddressStep);
             
+            // Set up ZIP code validation
             document.getElementById('shippingZip').addEventListener('input', validateZipCode);
         }
         
@@ -5769,15 +5988,19 @@
             selectedCountry = countryCode;
             const country = addressData.countries.find(c => c.code === countryCode);
             
+            // Update UI
             document.querySelectorAll('#countryOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
             
+            // Update progress
             updateAddressProgress('country');
             
+            // Populate states for this country
             populateStateOptions(countryCode);
             
+            // Go to next step
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
@@ -5813,15 +6036,19 @@
         function selectState(state) {
             selectedState = state;
             
+            // Update UI
             document.querySelectorAll('#stateOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
             
+            // Update progress
             updateAddressProgress('state');
             
+            // Populate cities for this state
             populateCityOptions(state);
             
+            // Go to next step
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
@@ -5857,15 +6084,19 @@
         function selectCity(city) {
             selectedCity = city;
             
+            // Update UI
             document.querySelectorAll('#cityOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
             
+            // Update progress
             updateAddressProgress('city');
             
+            // Populate villages for this city
             populateVillageOptions(city);
             
+            // Go to next step
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
@@ -5901,21 +6132,26 @@
         function selectVillage(village) {
             selectedVillage = village;
             
+            // Update UI
             document.querySelectorAll('#villageOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
             
+            // Update progress
             updateAddressProgress('village');
             
+            // Go to next step
             setTimeout(() => goToNextAddressStep(), 500);
         }
         
         function skipVillage() {
             selectedVillage = '';
             
+            // Update progress
             updateAddressProgress('village');
             
+            // Go to next step
             goToNextAddressStep();
         }
         
@@ -5929,6 +6165,7 @@
                 return false;
             }
             
+            // Simple validation - check if it matches any known zip for the selected city
             const validZips = addressData.zipCodes[selectedCity] || [];
             const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2)));
             
@@ -5939,6 +6176,7 @@
                 `;
                 zipValidation.className = 'zip-validation valid';
                 
+                // Update address confirmation
                 updateAddressConfirmation();
                 return true;
             } else {
@@ -5978,6 +6216,7 @@
         }
         
         function updateAddressProgress(step) {
+            // Update progress steps
             document.querySelectorAll('.address-progress-step').forEach(stepEl => {
                 stepEl.classList.remove('active', 'completed');
                 
@@ -5996,6 +6235,7 @@
                 }
             });
             
+            // Update address confirmation
             updateAddressConfirmation();
         }
         
@@ -6003,21 +6243,28 @@
             const steps = ['country', 'state', 'city', 'village', 'zip'];
             const currentIndex = steps.indexOf(currentAddressStep);
             
+            // Validate current step before proceeding
             if (!validateCurrentAddressStep()) {
                 return;
             }
             
             if (currentIndex < steps.length - 1) {
+                // Hide current step
                 document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
                 
+                // Update current step
                 currentAddressStep = steps[currentIndex + 1];
                 
+                // Show next step
                 document.getElementById(`${currentAddressStep}Step`).classList.add('active');
                 
+                // Update navigation buttons
                 updateAddressNavigation();
                 
+                // Update progress
                 updateAddressProgress(currentAddressStep);
                 
+                // If moving to ZIP step, trigger validation
                 if (currentAddressStep === 'zip') {
                     validateZipCode();
                 }
@@ -6029,12 +6276,16 @@
             const currentIndex = steps.indexOf(currentAddressStep);
             
             if (currentIndex > 0) {
+                // Hide current step
                 document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
                 
+                // Update current step
                 currentAddressStep = steps[currentIndex - 1];
                 
+                // Show previous step
                 document.getElementById(`${currentAddressStep}Step`).classList.add('active');
                 
+                // Update navigation buttons
                 updateAddressNavigation();
             }
         }
@@ -6043,12 +6294,14 @@
             const prevBtn = document.getElementById('prevAddressStep');
             const nextBtn = document.getElementById('nextAddressStep');
             
+            // Show/hide previous button
             if (currentAddressStep === 'country') {
                 prevBtn.style.display = 'none';
             } else {
                 prevBtn.style.display = 'inline-flex';
             }
             
+            // Update next button text
             if (currentAddressStep === 'zip') {
                 nextBtn.innerHTML = 'Complete Address Selection <i class="fas fa-check"></i>';
             } else {
@@ -6066,8 +6319,10 @@
                     break;
                 case 'state':
                     if (!selectedState) {
+                        // Check if country has states
                         const states = addressData.states[selectedCountry] || [];
                         if (states.length === 0) {
+                            // Skip state selection if no states available
                             selectedState = 'N/A';
                             return true;
                         }
@@ -6082,6 +6337,7 @@
                     }
                     break;
                 case 'village':
+                    // Village is optional, so always valid
                     break;
                 case 'zip':
                     if (!validateZipCode()) {
@@ -6105,6 +6361,7 @@
             selectedVillage = '';
             selectedZip = '';
             
+            // Reset UI
             document.querySelectorAll('.address-step').forEach(step => {
                 step.classList.remove('active');
             });
@@ -6267,6 +6524,7 @@
                 }
                 
                 if (step === 3) {
+                    // This is the last step - generate and show recommendations
                     generatePersonalizedRecommendations();
                     return;
                 }
@@ -6302,36 +6560,45 @@
             const logic = recommendationLogic[userData.skinConcern];
             
             if (!logic) {
-                personalizedRecommendations = [1, 14];
+                // Fallback to default recommendation
+                personalizedRecommendations = [1, 14]; // Whitening Oil and Whitening Combo
                 showResults("Based on your skin profile, we recommend our best-selling Whitening Combo to address your concerns and deliver radiant results.", [1, 14]);
                 return;
             }
             
             personalizedRecommendations = [...logic.products];
             
+            // Adjust recommendations based on sensitivity
             if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
-                personalizedRecommendations = personalizedRecommendations.filter(id => id !== 3 && id !== 5);
+                // Remove potentially harsh products for sensitive skin
+                personalizedRecommendations = personalizedRecommendations.filter(id => id !== 3 && id !== 5); // Remove Kojic Soap and Whitening Soap
                 
+                // Add gentle alternatives
                 if (userData.skinConcern === 'acne') {
-                    personalizedRecommendations.push(4);
+                    personalizedRecommendations.push(4); // Extra Glow Lotion for gentle hydration
                 }
             }
             
+            // Adjust recommendations based on age
             if (userData.ageRange === '50-plus' || userData.ageRange === '36-50') {
+                // Add anti-aging products for mature skin
                 if (!personalizedRecommendations.includes(1)) {
-                    personalizedRecommendations.push(1);
+                    personalizedRecommendations.push(1); // Whitening Oil for anti-aging benefits
                 }
                 if (!personalizedRecommendations.includes(2)) {
-                    personalizedRecommendations.push(2);
+                    personalizedRecommendations.push(2); // Whitening Cream for anti-aging
                 }
             }
             
+            // Show results with personalized description
             let description = logic.description + " " + logic.explanation;
             
+            // Add sensitivity note if applicable
             if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
                 description += " We've selected gentle formulas suitable for sensitive skin.";
             }
             
+            // Add age-specific note if applicable
             if (userData.ageRange === '50-plus') {
                 description += " These products are specially chosen for mature skin needs.";
             } else if (userData.ageRange === '36-50') {
@@ -6343,11 +6610,14 @@
         
         // Show results modal with personalized recommendations - UPDATED to use product cards
         function showResults(description, productIds, primaryComboId = null) {
+            // Update result description
             document.getElementById('resultDescription').textContent = description;
             
+            // Clear previous products
             const personalizedProductsDiv = document.getElementById('personalizedProducts');
             personalizedProductsDiv.innerHTML = '';
             
+            // Add individual products as product cards
             productIds.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -6370,6 +6640,9 @@
                                 <h3>${product.name}</h3>
                                 <p>${product.description.substring(0, 100)}...</p>
                                 ${detailsHTML}
+                                <button class="see-more-btn" data-target="result-${product.id}">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
                                 <div class="product-price">R${product.price.toFixed(2)}</div>
                             </div>
                             <button class="glass-button add-to-cart-btn" 
@@ -6385,6 +6658,7 @@
                 }
             });
             
+            // Add primary combo if it exists
             if (primaryComboId) {
                 const comboProduct = products.find(p => p.id === primaryComboId);
                 if (comboProduct) {
@@ -6407,6 +6681,9 @@
                                 <h3>${comboProduct.name}</h3>
                                 <p>${comboProduct.description.substring(0, 100)}...</p>
                                 ${comboDetailsHTML}
+                                <button class="see-more-btn" data-target="result-${comboProduct.id}">
+                                    <i class="fas fa-chevron-down"></i> See More
+                                </button>
                                 <div class="product-price">R${comboProduct.price.toFixed(2)}</div>
                             </div>
                             <button class="glass-button add-to-cart-btn" 
@@ -6421,12 +6698,14 @@
                     `;
                     personalizedProductsDiv.innerHTML += comboHTML;
                     
+                    // Add combo to personalized recommendations
                     if (!personalizedRecommendations.includes(primaryComboId)) {
                         personalizedRecommendations.push(primaryComboId);
                     }
                 }
             }
             
+            // Re-attach add to cart event listeners for the new buttons
             personalizedProductsDiv.querySelectorAll('.add-to-cart-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
@@ -6452,8 +6731,13 @@
                 });
             });
             
+            // Re-attach see more buttons
+            initializeSeeMoreButtons();
+            
+            // Show the results modal
             resultsModal.classList.add('active');
             
+            // Scroll to results modal
             setTimeout(() => {
                 resultsModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);

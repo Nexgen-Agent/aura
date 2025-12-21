@@ -5425,17 +5425,24 @@
             
             initializeFlagshipProduct();
             
+            // Only initialize add to cart buttons once - FIXED: Remove duplicate initialization
             initializeAddToCartButtons();
         });
         
-        // Initialize all add to cart buttons
+        // Initialize all add to cart buttons - FIXED: This should be the only place where add-to-cart buttons get event listeners
         function initializeAddToCartButtons() {
-            document.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const productName = this.getAttribute('data-name');
-                    const productPrice = parseFloat(this.getAttribute('data-price'));
-                    const productImage = this.getAttribute('data-image');
+            // Use event delegation for better performance and to handle dynamically added buttons
+            document.addEventListener('click', function(event) {
+                // Check if the clicked element or its parent has the add-to-cart class
+                const addToCartButton = event.target.closest('.add-to-cart');
+                
+                if (addToCartButton) {
+                    event.preventDefault();
+                    
+                    const productId = parseInt(addToCartButton.getAttribute('data-id'));
+                    const productName = addToCartButton.getAttribute('data-name');
+                    const productPrice = parseFloat(addToCartButton.getAttribute('data-price'));
+                    const productImage = addToCartButton.getAttribute('data-image');
                     
                     addToCart({
                         id: productId,
@@ -5444,15 +5451,15 @@
                         image: productImage
                     });
                     
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                    this.style.background = 'rgba(40, 167, 69, 0.3)';
+                    const originalText = addToCartButton.innerHTML;
+                    addToCartButton.innerHTML = '<i class="fas fa-check"></i> Added!';
+                    addToCartButton.style.background = 'rgba(40, 167, 69, 0.3)';
                     
                     setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.background = '';
+                        addToCartButton.innerHTML = originalText;
+                        addToCartButton.style.background = '';
                     }, 2000);
-                });
+                }
             });
         }
         
@@ -5510,32 +5517,6 @@
                 floatingCartBadge.style.display = 'none';
             }
         }
-        
-        // Add to cart buttons
-        addToCartBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const productId = parseInt(this.getAttribute('data-id'));
-                const productName = this.getAttribute('data-name');
-                const productPrice = parseFloat(this.getAttribute('data-price'));
-                const productImage = this.getAttribute('data-image');
-                
-                addToCart({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    image: productImage
-                });
-                
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                this.style.background = 'rgba(40, 167, 69, 0.3)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.background = '';
-                }, 2000);
-            });
-        });
         
         // Add item to cart
         function addToCart(product) {
@@ -6695,7 +6676,7 @@
                                 ${detailsHTML}
                                 <div class="product-price">R${product.price.toFixed(2)}</div>
                             </div>
-                            <button class="glass-button add-to-cart-btn" 
+                            <button class="glass-button add-to-cart" 
                                 data-id="${product.id}" 
                                 data-name="${product.name}" 
                                 data-price="${product.price}" 
@@ -6732,7 +6713,7 @@
                                 ${comboDetailsHTML}
                                 <div class="product-price">R${comboProduct.price.toFixed(2)}</div>
                             </div>
-                            <button class="glass-button add-to-cart-btn" 
+                            <button class="glass-button add-to-cart" 
                                 data-id="${comboProduct.id}" 
                                 data-name="${comboProduct.name}" 
                                 data-price="${comboProduct.price}" 
@@ -6750,30 +6731,8 @@
                 }
             }
             
-            personalizedProductsDiv.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const productName = this.getAttribute('data-name');
-                    const productPrice = parseFloat(this.getAttribute('data-price'));
-                    const productImage = this.getAttribute('data-image');
-                    
-                    addToCart({
-                        id: productId,
-                        name: productName,
-                        price: productPrice,
-                        image: productImage
-                    });
-                    
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-check"></i> Added!';
-                    this.style.background = 'rgba(40, 167, 69, 0.3)';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.background = '';
-                    }, 2000);
-                });
-            });
+            // Note: The add-to-cart buttons in the results modal will now work automatically
+            // because we're using event delegation in initializeAddToCartButtons()
             
             resultsModal.classList.add('active');
             

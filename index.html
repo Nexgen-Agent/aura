@@ -1636,6 +1636,89 @@
             color: var(--accent-color);
         }
 
+        /* Payment Method Specific Styles */
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        .payment-note {
+            padding: 15px;
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .payment-note i {
+            color: #28a745;
+            margin-right: 8px;
+        }
+
+        .bank-details {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .bank-details h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .bank-details p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .bank-details strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .paypal-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .paypal-button {
+            background: linear-gradient(135deg, #003087, #009CDE);
+            border: none;
+            border-radius: 50px;
+            padding: 16px 32px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            max-width: 300px;
+        }
+
+        .paypal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+        }
+
         .checkout-review {
             padding: 20px;
             margin-bottom: 30px;
@@ -3233,24 +3316,79 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="cardName">Name on Card</label>
-                    <input type="text" id="cardName" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" required>
-                </div>
-                
-                <div class="form-row">
+                <!-- Credit Card Details -->
+                <div class="payment-details active" id="creditCardDetails">
                     <div class="form-group">
-                        <label for="cardExpiry">Expiry Date</label>
-                        <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" required>
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" class="form-input" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="cardCVC">CVC</label>
-                        <input type="text" id="cardCVC" class="form-input" placeholder="123" required>
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiry Date</label>
+                            <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" id="cardCVC" class="form-input" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-note">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your payment information is secure and encrypted</span>
+                    </div>
+                </div>
+                
+                <!-- PayPal Details -->
+                <div class="payment-details" id="paypalDetails">
+                    <div class="payment-note">
+                        <i class="fab fa-paypal"></i>
+                        <span>You will be redirected to PayPal to complete your payment securely</span>
+                    </div>
+                    
+                    <div class="paypal-button-container">
+                        <button type="button" class="paypal-button" id="paypalButton">
+                            <i class="fab fa-paypal"></i> Pay with PayPal
+                        </button>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px; color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                        <p>After clicking the button, you'll be redirected to PayPal to complete your payment</p>
+                    </div>
+                </div>
+                
+                <!-- Bank Transfer Details -->
+                <div class="payment-details" id="bankTransferDetails">
+                    <div class="payment-note">
+                        <i class="fas fa-university"></i>
+                        <span>Transfer the total amount to our bank account. Your order will be processed once payment is confirmed.</span>
+                    </div>
+                    
+                    <div class="bank-details">
+                        <h5>Bank Account Details</h5>
+                        <p><strong>Bank Name:</strong> Standard Bank</p>
+                        <p><strong>Account Name:</strong> Lonz Flawls Aura</p>
+                        <p><strong>Account Number:</strong> 0123456789</p>
+                        <p><strong>Branch Code:</strong> 051001</p>
+                        <p><strong>Reference:</strong> Order #<span id="bankReference">0000</span></p>
+                        <p><strong>Amount:</strong> <span id="bankAmount">R0.00</span></p>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="bankProof">Upload Proof of Payment (Optional)</label>
+                        <input type="file" id="bankProof" class="form-input" accept=".jpg,.jpeg,.png,.pdf">
+                        <small style="color: rgba(255, 255, 255, 0.6);">Upload screenshot or scan of payment confirmation</small>
+                    </div>
+                    
+                    <div class="payment-note" style="background: rgba(255, 193, 7, 0.1); border-color: rgba(255, 193, 7, 0.2);">
+                        <i class="fas fa-clock"></i>
+                        <span>Please allow 24-48 hours for bank transfer verification</span>
                     </div>
                 </div>
                 
@@ -3321,7 +3459,7 @@
             </div>
             <div class="success-message">
                 <h3>Order Confirmed!</h3>
-                <p>Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.</p>
+                <p id="successMessage">Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.</p>
                 <p style="font-size: 1rem; color: var(--accent-color); margin-top: 20px;">
                     Order ID: <strong>#LFA-<span id="orderId">0000</span></strong>
                 </p>
@@ -3804,48 +3942,48 @@
                     <div class="product-badge badge-recommended">New</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Symphony Oud (30ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
+                        <h3>Black Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
                         <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
                             <div class="product-usage"><strong>Size:</strong> 30ml</div>
                             <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
                         <div class="product-price">R180.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="106" data-name="Symphony Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="106" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Symphony Oud (50ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
+                        <h3>Black Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
                         <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
                             <div class="product-usage"><strong>Size:</strong> 50ml</div>
                             <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
                         <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="107" data-name="Symphony Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="107" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
-                        <h3>Symphony Oud (100ml)</h3>
-                        <p>THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.</p>
+                        <h3>Black Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
                         <div class="product-details">
-                            <div class="product-benefits"><strong>Fragrance:</strong> Symphony Oud</div>
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
                             <div class="product-usage"><strong>Size:</strong> 100ml</div>
                             <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
                         <div class="product-price">R450.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="108" data-name="Symphony Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="108" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Collection 2: THE EXCLUSIVE OUD SPRING COLLECTION -->
@@ -4179,9 +4317,16 @@
         const backToPaymentBtn2 = document.getElementById('backToPayment');
         const placeOrderBtn = document.getElementById('placeOrderBtn');
         const paymentMethods = document.querySelectorAll('.payment-method');
+        const paypalButton = document.getElementById('paypalButton');
+        
+        // Payment method details
+        const creditCardDetails = document.getElementById('creditCardDetails');
+        const paypalDetails = document.getElementById('paypalDetails');
+        const bankTransferDetails = document.getElementById('bankTransferDetails');
         
         // Success modal elements
         const successModal = document.getElementById('successModal');
+        const successMessage = document.getElementById('successMessage');
         const continueShoppingBtn = document.getElementById('continueShopping');
         
         // Mobile menu elements
@@ -4456,46 +4601,46 @@
             },
             {
                 id: 106,
-                name: "Symphony Oud (30ml)",
+                name: "Black Oud (30ml)",
                 price: 180.00,
                 image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
+                description: "THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.",
+                benefits: "Fragrance: Black Oud",
                 usage: "Size: 30ml",
                 ingredients: "Collection: Amal Fragrances",
                 category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
+                skinIssues: ["fragrance", "oud", "perfume", "luxury"],
+                benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
                 searchScore: 85,
                 section: "all-products"
             },
             {
                 id: 107,
-                name: "Symphony Oud (50ml)",
+                name: "Black Oud (50ml)",
                 price: 250.00,
                 image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
+                description: "THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.",
+                benefits: "Fragrance: Black Oud",
                 usage: "Size: 50ml",
                 ingredients: "Collection: Amal Fragrances",
                 category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
+                skinIssues: ["fragrance", "oud", "perfume", "luxury"],
+                benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
                 searchScore: 85,
                 section: "all-products"
             },
             {
                 id: 108,
-                name: "Symphony Oud (100ml)",
+                name: "Black Oud (100ml)",
                 price: 450.00,
                 image: "https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "THE EXCLUSIVE OUD COLLECTION - A complex blend of oud with multiple aromatic notes.",
-                benefits: "Fragrance: Symphony Oud",
+                description: "THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.",
+                benefits: "Fragrance: Black Oud",
                 usage: "Size: 100ml",
                 ingredients: "Collection: Amal Fragrances",
                 category: "perfume",
-                skinIssues: ["fragrance", "oud", "perfume", "complex"],
-                benefitsList: ["long-lasting", "complex notes", "aromatic blend"],
+                skinIssues: ["fragrance", "oud", "perfume", "luxury"],
+                benefitsList: ["long-lasting", "woody notes", "luxury fragrance"],
                 searchScore: 85,
                 section: "all-products"
             },
@@ -4765,6 +4910,9 @@
         
         // Initialize address selection
         initializeAddressSelection();
+        
+        // Initialize payment methods
+        initializePaymentMethods();
         
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
@@ -5697,6 +5845,7 @@
                 shippingForm.classList.add('active');
             } else if (step === 2) {
                 paymentForm.classList.add('active');
+                updateBankDetails();
             } else if (step === 3) {
                 updateReviewSection();
                 reviewForm.classList.add('active');
@@ -5740,25 +5889,106 @@
             cartModal.classList.add('active');
         });
         
-        // Payment method selection
-        paymentMethods.forEach(method => {
-            method.addEventListener('click', function() {
-                const methodType = this.getAttribute('data-method');
-                
-                paymentMethods.forEach(m => m.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                selectedPaymentMethod = methodType;
-                
-                const cardFields = ['cardName', 'cardNumber', 'cardExpiry', 'cardCVC'];
-                cardFields.forEach(fieldId => {
-                    const field = document.getElementById(fieldId);
-                    if (field) {
-                        field.required = (methodType === 'credit');
+        // Initialize payment methods
+        function initializePaymentMethods() {
+            // Payment method selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    const methodType = this.getAttribute('data-method');
+                    
+                    // Remove selected class from all methods
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    // Add selected class to clicked method
+                    this.classList.add('selected');
+                    
+                    // Update selected payment method
+                    selectedPaymentMethod = methodType;
+                    
+                    // Hide all payment details
+                    creditCardDetails.classList.remove('active');
+                    paypalDetails.classList.remove('active');
+                    bankTransferDetails.classList.remove('active');
+                    
+                    // Show selected payment method details
+                    if (methodType === 'credit') {
+                        creditCardDetails.classList.add('active');
+                        // Make credit card fields required
+                        document.getElementById('cardName').required = true;
+                        document.getElementById('cardNumber').required = true;
+                        document.getElementById('cardExpiry').required = true;
+                        document.getElementById('cardCVC').required = true;
+                    } else if (methodType === 'paypal') {
+                        paypalDetails.classList.add('active');
+                        // Remove required from credit card fields
+                        document.getElementById('cardName').required = false;
+                        document.getElementById('cardNumber').required = false;
+                        document.getElementById('cardExpiry').required = false;
+                        document.getElementById('cardCVC').required = false;
+                    } else if (methodType === 'bank') {
+                        bankTransferDetails.classList.add('active');
+                        // Remove required from credit card fields
+                        document.getElementById('cardName').required = false;
+                        document.getElementById('cardNumber').required = false;
+                        document.getElementById('cardExpiry').required = false;
+                        document.getElementById('cardCVC').required = false;
                     }
                 });
             });
-        });
+            
+            // PayPal button functionality
+            paypalButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                processPayPalPayment();
+            });
+        }
+        
+        // Process PayPal payment
+        function processPayPalPayment() {
+            // In a real implementation, this would redirect to PayPal
+            // For demo purposes, we'll simulate a successful payment
+            alert('You would now be redirected to PayPal to complete your payment. In a real implementation, this would integrate with the PayPal API.');
+            
+            // Simulate successful PayPal payment
+            simulatePaymentProcessing('paypal');
+        }
+        
+        // Simulate payment processing
+        function simulatePaymentProcessing(method) {
+            // Show processing message
+            const paypalButton = document.getElementById('paypalButton');
+            const originalText = paypalButton.innerHTML;
+            
+            if (method === 'paypal') {
+                paypalButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                paypalButton.disabled = true;
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    paypalButton.innerHTML = '<i class="fab fa-paypal"></i> Payment Successful!';
+                    paypalButton.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    
+                    // Enable next button
+                    document.getElementById('nextToReview').disabled = false;
+                    
+                    setTimeout(() => {
+                        paypalButton.innerHTML = originalText;
+                        paypalButton.style.background = '';
+                        paypalButton.disabled = false;
+                    }, 3000);
+                }, 2000);
+            }
+        }
+        
+        // Update bank transfer details
+        function updateBankDetails() {
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const shipping = 50.00;
+            const total = subtotal + shipping;
+            const orderId = Math.floor(1000 + Math.random() * 9000);
+            
+            document.getElementById('bankReference').textContent = orderId;
+            document.getElementById('bankAmount').textContent = `R${total.toFixed(2)}`;
+        }
         
         // Update review section
         function updateReviewSection() {
@@ -5804,7 +6034,8 @@
                 date: new Date().toISOString(),
                 items: [...cart],
                 total: parseFloat(document.getElementById('reviewTotal').textContent.replace('R', '')),
-                status: 'Processing',
+                paymentMethod: selectedPaymentMethod,
+                status: selectedPaymentMethod === 'bank' ? 'Pending Payment' : 'Processing',
                 shippingAddress: {
                     country: selectedCountry,
                     state: selectedState || manualState,
@@ -5815,7 +6046,15 @@
                     apartment: document.getElementById('shippingApartment').value,
                     notes: document.getElementById('shippingNotes').value,
                     isManualEntry: isManualEntry
-                }
+                },
+                paymentDetails: selectedPaymentMethod === 'bank' ? {
+                    bankName: 'Standard Bank',
+                    accountName: 'Lonz Flawls Aura',
+                    accountNumber: '0123456789',
+                    branchCode: '051001',
+                    reference: orderId,
+                    amount: parseFloat(document.getElementById('reviewTotal').textContent.replace('R', ''))
+                } : null
             };
             
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -5827,6 +6066,17 @@
             updateCartBadge();
             
             checkoutModal.classList.remove('active');
+            
+            // Set success message based on payment method
+            let successMsg = "Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.";
+            
+            if (selectedPaymentMethod === 'paypal') {
+                successMsg = "Thank you for your purchase! Your PayPal payment was successful and your order is being processed. You will receive a confirmation email shortly.";
+            } else if (selectedPaymentMethod === 'bank') {
+                successMsg = "Thank you for your order! Please transfer R" + order.total.toFixed(2) + " to our bank account (details in your confirmation email). Your order will be processed once payment is confirmed.";
+            }
+            
+            successMessage.textContent = successMsg;
             successModal.classList.add('active');
             
             resetAddressSelection();
@@ -5874,6 +6124,39 @@
                 if (!field.value.trim()) {
                     return false;
                 }
+            }
+            
+            // Simple card validation
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+            const cardExpiry = document.getElementById('cardExpiry').value;
+            const cardCVC = document.getElementById('cardCVC').value;
+            
+            // Check card number length (13-19 digits)
+            if (cardNumber.length < 13 || cardNumber.length > 19) {
+                alert('Please enter a valid card number');
+                return false;
+            }
+            
+            // Check expiry date format
+            if (!/^\d{2}\/\d{2}$/.test(cardExpiry)) {
+                alert('Please enter expiry date in MM/YY format');
+                return false;
+            }
+            
+            // Check if card is not expired
+            const [month, year] = cardExpiry.split('/');
+            const currentYear = new Date().getFullYear() % 100;
+            const currentMonth = new Date().getMonth() + 1;
+            
+            if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) < currentMonth)) {
+                alert('Card has expired');
+                return false;
+            }
+            
+            // Check CVC length (3-4 digits)
+            if (cardCVC.length < 3 || cardCVC.length > 4) {
+                alert('Please enter a valid CVC');
+                return false;
             }
             
             return true;

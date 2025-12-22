@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <style>
-                * {
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -2885,9 +2885,9 @@
             .address-progress-step {
                 font-size: 12px;
             }
-
+        
         /* ALL EXISTING CSS REMAINS EXACTLY THE SAME - I'M ONLY ADDING NEW STYLES AT THE END */
-
+        
         /* NEW: Auth Choice Modal Styles */
         .auth-choice-modal {
             position: fixed;
@@ -3347,19 +3347,19 @@
             .auth-choice-options {
                 grid-template-columns: 1fr;
             }
-
+            
             .auth-choice-option {
                 padding: 25px 15px;
             }
-
+            
             .auth-choice-content h3 {
                 font-size: 2rem;
             }
-
+            
             .social-login-buttons {
                 gap: 10px;
             }
-
+            
             .social-login-button {
                 width: 45px;
                 height: 45px;
@@ -3371,87 +3371,25 @@
             .auth-choice-content {
                 padding: 30px 20px;
             }
-
+            
             .enhanced-auth-content {
                 padding: 30px 20px;
             }
-
+            
             .enhanced-auth-tabs {
                 flex-direction: column;
                 border-bottom: none;
             }
-
+            
             .enhanced-auth-tab {
                 border-bottom: 1px solid var(--glass-border);
                 text-align: center;
             }
         }
-        
-        /* YOUR CSS WILL GO HERE - REPLACE THIS ENTIRE STYLE BLOCK */
-        
-    </style>
-    
-    <!-- New minimal CSS for polish features only -->
-    <style>
-        /* NEW POLISH CSS - ADDED TO END OF EXISTING CSS */
-        
-        /* Task B: Next button disabled state */
-        .wizard-next:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-        
-        .wizard-next:disabled:hover {
-            background: var(--glass-bg);
-            transform: none;
-        }
-        
-        /* Task A: Wizard priority messaging */
-        .wizard-priority-note {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-        /* Task E: Tags clarity helper */
-        .tags-helper {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-        
-        /* Task F: Category divider */
-        .category-divider {
-            text-align: center;
-            margin: 40px 0 30px;
-            position: relative;
-        }
-        
-        .category-divider:before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .category-divider span {
-            background: rgba(10, 25, 41, 0.9);
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
     </style>
 </head>
 <body>
-    <!-- Floating Cart -->
+    <!-- Floating Cart - MOVED UP 400px -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="floatingCartBtn">
             <i class="fas fa-shopping-bag"></i>
@@ -3466,7 +3404,7 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- Auth Choice Modal -->
+    <!-- NEW: Auth Choice Modal -->
     <div class="auth-choice-modal" id="authChoiceModal">
         <div class="auth-choice-content glass-card">
             <button class="close-button" id="closeAuthChoice">&times;</button>
@@ -3482,9 +3420,8 @@
                 
                 <div class="auth-choice-option glass-card signup" id="signupOption">
                     <i class="fas fa-user-plus"></i>
-                    <!-- Task C: Premium discount copy -->
-                    <h4>Sign Up & Receive a Welcome Gift</h4>
-                    <p>Join our community for curated benefits on your first purchase</p>
+                    <h4>Sign Up & Get 15% Off</h4>
+                    <p>Create an account and save on your first purchase</p>
                     <div class="discount-badge">15% OFF FIRST ORDER</div>
                 </div>
                 
@@ -3501,33 +3438,38 @@
         </div>
     </div>
 
-    <!-- Enhanced Auth Modal -->
+    <!-- NEW: Enhanced Auth Modal (for Sign Up and Login) -->
     <div class="enhanced-auth-modal" id="enhancedAuthModal">
         <div class="enhanced-auth-content glass-card">
             <button class="close-button" id="closeEnhancedAuth">&times;</button>
             
+            <!-- Loading State -->
             <div class="auth-loading" id="authLoading">
                 <i class="fas fa-spinner"></i>
                 <p>Processing your request...</p>
             </div>
             
+            <!-- Success State -->
             <div class="auth-success" id="authSuccess">
                 <i class="fas fa-check-circle"></i>
                 <h4>Authentication Successful!</h4>
                 <p>Proceeding to checkout...</p>
             </div>
             
+            <!-- Main Auth Content -->
             <div id="mainAuthContent">
                 <div class="enhanced-auth-tabs">
                     <button class="enhanced-auth-tab active" data-tab="login">Login</button>
                     <button class="enhanced-auth-tab" data-tab="signup">Sign Up</button>
                 </div>
                 
+                <!-- Discount Display for Sign Up -->
                 <div class="discount-display" id="signupDiscount" style="display: none;">
                     <i class="fas fa-gift"></i>
-                    <span>Receive a welcome gift when you join our community</span>
+                    <span>Get 15% off your first purchase when you sign up!</span>
                 </div>
                 
+                <!-- Login Form -->
                 <form class="enhanced-auth-form active" id="enhancedLoginForm">
                     <div class="social-login-section">
                         <h5>Sign in with</h5>
@@ -3573,6 +3515,7 @@
                     </div>
                 </form>
                 
+                <!-- Sign Up Form -->
                 <form class="enhanced-auth-form" id="enhancedSignupForm">
                     <div class="social-login-section">
                         <h5>Sign up with</h5>
@@ -3636,7 +3579,7 @@
                     </div>
                     
                     <button type="submit" class="glass-button" style="width: 100%;">
-                        <i class="fas fa-user-plus"></i> Create Account & Receive Welcome Gift
+                        <i class="fas fa-user-plus"></i> Create Account & Get 15% Off
                     </button>
                     
                     <div class="auth-footer">
@@ -3647,21 +3590,22 @@
         </div>
     </div>
 
-    <!-- Search Overlay -->
+    <!-- Search Overlay (TikTok Style) -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-header">
             <button class="search-back-btn" id="searchBackBtn">
                 <i class="fas fa-arrow-left"></i>
             </button>
-            <!-- Task D: Updated search placeholder -->
-            <input type="text" class="search-overlay-input" id="searchOverlayInput" placeholder="Search by product, concern, or benefit">
+            <input type="text" class="search-overlay-input" id="searchOverlayInput" placeholder="Search products or skin issues...">
         </div>
         <div class="search-overlay-content">
-            <div class="search-overlay-results" id="searchOverlayResults"></div>
+            <div class="search-overlay-results" id="searchOverlayResults">
+                <!-- Content will be populated dynamically -->
+            </div>
         </div>
     </div>
 
-    <!-- Authentication Modal -->
+    <!-- Authentication Modal (OLD - KEEPING FOR BACKWARD COMPATIBILITY) -->
     <div class="auth-modal" id="authModal">
         <div class="auth-content glass-card">
             <button class="close-button" id="closeAuth">&times;</button>
@@ -3670,6 +3614,7 @@
                 <button class="auth-tab" data-tab="signup">Sign Up</button>
             </div>
             
+            <!-- Login Form -->
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
                     <label for="loginEmail">Email Address</label>
@@ -3696,6 +3641,7 @@
                 </div>
             </form>
             
+            <!-- Sign Up Form -->
             <form class="auth-form" id="signupForm">
                 <div class="form-group">
                     <label for="signupName">Full Name</label>
@@ -3733,7 +3679,7 @@
         </div>
     </div>
 
-    <!-- Cart Modal -->
+    <!-- Cart Modal - CLEANER DESIGN -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content glass-card">
             <button class="close-button" id="closeCart">&times;</button>
@@ -3800,6 +3746,7 @@
                 </div>
             </div>
             
+            <!-- Step 1: Shipping - UPDATED WITH NEW ADDRESS SELECTION SYSTEM -->
             <form class="checkout-form active" id="shippingForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -3822,10 +3769,12 @@
                     <input type="tel" id="shippingPhone" class="form-input" required>
                 </div>
                 
+                <!-- Global Shipping Note -->
                 <div class="global-shipping-note">
                     <p><i class="fas fa-globe-americas"></i> We ship worldwide! Don't see your village? You can enter it manually below.</p>
                 </div>
                 
+                <!-- NEW ADDRESS SELECTION SYSTEM WITH MANUAL ENTRY -->
                 <div class="address-selection-container">
                     <div class="address-progress">
                         <div class="address-progress-step active" data-step="country">
@@ -3854,11 +3803,15 @@
                         </div>
                     </div>
                     
+                    <!-- Country Selection -->
                     <div class="address-step active" id="countryStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Country</h4>
-                        <div class="address-options" id="countryOptions"></div>
+                        <div class="address-options" id="countryOptions">
+                            <!-- Country options will be populated by JavaScript -->
+                        </div>
                     </div>
                     
+                    <!-- State/Province Selection -->
                     <div class="address-step" id="stateStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your State/Province</h4>
                         <div class="address-search">
@@ -3867,7 +3820,9 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                        <div class="address-options" id="stateOptions"></div>
+                        <div class="address-options" id="stateOptions">
+                            <!-- State options will be populated by JavaScript -->
+                        </div>
                         <div class="address-options" style="margin-top: 15px;">
                             <div class="address-option" onclick="enterStateManually()">
                                 <i class="fas fa-edit"></i>
@@ -3877,6 +3832,7 @@
                         </div>
                     </div>
                     
+                    <!-- City/Town Selection -->
                     <div class="address-step" id="cityStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your City/Town</h4>
                         <div class="address-search">
@@ -3885,7 +3841,9 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                        <div class="address-options" id="cityOptions"></div>
+                        <div class="address-options" id="cityOptions">
+                            <!-- City options will be populated by JavaScript -->
+                        </div>
                         <div class="address-options" style="margin-top: 15px;">
                             <div class="address-option" onclick="enterCityManually()">
                                 <i class="fas fa-edit"></i>
@@ -3895,6 +3853,7 @@
                         </div>
                     </div>
                     
+                    <!-- Village/Suburb Selection -->
                     <div class="address-step" id="villageStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Village/Suburb</h4>
                         <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery. Can't find yours? Enter it manually below.</p>
@@ -3904,8 +3863,11 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                        <div class="address-options" id="villageOptions"></div>
+                        <div class="address-options" id="villageOptions">
+                            <!-- Village options will be populated by JavaScript -->
+                        </div>
                         
+                        <!-- Manual Village Entry -->
                         <div class="manual-village-container" id="manualVillageContainer">
                             <div class="manual-village-header">
                                 <i class="fas fa-map-pin"></i>
@@ -3945,6 +3907,7 @@
                         </div>
                     </div>
                     
+                    <!-- ZIP Code Entry -->
                     <div class="address-step" id="zipStep">
                         <h4 style="color: var(--primary-color); margin-bottom: 20px;">Enter Your ZIP/Postal Code</h4>
                         <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px;">Enter your ZIP code for accurate shipping calculation</p>
@@ -3952,15 +3915,19 @@
                         <div class="form-group">
                             <label for="shippingZip">ZIP/Postal Code</label>
                             <input type="text" id="shippingZip" class="form-input" placeholder="Enter ZIP code" required>
-                            <div class="zip-validation" id="zipValidation"></div>
+                            <div class="zip-validation" id="zipValidation">
+                                <!-- Validation message will appear here -->
+                            </div>
                         </div>
                         
+                        <!-- Note for manual village entry -->
                         <div id="manualVillageNote" style="display: none;">
                             <div class="global-shipping-note">
                                 <p><i class="fas fa-info-circle"></i> Using manually entered village and ZIP code. Shipping will be calculated based on this information.</p>
                             </div>
                         </div>
                         
+                        <!-- Google Maps Integration -->
                         <div class="google-maps-container">
                             <div class="google-maps-placeholder">
                                 <i class="fas fa-map-marked-alt"></i>
@@ -3969,12 +3936,16 @@
                             </div>
                         </div>
                         
+                        <!-- Address Confirmation -->
                         <div class="address-confirmation" id="addressConfirmation">
                             <h5>Selected Address</h5>
-                            <div class="address-details" id="addressDetails"></div>
+                            <div class="address-details" id="addressDetails">
+                                <!-- Address details will appear here -->
+                            </div>
                         </div>
                     </div>
                     
+                    <!-- Address Navigation -->
                     <div class="address-navigation">
                         <button type="button" class="glass-button" id="prevAddressStep" style="display: none;">
                             <i class="fas fa-arrow-left"></i> Previous
@@ -3985,16 +3956,19 @@
                     </div>
                 </div>
                 
+                <!-- Street Address -->
                 <div class="form-group">
                     <label for="shippingAddress">Street Address</label>
                     <input type="text" id="shippingAddress" class="form-input" placeholder="House number, street name, building" required>
                 </div>
                 
+                <!-- Apartment/Suite (Optional) -->
                 <div class="form-group">
                     <label for="shippingApartment">Apartment, Suite, Unit (Optional)</label>
                     <input type="text" id="shippingApartment" class="form-input" placeholder="Apartment, suite, unit, etc.">
                 </div>
                 
+                <!-- Additional Notes -->
                 <div class="form-group">
                     <label for="shippingNotes">Delivery Instructions (Optional)</label>
                     <textarea id="shippingNotes" class="form-input" rows="3" placeholder="Any special delivery instructions?"></textarea>
@@ -4010,6 +3984,7 @@
                 </div>
             </form>
             
+            <!-- Step 2: Payment -->
             <form class="checkout-form" id="paymentForm">
                 <div class="payment-methods">
                     <div class="payment-method glass-card selected" data-method="credit">
@@ -4029,6 +4004,7 @@
                     </div>
                 </div>
                 
+                <!-- Credit Card Details -->
                 <div class="payment-details active" id="creditCardDetails">
                     <div class="form-group">
                         <label for="cardName">Name on Card</label>
@@ -4057,6 +4033,7 @@
                     </div>
                 </div>
                 
+                <!-- PayPal Details -->
                 <div class="payment-details" id="paypalDetails">
                     <div class="payment-note">
                         <i class="fab fa-paypal"></i>
@@ -4074,6 +4051,7 @@
                     </div>
                 </div>
                 
+                <!-- Bank Transfer Details -->
                 <div class="payment-details" id="bankTransferDetails">
                     <div class="payment-note">
                         <i class="fas fa-university"></i>
@@ -4112,10 +4090,13 @@
                 </div>
             </form>
             
+            <!-- Step 3: Review -->
             <div class="checkout-form" id="reviewForm">
                 <div class="checkout-review glass-card">
                     <h4 style="margin-bottom: 20px; color: var(--primary-color);">Order Summary</h4>
-                    <div id="reviewItems"></div>
+                    <div id="reviewItems">
+                        <!-- Order items will be dynamically added here -->
+                    </div>
                     
                     <div class="summary-row">
                         <span>Subtotal</span>
@@ -4157,7 +4138,7 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
+    <!-- Success Modal - FIXED BUTTON SPACING -->
     <div class="success-modal" id="successModal">
         <div class="success-content glass-card">
             <button class="close-button" id="closeSuccess">&times;</button>
@@ -4171,6 +4152,7 @@
                     Order ID: <strong>#LFA-<span id="orderId">0000</span></strong>
                 </p>
                 
+                <!-- FIXED: Added proper spacing between buttons -->
                 <div class="success-button-container">
                     <button class="glass-button" id="continueShopping">
                         <i class="fas fa-shopping-bag"></i> Continue Shopping
@@ -4196,7 +4178,7 @@
         <a href="#social" class="mobile-nav-link">Connect</a>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation - ENLARGED BY 50% -->
     <nav id="navbar">
         <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
         <div class="nav-links">
@@ -4207,13 +4189,17 @@
             <a href="#social">Connect</a>
         </div>
         <div class="nav-icons">
+            <!-- Search Container -->
             <div class="search-container">
-                <!-- Task D: Updated search placeholder -->
-                <input type="text" class="search-input" id="searchInput" placeholder="Search by product, concern, or benefit">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products or skin issues...">
                 <i class="fas fa-search search-icon" id="searchIcon"></i>
                 <i class="fas fa-times search-close" id="searchClose"></i>
-                <div class="search-results" id="searchResults"></div>
+                <!-- Enhanced Search Results -->
+                <div class="search-results" id="searchResults">
+                    <!-- Content will be populated dynamically -->
+                </div>
             </div>
+            <!-- Menu Button -->
             <div class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -4248,8 +4234,7 @@
                     </div>
                     <div class="wizard-title">
                         <h3>Skin Analysis Wizard</h3>
-                        <!-- Task A: Wizard priority messaging -->
-                        <p class="wizard-priority-note">Start here for personalized recommendations tailored to your skin</p>
+                        <p>Answer a few questions to get personalized recommendations</p>
                     </div>
                 </div>
                 
@@ -4280,8 +4265,7 @@
                             </div>
                         </div>
                         <div class="wizard-actions">
-                            <!-- Task B: Next button disabled by default -->
-                            <button class="glass-button wizard-next" data-step="1" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                            <button class="glass-button wizard-next" data-step="1">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                     
@@ -4308,8 +4292,7 @@
                         </div>
                         <div class="wizard-actions">
                             <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <!-- Task B: Next button disabled by default -->
-                            <button class="glass-button wizard-next" data-step="2" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                            <button class="glass-button wizard-next" data-step="2">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                     
@@ -4336,8 +4319,7 @@
                         </div>
                         <div class="wizard-actions">
                             <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
-                            <!-- Task B: Next button disabled by default -->
-                            <button class="glass-button wizard-next" data-step="3" disabled>Get Recommendations</button>
+                            <button class="glass-button wizard-next" data-step="3">Get Recommendations</button>
                         </div>
                     </div>
                 </div>
@@ -4417,6 +4399,7 @@
                 <div class="product-card glass-card flagship-card">
                     <div class="product-badge badge-flagship">Flagship</div>
                     <div class="flagship-container">
+                        <!-- UPDATED: Changed from background-image div to img tag -->
                         <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Whitening Oil 100ml" class="flagship-image">
                         <div class="flagship-info">
                             <h3>Whitening Oil 100ml</h3>
@@ -4445,11 +4428,104 @@
             </div>
             
             <div class="products-grid fade-in">
-                <!-- ... (Your existing skincare products remain exactly the same) ... -->
+                <!-- Whitening Cream -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Cream 250g</h3>
+                        <p>Advanced whitening cream for even skin tone and radiant complexion.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Improves skin tone, Strong moisturising, Anti Aging, Acne, Pigmentation, Dark spot, Pimples</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C, Collagen and Glutathione</div>
+                        </div>
+                        <div class="product-price">R150.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
                 
-                <!-- Task F: Category divider between skincare and fragrances -->
-                <div class="category-divider">
-                    <span>Signature Fragrances</span>
+                <!-- Kojic Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Kojic Soap</h3>
+                        <p>Treats different skin disorders and cleans whole body.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Treats uneven skin tone, Dark spots due to acne, Brightens the skin</div>
+                        </div>
+                        <div class="product-price">R150.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Glow Lotion -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Lotion 250g</h3>
+                        <p>Hydrating lotion for glowing, healthy-looking skin.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Helps with dry skin, Glowing, Dark inner thighs, Sunburn, Stretch marks, Blemishes, Wounds</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Vegetal glycerin, Sodium lactate</div>
+                        </div>
+                        <div class="product-price">R100.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Whitening Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Soap</h3>
+                        <p>Gentle cleansing soap for skin whitening purposes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Skin whitening purposes, Eliminates excess oils, Eliminates blemishes, Gently exfoliates dead skin cells, Treats hyperpigmentation and Acne</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
+                        </div>
+                        <div class="product-price">R70.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Glow Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Soap</h3>
+                        <p>Nourishing soap for glowing, moisturized skin.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Brings out the glow, Moisturises dry skin, Helps treat Stretch marks, Helps fade skin scars</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
+                        </div>
+                        <div class="product-price">R70.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Whitening Tissue Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Tissue Oil</h3>
+                        <p>Lightweight tissue oil for targeted whitening treatment.</p>
+                        <div class="product-price">R200.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Glow Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Oil</h3>
+                        <p>Radiant glow oil for luminous, healthy-looking skin.</p>
+                        <div class="product-price">R100.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- AMAL FRAGRANCES SECTION -->
@@ -4470,8 +4546,264 @@
                     <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <!-- ... (All other fragrance products remain exactly the same) ... -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R250.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
                 
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R450.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R180.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R250.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R450.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R180.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="106" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R250.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="107" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R450.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="108" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 2: THE EXCLUSIVE OUD SPRING COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>OUD JOY (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R350.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>OUD JOY (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R600.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 3: THE PREMIUM OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-flagship">Premium</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Premium Oud (50ml)</h3>
+                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R900.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-flagship">Premium</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Premium Oud (100ml)</h3>
+                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R1500.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 5: THE HOME DIFFUSER OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Home Fragrance</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Home Diffuser Oud</h3>
+                        <p>THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Home Diffuser</div>
+                            <div class="product-usage"><strong>Use:</strong> Home fragrance</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R350.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 6: THE CAR DIFFUSER OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Car Diffuser Oud</h3>
+                        <p>THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Car Diffuser</div>
+                            <div class="product-usage"><strong>Use:</strong> Car fragrance</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R80.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 7: THE BODY LOTION OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Body Lotion Oud</h3>
+                        <p>THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Body Lotion</div>
+                            <div class="product-usage"><strong>Use:</strong> Daily moisturizer</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R200.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Collection 8: THE DEODORANT OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Deodorant Oud</h3>
+                        <p>THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Deodorant</div>
+                            <div class="product-usage"><strong>Use:</strong> Daily protection</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R100.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
             </div>
         </section>
 
@@ -4582,10 +4914,11 @@
         </footer>
     </div>
 
-    <!-- Results Modal -->
+    <!-- Results Modal - UPDATED LAYOUT -->
     <div class="results-modal" id="resultsModal">
         <button class="close-button" id="closeResults">&times;</button>
         
+        <!-- Affirmations Section - FREE STANDING -->
         <div class="affirmations-section fade-in">
             <div class="result-icon">
                 <i class="fas fa-spa"></i>
@@ -4596,9 +4929,12 @@
             </div>
         </div>
         
+        <!-- Products Section - IN GLASS CARD -->
         <div class="results-products-section">
             <div class="results-products-container glass-card">
-                <div class="personalized-products-container" id="personalizedProducts"></div>
+                <div class="personalized-products-container" id="personalizedProducts">
+                    <!-- Personalized products will be dynamically added here as product cards -->
+                </div>
                 
                 <div class="result-actions">
                     <button class="glass-button" id="closeResultsBtn">Continue Browsing</button>
@@ -4611,13 +4947,13 @@
     </div>
 
     <script>
-                // DOM Elements - ADDING NEW ONES FOR AUTHENTICATION
+        // DOM Elements - ADDING NEW ONES FOR AUTHENTICATION
         const authChoiceModal = document.getElementById('authChoiceModal');
         const closeAuthChoiceBtn = document.getElementById('closeAuthChoice');
         const guestOption = document.getElementById('guestOption');
         const signupOption = document.getElementById('signupOption');
         const loginOption = document.getElementById('loginOption');
-
+        
         const enhancedAuthModal = document.getElementById('enhancedAuthModal');
         const closeEnhancedAuthBtn = document.getElementById('closeEnhancedAuth');
         const enhancedAuthTabs = document.querySelectorAll('.enhanced-auth-tab');
@@ -4627,11 +4963,11 @@
         const switchToSignupEnhanced = document.querySelector('.switch-to-signup-enhanced');
         const switchToLoginEnhanced = document.querySelector('.switch-to-login-enhanced');
         const signupDiscount = document.getElementById('signupDiscount');
-
+        
         const authLoading = document.getElementById('authLoading');
         const authSuccess = document.getElementById('authSuccess');
         const mainAuthContent = document.getElementById('mainAuthContent');
-
+        
         // Social login buttons
         const googleLogin = document.getElementById('googleLogin');
         const facebookLogin = document.getElementById('facebookLogin');
@@ -4639,7 +4975,7 @@
         const googleSignup = document.getElementById('googleSignup');
         const facebookSignup = document.getElementById('facebookSignup');
         const appleSignup = document.getElementById('appleSignup');
-
+        
         // Password strength elements
         const passwordInput = document.getElementById('enhancedSignupPassword');
         const passwordStrength = document.getElementById('passwordStrength');
@@ -4647,9 +4983,9 @@
         const reqUppercase = document.getElementById('reqUppercase');
         const reqLowercase = document.getElementById('reqLowercase');
         const reqNumber = document.getElementById('reqNumber');
-
+        
         // All existing JavaScript remains the same until the end, where we'll add new functions
-
+        
         /* ALL EXISTING JAVASCRIPT CODE REMAINS EXACTLY THE SAME */
         // DOM Elements
         const navbar = document.getElementById('navbar');
@@ -4666,19 +5002,19 @@
         const addAllToCartBtn = document.getElementById('addAllToCart');
         const galleryTrack = document.getElementById('galleryTrack');
         const galleryDots = document.querySelectorAll('.gallery-dot');
-
+        
         // Search elements
         const searchIcon = document.getElementById('searchIcon');
         const searchInput = document.getElementById('searchInput');
         const searchClose = document.getElementById('searchClose');
         const searchResults = document.getElementById('searchResults');
-
+        
         // New search overlay elements
         const searchOverlay = document.getElementById('searchOverlay');
         const searchOverlayInput = document.getElementById('searchOverlayInput');
         const searchOverlayResults = document.getElementById('searchOverlayResults');
         const searchBackBtn = document.getElementById('searchBackBtn');
-
+        
         // Cart elements
         const floatingCartBtn = document.getElementById('floatingCartBtn');
         const floatingCartBadge = document.getElementById('floatingCartBadge');
@@ -4688,13 +5024,13 @@
         const cartSummary = document.getElementById('cartSummary');
         const addToCartBtns = document.querySelectorAll('.add-to-cart');
         const checkoutBtn = document.getElementById('checkoutBtn');
-
+        
         // Close buttons
         const closeAuthBtn = document.getElementById('closeAuth');
         const closeWizardBtn = document.getElementById('closeWizard');
         const closeCheckoutBtn = document.getElementById('closeCheckout');
         const closeSuccessBtn = document.getElementById('closeSuccess');
-
+        
         // Checkout elements
         const checkoutModal = document.getElementById('checkoutModal');
         const checkoutSteps = document.querySelectorAll('.checkout-step');
@@ -4710,17 +5046,17 @@
         const placeOrderBtn = document.getElementById('placeOrderBtn');
         const paymentMethods = document.querySelectorAll('.payment-method');
         const paypalButton = document.getElementById('paypalButton');
-
+        
         // Payment method details
         const creditCardDetails = document.getElementById('creditCardDetails');
         const paypalDetails = document.getElementById('paypalDetails');
         const bankTransferDetails = document.getElementById('bankTransferDetails');
-
+        
         // Success modal elements
         const successModal = document.getElementById('successModal');
         const successMessage = document.getElementById('successMessage');
         const continueShoppingBtn = document.getElementById('continueShopping');
-
+        
         // Mobile menu elements
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuBtnIcon = document.querySelector('#mobileMenuBtn i');
@@ -4728,11 +5064,11 @@
         const mobileNavLinks = document.getElementById('mobileNavLinks');
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         const mobileNavLinksItems = document.querySelectorAll('.mobile-nav-link');
-
+        
         // Flagship product elements
         const seeMoreBtn = document.querySelector('.see-more-btn');
         const flagshipDetails = document.querySelector('.flagship-details');
-
+        
         // Enhanced Product data with skin issues and benefits - UPDATED WITH AMAL FRAGRANCES
         const products = [
             {
@@ -5157,7 +5493,7 @@
                 section: "all-products"
             }
         ];
-
+        
         // Enhanced product recommendation logic based on skin issues
         const recommendationLogic = {
             "acne": {
@@ -5191,10 +5527,10 @@
                 explanation: "These glow-enhancing products work together to maintain your skin's natural luminosity."
             }
         };
-
+        
         // Top searched products (anchor buys) - UPDATED TO INCLUDE AMAL FRAGRANCES
         const topSearchedProducts = [1, 14, 2, 13, 3, 4, 100, 109, 111, 113];
-
+        
         // Common skin issues and benefits for suggestions - UPDATED WITH FRAGRANCE TERMS
         const searchSuggestions = {
             skinIssues: [
@@ -5212,39 +5548,39 @@
                 "perfume", "fragrance", "oud", "diffuser", "deodorant"
             ]
         };
-
+        
         // User data for qualification
         const userData = {
             skinConcern: '',
             sensitivity: '',
             ageRange: ''
         };
-
+        
         // Personalized recommendations for current user
         let personalizedRecommendations = [];
-
+        
         // Current wizard step
         let currentStep = 1;
         const totalSteps = 3;
-
+        
         // Gallery state
         let currentGallerySlide = 0;
         const gallerySlideCount = 5;
-
+        
         // Cart state
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        
         // Checkout state
         let currentCheckoutStep = 1;
         let selectedPaymentMethod = 'credit';
-
+        
         // Mobile menu state
         let isMobileMenuOpen = false;
-
+        
         // Search state
         let currentSearchCategory = 'all';
         let searchTimeout = null;
-
+        
         // NEW: Address Selection State with manual entry support
         let currentAddressStep = 'country';
         let selectedCountry = '';
@@ -5257,12 +5593,12 @@
         let manualCity = '';
         let manualVillage = '';
         let manualZip = '';
-
+        
         // NEW: Authentication state
         let isAuthenticated = false;
         let currentUser = null;
         let userHasDiscount = false;
-
+        
         // Address data structure (mock data for demonstration) - MODIFIED: Only South Africa and United States
         const addressData = {
             countries: [
@@ -5301,7 +5637,7 @@
                 'OTHER': []
             }
         };
-
+        
         // NEW: User data structure for localStorage
         const initializeUsers = () => {
             if (!localStorage.getItem('users')) {
@@ -5311,39 +5647,39 @@
                 localStorage.setItem('currentUser', JSON.stringify(null));
             }
         };
-
+        
         // Initialize cart badge
         updateCartBadge();
-
+        
         // Initialize address selection
         initializeAddressSelection();
-
+        
         // Initialize payment methods
         initializePaymentMethods();
-
+        
         // NEW: Initialize authentication system
         initializeUsers();
         initializeAuthentication();
-
+        
         // Floating cart functionality
         floatingCartBtn.addEventListener('click', () => {
             cartModal.classList.add('active');
             updateCartDisplay();
         });
-
+        
         // Floating cart hover effects
         floatingCartBtn.addEventListener('mouseenter', () => {
             const label = document.querySelector('.floating-cart-label');
             label.style.opacity = '1';
             label.style.transform = 'translateY(0)';
         });
-
+        
         floatingCartBtn.addEventListener('mouseleave', () => {
             const label = document.querySelector('.floating-cart-label');
             label.style.opacity = '0';
             label.style.transform = 'translateY(-10px)';
         });
-
+        
         // Mobile menu functionality
         mobileMenuBtn.addEventListener('click', () => {
             if (isMobileMenuOpen) {
@@ -5352,21 +5688,21 @@
                 openMobileMenu();
             }
         });
-
+        
         mobileMenuClose.addEventListener('click', () => {
             closeMobileMenu();
         });
-
+        
         mobileMenuOverlay.addEventListener('click', () => {
             closeMobileMenu();
         });
-
+        
         mobileNavLinksItems.forEach(link => {
             link.addEventListener('click', () => {
                 closeMobileMenu();
             });
         });
-
+        
         function openMobileMenu() {
             mobileMenuOverlay.classList.add('active');
             mobileNavLinks.classList.add('active');
@@ -5376,7 +5712,7 @@
             mobileMenuBtnIcon.classList.add('fa-times');
             mobileMenuBtn.classList.add('active');
         }
-
+        
         function closeMobileMenu() {
             mobileMenuOverlay.classList.remove('active');
             mobileNavLinks.classList.remove('active');
@@ -5386,62 +5722,62 @@
             mobileMenuBtnIcon.classList.add('fa-bars');
             mobileMenuBtn.classList.remove('active');
         }
-
+        
         // Close buttons functionality
         closeAuthBtn.addEventListener('click', () => {
             document.getElementById('authModal').classList.remove('active');
         });
-
+        
         closeWizardBtn.addEventListener('click', () => {
             wizardSteps.forEach(step => step.classList.remove('active'));
             wizardSteps[0].classList.add('active');
             currentStep = 1;
             updateProgressBar();
-
+            
             optionItems.forEach(item => item.classList.remove('selected'));
             userData.skinConcern = '';
             userData.sensitivity = '';
             userData.ageRange = '';
         });
-
+        
         closeCartBtn.addEventListener('click', () => {
             cartModal.classList.remove('active');
         });
-
+        
         closeCheckoutBtn.addEventListener('click', () => {
             checkoutModal.classList.remove('active');
             resetAddressSelection();
         });
-
+        
         closeSuccessBtn.addEventListener('click', () => {
             successModal.classList.remove('active');
         });
-
+        
         closeResultsBtn.addEventListener('click', () => {
             resultsModal.classList.remove('active');
         });
-
+        
         closeResultsBtn2.addEventListener('click', () => {
             resultsModal.classList.remove('active');
         });
-
+        
         // NEW: Close auth choice modal
         closeAuthChoiceBtn.addEventListener('click', () => {
             authChoiceModal.classList.remove('active');
         });
-
+        
         // NEW: Close enhanced auth modal
         closeEnhancedAuthBtn.addEventListener('click', () => {
             enhancedAuthModal.classList.remove('active');
         });
-
+        
         // Add all recommended products to cart
         addAllToCartBtn.addEventListener('click', () => {
             if (personalizedRecommendations.length === 0) {
                 alert('No recommendations to add to cart');
                 return;
             }
-
+            
             personalizedRecommendations.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -5453,7 +5789,7 @@
                     });
                 }
             });
-
+            
             const logic = recommendationLogic[userData.skinConcern];
             if (logic && logic.primaryCombo) {
                 const comboProduct = products.find(p => p.id === logic.primaryCombo);
@@ -5466,28 +5802,28 @@
                     });
                 }
             }
-
+            
             addAllToCartBtn.innerHTML = '<i class="fas fa-check"></i> All Added!';
             addAllToCartBtn.style.background = 'rgba(40, 167, 69, 0.3)';
-
+            
             setTimeout(() => {
                 addAllToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Add All to Cart';
                 addAllToCartBtn.style.background = '';
             }, 2000);
-
+            
             setTimeout(() => {
                 resultsModal.classList.remove('active');
                 cartModal.classList.add('active');
             }, 500);
         });
-
+        
         // Enhanced Search functionality
         searchIcon.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
                 searchOverlay.classList.add('active');
                 searchOverlayInput.focus();
                 document.body.style.overflow = 'hidden';
-
+                
                 if (!searchOverlayInput.value.trim()) {
                     displayTopSearchedProductsInOverlay();
                 }
@@ -5495,63 +5831,63 @@
                 searchInput.classList.add('active');
                 searchClose.classList.add('active');
                 searchInput.focus();
-
+                
                 if (!searchInput.value.trim()) {
                     displayTopSearchedProducts();
                 }
             }
         });
-
+        
         searchClose.addEventListener('click', () => {
             searchInput.classList.remove('active');
             searchClose.classList.remove('active');
             searchInput.value = '';
             searchResults.classList.remove('active');
         });
-
+        
         searchInput.addEventListener('focus', () => {
             if (!searchInput.value.trim()) {
                 displayTopSearchedProducts();
             }
         });
-
+        
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
-
+            
             searchTimeout = setTimeout(() => {
                 const searchTerm = e.target.value.toLowerCase().trim();
-
+                
                 if (searchTerm.length === 0) {
                     displayTopSearchedProducts();
                     return;
                 }
-
+                
                 performSearch(searchTerm, searchResults);
             }, 300);
         });
-
+        
         // Search overlay functionality
         searchBackBtn.addEventListener('click', () => {
             searchOverlay.classList.remove('active');
             searchOverlayInput.value = '';
             document.body.style.overflow = '';
         });
-
+        
         searchOverlayInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
-
+            
             searchTimeout = setTimeout(() => {
                 const searchTerm = e.target.value.toLowerCase().trim();
-
+                
                 if (searchTerm.length === 0) {
                     displayTopSearchedProductsInOverlay();
                     return;
                 }
-
+                
                 performSearch(searchTerm, searchOverlayResults);
             }, 300);
         });
-
+        
         // Function to display top searched products in overlay
         function displayTopSearchedProductsInOverlay() {
             let resultsHTML = `
@@ -5559,7 +5895,7 @@
                     <h5><i class="fas fa-fire"></i> Top Searched Products</h5>
                     <div class="top-searched-products">
             `;
-
+            
             topSearchedProducts.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -5574,7 +5910,7 @@
                     `;
                 }
             });
-
+            
             resultsHTML += `
                     </div>
                 </div>
@@ -5583,11 +5919,11 @@
                     <h5><i class="fas fa-lightbulb"></i> Search by Skin Concern</h5>
                     <div class="suggestions-grid">
             `;
-
+            
             searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
             });
-
+            
             resultsHTML += `
                     </div>
                 </div>
@@ -5596,23 +5932,23 @@
                     <h5><i class="fas fa-star"></i> Search by Benefits</h5>
                     <div class="suggestions-grid">
             `;
-
+            
             searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
             });
-
+            
             resultsHTML += `
                         </div>
                     </div>
                 `;
-
+            
             searchOverlayResults.innerHTML = resultsHTML;
-
+            
             document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const product = products.find(p => p.id === productId);
-
+                    
                     if (product) {
                         navigateToProduct(product);
                         searchOverlay.classList.remove('active');
@@ -5620,7 +5956,7 @@
                     }
                 });
             });
-
+            
             document.querySelectorAll('.suggestion-tag').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
@@ -5629,7 +5965,7 @@
                 });
             });
         }
-
+        
         // Function to display top searched products in desktop
         function displayTopSearchedProducts() {
             let resultsHTML = `
@@ -5637,7 +5973,7 @@
                     <h5><i class="fas fa-fire"></i> Top Searched Products</h5>
                     <div class="top-searched-products">
             `;
-
+            
             topSearchedProducts.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -5652,7 +5988,7 @@
                     `;
                 }
             });
-
+            
             resultsHTML += `
                     </div>
                 </div>
@@ -5661,11 +5997,11 @@
                     <h5><i class="fas fa-lightbulb"></i> Search by Skin Concern</h5>
                     <div class="suggestions-grid">
             `;
-
+            
             searchSuggestions.skinIssues.slice(0, 8).forEach(issue => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${issue}">${issue}</span>`;
             });
-
+            
             resultsHTML += `
                     </div>
                 </div>
@@ -5674,30 +6010,30 @@
                     <h5><i class="fas fa-star"></i> Search by Benefits</h5>
                     <div class="suggestions-grid">
             `;
-
+            
             searchSuggestions.benefits.slice(0, 6).forEach(benefit => {
                 resultsHTML += `<span class="suggestion-tag" data-suggestion="${benefit}">${benefit}</span>`;
             });
-
+            
             resultsHTML += `
                     </div>
                 </div>
             `;
-
+            
             searchResults.innerHTML = resultsHTML;
             searchResults.classList.add('active');
-
+            
             document.querySelectorAll('.top-searched-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const product = products.find(p => p.id === productId);
-
+                    
                     if (product) {
                         navigateToProduct(product);
                     }
                 });
             });
-
+            
             document.querySelectorAll('.suggestion-tag').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
@@ -5706,36 +6042,36 @@
                 });
             });
         }
-
+        
         // Function to perform search with predictive suggestions
         function performSearch(searchTerm, resultsContainer) {
             const filteredProducts = [];
             const suggestions = new Set();
-
+            
             products.forEach(product => {
                 let score = 0;
                 let matchedFields = [];
-
+                
                 if (product.name.toLowerCase().includes(searchTerm)) {
                     score += 30;
                     matchedFields.push('name');
                 }
-
+                
                 if (product.description.toLowerCase().includes(searchTerm)) {
                     score += 20;
                     matchedFields.push('description');
                 }
-
+                
                 if (product.benefits.toLowerCase().includes(searchTerm)) {
                     score += 15;
                     matchedFields.push('benefits');
                 }
-
+                
                 product.skinIssues.forEach(issue => {
                     if (issue.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('skin issue: ' + issue);
-
+                        
                         searchSuggestions.skinIssues.forEach(si => {
                             if (si.includes(searchTerm) && si !== issue) {
                                 suggestions.add(si);
@@ -5743,12 +6079,12 @@
                         });
                     }
                 });
-
+                
                 product.benefitsList.forEach(benefit => {
                     if (benefit.toLowerCase().includes(searchTerm)) {
                         score += 10;
                         matchedFields.push('benefit: ' + benefit);
-
+                        
                         searchSuggestions.benefits.forEach(b => {
                             if (b.includes(searchTerm) && b !== benefit) {
                                 suggestions.add(b);
@@ -5756,12 +6092,12 @@
                         });
                     }
                 });
-
+                
                 if (product.category.toLowerCase().includes(searchTerm)) {
                     score += 5;
                     matchedFields.push('category');
                 }
-
+                
                 if (score > 0) {
                     filteredProducts.push({
                         product: product,
@@ -5770,14 +6106,14 @@
                     });
                 }
             });
-
+            
             filteredProducts.sort((a, b) => b.score - a.score);
-
+            
             const suggestionArray = Array.from(suggestions).slice(0, 5);
-
+            
             displaySearchResults(filteredProducts, suggestionArray, searchTerm, resultsContainer);
         }
-
+        
         // Function to display search results with suggestions
         function displaySearchResults(filteredProducts, suggestions, searchTerm, resultsContainer) {
             if (filteredProducts.length === 0 && suggestions.length === 0) {
@@ -5788,42 +6124,42 @@
                         <p style="margin-top: 10px; font-size: 14px;">Try searching for: acne, dark spots, brightening, moisturizing, oud, perfume</p>
                     </div>
                 `;
-
+                
                 if (resultsContainer === searchResults) {
                     searchResults.classList.add('active');
                 }
                 return;
             }
-
+            
             let resultsHTML = '';
-
+            
             if (suggestions.length > 0) {
                 resultsHTML += `
                     <div class="search-suggestions">
                         <h5><i class="fas fa-lightbulb"></i> Try Searching For</h5>
                         <div class="suggestions-grid">
                 `;
-
+                
                 suggestions.forEach(suggestion => {
                     resultsHTML += `<span class="suggestion-tag" data-suggestion="${suggestion}">${suggestion}</span>`;
                 });
-
+                
                 resultsHTML += `
                         </div>
                     </div>
                 `;
             }
-
+            
             if (filteredProducts.length > 0) {
                 resultsHTML += `
                     <div class="search-results-list">
                         <h5><i class="fas fa-check-circle"></i> ${filteredProducts.length} Products Found</h5>
                 `;
-
+                
                 filteredProducts.forEach((item, index) => {
                     const product = item.product;
                     const matchedFields = item.matchedFields.slice(0, 2).join(', ');
-
+                    
                     resultsHTML += `
                         <div class="search-result-item" data-id="${product.id}">
                             <img src="${product.image}" alt="${product.name}">
@@ -5840,24 +6176,24 @@
                         </div>
                     `;
                 });
-
+                
                 resultsHTML += `</div>`;
             }
-
+            
             resultsContainer.innerHTML = resultsHTML;
-
+            
             if (resultsContainer === searchResults) {
                 searchResults.classList.add('active');
             }
-
+            
             resultsContainer.querySelectorAll('.search-result-item').forEach(item => {
                 item.addEventListener('click', function() {
                     const productId = parseInt(this.getAttribute('data-id'));
                     const product = products.find(p => p.id === productId);
-
+                    
                     if (product) {
                         navigateToProduct(product);
-
+                        
                         if (searchOverlay.classList.contains('active')) {
                             searchOverlay.classList.remove('active');
                             document.body.style.overflow = '';
@@ -5865,11 +6201,11 @@
                     }
                 });
             });
-
+            
             resultsContainer.querySelectorAll('.suggestion-tag').forEach(tag => {
                 tag.addEventListener('click', function() {
                     const suggestion = this.getAttribute('data-suggestion');
-
+                    
                     if (resultsContainer === searchOverlayResults) {
                         searchOverlayInput.value = suggestion;
                         performSearch(suggestion, searchOverlayResults);
@@ -5880,14 +6216,14 @@
                 });
             });
         }
-
+        
         // Function to navigate to product and highlight it
         function navigateToProduct(product) {
             searchInput.classList.remove('active');
             searchClose.classList.remove('active');
             searchInput.value = '';
             searchResults.classList.remove('active');
-
+            
             let targetSectionId;
             if (product.section === "products") {
                 targetSectionId = "products";
@@ -5896,29 +6232,29 @@
             } else {
                 targetSectionId = "all-products";
             }
-
+            
             document.getElementById(targetSectionId).scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
             });
-
+            
             setTimeout(() => {
                 const productElement = document.querySelector(`.add-to-cart[data-id="${product.id}"]`);
                 if (productElement) {
                     const productCard = productElement.closest('.product-card');
-
+                    
                     productCard.scrollIntoView({ 
                         behavior: 'smooth',
                         block: 'center'
                     });
-
+                    
                     productCard.style.animation = 'none';
                     void productCard.offsetWidth;
                     productCard.style.animation = 'pulse 2s';
-
+                    
                     productCard.style.boxShadow = '0 0 0 3px var(--accent-color)';
                     productCard.style.transform = 'scale(1.02)';
-
+                    
                     setTimeout(() => {
                         productCard.style.boxShadow = '';
                         productCard.style.transform = '';
@@ -5926,7 +6262,7 @@
                 }
             }, 800);
         }
-
+        
         // Close search when clicking outside (desktop only)
         document.addEventListener('click', (e) => {
             if (window.innerWidth > 768) {
@@ -5937,7 +6273,7 @@
                 }
             }
         });
-
+        
         // Scroll event for navbar and fade animations
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -5945,43 +6281,43 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
-
+            
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-
+                
                 if (elementTop < windowHeight - 100) {
                     element.classList.add('visible');
                 }
             });
-
+            
             const video = document.getElementById('background-video');
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
             video.style.transform = `translate3d(0px, ${rate}px, 0px)`;
         });
-
+        
         // Initialize fade elements on page load
         document.addEventListener('DOMContentLoaded', () => {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-
+                
                 if (elementTop < windowHeight - 100) {
                     element.classList.add('visible');
                 }
             });
-
+            
             updateProgressBar();
-
+            
             if ('ontouchstart' in window) {
                 document.body.classList.add('touch-device');
-
+                
                 document.querySelectorAll('.glass-button, .option-item, .product-card').forEach(element => {
                     element.style.cursor = 'pointer';
                 });
             }
-
+            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes pulse {
@@ -5991,39 +6327,39 @@
                 }
             `;
             document.head.appendChild(style);
-
+            
             initializeFlagshipProduct();
-
+            
             // Only initialize add to cart buttons once - FIXED: Remove duplicate initialization
             initializeAddToCartButtons();
         });
-
+        
         // Initialize all add to cart buttons - FIXED: This should be the only place where add-to-cart buttons get event listeners
         function initializeAddToCartButtons() {
             // Use event delegation for better performance and to handle dynamically added buttons
             document.addEventListener('click', function(event) {
                 // Check if the clicked element or its parent has the add-to-cart class
                 const addToCartButton = event.target.closest('.add-to-cart');
-
+                
                 if (addToCartButton) {
                     event.preventDefault();
-
+                    
                     const productId = parseInt(addToCartButton.getAttribute('data-id'));
                     const productName = addToCartButton.getAttribute('data-name');
                     const productPrice = parseFloat(addToCartButton.getAttribute('data-price'));
                     const productImage = addToCartButton.getAttribute('data-image');
-
+                    
                     addToCart({
                         id: productId,
                         name: productName,
                         price: productPrice,
                         image: productImage
                     });
-
+                    
                     const originalText = addToCartButton.innerHTML;
                     addToCartButton.innerHTML = '<i class="fas fa-check"></i> Added!';
                     addToCartButton.style.background = 'rgba(40, 167, 69, 0.3)';
-
+                    
                     setTimeout(() => {
                         addToCartButton.innerHTML = originalText;
                         addToCartButton.style.background = '';
@@ -6031,12 +6367,12 @@
                 }
             });
         }
-
+        
         // Flagship product "See More" functionality
         function initializeFlagshipProduct() {
             const seeMoreBtn = document.querySelector('.see-more-btn');
             const flagshipDetails = document.querySelector('.flagship-details');
-
+            
             if (seeMoreBtn && flagshipDetails) {
                 const isMobile = window.innerWidth <= 850;
                 if (isMobile) {
@@ -6048,10 +6384,10 @@
                     flagshipDetails.classList.remove('collapsed');
                     seeMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> See Less';
                 }
-
+                
                 seeMoreBtn.addEventListener('click', () => {
                     const isCollapsed = flagshipDetails.classList.contains('collapsed');
-
+                    
                     if (isCollapsed) {
                         flagshipDetails.classList.remove('collapsed');
                         flagshipDetails.classList.add('expanded');
@@ -6062,10 +6398,10 @@
                         seeMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
                     }
                 });
-
+                
                 window.addEventListener('resize', () => {
                     const isMobile = window.innerWidth <= 850;
-
+                    
                     if (isMobile && flagshipDetails.classList.contains('expanded')) {
                         flagshipDetails.classList.remove('expanded');
                         flagshipDetails.classList.add('collapsed');
@@ -6074,11 +6410,11 @@
                 });
             }
         }
-
+        
         // Cart functionality
         function updateCartBadge() {
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-
+            
             if (totalItems > 0) {
                 floatingCartBadge.textContent = totalItems;
                 floatingCartBadge.style.display = 'flex';
@@ -6086,11 +6422,11 @@
                 floatingCartBadge.style.display = 'none';
             }
         }
-
+        
         // Add item to cart
         function addToCart(product) {
             const existingItem = cart.find(item => item.id === product.id);
-
+            
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -6099,16 +6435,16 @@
                     quantity: 1
                 });
             }
-
+            
             localStorage.setItem('cart', JSON.stringify(cart));
-
+            
             updateCartBadge();
-
+            
             if (cartModal.classList.contains('active')) {
                 updateCartDisplay();
             }
         }
-
+        
         // Update cart display - CLEANER DESIGN
         function updateCartDisplay() {
             if (cart.length === 0) {
@@ -6125,14 +6461,14 @@
                 cartSummary.style.display = 'none';
                 return;
             }
-
+            
             let itemsHTML = '';
             let subtotal = 0;
-
+            
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-
+                
                 itemsHTML += `
                     <div class="cart-item glass-card">
                         <div class="cart-item-image" style="background-image: url('${item.image}');"></div>
@@ -6160,33 +6496,33 @@
                     </div>
                 `;
             });
-
+            
             cartItems.innerHTML = itemsHTML;
-
+            
             const shipping = 50.00;
             const total = subtotal + shipping;
-
+            
             document.getElementById('cartSubtotal').textContent = `R${subtotal.toFixed(2)}`;
             document.getElementById('cartShipping').textContent = `R${shipping.toFixed(2)}`;
             document.getElementById('cartTax').textContent = `R0.00`;
             document.getElementById('cartTotal').textContent = `R${total.toFixed(2)}`;
-
+            
             cartSummary.style.display = 'block';
-
+            
             document.querySelectorAll('.decrease-quantity').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     updateQuantity(index, -1);
                 });
             });
-
+            
             document.querySelectorAll('.increase-quantity').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
                     updateQuantity(index, 1);
                 });
             });
-
+            
             document.querySelectorAll('.remove-item').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const index = parseInt(this.getAttribute('data-index'));
@@ -6194,53 +6530,53 @@
                 });
             });
         }
-
+        
         // Update item quantity
         function updateQuantity(index, change) {
             if (cart[index]) {
                 cart[index].quantity += change;
-
+                
                 if (cart[index].quantity <= 0) {
                     cart.splice(index, 1);
                 }
-
+                
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartBadge();
                 updateCartDisplay();
             }
         }
-
+        
         // Remove item from cart
         function removeFromCart(index) {
             if (cart[index]) {
                 cart.splice(index, 1);
-
+                
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartBadge();
                 updateCartDisplay();
             }
         }
-
+        
         // Checkout functionality - MODIFIED FOR NEW AUTHENTICATION FLOW
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
             }
-
+            
             cartModal.classList.remove('active');
-
+            
             // NEW: Show auth choice modal instead of directly going to checkout
             authChoiceModal.classList.add('active');
         });
-
+        
         checkoutModal.addEventListener('click', (e) => {
             if (e.target === checkoutModal) {
                 checkoutModal.classList.remove('active');
                 resetAddressSelection();
             }
         });
-
+        
         // NEW: Auth Choice Modal Functionality
         guestOption.addEventListener('click', () => {
             authChoiceModal.classList.remove('active');
@@ -6248,19 +6584,19 @@
             updateCheckoutStep(1);
             initializeAddressSelection();
         });
-
+        
         signupOption.addEventListener('click', () => {
             authChoiceModal.classList.remove('active');
             enhancedAuthModal.classList.add('active');
             showAuthTab('signup');
         });
-
+        
         loginOption.addEventListener('click', () => {
             authChoiceModal.classList.remove('active');
             enhancedAuthModal.classList.add('active');
             showAuthTab('login');
         });
-
+        
         // NEW: Enhanced Auth Modal Functionality
         function initializeAuthentication() {
             // Enhanced auth tabs
@@ -6270,18 +6606,18 @@
                     showAuthTab(tabName);
                 });
             });
-
+            
             // Switch between login and signup
             switchToSignupEnhanced.addEventListener('click', (e) => {
                 e.preventDefault();
                 showAuthTab('signup');
             });
-
+            
             switchToLoginEnhanced.addEventListener('click', (e) => {
                 e.preventDefault();
                 showAuthTab('login');
             });
-
+            
             // Social login buttons
             googleLogin.addEventListener('click', () => socialLogin('google'));
             facebookLogin.addEventListener('click', () => socialLogin('facebook'));
@@ -6289,31 +6625,31 @@
             googleSignup.addEventListener('click', () => socialLogin('google'));
             facebookSignup.addEventListener('click', () => socialLogin('facebook'));
             appleSignup.addEventListener('click', () => socialLogin('apple'));
-
+            
             // Password strength checker
             if (passwordInput) {
                 passwordInput.addEventListener('input', checkPasswordStrength);
             }
-
+            
             // Enhanced login form submission
             enhancedLoginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 handleLogin();
             });
-
+            
             // Enhanced signup form submission
             enhancedSignupForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 handleSignup();
             });
-
+            
             // Forgot password
             document.getElementById('forgotPassword').addEventListener('click', (e) => {
                 e.preventDefault();
                 handleForgotPassword();
             });
         }
-
+        
         function showAuthTab(tabName) {
             // Update tabs
             enhancedAuthTabs.forEach(tab => {
@@ -6322,7 +6658,7 @@
                     tab.classList.add('active');
                 }
             });
-
+            
             // Update forms
             enhancedAuthForms.forEach(form => {
                 form.classList.remove('active');
@@ -6330,22 +6666,22 @@
                     form.classList.add('active');
                 }
             });
-
+            
             // Show/hide discount
             if (tabName === 'signup') {
                 signupDiscount.style.display = 'block';
             } else {
                 signupDiscount.style.display = 'none';
             }
-
+            
             // Reset forms
             resetAuthForms();
         }
-
+        
         function checkPasswordStrength() {
             const password = passwordInput.value;
             let strength = 0;
-
+            
             // Check length
             if (password.length >= 8) {
                 strength++;
@@ -6357,7 +6693,7 @@
                 reqLength.classList.add('invalid');
                 reqLength.innerHTML = '<i class="fas fa-circle" style="font-size: 6px;"></i> At least 8 characters';
             }
-
+            
             // Check uppercase
             if (/[A-Z]/.test(password)) {
                 strength++;
@@ -6369,7 +6705,7 @@
                 reqUppercase.classList.add('invalid');
                 reqUppercase.innerHTML = '<i class="fas fa-circle" style="font-size: 6px;"></i> One uppercase letter';
             }
-
+            
             // Check lowercase
             if (/[a-z]/.test(password)) {
                 strength++;
@@ -6381,7 +6717,7 @@
                 reqLowercase.classList.add('invalid');
                 reqLowercase.innerHTML = '<i class="fas fa-circle" style="font-size: 6px;"></i> One lowercase letter';
             }
-
+            
             // Check number
             if (/[0-9]/.test(password)) {
                 strength++;
@@ -6393,7 +6729,7 @@
                 reqNumber.classList.add('invalid');
                 reqNumber.innerHTML = '<i class="fas fa-circle" style="font-size: 6px;"></i> One number';
             }
-
+            
             // Update strength indicator
             if (strength === 0) {
                 passwordStrength.textContent = '';
@@ -6409,10 +6745,10 @@
                 passwordStrength.className = 'password-strength strong';
             }
         }
-
+        
         function socialLogin(provider) {
             showAuthLoading();
-
+            
             // Simulate social login API call
             setTimeout(() => {
                 // For demo purposes, create a mock user
@@ -6425,31 +6761,31 @@
                     hasDiscount: provider === 'google' || provider === 'facebook' || provider === 'apple',
                     createdAt: new Date().toISOString()
                 };
-
+                
                 // Save user to localStorage
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 const existingUser = users.find(u => u.email === mockUser.email);
-
+                
                 if (!existingUser) {
                     users.push(mockUser);
                     localStorage.setItem('users', JSON.stringify(users));
                 }
-
+                
                 // Set as current user
                 localStorage.setItem('currentUser', JSON.stringify(mockUser));
                 currentUser = mockUser;
                 isAuthenticated = true;
                 userHasDiscount = mockUser.hasDiscount;
-
+                
                 // Show success and proceed to checkout
                 showAuthSuccess();
-
+                
                 setTimeout(() => {
                     enhancedAuthModal.classList.remove('active');
                     checkoutModal.classList.add('active');
                     updateCheckoutStep(1);
                     initializeAddressSelection();
-
+                    
                     // If user has discount from social signup, apply it
                     if (userHasDiscount) {
                         applyDiscountToCart();
@@ -6457,40 +6793,40 @@
                 }, 1500);
             }, 1000);
         }
-
+        
         function handleLogin() {
             const email = document.getElementById('enhancedLoginEmail').value;
             const password = document.getElementById('enhancedLoginPassword').value;
             const rememberMe = document.getElementById('rememberMeEnhanced').checked;
-
+            
             // Basic validation
             if (!email || !password) {
                 alert('Please fill in all fields');
                 return;
             }
-
+            
             showAuthLoading();
-
+            
             // Simulate API call
             setTimeout(() => {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 const user = users.find(u => u.email === email && u.password === password);
-
+                
                 if (user) {
                     // Successful login
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     currentUser = user;
                     isAuthenticated = true;
                     userHasDiscount = user.hasDiscount || false;
-
+                    
                     showAuthSuccess();
-
+                    
                     setTimeout(() => {
                         enhancedAuthModal.classList.remove('active');
                         checkoutModal.classList.add('active');
                         updateCheckoutStep(1);
                         initializeAddressSelection();
-
+                        
                         // If user has discount, apply it
                         if (userHasDiscount) {
                             applyDiscountToCart();
@@ -6503,7 +6839,7 @@
                 }
             }, 1000);
         }
-
+        
         function handleSignup() {
             const firstName = document.getElementById('signupFirstName').value;
             const lastName = document.getElementById('signupLastName').value;
@@ -6511,43 +6847,43 @@
             const password = document.getElementById('enhancedSignupPassword').value;
             const confirmPassword = document.getElementById('enhancedSignupConfirmPassword').value;
             const agreeTerms = document.getElementById('agreeTermsEnhanced').checked;
-
+            
             // Validation
             if (!firstName || !lastName || !email || !password || !confirmPassword) {
                 alert('Please fill in all fields');
                 return;
             }
-
+            
             if (!agreeTerms) {
                 alert('Please agree to the Terms & Conditions');
                 return;
             }
-
+            
             if (password !== confirmPassword) {
                 alert('Passwords do not match');
                 return;
             }
-
+            
             // Check password strength
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
             if (!passwordRegex.test(password)) {
                 alert('Password must be at least 8 characters long and contain uppercase, lowercase, and a number');
                 return;
             }
-
+            
             showAuthLoading();
-
+            
             // Simulate API call
             setTimeout(() => {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
-
+                
                 // Check if user already exists
                 if (users.find(u => u.email === email)) {
                     hideAuthLoading();
                     alert('An account with this email already exists. Please login instead.');
                     return;
                 }
-
+                
                 // Create new user
                 const newUser = {
                     id: Date.now(),
@@ -6559,60 +6895,60 @@
                     createdAt: new Date().toISOString(),
                     orders: []
                 };
-
+                
                 // Save user
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
                 localStorage.setItem('currentUser', JSON.stringify(newUser));
-
+                
                 currentUser = newUser;
                 isAuthenticated = true;
                 userHasDiscount = true;
-
+                
                 showAuthSuccess();
-
+                
                 setTimeout(() => {
                     enhancedAuthModal.classList.remove('active');
                     checkoutModal.classList.add('active');
                     updateCheckoutStep(1);
                     initializeAddressSelection();
-
+                    
                     // Apply 15% discount for first-time signup
                     applyDiscountToCart();
                 }, 1500);
             }, 1000);
         }
-
+        
         function handleForgotPassword() {
             const email = prompt('Please enter your email address to reset your password:');
             if (email) {
                 alert(`Password reset link has been sent to ${email}. Check your email inbox.`);
             }
         }
-
+        
         function showAuthLoading() {
             mainAuthContent.style.display = 'none';
             authLoading.classList.add('active');
             authSuccess.classList.remove('active');
         }
-
+        
         function hideAuthLoading() {
             mainAuthContent.style.display = 'block';
             authLoading.classList.remove('active');
         }
-
+        
         function showAuthSuccess() {
             mainAuthContent.style.display = 'none';
             authLoading.classList.remove('active');
             authSuccess.classList.add('active');
         }
-
+        
         function resetAuthForms() {
             document.getElementById('enhancedLoginForm').reset();
             document.getElementById('enhancedSignupForm').reset();
             passwordStrength.textContent = '';
             passwordStrength.className = 'password-strength';
-
+            
             // Reset password requirements
             [reqLength, reqUppercase, reqLowercase, reqNumber].forEach(el => {
                 el.classList.remove('valid');
@@ -6622,25 +6958,25 @@
                 el.innerHTML = '<i class="fas fa-circle" style="font-size: 6px;"></i>' + el.textContent.replace('✓ ', '');
             });
         }
-
+        
         function applyDiscountToCart() {
             // Apply 15% discount to cart
             const discountMultiplier = 0.85; // 15% off = 85% of original price
-
+            
             // Update cart with discounted prices
             cart = cart.map(item => ({
                 ...item,
                 originalPrice: item.price,
                 price: parseFloat((item.price * discountMultiplier).toFixed(2))
             }));
-
+            
             localStorage.setItem('cart', JSON.stringify(cart));
-
+            
             // Update display if cart modal is open
             if (cartModal.classList.contains('active')) {
                 updateCartDisplay();
             }
-
+            
             // Show discount applied message
             const discountMessage = document.createElement('div');
             discountMessage.className = 'discount-display';
@@ -6648,34 +6984,34 @@
                 <i class="fas fa-gift"></i>
                 <span>15% discount applied to your order!</span>
             `;
-
+            
             // Insert at beginning of cart summary
             const cartSummary = document.getElementById('cartSummary');
             if (cartSummary) {
                 cartSummary.insertBefore(discountMessage, cartSummary.firstChild);
             }
         }
-
+        
         // Update checkout step
         function updateCheckoutStep(step) {
             currentCheckoutStep = step;
-
+            
             checkoutSteps.forEach(s => {
                 s.classList.remove('active', 'completed');
-
+                
                 const stepNum = parseInt(s.getAttribute('data-step'));
-
+                
                 if (stepNum === step) {
                     s.classList.add('active');
                 } else if (stepNum < step) {
                     s.classList.add('completed');
                 }
             });
-
+            
             checkoutForms.forEach(form => {
                 form.classList.remove('active');
             });
-
+            
             if (step === 1) {
                 shippingForm.classList.add('active');
             } else if (step === 2) {
@@ -6686,64 +7022,64 @@
                 reviewForm.classList.add('active');
             }
         }
-
+        
         // Checkout navigation - UPDATED FOR ADDRESS VALIDATION
         nextToPaymentBtn.addEventListener('click', () => {
             if (!validateAddressSelection()) {
                 alert('Please complete the address selection process before proceeding');
                 return;
             }
-
+            
             if (!validateShippingForm()) {
                 alert('Please fill in all required shipping information');
                 return;
             }
-
+            
             updateCheckoutStep(2);
         });
-
+        
         backToShippingBtn.addEventListener('click', () => {
             updateCheckoutStep(1);
         });
-
+        
         nextToReviewBtn.addEventListener('click', () => {
             if (selectedPaymentMethod === 'credit' && !validatePaymentForm()) {
                 alert('Please fill in all required payment information');
                 return;
             }
-
+            
             updateCheckoutStep(3);
         });
-
+        
         backToPaymentBtn2.addEventListener('click', () => {
             updateCheckoutStep(2);
         });
-
+        
         backToCartBtn.addEventListener('click', () => {
             checkoutModal.classList.remove('active');
             cartModal.classList.add('active');
         });
-
+        
         // Initialize payment methods
         function initializePaymentMethods() {
             // Payment method selection
             paymentMethods.forEach(method => {
                 method.addEventListener('click', function() {
                     const methodType = this.getAttribute('data-method');
-
+                    
                     // Remove selected class from all methods
                     paymentMethods.forEach(m => m.classList.remove('selected'));
                     // Add selected class to clicked method
                     this.classList.add('selected');
-
+                    
                     // Update selected payment method
                     selectedPaymentMethod = methodType;
-
+                    
                     // Hide all payment details
                     creditCardDetails.classList.remove('active');
                     paypalDetails.classList.remove('active');
                     bankTransferDetails.classList.remove('active');
-
+                    
                     // Show selected payment method details
                     if (methodType === 'credit') {
                         creditCardDetails.classList.add('active');
@@ -6769,42 +7105,42 @@
                     }
                 });
             });
-
+            
             // PayPal button functionality
             paypalButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 processPayPalPayment();
             });
         }
-
+        
         // Process PayPal payment
         function processPayPalPayment() {
             // In a real implementation, this would redirect to PayPal
             // For demo purposes, we'll simulate a successful payment
             alert('You would now be redirected to PayPal to complete your payment. In a real implementation, this would integrate with the PayPal API.');
-
+            
             // Simulate successful PayPal payment
             simulatePaymentProcessing('paypal');
         }
-
+        
         // Simulate payment processing
         function simulatePaymentProcessing(method) {
             // Show processing message
             const paypalButton = document.getElementById('paypalButton');
             const originalText = paypalButton.innerHTML;
-
+            
             if (method === 'paypal') {
                 paypalButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 paypalButton.disabled = true;
-
+                
                 // Simulate API call delay
                 setTimeout(() => {
                     paypalButton.innerHTML = '<i class="fab fa-paypal"></i> Payment Successful!';
                     paypalButton.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
+                    
                     // Enable next button
                     document.getElementById('nextToReview').disabled = false;
-
+                    
                     setTimeout(() => {
                         paypalButton.innerHTML = originalText;
                         paypalButton.style.background = '';
@@ -6813,24 +7149,24 @@
                 }, 2000);
             }
         }
-
+        
         // Update bank transfer details
         function updateBankDetails() {
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             const shipping = 50.00;
             const total = subtotal + shipping;
             const orderId = Math.floor(1000 + Math.random() * 9000);
-
+            
             document.getElementById('bankReference').textContent = orderId;
             document.getElementById('bankAmount').textContent = `R${total.toFixed(2)}`;
         }
-
+        
         // Update review section
         function updateReviewSection() {
             const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             const shipping = 50.00;
             const total = subtotal + shipping;
-
+            
             let reviewItemsHTML = '';
             cart.forEach(item => {
                 reviewItemsHTML += `
@@ -6840,30 +7176,30 @@
                     </div>
                 `;
             });
-
+            
             document.getElementById('reviewItems').innerHTML = reviewItemsHTML;
-
+            
             document.getElementById('reviewSubtotal').textContent = `R${subtotal.toFixed(2)}`;
             document.getElementById('reviewShipping').textContent = `R${shipping.toFixed(2)}`;
             document.getElementById('reviewTax').textContent = `R0.00`;
             document.getElementById('reviewTotal').textContent = `R${total.toFixed(2)}`;
         }
-
+        
         // Place order
         placeOrderBtn.addEventListener('click', () => {
             if (!document.getElementById('agreeTermsCheckout').checked) {
                 alert('Please agree to the Terms & Conditions');
                 return;
             }
-
+            
             if (!validateAddressSelection()) {
                 alert('Please complete the address selection process');
                 return;
             }
-
+            
             const orderId = Math.floor(1000 + Math.random() * 9000);
             document.getElementById('orderId').textContent = orderId;
-
+            
             // Get shipping information
             const shippingInfo = {
                 firstName: document.getElementById('shippingFirstName').value,
@@ -6880,23 +7216,23 @@
                 notes: document.getElementById('shippingNotes').value,
                 isManualEntry: isManualEntry
             };
-
+            
             // Save shipping info to user profile if logged in
             if (isAuthenticated && currentUser) {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 const userIndex = users.findIndex(u => u.id === currentUser.id);
-
+                
                 if (userIndex !== -1) {
                     // Save shipping info to user profile
                     users[userIndex].shippingInfo = shippingInfo;
                     localStorage.setItem('users', JSON.stringify(users));
-
+                    
                     // Update current user
                     currentUser.shippingInfo = shippingInfo;
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 }
             }
-
+            
             const order = {
                 id: orderId,
                 date: new Date().toISOString(),
@@ -6916,12 +7252,12 @@
                 userId: isAuthenticated ? currentUser.id : null,
                 discountApplied: userHasDiscount
             };
-
+            
             // Save order to user's order history if logged in
             if (isAuthenticated && currentUser) {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 const userIndex = users.findIndex(u => u.id === currentUser.id);
-
+                
                 if (userIndex !== -1) {
                     if (!users[userIndex].orders) {
                         users[userIndex].orders = [];
@@ -6930,47 +7266,47 @@
                     localStorage.setItem('users', JSON.stringify(users));
                 }
             }
-
+            
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
             orders.push(order);
             localStorage.setItem('orders', JSON.stringify(orders));
-
+            
             // Clear cart
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
-
+            
             // Close checkout modal
             checkoutModal.classList.remove('active');
-
+            
             // Set success message based on payment method and authentication status
             let successMsg = "Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.";
-
+            
             if (selectedPaymentMethod === 'paypal') {
                 successMsg = "Thank you for your purchase! Your PayPal payment was successful and your order is being processed. You will receive a confirmation email shortly.";
             } else if (selectedPaymentMethod === 'bank') {
                 successMsg = "Thank you for your order! Please transfer R" + order.total.toFixed(2) + " to our bank account (details in your confirmation email). Your order will be processed once payment is confirmed.";
             }
-
+            
             // Add account creation message if guest checkout
             if (!isAuthenticated) {
                 successMsg += "\n\nWant to save your shipping info for faster checkout next time? Create an account to unlock order tracking and exclusive discounts!";
             }
-
+            
             successMessage.textContent = successMsg;
             successModal.classList.add('active');
-
+            
             resetAddressSelection();
-
+            
             // Reset authentication state for next checkout
             userHasDiscount = false;
         });
-
+        
         // Continue shopping
         continueShoppingBtn.addEventListener('click', () => {
             successModal.classList.remove('active');
         });
-
+        
         // Validation functions
         function validateShippingForm() {
             const requiredFields = [
@@ -6980,88 +7316,88 @@
                 'shippingPhone',
                 'shippingAddress'
             ];
-
+            
             for (const fieldId of requiredFields) {
                 const field = document.getElementById(fieldId);
                 if (!field.value.trim()) {
                     return false;
                 }
             }
-
+            
             return true;
         }
-
+        
         function validatePaymentForm() {
             if (selectedPaymentMethod !== 'credit') {
                 return true;
             }
-
+            
             const requiredFields = [
                 'cardName',
                 'cardNumber',
                 'cardExpiry',
                 'cardCVC'
             ];
-
+            
             for (const fieldId of requiredFields) {
                 const field = document.getElementById(fieldId);
                 if (!field.value.trim()) {
                     return false;
                 }
             }
-
+            
             // Simple card validation
             const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
             const cardExpiry = document.getElementById('cardExpiry').value;
             const cardCVC = document.getElementById('cardCVC').value;
-
+            
             // Check card number length (13-19 digits)
             if (cardNumber.length < 13 || cardNumber.length > 19) {
                 alert('Please enter a valid card number');
                 return false;
             }
-
+            
             // Check expiry date format
             if (!/^\d{2}\/\d{2}$/.test(cardExpiry)) {
                 alert('Please enter expiry date in MM/YY format');
                 return false;
             }
-
+            
             // Check if card is not expired
             const [month, year] = cardExpiry.split('/');
             const currentYear = new Date().getFullYear() % 100;
             const currentMonth = new Date().getMonth() + 1;
-
+            
             if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) < currentMonth)) {
                 alert('Card has expired');
                 return false;
             }
-
+            
             // Check CVC length (3-4 digits)
             if (cardCVC.length < 3 || cardCVC.length > 4) {
                 alert('Please enter a valid CVC');
                 return false;
             }
-
+            
             return true;
         }
-
+        
         // NEW: Address Selection Functions with manual entry support
-
+        
         function initializeAddressSelection() {
             populateCountryOptions();
-
+            
             document.getElementById('nextAddressStep').addEventListener('click', goToNextAddressStep);
             document.getElementById('prevAddressStep').addEventListener('click', goToPrevAddressStep);
-
+            
             document.getElementById('shippingZip').addEventListener('input', validateZipCode);
-
+            
             // NEW: Pre-fill shipping info if user is logged in and has saved info
             if (isAuthenticated && currentUser && currentUser.shippingInfo) {
                 prefillShippingInfo(currentUser.shippingInfo);
             }
         }
-
+        
         function prefillShippingInfo(shippingInfo) {
             document.getElementById('shippingFirstName').value = shippingInfo.firstName || '';
             document.getElementById('shippingLastName').value = shippingInfo.lastName || '';
@@ -7070,15 +7406,15 @@
             document.getElementById('shippingAddress').value = shippingInfo.street || '';
             document.getElementById('shippingApartment').value = shippingInfo.apartment || '';
             document.getElementById('shippingNotes').value = shippingInfo.notes || '';
-
+            
             // Note: Country/state/city selection would need more complex logic
             // For now, we just prefill the basic fields
         }
-
+        
         function populateCountryOptions() {
             const countryOptions = document.getElementById('countryOptions');
             countryOptions.innerHTML = '';
-
+            
             addressData.countries.forEach(country => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7091,29 +7427,29 @@
                 countryOptions.appendChild(option);
             });
         }
-
+        
         function selectCountry(countryCode) {
             selectedCountry = countryCode;
             const country = addressData.countries.find(c => c.code === countryCode);
-
+            
             document.querySelectorAll('#countryOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
-
+            
             updateAddressProgress('country');
-
+            
             populateStateOptions(countryCode);
-
+            
             setTimeout(() => goToNextAddressStep(), 500);
         }
-
+        
         function populateStateOptions(countryCode) {
             const stateOptions = document.getElementById('stateOptions');
             stateOptions.innerHTML = '';
-
+            
             const states = addressData.states[countryCode] || [];
-
+            
             if (states.length === 0) {
                 stateOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7124,7 +7460,7 @@
                 `;
                 return;
             }
-
+            
             states.forEach(state => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7136,46 +7472,46 @@
                 stateOptions.appendChild(option);
             });
         }
-
+        
         function selectState(state) {
             selectedState = state;
             manualState = '';
             isManualEntry = false;
-
+            
             document.querySelectorAll('#stateOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
-
+            
             updateAddressProgress('state');
-
+            
             populateCityOptions(state);
-
+            
             setTimeout(() => goToNextAddressStep(), 500);
         }
-
+        
         function enterStateManually() {
             isManualEntry = true;
             selectedState = '';
             manualState = prompt('Please enter your state/province name:');
-
+            
             if (manualState && manualState.trim()) {
                 manualState = manualState.trim();
                 selectedState = manualState;
                 updateAddressProgress('state');
-
+                
                 populateCityOptions(manualState);
-
+                
                 setTimeout(() => goToNextAddressStep(), 500);
             }
         }
-
+        
         function populateCityOptions(state) {
             const cityOptions = document.getElementById('cityOptions');
             cityOptions.innerHTML = '';
-
+            
             const cities = addressData.cities[state] || [];
-
+            
             if (cities.length === 0) {
                 cityOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7186,7 +7522,7 @@
                 `;
                 return;
             }
-
+            
             cities.forEach(city => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7198,46 +7534,46 @@
                 cityOptions.appendChild(option);
             });
         }
-
+        
         function selectCity(city) {
             selectedCity = city;
             manualCity = '';
             isManualEntry = false;
-
+            
             document.querySelectorAll('#cityOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
-
+            
             updateAddressProgress('city');
-
+            
             populateVillageOptions(city);
-
+            
             setTimeout(() => goToNextAddressStep(), 500);
         }
-
+        
         function enterCityManually() {
             isManualEntry = true;
             selectedCity = '';
             manualCity = prompt('Please enter your city/town name:');
-
+            
             if (manualCity && manualCity.trim()) {
                 manualCity = manualCity.trim();
                 selectedCity = manualCity;
                 updateAddressProgress('city');
-
+                
                 populateVillageOptions(manualCity);
-
+                
                 setTimeout(() => goToNextAddressStep(), 500);
             }
         }
-
+        
         function populateVillageOptions(city) {
             const villageOptions = document.getElementById('villageOptions');
             villageOptions.innerHTML = '';
-
+            
             const villages = addressData.villages[city] || [];
-
+            
             if (villages.length === 0) {
                 villageOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7248,7 +7584,7 @@
                 `;
                 return;
             }
-
+            
             villages.forEach(village => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7260,28 +7596,28 @@
                 villageOptions.appendChild(option);
             });
         }
-
+        
         function selectVillage(village) {
             selectedVillage = village;
             manualVillage = '';
             manualZip = '';
             isManualEntry = false;
-
+            
             document.querySelectorAll('#villageOptions .address-option').forEach(option => {
                 option.classList.remove('selected');
             });
             event.target.closest('.address-option').classList.add('selected');
-
+            
             updateAddressProgress('village');
-
+            
             // Clear manual village input if shown
             document.getElementById('manualVillageContainer').classList.remove('active');
             document.getElementById('manualVillageName').value = '';
             document.getElementById('manualVillageZip').value = '';
-
+            
             setTimeout(() => goToNextAddressStep(), 500);
         }
-
+        
         function enterVillageManually() {
             // Hide village options and show manual input
             document.getElementById('villageOptions').style.display = 'none';
@@ -7291,7 +7627,7 @@
                 opt.style.display = 'none';
             });
         }
-
+        
         function cancelManualVillage() {
             // Show village options and hide manual input
             document.getElementById('villageOptions').style.display = 'block';
@@ -7300,77 +7636,77 @@
             document.querySelectorAll('#villageStep .address-option').forEach(opt => {
                 opt.style.display = 'flex';
             });
-
+            
             // Clear manual input
             document.getElementById('manualVillageName').value = '';
             document.getElementById('manualVillageZip').value = '';
         }
-
+        
         function saveManualVillage() {
             const villageName = document.getElementById('manualVillageName').value.trim();
             const villageZip = document.getElementById('manualVillageZip').value.trim();
-
+            
             if (!villageName) {
                 alert('Please enter village/suburb name');
                 return;
             }
-
+            
             if (!villageZip) {
                 alert('Please enter ZIP/postal code');
                 return;
             }
-
+            
             // Set manual values
             manualVillage = villageName;
             manualZip = villageZip;
             selectedVillage = villageName;
             selectedZip = villageZip;
             isManualEntry = true;
-
+            
             // Show manual village note in ZIP step
             document.getElementById('manualVillageNote').style.display = 'block';
-
+            
             updateAddressProgress('village');
-
+            
             // Go to ZIP step directly since we already have ZIP
             document.getElementById('villageStep').classList.remove('active');
             currentAddressStep = 'zip';
             document.getElementById('zipStep').classList.add('active');
-
+            
             // Set the ZIP input value
             document.getElementById('shippingZip').value = villageZip;
-
+            
             // Update address confirmation
             updateAddressConfirmation();
-
+            
             // Update navigation
             updateAddressNavigation();
-
+            
             // Validate ZIP
             validateZipCode();
         }
-
+        
         function skipVillage() {
             selectedVillage = '';
             manualVillage = '';
             manualZip = '';
             isManualEntry = false;
-
+            
             updateAddressProgress('village');
-
+            
             goToNextAddressStep();
         }
-
+        
         function validateZipCode() {
             const zipInput = document.getElementById('shippingZip');
             const zipValidation = document.getElementById('zipValidation');
             selectedZip = zipInput.value.trim();
-
+            
             if (!selectedZip) {
                 zipValidation.innerHTML = '';
                 return false;
             }
-
+            
             // If manual entry, accept any ZIP code
             if (isManualEntry && manualZip) {
                 zipValidation.innerHTML = `
@@ -7378,22 +7714,22 @@
                     <span>Manual ZIP code accepted</span>
                 `;
                 zipValidation.className = 'zip-validation valid';
-
+                
                 updateAddressConfirmation();
                 return true;
             }
-
+            
             // For regular entries, validate against list if available
             const validZips = addressData.zipCodes[selectedCity] || [];
             const isValid = validZips.some(zip => selectedZip.startsWith(zip.substring(0, 2))) || validZips.length === 0;
-
+            
             if (isValid) {
                 zipValidation.innerHTML = `
                     <i class="fas fa-check-circle"></i>
                     <span>Valid ZIP code for ${selectedCity}</span>
                 `;
                 zipValidation.className = 'zip-validation valid';
-
+                
                 updateAddressConfirmation();
                 return true;
             } else {
@@ -7405,14 +7741,14 @@
                 return false;
             }
         }
-
+        
         function updateAddressConfirmation() {
             const addressDetails = document.getElementById('addressDetails');
             const addressConfirmation = document.getElementById('addressConfirmation');
-
+            
             if ((selectedCountry && selectedState && selectedCity) || (selectedCountry && (manualState || manualCity))) {
                 let addressText = '';
-
+                
                 if (isManualEntry) {
                     addressText = `
                         <strong>${manualVillage || 'N/A'}</strong><br>
@@ -7428,20 +7764,20 @@
                         ZIP: ${selectedZip}
                     `;
                 }
-
+                
                 addressDetails.innerHTML = addressText;
                 addressConfirmation.style.display = 'block';
             } else {
                 addressConfirmation.style.display = 'none';
             }
         }
-
+        
         function updateAddressProgress(step) {
             document.querySelectorAll('.address-progress-step').forEach(stepEl => {
                 stepEl.classList.remove('active', 'completed');
-
+                
                 const stepName = stepEl.getAttribute('data-step');
-
+                
                 if (stepName === step) {
                     stepEl.classList.add('active');
                 } else if (
@@ -7454,48 +7790,48 @@
                     stepEl.classList.add('completed');
                 }
             });
-
+            
             updateAddressConfirmation();
         }
-
+        
         function goToNextAddressStep() {
             const steps = ['country', 'state', 'city', 'village', 'zip'];
             const currentIndex = steps.indexOf(currentAddressStep);
-
+            
             if (!validateCurrentAddressStep()) {
                 return;
             }
-
+            
             if (currentIndex < steps.length - 1) {
                 document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
-
+                
                 currentAddressStep = steps[currentIndex + 1];
-
+                
                 document.getElementById(`${currentAddressStep}Step`).classList.add('active');
-
+                
                 updateAddressNavigation();
-
+                
                 updateAddressProgress(currentAddressStep);
-
+                
                 if (currentAddressStep === 'zip') {
                     validateZipCode();
                 }
             }
         }
-
+        
         function goToPrevAddressStep() {
             const steps = ['country', 'state', 'city', 'village', 'zip'];
             const currentIndex = steps.indexOf(currentAddressStep);
-
+            
             if (currentIndex > 0) {
                 document.getElementById(`${currentAddressStep}Step`).classList.remove('active');
-
+                
                 currentAddressStep = steps[currentIndex - 1];
-
+                
                 document.getElementById(`${currentAddressStep}Step`).classList.add('active');
-
+                
                 updateAddressNavigation();
-
+                
                 // Reset manual village display if going back to village step
                 if (currentAddressStep === 'village') {
                     document.getElementById('villageOptions').style.display = 'block';
@@ -7507,24 +7843,24 @@
                 }
             }
         }
-
+        
         function updateAddressNavigation() {
             const prevBtn = document.getElementById('prevAddressStep');
             const nextBtn = document.getElementById('nextAddressStep');
-
+            
             if (currentAddressStep === 'country') {
                 prevBtn.style.display = 'none';
             } else {
                 prevBtn.style.display = 'inline-flex';
             }
-
+            
             if (currentAddressStep === 'zip') {
                 nextBtn.innerHTML = 'Complete Address Selection <i class="fas fa-check"></i>';
             } else {
                 nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
             }
         }
-
+        
         function validateCurrentAddressStep() {
             switch (currentAddressStep) {
                 case 'country':
@@ -7557,17 +7893,17 @@
             }
             return true;
         }
-
+        
         function validateAddressSelection() {
             // For manual entry, we need at least country, state (manual), city (manual), and zip
             if (isManualEntry) {
                 return selectedCountry && (manualState || selectedState) && (manualCity || selectedCity) && (manualZip || selectedZip);
             }
-
+            
             // For regular entry, we need country, state, city, and zip
             return selectedCountry && selectedState && selectedCity && selectedZip;
         }
-
+        
         function resetAddressSelection() {
             currentAddressStep = 'country';
             selectedCountry = '';
@@ -7580,21 +7916,21 @@
             manualCity = '';
             manualVillage = '';
             manualZip = '';
-
+            
             document.querySelectorAll('.address-step').forEach(step => {
                 step.classList.remove('active');
             });
             document.getElementById('countryStep').classList.add('active');
-
+            
             document.querySelectorAll('.address-progress-step').forEach(step => {
                 step.classList.remove('active', 'completed');
             });
             document.querySelector('[data-step="country"]').classList.add('active');
-
+            
             document.querySelectorAll('.address-option').forEach(option => {
                 option.classList.remove('selected');
             });
-
+            
             // Reset manual village container
             document.getElementById('villageOptions').style.display = 'block';
             document.getElementById('villageSearch').style.display = 'flex';
@@ -7604,15 +7940,15 @@
             document.querySelectorAll('#villageStep .address-option').forEach(opt => {
                 opt.style.display = 'flex';
             });
-
+            
             document.getElementById('shippingZip').value = '';
             document.getElementById('zipValidation').innerHTML = '';
             document.getElementById('addressConfirmation').style.display = 'none';
             document.getElementById('manualVillageNote').style.display = 'none';
-
+            
             updateAddressNavigation();
         }
-
+        
         // Search functions for address selection
         function searchStates() {
             const searchTerm = document.getElementById('stateSearch').value.toLowerCase();
@@ -7620,10 +7956,10 @@
             const filteredStates = states.filter(state => 
                 state.toLowerCase().includes(searchTerm)
             );
-
+            
             const stateOptions = document.getElementById('stateOptions');
             stateOptions.innerHTML = '';
-
+            
             if (filteredStates.length === 0) {
                 stateOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7633,7 +7969,7 @@
                 `;
                 return;
             }
-
+            
             filteredStates.forEach(state => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7645,7 +7981,7 @@
                 stateOptions.appendChild(option);
             });
         }
-
+        
         function searchCities() {
             const searchTerm = document.getElementById('citySearch').value.toLowerCase();
             const stateName = selectedState || manualState;
@@ -7653,10 +7989,10 @@
             const filteredCities = cities.filter(city => 
                 city.toLowerCase().includes(searchTerm)
             );
-
+            
             const cityOptions = document.getElementById('cityOptions');
             cityOptions.innerHTML = '';
-
+            
             if (filteredCities.length === 0) {
                 cityOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7666,7 +8002,7 @@
                 `;
                 return;
             }
-
+            
             filteredCities.forEach(city => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7678,7 +8014,7 @@
                 cityOptions.appendChild(option);
             });
         }
-
+        
         function searchVillages() {
             const searchTerm = document.getElementById('villageSearch').value.toLowerCase();
             const cityName = selectedCity || manualCity;
@@ -7686,10 +8022,10 @@
             const filteredVillages = villages.filter(village => 
                 village.toLowerCase().includes(searchTerm)
             );
-
+            
             const villageOptions = document.getElementById('villageOptions');
             villageOptions.innerHTML = '';
-
+            
             if (filteredVillages.length === 0) {
                 villageOptions.innerHTML = `
                     <div style="text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.7);">
@@ -7699,7 +8035,7 @@
                 `;
                 return;
             }
-
+            
             filteredVillages.forEach(village => {
                 const option = document.createElement('div');
                 option.className = 'address-option';
@@ -7711,24 +8047,24 @@
                 villageOptions.appendChild(option);
             });
         }
-
+        
         // Start qualification wizard
         startQualificationBtn.addEventListener('click', () => {
             document.getElementById('qualification').scrollIntoView({ behavior: 'smooth' });
         });
-
+        
         // Option selection in wizard
         optionItems.forEach(item => {
             item.addEventListener('click', function() {
                 const parentStep = this.closest('.wizard-step');
                 const allOptions = parentStep.querySelectorAll('.option-item');
                 allOptions.forEach(opt => opt.classList.remove('selected'));
-
+                
                 this.classList.add('selected');
-
+                
                 const stepId = parentStep.id;
                 const value = this.getAttribute('data-value');
-
+                
                 if (stepId === 'step1') {
                     userData.skinConcern = value;
                 } else if (stepId === 'step2') {
@@ -7738,12 +8074,12 @@
                 }
             });
         });
-
+        
         // Wizard navigation
         wizardNextBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const step = parseInt(this.getAttribute('data-step'));
-
+                
                 if (step === 1 && !userData.skinConcern) {
                     alert('Please select your primary skin concern');
                     return;
@@ -7754,12 +8090,12 @@
                     alert('Please select your age range');
                     return;
                 }
-
+                
                 if (step === 3) {
                     generatePersonalizedRecommendations();
                     return;
                 }
-
+                
                 if (currentStep < totalSteps) {
                     wizardSteps[currentStep - 1].classList.remove('active');
                     currentStep++;
@@ -7768,7 +8104,7 @@
                 }
             });
         });
-
+        
         wizardPrevBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (currentStep > 1) {
@@ -7779,33 +8115,33 @@
                 }
             });
         });
-
+        
         // Update progress bar
         function updateProgressBar() {
             const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
             progressBar.style.width = `${progress}%`;
         }
-
+        
         // Generate personalized recommendations based on user data
         function generatePersonalizedRecommendations() {
             const logic = recommendationLogic[userData.skinConcern];
-
+            
             if (!logic) {
                 personalizedRecommendations = [1, 14];
                 showResults("Based on your skin profile, we recommend our best-selling Whitening Combo to address your concerns and deliver radiant results.", [1, 14]);
                 return;
             }
-
+            
             personalizedRecommendations = [...logic.products];
-
+            
             if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
                 personalizedRecommendations = personalizedRecommendations.filter(id => id !== 3 && id !== 5);
-
+                
                 if (userData.skinConcern === 'acne') {
                     personalizedRecommendations.push(4);
                 }
             }
-
+            
             if (userData.ageRange === '50-plus' || userData.ageRange === '36-50') {
                 if (!personalizedRecommendations.includes(1)) {
                     personalizedRecommendations.push(1);
@@ -7814,29 +8150,29 @@
                     personalizedRecommendations.push(2);
                 }
             }
-
+            
             let description = logic.description + " " + logic.explanation;
-
+            
             if (userData.sensitivity === 'very-sensitive' || userData.sensitivity === 'sensitive') {
                 description += " We've selected gentle formulas suitable for sensitive skin.";
             }
-
+            
             if (userData.ageRange === '50-plus') {
                 description += " These products are specially chosen for mature skin needs.";
             } else if (userData.ageRange === '36-50') {
                 description += " These formulas address both your primary concern and early signs of aging.";
             }
-
+            
             showResults(description, personalizedRecommendations, logic.primaryCombo);
         }
-
+        
         // Show results modal with personalized recommendations - UPDATED to use product cards
         function showResults(description, productIds, primaryComboId = null) {
             document.getElementById('resultDescription').textContent = description;
-
+            
             const personalizedProductsDiv = document.getElementById('personalizedProducts');
             personalizedProductsDiv.innerHTML = '';
-
+            
             productIds.forEach(productId => {
                 const product = products.find(p => p.id === productId);
                 if (product) {
@@ -7850,7 +8186,7 @@
                             </div>
                         `;
                     }
-
+                    
                     const productHTML = `
                         <div class="product-card glass-card">
                             ${product.section === "flagship" ? '<div class="product-badge badge-flagship">Flagship</div>' : ''}
@@ -7873,7 +8209,7 @@
                     personalizedProductsDiv.innerHTML += productHTML;
                 }
             });
-
+            
             if (primaryComboId) {
                 const comboProduct = products.find(p => p.id === primaryComboId);
                 if (comboProduct) {
@@ -7887,7 +8223,7 @@
                             </div>
                         `;
                     }
-
+                    
                     const comboHTML = `
                         <div class="product-card glass-card combo-card">
                             <div class="product-badge badge-recommended">Recommended Combo</div>
@@ -7909,23 +8245,23 @@
                         </div>
                     `;
                     personalizedProductsDiv.innerHTML += comboHTML;
-
+                    
                     if (!personalizedRecommendations.includes(primaryComboId)) {
                         personalizedRecommendations.push(primaryComboId);
                     }
                 }
             }
-
+            
             // Note: The add-to-cart buttons in the results modal will now work automatically
             // because we're using event delegation in initializeAddToCartButtons()
-
+            
             resultsModal.classList.add('active');
-
+            
             setTimeout(() => {
                 resultsModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
         }
-
+        
         // Gallery navigation
         galleryDots.forEach(dot => {
             dot.addEventListener('click', function() {
@@ -7933,13 +8269,13 @@
                 goToGallerySlide(index);
             });
         });
-
+        
         function goToGallerySlide(index) {
             currentGallerySlide = index;
             const translateX = -index * 325;
-
+            
             galleryTrack.style.transform = `translateX(${translateX}px)`;
-
+            
             galleryDots.forEach((dot, i) => {
                 if (i === index) {
                     dot.classList.add('active');
@@ -7948,44 +8284,44 @@
                 }
             });
         }
-
+        
         // Auto-rotate gallery
         setInterval(() => {
             currentGallerySlide = (currentGallerySlide + 1) % gallerySlideCount;
             goToGallerySlide(currentGallerySlide);
         }, 5000);
-
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
+                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
+                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
-
+                    
                     closeMobileMenu();
                 }
             });
         });
-
+        
         // Newsletter form
         const newsletterForm = document.querySelector('.newsletter-form');
         const newsletterInput = newsletterForm.querySelector('input');
         const newsletterButton = newsletterForm.querySelector('button');
-
+        
         newsletterButton.addEventListener('click', () => {
             if (newsletterInput.value && newsletterInput.value.includes('@')) {
                 newsletterButton.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
                 newsletterButton.style.background = 'rgba(40, 167, 69, 0.3)';
                 newsletterInput.value = '';
-
+                
                 setTimeout(() => {
                     newsletterButton.innerHTML = 'Subscribe';
                     newsletterButton.style.background = '';
@@ -7995,77 +8331,6 @@
                 setTimeout(() => {
                     newsletterInput.style.border = '';
                 }, 2000);
-            }
-        });
-        
-    </script>
-    
-    <!-- New minimal JavaScript for polish features only -->
-    <script>
-        // Task B: Next button behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all Next buttons as disabled
-            const nextButtons = document.querySelectorAll('.wizard-next');
-            nextButtons.forEach(btn => {
-                btn.disabled = true;
-            });
-            
-            // Enable Next button when option is selected
-            const optionItems = document.querySelectorAll('.option-item');
-            optionItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const wizardStep = this.closest('.wizard-step');
-                    const nextButton = wizardStep.querySelector('.wizard-next');
-                    if (nextButton) {
-                        nextButton.disabled = false;
-                    }
-                });
-            });
-            
-            // Task E: Tags clarity line
-            const searchResults = document.getElementById('searchResults');
-            if (searchResults) {
-                // Add helper text to search suggestions when they appear
-                const observer = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.type === 'childList') {
-                            const suggestionSections = searchResults.querySelectorAll('.search-suggestions');
-                            suggestionSections.forEach(section => {
-                                // Check if helper text already exists
-                                if (!section.querySelector('.tags-helper')) {
-                                    const helper = document.createElement('div');
-                                    helper.className = 'tags-helper';
-                                    helper.textContent = 'Tap any tag to instantly see matching products';
-                                    section.insertBefore(helper, section.firstChild);
-                                }
-                            });
-                        }
-                    });
-                });
-                
-                observer.observe(searchResults, { childList: true, subtree: true });
-            }
-            
-            // Same for overlay search
-            const searchOverlayResults = document.getElementById('searchOverlayResults');
-            if (searchOverlayResults) {
-                const overlayObserver = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.type === 'childList') {
-                            const suggestionSections = searchOverlayResults.querySelectorAll('.search-suggestions');
-                            suggestionSections.forEach(section => {
-                                if (!section.querySelector('.tags-helper')) {
-                                    const helper = document.createElement('div');
-                                    helper.className = 'tags-helper';
-                                    helper.textContent = 'Tap any tag to instantly see matching products';
-                                    section.insertBefore(helper, section.firstChild);
-                                }
-                            });
-                        }
-                    });
-                });
-                
-                overlayObserver.observe(searchOverlayResults, { childList: true, subtree: true });
             }
         });
     </script>

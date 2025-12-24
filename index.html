@@ -10,7 +10,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ALL EXISTING CSS REMAINS EXACTLY THE SAME - I'M ADDING NEW STYLES AT THE END */
+                <section id="gallery">
+            <div class="section-header fade-in">
+                <h2>Glow Gallery</h2>
+                <p>See the transformation and lifestyle with Lonz Flawls Aura</p>
+            </div>
+
+            <div class="gallery-container fade-in">
+                <div class="gallery-track" id="galleryTrack">
+                    <div class="gallery-slide glass-card">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Skincare products">
+                    </div>
+                    <div class="gallery-slide glass-card">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Product application">
+                    </div>
+                    <div class="gallery-slide glass-card">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Natural ingredients">
+                    </div>
+                    <div class="gallery-slide glass-card">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury skincare">
+                    </div>
+                    <div class="gallery-slide glass-card">
+                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Radiant skin results">
+                    </div>
+                </div>
+
+                <div class="gallery-nav">
+                    <div class="gallery-dot active" data-index="0"></div>
+                    <div class="gallery-dot" data-index="1"></div>
+                    <div class="gallery-dot" data-index="2"></div>
+                    <div class="gallery-dot" data-index="3"></div>
+                    <div class="gallery-dot" data-index="4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links Section -->
+        <section id="social" class="social-section">
+            <div class="fade-in">
+                <h3>Join Our Glow Community</h3>
+                <p>Follow us for skincare tips, behind-the-scenes, and exclusive offers</p>
+                <div class="social-links-container">
+                    <a href="https://www.facebook.com/lonia.mongwe" target="_blank" class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@loniamongwe?_r=1&_t=ZS-92GQkfgjDU4" target="_blank" class="social-button tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/+27735511216" target="_blank" class="social-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:mongwelonia@gmail.com" target="_blank" class="social-button email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mongwelonia?igsh=MXBoN2s5YnVzeHFxbg==" target="_blank" class="social-button instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div style="margin-top: 30px;">
+                    <p style="color: rgba(255, 255, 255, 0.8);">Direct WhatsApp: <strong>+27 73 551 1216</strong></p>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-top: 10px;">Email: <strong>mongwelonia@gmail.com</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-content fade-in">
+                <div class="footer-column">
+                    <h4>Lonz Flawls Aura</h4>
+                    <p>Premium skincare solutions that combine science and nature to reveal your natural radiance. Start your glow journey today.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#all-products">All Products</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#social">Connect</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p><i class="fab fa-whatsapp"></i> +27 73 551 1216</p>
+                    <p><i class="fas fa-envelope"></i> mongwelonia@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> South Africa</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Join Our Glow Club</h4>
+                    <p>Subscribe to get exclusive offers, skincare tips, and early access to new products.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button class="glass-button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="results-modal" id="resultsModal">
+        <button class="close-button" id="closeResults">&times;</button>
+
+        <div class="affirmations-section fade-in">
+            <div class="result-icon">
+                <i class="fas fa-spa"></i>
+            </div>
+            <div class="result-message">
+                <h3>Your Personalized Glow Plan</h3>
+                <p id="resultDescription"></p>
+            </div>
+        </div>
+
+        <div class="results-products-section">
+            <div class="results-products-container glass-card">
+                <div class="personalized-products-container" id="personalizedProducts"></div>
+
+                <div class="result-actions">
+                    <button class="glass-button" id="closeResultsBtn">Continue Browsing</button>
+                    <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;" id="addAllToCart">
+                        <i class="fas fa-shopping-cart"></i> Add All to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
         
         /* NEW: Vertical Scrolling Categories */
         .vertical-category {

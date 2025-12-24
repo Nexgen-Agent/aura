@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <style>  
-                      * {
+    <style>
+                        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -3391,201 +3391,62 @@
     <!-- New minimal CSS for polish features only -->
     <style>
         /* NEW POLISH CSS - ADDED TO END OF EXISTING CSS */
-        
-        /* NEW: Vertical Scrolling Categories */
-        .vertical-category {
-            margin: 60px 0;
-            position: relative;
-        }
-        
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .category-header h3 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin: 0;
-        }
-        
-        .category-nav {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text-light);
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-        
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-        
-        .nav-btn:disabled {
-            opacity: 0.3;
+
+        /* Task B: Next button disabled state */
+        .wizard-next:disabled {
+            opacity: 0.5;
             cursor: not-allowed;
             transform: none !important;
         }
-        
-        .vertical-scroll-container {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            padding: 20px 0;
-            position: relative;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+
+        .wizard-next:disabled:hover {
+            background: var(--glass-bg);
+            transform: none;
         }
-        
-        .vertical-scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .products-row {
-            display: flex;
-            gap: 30px;
-            min-width: min-content;
-            padding: 10px 0;
-        }
-        
-        .product-card {
-            min-width: 300px;
-            max-width: 300px;
-            padding: 25px;
-            transition: var(--transition);
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        
-        /* Size variant specific styles for AMA Fragrances */
-        .size-variant-group {
-            margin-bottom: 40px;
-        }
-        
-        .size-variant-header {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 3px solid var(--accent-color);
-        }
-        
-        /* Equal height for all cards using see-more button */
-        .see-more-placeholder {
-            height: 40px;
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .see-more-btn-alt {
-            background: transparent;
-            border: none;
-            color: var(--accent-color);
+
+        /* Task A: Wizard priority messaging */
+        .wizard-priority-note {
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(196, 167, 125, 0.3);
+            margin-top: 5px;
+            font-style: italic;
         }
-        
-        .see-more-btn-alt:hover {
-            background: rgba(196, 167, 125, 0.1);
+
+        /* Task E: Tags clarity helper */
+        .tags-helper {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-style: italic;
         }
-        
-        /* Collection divider */
-        .collection-divider {
+
+        /* Task F: Category divider */
+        .category-divider {
             text-align: center;
-            margin: 80px 0 40px;
+            margin: 40px 0 30px;
             position: relative;
         }
-        
-        .collection-divider:before {
+
+        .category-divider:before {
             content: '';
             position: absolute;
             top: 50%;
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            background: rgba(255, 255, 255, 0.1);
         }
-        
-        .collection-divider h2 {
-            background: #0a1929;
-            padding: 0 40px;
+
+        .category-divider span {
+            background: rgba(10, 25, 41, 0.9);
+            padding: 0 20px;
             position: relative;
             z-index: 1;
             color: var(--primary-color);
-            font-size: 2.5rem;
-            display: inline-block;
+            font-size: 1.1rem;
         }
     </style>
     
-    <!-- Rest of existing CSS remains exactly the same -->
-    <style>
-        /* ALL EXISTING CSS FROM THE ORIGINAL FILE GOES HERE */
-        /* I'm including a marker comment to show where the original CSS would be */
-        /* [ALL EXISTING CSS CODE] */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #e8dcd1;
-            --secondary-color: #a8927a;
-            --accent-color: #c4a77d;
-            --text-dark: #2c2c2c;
-            --text-light: #f8f8f8;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-light);
-            overflow-x: hidden;
-            background: #0a1929;
-            overscroll-behavior: none;
-        }
-
-        /* ... ALL THE REST OF THE ORIGINAL CSS ... */
-        
-        /* The complete original CSS would be here - it's too long to duplicate */
-        /* I'm showing the structure but keeping the original intact */
-    </style>
-
     <!-- New minimal CSS for polish features only -->
     <style>
         /* NEW POLISH CSS - ADDED TO END OF EXISTING CSS */
@@ -3661,40 +3522,721 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- All existing modals remain exactly the same -->
     <!-- Auth Choice Modal -->
     <div class="auth-choice-modal" id="authChoiceModal">
-        <!-- ... existing auth modal content ... -->
+        <div class="auth-choice-content glass-card">
+            <button class="close-button" id="closeAuthChoice">&times;</button>
+            <h3>How would you like to proceed?</h3>
+            <p>Choose an option below to continue with your purchase</p>
+            
+            <div class="auth-choice-options">
+                <div class="auth-choice-option glass-card guest" id="guestOption">
+                    <i class="fas fa-user"></i>
+                    <h4>Continue as Guest</h4>
+                    <p>Checkout without creating an account</p>
+                </div>
+                
+                <div class="auth-choice-option glass-card signup" id="signupOption">
+                    <i class="fas fa-user-plus"></i>
+                    <!-- Task C: Premium discount copy -->
+                    <h4>Sign Up & Receive a Welcome Gift</h4>
+                    <p>Join our community for curated benefits on your first purchase</p>
+                    <div class="discount-badge">15% OFF FIRST ORDER</div>
+                </div>
+                
+                <div class="auth-choice-option glass-card login" id="loginOption">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h4>Welcome Back, Sign In</h4>
+                    <p>Access your saved details and order history</p>
+                </div>
+            </div>
+            
+            <p class="auth-choice-note">
+                <i class="fas fa-lock"></i> Your information is secure with us
+            </p>
+        </div>
     </div>
 
     <!-- Enhanced Auth Modal -->
     <div class="enhanced-auth-modal" id="enhancedAuthModal">
-        <!-- ... existing enhanced auth modal content ... -->
+        <div class="enhanced-auth-content glass-card">
+            <button class="close-button" id="closeEnhancedAuth">&times;</button>
+            
+            <div class="auth-loading" id="authLoading">
+                <i class="fas fa-spinner"></i>
+                <p>Processing your request...</p>
+            </div>
+            
+            <div class="auth-success" id="authSuccess">
+                <i class="fas fa-check-circle"></i>
+                <h4>Authentication Successful!</h4>
+                <p>Proceeding to checkout...</p>
+            </div>
+            
+            <div id="mainAuthContent">
+                <div class="enhanced-auth-tabs">
+                    <button class="enhanced-auth-tab active" data-tab="login">Login</button>
+                    <button class="enhanced-auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <div class="discount-display" id="signupDiscount" style="display: none;">
+                    <i class="fas fa-gift"></i>
+                    <span>Receive a welcome gift when you join our community</span>
+                </div>
+                
+                <form class="enhanced-auth-form active" id="enhancedLoginForm">
+                    <div class="social-login-section">
+                        <h5>Sign in with</h5>
+                        <div class="social-login-buttons">
+                            <div class="social-login-button google" id="googleLogin">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="social-login-button facebook" id="facebookLogin">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-login-button apple" id="appleLogin">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or continue with email</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enhancedLoginEmail">Email Address</label>
+                        <input type="email" id="enhancedLoginEmail" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enhancedLoginPassword">Password</label>
+                        <input type="password" id="enhancedLoginPassword" class="form-input" placeholder="Enter your password" required>
+                        <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="rememberMeEnhanced">
+                        <label for="rememberMeEnhanced">Remember me</label>
+                    </div>
+                    
+                    <button type="submit" class="glass-button" style="width: 100%;">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" class="switch-to-signup-enhanced">Sign up here</a>
+                    </div>
+                </form>
+                
+                <form class="enhanced-auth-form" id="enhancedSignupForm">
+                    <div class="social-login-section">
+                        <h5>Sign up with</h5>
+                        <div class="social-login-buttons">
+                            <div class="social-login-button google" id="googleSignup">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="social-login-button facebook" id="facebookSignup">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-login-button apple" id="appleSignup">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or sign up with email</span>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="signupFirstName">First Name</label>
+                            <input type="text" id="signupFirstName" class="form-input" placeholder="First name" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="signupLastName">Last Name</label>
+                            <input type="text" id="signupLastName" class="form-input" placeholder="Last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enhancedSignupEmail">Email Address</label>
+                        <input type="email" id="enhancedSignupEmail" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enhancedSignupPassword">Password</label>
+                        <input type="password" id="enhancedSignupPassword" class="form-input" placeholder="Create a password" required>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enhancedSignupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="enhancedSignupConfirmPassword" class="form-input" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <div class="password-requirements">
+                        <h6>Password must contain:</h6>
+                        <ul>
+                            <li id="reqLength" class="invalid"><i class="fas fa-circle" style="font-size: 6px;"></i> At least 8 characters</li>
+                            <li id="reqUppercase" class="invalid"><i class="fas fa-circle" style="font-size: 6px;"></i> One uppercase letter</li>
+                            <li id="reqLowercase" class="invalid"><i class="fas fa-circle" style="font-size: 6px;"></i> One lowercase letter</li>
+                            <li id="reqNumber" class="invalid"><i class="fas fa-circle" style="font-size: 6px;"></i> One number</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agreeTermsEnhanced" required>
+                        <label for="agreeTermsEnhanced">I agree to the <a href="#" style="color: var(--accent-color);">Terms & Conditions</a> and <a href="#" style="color: var(--accent-color);">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="glass-button" style="width: 100%;">
+                        <i class="fas fa-user-plus"></i> Create Account & Receive Welcome Gift
+                    </button>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" class="switch-to-login-enhanced">Login here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
-        <!-- ... existing search overlay content ... -->
+        <div class="search-header">
+            <button class="search-back-btn" id="searchBackBtn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <!-- Task D: Updated search placeholder -->
+            <input type="text" class="search-overlay-input" id="searchOverlayInput" placeholder="Search by product, concern, or benefit">
+        </div>
+        <div class="search-overlay-content">
+            <div class="search-overlay-results" id="searchOverlayResults"></div>
+        </div>
     </div>
 
     <!-- Authentication Modal -->
     <div class="auth-modal" id="authModal">
-        <!-- ... existing auth modal content ... -->
+        <div class="auth-content glass-card">
+            <button class="close-button" id="closeAuth">&times;</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                
+                <button type="submit" class="glass-button" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" class="switch-to-signup">Sign up here</a>
+                </div>
+            </form>
+            
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-input" placeholder="Create a password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" class="form-input" placeholder="Confirm your password" required>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the Terms & Conditions and Privacy Policy</label>
+                </div>
+                
+                <button type="submit" class="glass-button" style="width: 100%;">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+                
+                <div class="auth-footer">
+                    Already have an account? <a href="#" class="switch-to-login">Login here</a>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
-        <!-- ... existing cart modal content ... -->
+        <div class="cart-content glass-card">
+            <button class="close-button" id="closeCart">&times;</button>
+            <div class="cart-header">
+                <h3>Your Shopping Bag</h3>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>Your bag is empty</h4>
+                    <p>Add some products to get started!</p>
+                    <button class="glass-button" onclick="document.querySelector('#all-products').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-store"></i> Browse Products
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cart-summary glass-card" id="cartSummary" style="display: none;">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">R0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="cartShipping">R50.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax</span>
+                    <span id="cartTax">R0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">R0.00</span>
+                </div>
+                
+                <button class="glass-button" style="width: 100%; margin-top: 20px;" id="checkoutBtn">
+                    <i class="fas fa-lock"></i> Proceed to Checkout
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkoutModal">
-        <!-- ... existing checkout modal content ... -->
+        <div class="checkout-content glass-card">
+            <button class="close-button" id="closeCheckout">&times;</button>
+            <div class="checkout-header">
+                <h3>Checkout</h3>
+            </div>
+            
+            <div class="checkout-steps">
+                <div class="checkout-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="checkout-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="checkout-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+            </div>
+            
+            <form class="checkout-form active" id="shippingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shippingFirstName">First Name</label>
+                        <input type="text" id="shippingFirstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shippingLastName">Last Name</label>
+                        <input type="text" id="shippingLastName" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shippingEmail">Email Address</label>
+                    <input type="email" id="shippingEmail" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shippingPhone">Phone Number</label>
+                    <input type="tel" id="shippingPhone" class="form-input" required>
+                </div>
+                
+                <div class="global-shipping-note">
+                    <p><i class="fas fa-globe-americas"></i> We ship worldwide! Don't see your village? You can enter it manually below.</p>
+                </div>
+                
+                <div class="address-selection-container">
+                    <div class="address-progress">
+                        <div class="address-progress-step active" data-step="country">
+                            <div class="step-number">1</div>
+                            Country
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="state">
+                            <div class="step-number">2</div>
+                            State/Province
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="city">
+                            <div class="step-number">3</div>
+                            City/Town
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="village">
+                            <div class="step-number">4</div>
+                            Village/Suburb
+                        </div>
+                        <div class="address-progress-separator"></div>
+                        <div class="address-progress-step" data-step="zip">
+                            <div class="step-number">5</div>
+                            ZIP Code
+                        </div>
+                    </div>
+                    
+                    <div class="address-step active" id="countryStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Country</h4>
+                        <div class="address-options" id="countryOptions"></div>
+                    </div>
+                    
+                    <div class="address-step" id="stateStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your State/Province</h4>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="stateSearch" placeholder="Search for your state/province...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchStates()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="stateOptions"></div>
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="enterStateManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter State Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">Can't find your state?</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="address-step" id="cityStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your City/Town</h4>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="citySearch" placeholder="Search for your city/town...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchCities()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="cityOptions"></div>
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="enterCityManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter City Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">Can't find your city?</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="address-step" id="villageStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Select Your Village/Suburb</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-size: 14px;">Select your village or suburb for precise delivery. Can't find yours? Enter it manually below.</p>
+                        <div class="address-search">
+                            <input type="text" class="address-search-input" id="villageSearch" placeholder="Search for your village/suburb...">
+                            <button type="button" class="glass-button" style="padding: 12px 20px;" onclick="searchVillages()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="address-options" id="villageOptions"></div>
+                        
+                        <div class="manual-village-container" id="manualVillageContainer">
+                            <div class="manual-village-header">
+                                <i class="fas fa-map-pin"></i>
+                                <h5>Enter Village/Suburb Details Manually</h5>
+                            </div>
+                            <div class="manual-village-fields">
+                                <div class="form-group">
+                                    <label for="manualVillageName">Village/Suburb Name</label>
+                                    <input type="text" id="manualVillageName" class="form-input" placeholder="Enter village or suburb name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="manualVillageZip">ZIP/Postal Code</label>
+                                    <input type="text" id="manualVillageZip" class="form-input" placeholder="Enter ZIP code">
+                                </div>
+                            </div>
+                            <div class="manual-village-actions">
+                                <button type="button" class="glass-button" onclick="cancelManualVillage()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button type="button" class="glass-button" onclick="saveManualVillage()" style="background: rgba(196, 167, 125, 0.3);">
+                                    <i class="fas fa-save"></i> Save & Continue
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="address-options" style="margin-top: 15px;">
+                            <div class="address-option" onclick="skipVillage()">
+                                <i class="fas fa-forward"></i>
+                                <p>Skip Village/Suburb</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">I don't have a village/suburb</small>
+                            </div>
+                            <div class="address-option" onclick="enterVillageManually()">
+                                <i class="fas fa-edit"></i>
+                                <p>Enter Village Manually</p>
+                                <small style="color: rgba(255, 255, 255, 0.6);">My village is not listed</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="address-step" id="zipStep">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px;">Enter Your ZIP/Postal Code</h4>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px;">Enter your ZIP code for accurate shipping calculation</p>
+                        
+                        <div class="form-group">
+                            <label for="shippingZip">ZIP/Postal Code</label>
+                            <input type="text" id="shippingZip" class="form-input" placeholder="Enter ZIP code" required>
+                            <div class="zip-validation" id="zipValidation"></div>
+                        </div>
+                        
+                        <div id="manualVillageNote" style="display: none;">
+                            <div class="global-shipping-note">
+                                <p><i class="fas fa-info-circle"></i> Using manually entered village and ZIP code. Shipping will be calculated based on this information.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="google-maps-container">
+                            <div class="google-maps-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Google Maps integration for address verification</p>
+                                <small style="margin-top: 10px;">Your address will be verified for shipping accuracy</small>
+                            </div>
+                        </div>
+                        
+                        <div class="address-confirmation" id="addressConfirmation">
+                            <h5>Selected Address</h5>
+                            <div class="address-details" id="addressDetails"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="address-navigation">
+                        <button type="button" class="glass-button" id="prevAddressStep" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="glass-button" id="nextAddressStep">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shippingAddress">Street Address</label>
+                    <input type="text" id="shippingAddress" class="form-input" placeholder="House number, street name, building" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="shippingApartment">Apartment, Suite, Unit (Optional)</label>
+                    <input type="text" id="shippingApartment" class="form-input" placeholder="Apartment, suite, unit, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="shippingNotes">Delivery Instructions (Optional)</label>
+                    <textarea id="shippingNotes" class="form-input" rows="3" placeholder="Any special delivery instructions?"></textarea>
+                </div>
+                
+                <div class="checkout-actions">
+                    <button type="button" class="glass-button" id="backToCart">
+                        <i class="fas fa-arrow-left"></i> Back to Cart
+                    </button>
+                    <button type="button" class="glass-button" id="nextToPayment">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <form class="checkout-form" id="paymentForm">
+                <div class="payment-methods">
+                    <div class="payment-method glass-card selected" data-method="credit">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Credit Card</h4>
+                        <p>Pay with your credit card</p>
+                    </div>
+                    <div class="payment-method glass-card" data-method="paypal">
+                        <i class="fab fa-paypal"></i>
+                        <h4>PayPal</h4>
+                        <p>Pay with your PayPal account</p>
+                    </div>
+                    <div class="payment-method glass-card" data-method="bank">
+                        <i class="fas fa-university"></i>
+                        <h4>Bank Transfer</h4>
+                        <p>Direct bank transfer</p>
+                    </div>
+                </div>
+                
+                <div class="payment-details active" id="creditCardDetails">
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiry Date</label>
+                            <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" id="cardCVC" class="form-input" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-note">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your payment information is secure and encrypted</span>
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="paypalDetails">
+                    <div class="payment-note">
+                        <i class="fab fa-paypal"></i>
+                        <span>You will be redirected to PayPal to complete your payment securely</span>
+                    </div>
+                    
+                    <div class="paypal-button-container">
+                        <button type="button" class="paypal-button" id="paypalButton">
+                            <i class="fab fa-paypal"></i> Pay with PayPal
+                        </button>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px; color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                        <p>After clicking the button, you'll be redirected to PayPal to complete your payment</p>
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="bankTransferDetails">
+                    <div class="payment-note">
+                        <i class="fas fa-university"></i>
+                        <span>Transfer the total amount to our bank account. Your order will be processed once payment is confirmed.</span>
+                    </div>
+                    
+                    <div class="bank-details">
+                        <h5>Bank Account Details</h5>
+                        <p><strong>Bank Name:</strong> Standard Bank</p>
+                        <p><strong>Account Name:</strong> Lonz Flawls Aura</p>
+                        <p><strong>Account Number:</strong> 0123456789</p>
+                        <p><strong>Branch Code:</strong> 051001</p>
+                        <p><strong>Reference:</strong> Order #<span id="bankReference">0000</span></p>
+                        <p><strong>Amount:</strong> <span id="bankAmount">R0.00</span></p>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="bankProof">Upload Proof of Payment (Optional)</label>
+                        <input type="file" id="bankProof" class="form-input" accept=".jpg,.jpeg,.png,.pdf">
+                        <small style="color: rgba(255, 255, 255, 0.6);">Upload screenshot or scan of payment confirmation</small>
+                    </div>
+                    
+                    <div class="payment-note" style="background: rgba(255, 193, 7, 0.1); border-color: rgba(255, 193, 7, 0.2);">
+                        <i class="fas fa-clock"></i>
+                        <span>Please allow 24-48 hours for bank transfer verification</span>
+                    </div>
+                </div>
+                
+                <div class="checkout-actions">
+                    <button type="button" class="glass-button" id="backToShipping">
+                        <i class="fas fa-arrow-left"></i> Back to Shipping
+                    </button>
+                    <button type="button" class="glass-button" id="nextToReview">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="checkout-form" id="reviewForm">
+                <div class="checkout-review glass-card">
+                    <h4 style="margin-bottom: 20px; color: var(--primary-color);">Order Summary</h4>
+                    <div id="reviewItems"></div>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="reviewSubtotal">R0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="reviewShipping">R50.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="reviewTax">R0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="reviewTotal">R0.00</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderNotes">Order Notes (Optional)</label>
+                    <textarea id="orderNotes" class="form-input" rows="3" placeholder="Add special instructions for your order..."></textarea>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeTermsCheckout" required>
+                    <label for="agreeTermsCheckout">I agree to the Terms & Conditions and Privacy Policy</label>
+                </div>
+                
+                <div class="checkout-actions">
+                    <button type="button" class="glass-button" id="backToPayment">
+                        <i class="fas fa-arrow-left"></i> Back to Payment
+                    </button>
+                    <button type="button" class="glass-button" id="placeOrderBtn">
+                        <i class="fas fa-lock"></i> Place Order
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Success Modal -->
     <div class="success-modal" id="successModal">
-        <!-- ... existing success modal content ... -->
+        <div class="success-content glass-card">
+            <button class="close-button" id="closeSuccess">&times;</button>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="success-message">
+                <h3>Order Confirmed!</h3>
+                <p id="successMessage">Thank you for your purchase. Your order has been successfully placed and is being processed. You will receive a confirmation email shortly.</p>
+                <p style="font-size: 1rem; color: var(--accent-color); margin-top: 20px;">
+                    Order ID: <strong>#LFA-<span id="orderId">0000</span></strong>
+                </p>
+                
+                <div class="success-button-container">
+                    <button class="glass-button" id="continueShopping">
+                        <i class="fas fa-shopping-bag"></i> Continue Shopping
+                    </button>
+                    <button class="glass-button" style="background: rgba(196, 167, 125, 0.3);">
+                        <i class="fas fa-truck"></i> Track Order
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Mobile Menu Overlay -->
@@ -3702,118 +4244,226 @@
     
     <!-- Mobile Navigation Links -->
     <div class="mobile-nav-links" id="mobileNavLinks">
-        <!-- ... existing mobile nav content ... -->
+        <i class="fas fa-times mobile-menu-close" id="mobileMenuClose"></i>
+        <a href="#hero" class="mobile-nav-link">Home</a>
+        <a href="#products" class="mobile-nav-link">Products</a>
+        <a href="#all-products" class="mobile-nav-link">All Products</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#social" class="mobile-nav-link">Connect</a>
     </div>
 
     <!-- Navigation -->
     <nav id="navbar">
-        <!-- ... existing navigation content ... -->
+        <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#products">Products</a>
+            <a href="#all-products">All Products</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#social">Connect</a>
+        </div>
+        <div class="nav-icons">
+            <div class="search-container">
+                <!-- Task D: Updated search placeholder -->
+                <input type="text" class="search-input" id="searchInput" placeholder="Search by product, concern, or benefit">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+                <i class="fas fa-times search-close" id="searchClose"></i>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
     <div class="main-content">
         <!-- Hero Section -->
         <section id="hero" class="hero">
-            <!-- ... existing hero section content ... -->
+            <div class="fade-in">
+                <h1>Discover Your Glow</h1>
+                <p>Lonz Flawls Aura combines science and nature to create premium skincare solutions that reveal your natural radiance. Experience the transformation.</p>
+                <div class="hero-buttons">
+                    <button class="glass-button start-qualification"><i class="fas fa-star"></i> Start Now</button>
+                    <button class="glass-button"><i class="fas fa-play-circle"></i> Watch Our Story</button>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </section>
 
         <!-- Lead Qualification Wizard -->
         <section id="qualification">
-            <!-- ... existing wizard content ... -->
+            <div class="lead-wizard glass-card fade-in">
+                <button class="close-button" id="closeWizard">&times;</button>
+                <div class="wizard-header">
+                    <div class="wizard-avatar">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="wizard-title">
+                        <h3>Skin Analysis Wizard</h3>
+                        <!-- Task A: Wizard priority messaging -->
+                        <p class="wizard-priority-note">Start here for personalized recommendations tailored to your skin</p>
+                    </div>
+                </div>
+                
+                <div class="wizard-content">
+                    <!-- Step 1: Skin Concern -->
+                    <div class="wizard-step active" id="step1">
+                        <h4>What is your primary skin concern?</h4>
+                        <div class="option-grid">
+                            <div class="option-item glass-card" data-value="acne">
+                                <i class="fas fa-leaf"></i>
+                                <p>Acne & Breakouts</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="dark-spots">
+                                <i class="fas fa-circle"></i>
+                                <p>Dark Spots</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="dry">
+                                <i class="fas fa-tint"></i>
+                                <p>Dryness</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="uneven-tone">
+                                <i class="fas fa-palette"></i>
+                                <p>Uneven Tone</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="glow">
+                                <i class="fas fa-sun"></i>
+                                <p>Glow Maintenance</p>
+                            </div>
+                        </div>
+                        <div class="wizard-actions">
+                            <!-- Task B: Next button disabled by default -->
+                            <button class="glass-button wizard-next" data-step="1" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Skin Sensitivity -->
+                    <div class="wizard-step" id="step2">
+                        <h4>How sensitive is your skin?</h4>
+                        <div class="option-grid">
+                            <div class="option-item glass-card" data-value="very-sensitive">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p>Very Sensitive</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="sensitive">
+                                <i class="fas fa-low-vision"></i>
+                                <p>Sensitive</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="normal">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Normal</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="resilient">
+                                <i class="fas fa-shield-alt"></i>
+                                <p>Resilient</p>
+                            </div>
+                        </div>
+                        <div class="wizard-actions">
+                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <!-- Task B: Next button disabled by default -->
+                            <button class="glass-button wizard-next" data-step="2" disabled>Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Skin Age -->
+                    <div class="wizard-step" id="step3">
+                        <h4>What is your skin age range?</h4>
+                        <div class="option-grid">
+                            <div class="option-item glass-card" data-value="under-25">
+                                <i class="fas fa-child"></i>
+                                <p>Under 25</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="25-35">
+                                <i class="fas fa-user"></i>
+                                <p>25-35</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="36-50">
+                                <i class="fas fa-user-friends"></i>
+                                <p>36-50</p>
+                            </div>
+                            <div class="option-item glass-card" data-value="50-plus">
+                                <i class="fas fa-crown"></i>
+                                <p>50+</p>
+                            </div>
+                        </div>
+                        <div class="wizard-actions">
+                            <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <!-- Task B: Next button disabled by default -->
+                            <button class="glass-button wizard-next" data-step="3" disabled>Get Recommendations</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-progress">
+                    <div class="wizard-progress-bar" id="progressBar"></div>
+                </div>
+            </div>
         </section>
 
-        <!-- Recommended Combos - Converted to Vertical Scrolling -->
+        <!-- Recommended Combos -->
         <section id="products">
             <div class="section-header fade-in">
                 <h2>Recommended For You</h2>
                 <p>Based on your skin profile, we recommend these combos for optimal results</p>
             </div>
             
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>RECOMMENDED COMBOS</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="combosLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="combosRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+            <div class="products-grid fade-in">
+                <!-- Whitening Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Recommended</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Combo</h3>
+                        <p>Complete whitening set for radiant, even-toned skin. Perfect for daily use.</p>
+                        <div class="product-details">
+                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                            <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening soap, whitening cream</div>
+                        </div>
+                        <div class="product-price">R420.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
-                <div class="vertical-scroll-container" id="combosScroll">
-                    <div class="products-row">
-                        <!-- Whitening Combo -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">Recommended</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Whitening Combo</h3>
-                                <p>Complete whitening set for radiant, even-toned skin. Perfect for daily use.</p>
-                                <div class="product-details">
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                                    <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening soap, whitening cream</div>
-                                </div>
-                                <div class="product-price">R420.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Extra Glow Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Combo</h3>
+                        <p>Complete extra glow set for radiant, hydrated skin.</p>
+                        <div class="product-details">
+                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                            <div class="product-ingredients"><strong>Contains:</strong> Extra glow soap, extra glow oil, extra glow cream</div>
                         </div>
-                        
-                        <!-- Extra Glow Combo -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-bestseller">Bestseller</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Extra Glow Combo</h3>
-                                <p>Complete extra glow set for radiant, hydrated skin.</p>
-                                <div class="product-details">
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                                    <div class="product-ingredients"><strong>Contains:</strong> Extra glow soap, extra glow oil, extra glow cream</div>
-                                </div>
-                                <div class="product-price">R250.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                        
-                        <!-- Extra Whitening Combo -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">Recommended</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Extra Whitening Combo</h3>
-                                <p>Premium whitening set with kojic soap for enhanced results.</p>
-                                <div class="product-details">
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                                    <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening cream, kojic soap</div>
-                                </div>
-                                <div class="product-price">R500.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
+                        <div class="product-price">R250.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                
+                <!-- Extra Whitening Combo -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Recommended</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Whitening Combo</h3>
+                        <p>Premium whitening set with kojic soap for enhanced results.</p>
+                        <div class="product-details">
+                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                            <div class="product-ingredients"><strong>Contains:</strong> Whitening oil, whitening cream, kojic soap</div>
+                        </div>
+                        <div class="product-price">R500.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
 
         <!-- Flagship Product -->
         <section id="flagship">
-            <!-- ... existing flagship content remains exactly the same ... -->
             <div class="section-header fade-in">
                 <h2>Flagship Whitening Oil</h2>
                 <p>Our most advanced formula for radiant, even-toned skin. Experience the transformation.</p>
@@ -3843,701 +4493,400 @@
             </div>
         </section>
 
-        <!-- All Products - Converted to Vertical Scrolling Categories -->
+                     <!-- All Products -->
         <section id="all-products">
             <div class="section-header fade-in">
-                <h2>All Collections</h2>
+                <h2>All Products</h2>
                 <p>Explore our complete range of premium skincare products</p>
             </div>
 
-            <!-- 1. EXTRA GLOW COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>EXTRA GLOW COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Extra Glow Products</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="extraGlowLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="extraGlowRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="extraGlowScroll">
-                    <div class="products-row">
-                        <!-- Extra Glow Oil - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Extra Glow Oil</h3>
-                                <p>Radiant glow oil for luminous, healthy-looking skin.</p>
-                                <div class="product-price">R100.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            <div class="products-grid fade-in">
+                <!-- Whitening Cream -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Cream 250g</h3>
+                        <p>Advanced whitening cream for even skin tone and radiant complexion.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Improves skin tone, Strong moisturising, Anti Aging, Acne, Pigmentation, Dark spot, Pimples</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C, Collagen and Glutathione</div>
                         </div>
+                        <div class="product-price">R150.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Extra Glow Soap -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Extra Glow Soap</h3>
-                                <p>Nourishing soap for glowing, moisturized skin.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Benefits:</strong> Brings out the glow, Moisturises dry skin, Helps treat Stretch marks, Helps fade skin scars</div>
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
-                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
-                                </div>
-                                <div class="product-price">R70.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Kojic Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Kojic Soap</h3>
+                        <p>Treats different skin disorders and cleans whole body.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Treats uneven skin tone, Dark spots due to acne, Brightens the skin</div>
                         </div>
+                        <div class="product-price">R150.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Extra Glow Lotion - Most affordable -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Extra Glow Lotion 250g</h3>
-                                <p>Hydrating lotion for glowing, healthy-looking skin.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Benefits:</strong> Helps with dry skin, Glowing, Dark inner thighs, Sunburn, Stretch marks, Blemishes, Wounds</div>
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
-                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Vegetal glycerin, Sodium lactate</div>
-                                </div>
-                                <div class="product-price">R100.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Extra Glow Lotion -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Lotion 250g</h3>
+                        <p>Hydrating lotion for glowing, healthy-looking skin.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Helps with dry skin, Glowing, Dark inner thighs, Sunburn, Stretch marks, Blemishes, Wounds</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin C, Vegetal glycerin, Sodium lactate</div>
                         </div>
+                        <div class="product-price">R100.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 2. WHITENING COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>WHITENING COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Whitening Products</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="whiteningLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="whiteningRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="whiteningScroll">
-                    <div class="products-row">
-                        <!-- Whitening Tissue Oil - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Whitening Tissue Oil</h3>
-                                <p>Lightweight tissue oil for targeted whitening treatment.</p>
-                                <div class="product-price">R200.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Whitening Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Soap</h3>
+                        <p>Gentle cleansing soap for skin whitening purposes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Skin whitening purposes, Eliminates excess oils, Eliminates blemishes, Gently exfoliates dead skin cells, Treats hyperpigmentation and Acne</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
                         </div>
+                        <div class="product-price">R70.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Whitening Cream -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Whitening Cream 250g</h3>
-                                <p>Advanced whitening cream for even skin tone and radiant complexion.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Benefits:</strong> Improves skin tone, Strong moisturising, Anti Aging, Acne, Pigmentation, Dark spot, Pimples</div>
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and night</div>
-                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Vitamin E and C, Collagen and Glutathione</div>
-                                </div>
-                                <div class="product-price">R150.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Extra Glow Soap -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Soap</h3>
+                        <p>Nourishing soap for glowing, moisturized skin.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Benefits:</strong> Brings out the glow, Moisturises dry skin, Helps treat Stretch marks, Helps fade skin scars</div>
+                            <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
+                            <div class="product-ingredients"><strong>Active Ingredients:</strong> Turmeric + Vitamin C, Essential oils, Lemon, Palm oil and Honey</div>
                         </div>
+                        <div class="product-price">R70.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Whitening Soap - Most affordable -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Whitening Soap</h3>
-                                <p>Gentle cleansing soap for skin whitening purposes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Benefits:</strong> Skin whitening purposes, Eliminates excess oils, Eliminates blemishes, Gently exfoliates dead skin cells, Treats hyperpigmentation and Acne</div>
-                                    <div class="product-usage"><strong>Usage:</strong> Morning and Night</div>
-                                    <div class="product-ingredients"><strong>Active Ingredients:</strong> Collagen extract, Licorice, Glutathione extract and Arbutin extract</div>
-                                </div>
-                                <div class="product-price">R70.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
+                <!-- Whitening Tissue Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Whitening Tissue Oil</h3>
+                        <p>Lightweight tissue oil for targeted whitening treatment.</p>
+                        <div class="product-price">R200.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 3. KOJIC -->
-            <div class="collection-divider fade-in">
-                <h2>KOJIC</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Kojic Product</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="kojicLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="kojicRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                <!-- Extra Glow Oil -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Extra Glow Oil</h3>
+                        <p>Radiant glow oil for luminous, healthy-looking skin.</p>
+                        <div class="product-price">R100.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-                
-                <div class="vertical-scroll-container" id="kojicScroll">
-                    <div class="products-row">
-                        <!-- Kojic Soap -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Kojic Soap</h3>
-                                <p>Treats different skin disorders and cleans whole body.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Benefits:</strong> Treats uneven skin tone, Dark spots due to acne, Brightens the skin</div>
-                                </div>
-                                <div class="product-price">R150.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 4. AMA FRAGRANCES COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>AMA FRAGRANCES COLLECTION</h2>
-            </div>
-            
-            <!-- Black Oud - Grouped by Product, Sorted by Size Variants -->
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Black Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="blackOudLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="blackOudRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="blackOudScroll">
-                    <div class="products-row">
-                        <!-- Black Oud 100ml - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Black Oud (100ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R450.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- AMAL FRAGRANCES SECTION -->
+                <!-- Collection 1: THE EXCLUSIVE OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R180.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Black Oud 50ml -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Black Oud (50ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R250.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R250.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Black Oud 30ml - Most affordable -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Black Oud (30ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 30ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R180.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R450.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- White Oud - Grouped by Product, Sorted by Size Variants -->
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>White Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="whiteOudLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="whiteOudRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="whiteOudScroll">
-                    <div class="products-row">
-                        <!-- White Oud 100ml - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>White Oud (100ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R450.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R180.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- White Oud 50ml -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>White Oud (50ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R250.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R250.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- White Oud 30ml - Most affordable -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">New</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>White Oud (30ml)</h3>
-                                <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 30ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R180.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>White Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> White Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R450.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- Symphony Oud (OUD JOY) - Grouped by Product, Sorted by Size Variants -->
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Symphony Oud (OUD JOY)</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="symphonyOudLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="symphonyOudRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="symphonyOudScroll">
-                    <div class="products-row">
-                        <!-- OUD JOY 100ml - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-bestseller">Bestseller</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>OUD JOY (100ml)</h3>
-                                <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
-                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R600.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (30ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 30ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R180.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="106" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- OUD JOY 50ml -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-bestseller">Bestseller</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>OUD JOY (50ml)</h3>
-                                <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
-                                    <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                                    <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R350.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R250.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="107" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- Premium Oud - Grouped by Product, Sorted by Size Variants -->
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Premium Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="premiumOudLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="premiumOudRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="premiumOudScroll">
-                    <div class="products-row">
-                        <!-- Premium Oud 100ml - Most expensive -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-flagship">Premium</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Premium Oud (100ml)</h3>
-                                <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 100ml</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R1500.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">New</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Black Oud (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> Black Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R450.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="108" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
 
-                        <!-- Premium Oud 50ml -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-flagship">Premium</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Premium Oud (50ml)</h3>
-                                <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
-                                    <div class="product-usage"><strong>Size:</strong> 50ml</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R900.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Collection 2: THE EXCLUSIVE OUD SPRING COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>OUD JOY (50ml)</h3>
+                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R350.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 5. HOME DIFFUSER OUD COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>HOME DIFFUSER OUD COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Home Diffuser Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="homeDiffuserLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="homeDiffuserRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="homeDiffuserScroll">
-                    <div class="products-row">
-                        <!-- Home Diffuser Oud -->
-                        <div class="product-card glass-card">
-                            <div class="product-badge badge-recommended">Home Fragrance</div>
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Home Diffuser Oud</h3>
-                                <p>THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Type:</strong> Home Diffuser</div>
-                                    <div class="product-usage"><strong>Use:</strong> Home fragrance</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R350.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-bestseller">Bestseller</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>OUD JOY (100ml)</h3>
+                        <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Fragrance:</strong> OUD JOY</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Collection:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R600.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 6. CAR DIFFUSER OUD COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>CAR DIFFUSER OUD COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Car Diffuser Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="carDiffuserLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="carDiffuserRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="carDiffuserScroll">
-                    <div class="products-row">
-                        <!-- Car Diffuser Oud -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Car Diffuser Oud</h3>
-                                <p>THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Type:</strong> Car Diffuser</div>
-                                    <div class="product-usage"><strong>Use:</strong> Car fragrance</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R80.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Collection 3: THE PREMIUM OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-flagship">Premium</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Premium Oud (50ml)</h3>
+                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 50ml</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R900.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 7. BODY LOTION OUD COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>BODY LOTION OUD COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Body Lotion Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="bodyLotionLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="bodyLotionRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="bodyLotionScroll">
-                    <div class="products-row">
-                        <!-- Body Lotion Oud -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Body Lotion Oud</h3>
-                                <p>THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Type:</strong> Body Lotion</div>
-                                    <div class="product-usage"><strong>Use:</strong> Daily moisturizer</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R200.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-flagship">Premium</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Premium Oud (100ml)</h3>
+                        <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Collection:</strong> Premium Oud</div>
+                            <div class="product-usage"><strong>Size:</strong> 100ml</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R1500.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
-            </div>
 
-            <!-- 8. DEODORANT OUD COLLECTION -->
-            <div class="collection-divider fade-in">
-                <h2>DEODORANT OUD COLLECTION</h2>
-            </div>
-            
-            <div class="vertical-category fade-in">
-                <div class="category-header">
-                    <h3>Deodorant Oud</h3>
-                    <div class="category-nav">
-                        <button class="nav-btn left" id="deodorantLeft">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="nav-btn right" id="deodorantRight">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vertical-scroll-container" id="deodorantScroll">
-                    <div class="products-row">
-                        <!-- Deodorant Oud -->
-                        <div class="product-card glass-card">
-                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                            <div class="product-info">
-                                <h3>Deodorant Oud</h3>
-                                <p>THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.</p>
-                                <div class="product-details">
-                                    <div class="product-benefits"><strong>Type:</strong> Deodorant</div>
-                                    <div class="product-usage"><strong>Use:</strong> Daily protection</div>
-                                    <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
-                                </div>
-                                <div class="product-price">R100.00</div>
-                            </div>
-                            <div class="see-more-placeholder">
-                                <button class="see-more-btn-alt">
-                                    <i class="fas fa-plus"></i> See Details
-                                </button>
-                            </div>
-                            <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                <!-- Collection 5: THE HOME DIFFUSER OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-badge badge-recommended">Home Fragrance</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Home Diffuser Oud</h3>
+                        <p>THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Home Diffuser</div>
+                            <div class="product-usage"><strong>Use:</strong> Home fragrance</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
                         </div>
+                        <div class="product-price">R350.00</div>
                     </div>
+                    <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+
+                <!-- Collection 6: THE CAR DIFFUSER OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Car Diffuser Oud</h3>
+                        <p>THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Car Diffuser</div>
+                            <div class="product-usage"><strong>Use:</strong> Car fragrance</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R80.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+
+                <!-- Collection 7: THE BODY LOTION OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Body Lotion Oud</h3>
+                        <p>THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Body Lotion</div>
+                            <div class="product-usage"><strong>Use:</strong> Daily moisturizer</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R200.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+
+                <!-- Collection 8: THE DEODORANT OUD COLLECTION -->
+                <div class="product-card glass-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Deodorant Oud</h3>
+                        <p>THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.</p>
+                        <div class="product-details">
+                            <div class="product-benefits"><strong>Type:</strong> Deodorant</div>
+                            <div class="product-usage"><strong>Use:</strong> Daily protection</div>
+                            <div class="product-ingredients"><strong>Category:</strong> Amal Fragrances</div>
+                        </div>
+                        <div class="product-price">R100.00</div>
+                    </div>
+                    <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
+
+        <!-- Gallery -->
         <section id="gallery">
             <div class="section-header fade-in">
                 <h2>Glow Gallery</h2>
                 <p>See the transformation and lifestyle with Lonz Flawls Aura</p>
             </div>
-
+            
             <div class="gallery-container fade-in">
                 <div class="gallery-track" id="galleryTrack">
                     <div class="gallery-slide glass-card">
@@ -4556,7 +4905,7 @@
                         <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Radiant skin results">
                     </div>
                 </div>
-
+                
                 <div class="gallery-nav">
                     <div class="gallery-dot active" data-index="0"></div>
                     <div class="gallery-dot" data-index="1"></div>
@@ -4603,7 +4952,7 @@
                     <h4>Lonz Flawls Aura</h4>
                     <p>Premium skincare solutions that combine science and nature to reveal your natural radiance. Start your glow journey today.</p>
                 </div>
-
+                
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
@@ -4614,14 +4963,14 @@
                         <li><a href="#social">Connect</a></li>
                     </ul>
                 </div>
-
+                
                 <div class="footer-column">
                     <h4>Contact Info</h4>
                     <p><i class="fab fa-whatsapp"></i> +27 73 551 1216</p>
                     <p><i class="fas fa-envelope"></i> mongwelonia@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> South Africa</p>
                 </div>
-
+                
                 <div class="footer-column">
                     <h4>Join Our Glow Club</h4>
                     <p>Subscribe to get exclusive offers, skincare tips, and early access to new products.</p>
@@ -4631,7 +4980,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="copyright">
                 <p>&copy; 2023 Lonz Flawls Aura. All rights reserved. | Premium Skincare</p>
             </div>
@@ -4641,7 +4990,7 @@
     <!-- Results Modal -->
     <div class="results-modal" id="resultsModal">
         <button class="close-button" id="closeResults">&times;</button>
-
+        
         <div class="affirmations-section fade-in">
             <div class="result-icon">
                 <i class="fas fa-spa"></i>
@@ -4651,11 +5000,11 @@
                 <p id="resultDescription"></p>
             </div>
         </div>
-
+        
         <div class="results-products-section">
             <div class="results-products-container glass-card">
                 <div class="personalized-products-container" id="personalizedProducts"></div>
-
+                
                 <div class="result-actions">
                     <button class="glass-button" id="closeResultsBtn">Continue Browsing</button>
                     <button class="glass-button" style="background: rgba(196, 167, 125, 0.3); margin-left: 15px;" id="addAllToCart">
@@ -4664,7 +5013,10 @@
                 </div>
             </div>
         </div>
-    </div>                 // DOM Elements - ADDING NEW ONES FOR AUTHENTICATION
+    </div>
+
+    <script>
+                 // DOM Elements - ADDING NEW ONES FOR AUTHENTICATION
         const authChoiceModal = document.getElementById('authChoiceModal');
         const closeAuthChoiceBtn = document.getElementById('closeAuthChoice');
         const guestOption = document.getElementById('guestOption');
@@ -8121,164 +8473,9 @@
                 overlayObserver.observe(searchOverlayResults, { childList: true, subtree: true });
             }
         });
-
+        
     </script>
-
-    <!-- New minimal JavaScript for polish features only -->
-    <script>
-        // Task B: Next button behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all Next buttons as disabled
-            const nextButtons = document.querySelectorAll('.wizard-next');
-            nextButtons.forEach(btn => {
-                btn.disabled = true;
-            });
-
-            // Enable Next button when option is selected
-            const optionItems = document.querySelectorAll('.option-item');
-            optionItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const wizardStep = this.closest('.wizard-step');
-                    const nextButton = wizardStep.querySelector('.wizard-next');
-                    if (nextButton) {
-                        nextButton.disabled = false;
-                    }
-                });
-            });
-
-            // Task E: Tags clarity line
-            const searchResults = document.getElementById('searchResults');
-            if (searchResults) {
-                // Add helper text to search suggestions when they appear
-                const observer = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.type === 'childList') {
-                            const suggestionSections = searchResults.querySelectorAll('.search-suggestions');
-                            suggestionSections.forEach(section => {
-                                // Check if helper text already exists
-                                if (!section.querySelector('.tags-helper')) {
-                                    const helper = document.createElement('div');
-                                    helper.className = 'tags-helper';
-                                    helper.textContent = 'Tap any tag to instantly see matching products';
-                                    section.insertBefore(helper, section.firstChild);
-                                }
-                            });
-                        }
-                    });
-                });
-
-                observer.observe(searchResults, { childList: true, subtree: true });
-            }
-
-            // Same for overlay search
-            const searchOverlayResults = document.getElementById('searchOverlayResults');
-            if (searchOverlayResults) {
-                const overlayObserver = new MutationObserver(function(mutations) {
-                    mutations.forEach(function(mutation) {
-                        if (mutation.type === 'childList') {
-                            const suggestionSections = searchOverlayResults.querySelectorAll('.search-suggestions');
-                            suggestionSections.forEach(section => {
-                                if (!section.querySelector('.tags-helper')) {
-                                    const helper = document.createElement('div');
-                                    helper.className = 'tags-helper';
-                                    helper.textContent = 'Tap any tag to instantly see matching products';
-                                    section.insertBefore(helper, section.firstChild);
-                                }
-                            });
-                        }
-                    });
-                });
-
-                overlayObserver.observe(searchOverlayResults, { childList: true, subtree: true });
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all vertical scrolling categories
-            
-            // Function to handle vertical scrolling navigation
-            function initVerticalScroll(categoryId, leftBtnId, rightBtnId) {
-                const container = document.getElementById(categoryId);
-                const leftBtn = document.getElementById(leftBtnId);
-                const rightBtn = document.getElementById(rightBtnId);
-                
-                if (!container || !leftBtn || !rightBtn) return;
-                
-                const scrollAmount = 330; // Width of card + gap
-                
-                leftBtn.addEventListener('click', () => {
-                    container.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-                
-                rightBtn.addEventListener('click', () => {
-                    container.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-                
-                // Update button states based on scroll position
-                container.addEventListener('scroll', () => {
-                    const maxScroll = container.scrollWidth - container.clientWidth;
-                    
-                    if (container.scrollLeft <= 10) {
-                        leftBtn.disabled = true;
-                    } else {
-                        leftBtn.disabled = false;
-                    }
-                    
-                    if (container.scrollLeft >= maxScroll - 10) {
-                        rightBtn.disabled = true;
-                    } else {
-                        rightBtn.disabled = false;
-                    }
-                });
-                
-                // Initial state
-                container.dispatchEvent(new Event('scroll'));
-            }
-            
-            // Initialize all vertical scrolling categories
-            initVerticalScroll('combosScroll', 'combosLeft', 'combosRight');
-            initVerticalScroll('extraGlowScroll', 'extraGlowLeft', 'extraGlowRight');
-            initVerticalScroll('whiteningScroll', 'whiteningLeft', 'whiteningRight');
-            initVerticalScroll('kojicScroll', 'kojicLeft', 'kojicRight');
-            initVerticalScroll('blackOudScroll', 'blackOudLeft', 'blackOudRight');
-            initVerticalScroll('whiteOudScroll', 'whiteOudLeft', 'whiteOudRight');
-            initVerticalScroll('symphonyOudScroll', 'symphonyOudLeft', 'symphonyOudRight');
-            initVerticalScroll('premiumOudScroll', 'premiumOudLeft', 'premiumOudRight');
-            initVerticalScroll('homeDiffuserScroll', 'homeDiffuserLeft', 'homeDiffuserRight');
-            initVerticalScroll('carDiffuserScroll', 'carDiffuserLeft', 'carDiffuserRight');
-            initVerticalScroll('bodyLotionScroll', 'bodyLotionLeft', 'bodyLotionRight');
-            initVerticalScroll('deodorantScroll', 'deodorantLeft', 'deodorantRight');
-            
-            // Add see-more button functionality for equal card height
-            document.querySelectorAll('.see-more-btn-alt').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const productCard = this.closest('.product-card');
-                    const productInfo = productCard.querySelector('.product-info p');
-                    
-                    if (productInfo) {
-                        const isExpanded = productInfo.style.webkitLineClamp === 'unset';
-                        
-                        if (isExpanded) {
-                            productInfo.style.webkitLineClamp = '3';
-                            productInfo.style.overflow = 'hidden';
-                            this.innerHTML = '<i class="fas fa-plus"></i> See Details';
-                        } else {
-                            productInfo.style.webkitLineClamp = 'unset';
-                            productInfo.style.overflow = 'visible';
-                            this.innerHTML = '<i class="fas fa-minus"></i> See Less';
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
+    
     <!-- New minimal JavaScript for polish features only -->
     <script>
         // Task B: Next button behavior

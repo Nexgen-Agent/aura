@@ -1,3 +1,9 @@
+the ui must never change at all dont change anything else 
+
+im gonna upload the real graphics for the website do pls replace the the placeholders link from unpleash and replace them with the real links .. u are incharge for creating tge names the file location names for each product make sure .. that the names of the products are used as the for the links do that I can name the pics the same .. removed the current logo and replace in with a link for me to upload just make sure that the size of everything stay the same .. now since the code has over 9000 lines .  u are allowed to leave out the js and css they will all be added on after u generated the html that has real graphics links ..when I add back the js and css I don't want to chunk up anything but just add everything back smoothly.. create placeholders like place ur css here ...place ur js here
+
+now when it comes to the html u are not allowed to take shotcuts .  code the intire html ..u are only permitted to leave out the js nd css to be added back later
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-           <style>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+       <style>
                         * {
             margin: 0;
             padding: 0;
@@ -3402,7 +3410,7 @@
 
     <!-- Background Video -->
     <video autoplay muted loop id="background-video">
-        <source src="assets/videos/background-loop.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-ripples-on-the-surface-of-a-lake-4099-large.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
@@ -3422,6 +3430,7 @@
                 
                 <div class="auth-choice-option glass-card signup" id="signupOption">
                     <i class="fas fa-user-plus"></i>
+                    <!-- Task C: Premium discount copy -->
                     <h4>Sign Up & Receive a Welcome Gift</h4>
                     <p>Join our community for curated benefits on your first purchase</p>
                     <div class="discount-badge">15% OFF FIRST ORDER</div>
@@ -3592,6 +3601,7 @@
             <button class="search-back-btn" id="searchBackBtn">
                 <i class="fas fa-arrow-left"></i>
             </button>
+            <!-- Task D: Updated search placeholder -->
             <input type="text" class="search-overlay-input" id="searchOverlayInput" placeholder="Search by product, concern, or benefit">
         </div>
         <div class="search-overlay-content">
@@ -4136,9 +4146,7 @@
 
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="logo">
-            <img src="assets/logo/logo.png" alt="Lonz Flawls Aura Logo" style="height: 60px;">
-        </a>
+        <a href="#" class="logo"><i class="fas fa-spa"></i> Lonz Flawls Aura</a>
         <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#products">Products</a>
@@ -4148,6 +4156,7 @@
         </div>
         <div class="nav-icons">
             <div class="search-container">
+                <!-- Task D: Updated search placeholder -->
                 <input type="text" class="search-input" id="searchInput" placeholder="Search by product, concern, or benefit">
                 <i class="fas fa-search search-icon" id="searchIcon"></i>
                 <i class="fas fa-times search-close" id="searchClose"></i>
@@ -4187,6 +4196,7 @@
                     </div>
                     <div class="wizard-title">
                         <h3>Skin Analysis Wizard</h3>
+                        <!-- Task A: Wizard priority messaging -->
                         <p class="wizard-priority-note">Start here for personalized recommendations tailored to your skin</p>
                     </div>
                 </div>
@@ -4218,6 +4228,7 @@
                             </div>
                         </div>
                         <div class="wizard-actions">
+                            <!-- Task B: Next button disabled by default -->
                             <button class="glass-button wizard-next" data-step="1" disabled>Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -4245,6 +4256,7 @@
                         </div>
                         <div class="wizard-actions">
                             <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <!-- Task B: Next button disabled by default -->
                             <button class="glass-button wizard-next" data-step="2" disabled>Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -4272,6 +4284,7 @@
                         </div>
                         <div class="wizard-actions">
                             <button class="glass-button wizard-prev"><i class="fas fa-arrow-left"></i> Back</button>
+                            <!-- Task B: Next button disabled by default -->
                             <button class="glass-button wizard-next" data-step="3" disabled>Get Recommendations</button>
                         </div>
                     </div>
@@ -4294,7 +4307,7 @@
                 <!-- Whitening Combo -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">Recommended</div>
-                    <div class="product-image" style="background-image: url('assets/products/whitening-combo.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Whitening Combo</h3>
                         <p>Complete whitening set for radiant, even-toned skin. Perfect for daily use.</p>
@@ -4304,13 +4317,13 @@
                         </div>
                         <div class="product-price">R420.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="assets/products/whitening-combo.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="14" data-name="Whitening Combo" data-price="420.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Extra Glow Combo -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('assets/products/extra-glow-combo.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Extra Glow Combo</h3>
                         <p>Complete extra glow set for radiant, hydrated skin.</p>
@@ -4320,13 +4333,13 @@
                         </div>
                         <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="assets/products/extra-glow-combo.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="13" data-name="Extra Glow Combo" data-price="250.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
                 
                 <!-- Extra Whitening Combo -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">Recommended</div>
-                    <div class="product-image" style="background-image: url('assets/products/extra-whitening-combo.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Extra Whitening Combo</h3>
                         <p>Premium whitening set with kojic soap for enhanced results.</p>
@@ -4336,7 +4349,7 @@
                         </div>
                         <div class="product-price">R500.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="assets/products/extra-whitening-combo.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="15" data-name="Extra Whitening Combo" data-price="500.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -4352,7 +4365,7 @@
                 <div class="product-card glass-card flagship-card">
                     <div class="product-badge badge-flagship">Flagship</div>
                     <div class="flagship-container">
-                        <img src="assets/products/whitening-oil-100ml.jpg" alt="Whitening Oil 100ml" class="flagship-image">
+                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Whitening Oil 100ml" class="flagship-image">
                         <div class="flagship-info">
                             <h3>Whitening Oil 100ml</h3>
                             <p>Our premium whitening oil is formulated with natural extracts and advanced brightening agents. This luxurious oil targets dark spots, evens skin tone, and delivers a radiant glow with continued use. Lightweight and fast-absorbing.</p>
@@ -4365,7 +4378,7 @@
                                 <i class="fas fa-chevron-down"></i> See More
                             </button>
                             <div class="product-price">R200.00</div>
-                            <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="assets/products/whitening-oil-100ml.jpg" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart</button>
+                            <button class="glass-button add-to-cart" data-id="1" data-name="Whitening Oil 100ml" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" style="background: rgba(196, 167, 125, 0.3);"><i class="fas fa-gem"></i> Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -4382,7 +4395,7 @@
             <div class="products-grid fade-in">
                 <!-- Whitening Cream -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/whitening-cream-250g.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Whitening Cream 250g</h3>
                         <p>Advanced whitening cream for even skin tone and radiant complexion.</p>
@@ -4393,12 +4406,12 @@
                         </div>
                         <div class="product-price">R150.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="assets/products/whitening-cream-250g.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="2" data-name="Whitening Cream 250g" data-price="150.00" data-image="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Kojic Soap -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/kojic-soap.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Kojic Soap</h3>
                         <p>Treats different skin disorders and cleans whole body.</p>
@@ -4407,12 +4420,12 @@
                         </div>
                         <div class="product-price">R150.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="assets/products/kojic-soap.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="3" data-name="Kojic Soap" data-price="150.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Extra Glow Lotion -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/extra-glow-lotion-250g.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Extra Glow Lotion 250g</h3>
                         <p>Hydrating lotion for glowing, healthy-looking skin.</p>
@@ -4423,12 +4436,12 @@
                         </div>
                         <div class="product-price">R100.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="assets/products/extra-glow-lotion-250g.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="4" data-name="Extra Glow Lotion 250g" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Whitening Soap -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/whitening-soap.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Whitening Soap</h3>
                         <p>Gentle cleansing soap for skin whitening purposes.</p>
@@ -4439,12 +4452,12 @@
                         </div>
                         <div class="product-price">R70.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="assets/products/whitening-soap.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="5" data-name="Whitening Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Extra Glow Soap -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/extra-glow-soap.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Extra Glow Soap</h3>
                         <p>Nourishing soap for glowing, moisturized skin.</p>
@@ -4455,36 +4468,36 @@
                         </div>
                         <div class="product-price">R70.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="assets/products/extra-glow-soap.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="6" data-name="Extra Glow Soap" data-price="70.00" data-image="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Whitening Tissue Oil -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/whitening-tissue-oil.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Whitening Tissue Oil</h3>
                         <p>Lightweight tissue oil for targeted whitening treatment.</p>
                         <div class="product-price">R200.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="assets/products/whitening-tissue-oil.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="7" data-name="Whitening Tissue Oil" data-price="200.00" data-image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Extra Glow Oil -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/products/extra-glow-oil.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Extra Glow Oil</h3>
                         <p>Radiant glow oil for luminous, healthy-looking skin.</p>
                         <div class="product-price">R100.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="assets/products/extra-glow-oil.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="8" data-name="Extra Glow Oil" data-price="100.00" data-image="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- AMAL FRAGRANCES SECTION -->
                 <!-- Collection 1: THE EXCLUSIVE OUD COLLECTION -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-30ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (30ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4495,12 +4508,12 @@
                         </div>
                         <div class="product-price">R180.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="assets/fragrances/black-oud-30ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="100" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-50ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (50ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4511,12 +4524,12 @@
                         </div>
                         <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="assets/fragrances/black-oud-50ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="101" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-100ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (100ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4527,12 +4540,12 @@
                         </div>
                         <div class="product-price">R450.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="assets/fragrances/black-oud-100ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="102" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/white-oud-30ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>White Oud (30ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
@@ -4543,12 +4556,12 @@
                         </div>
                         <div class="product-price">R180.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="assets/fragrances/white-oud-30ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="103" data-name="White Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/white-oud-50ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>White Oud (50ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
@@ -4559,12 +4572,12 @@
                         </div>
                         <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="assets/fragrances/white-oud-50ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="104" data-name="White Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/white-oud-100ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>White Oud (100ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A lighter, floral oud fragrance with subtle notes.</p>
@@ -4575,12 +4588,12 @@
                         </div>
                         <div class="product-price">R450.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="assets/fragrances/white-oud-100ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="105" data-name="White Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-30ml-2.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (30ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4591,12 +4604,12 @@
                         </div>
                         <div class="product-price">R180.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="106" data-name="Black Oud (30ml)" data-price="180.00" data-image="assets/fragrances/black-oud-30ml-2.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="106" data-name="Black Oud (30ml)" data-price="180.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-50ml-2.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (50ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4607,12 +4620,12 @@
                         </div>
                         <div class="product-price">R250.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="107" data-name="Black Oud (50ml)" data-price="250.00" data-image="assets/fragrances/black-oud-50ml-2.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="107" data-name="Black Oud (50ml)" data-price="250.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">New</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/black-oud-100ml-2.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Black Oud (100ml)</h3>
                         <p>THE EXCLUSIVE OUD COLLECTION - A rich, deep oud fragrance with woody notes.</p>
@@ -4623,13 +4636,13 @@
                         </div>
                         <div class="product-price">R450.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="108" data-name="Black Oud (100ml)" data-price="450.00" data-image="assets/fragrances/black-oud-100ml-2.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="108" data-name="Black Oud (100ml)" data-price="450.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 2: THE EXCLUSIVE OUD SPRING COLLECTION -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/oud-joy-50ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>OUD JOY (50ml)</h3>
                         <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
@@ -4640,12 +4653,12 @@
                         </div>
                         <div class="product-price">R350.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="assets/fragrances/oud-joy-50ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="109" data-name="OUD JOY (50ml)" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-bestseller">Bestseller</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/oud-joy-100ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>OUD JOY (100ml)</h3>
                         <p>THE EXCLUSIVE OUD SPRING COLLECTION - A fresh, uplifting oud fragrance for spring.</p>
@@ -4656,13 +4669,13 @@
                         </div>
                         <div class="product-price">R600.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="assets/fragrances/oud-joy-100ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="110" data-name="OUD JOY (100ml)" data-price="600.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 3: THE PREMIUM OUD COLLECTION -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-flagship">Premium</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/premium-oud-50ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Premium Oud (50ml)</h3>
                         <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
@@ -4673,12 +4686,12 @@
                         </div>
                         <div class="product-price">R900.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="assets/fragrances/premium-oud-50ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="111" data-name="Premium Oud (50ml)" data-price="900.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <div class="product-card glass-card">
                     <div class="product-badge badge-flagship">Premium</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/premium-oud-100ml.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Premium Oud (100ml)</h3>
                         <p>THE PREMIUM OUD COLLECTION - Luxurious oud fragrance with premium ingredients.</p>
@@ -4689,13 +4702,13 @@
                         </div>
                         <div class="product-price">R1500.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="assets/fragrances/premium-oud-100ml.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="112" data-name="Premium Oud (100ml)" data-price="1500.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 5: THE HOME DIFFUSER OUD COLLECTION -->
                 <div class="product-card glass-card">
                     <div class="product-badge badge-recommended">Home Fragrance</div>
-                    <div class="product-image" style="background-image: url('assets/fragrances/home-diffuser-oud.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Home Diffuser Oud</h3>
                         <p>THE HOME DIFFUSER OUD COLLECTION - Create a luxurious ambiance with oud fragrance.</p>
@@ -4706,12 +4719,12 @@
                         </div>
                         <div class="product-price">R350.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="assets/fragrances/home-diffuser-oud.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="113" data-name="Home Diffuser Oud" data-price="350.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 6: THE CAR DIFFUSER OUD COLLECTION -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/fragrances/car-diffuser-oud.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Car Diffuser Oud</h3>
                         <p>THE CAR DIFFUSER OUD COLLECTION - Enjoy oud fragrance during your travels.</p>
@@ -4722,12 +4735,12 @@
                         </div>
                         <div class="product-price">R80.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="assets/fragrances/car-diffuser-oud.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="114" data-name="Car Diffuser Oud" data-price="80.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 7: THE BODY LOTION OUD COLLECTION -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/fragrances/body-lotion-oud.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Body Lotion Oud</h3>
                         <p>THE BODY LOTION OUD COLLECTION - Moisturizing body lotion with oud fragrance.</p>
@@ -4738,12 +4751,12 @@
                         </div>
                         <div class="product-price">R200.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="assets/fragrances/body-lotion-oud.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="115" data-name="Body Lotion Oud" data-price="200.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
 
                 <!-- Collection 8: THE DEODORANT OUD COLLECTION -->
                 <div class="product-card glass-card">
-                    <div class="product-image" style="background-image: url('assets/fragrances/deodorant-oud.jpg');"></div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                     <div class="product-info">
                         <h3>Deodorant Oud</h3>
                         <p>THE DEODORANT OUD COLLECTION - Long-lasting deodorant with oud fragrance.</p>
@@ -4754,7 +4767,7 @@
                         </div>
                         <div class="product-price">R100.00</div>
                     </div>
-                    <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="assets/fragrances/deodorant-oud.jpg"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="glass-button add-to-cart" data-id="116" data-name="Deodorant Oud" data-price="100.00" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -4769,19 +4782,19 @@
             <div class="gallery-container fade-in">
                 <div class="gallery-track" id="galleryTrack">
                     <div class="gallery-slide glass-card">
-                        <img src="assets/gallery/gallery-1.jpg" alt="Skincare products">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Skincare products">
                     </div>
                     <div class="gallery-slide glass-card">
-                        <img src="assets/gallery/gallery-2.jpg" alt="Product application">
+                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Product application">
                     </div>
                     <div class="gallery-slide glass-card">
-                        <img src="assets/gallery/gallery-3.jpg" alt="Natural ingredients">
+                        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Natural ingredients">
                     </div>
                     <div class="gallery-slide glass-card">
-                        <img src="assets/gallery/gallery-4.jpg" alt="Luxury skincare">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury skincare">
                     </div>
                     <div class="gallery-slide glass-card">
-                        <img src="assets/gallery/gallery-5.jpg" alt="Radiant skin results">
+                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Radiant skin results">
                     </div>
                 </div>
                 
@@ -4893,13 +4906,14 @@
             </div>
         </div>
     </div>
+
     <!-- Supabase Initialization -->
     <script>
         // Initialize Supabase
         const supabaseUrl = 'YOUR_SUPABASE_URL_HERE';
         const supabaseKey = 'YOUR_SUPABASE_ANON_KEY_HERE';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
+        
         // Supabase hooks will be integrated into existing JavaScript
         // The existing JavaScript code should be placed after this initialization
     </script>
@@ -8763,7 +8777,7 @@ async function updateUserProfile(userId, updates) {
 // ==================== LOCAL STORAGE FALLBACKS ====================
 function signUpLocal(userData) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-
+    
     // Check if user already exists
     if (users.find(u => u.email === userData.email)) {
         return {
@@ -8824,7 +8838,7 @@ function signOutLocal() {
 function saveOrderLocal(orderData) {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const orderId = Date.now().toString();
-
+    
     const order = {
         ...orderData,
         id: orderId,
@@ -9169,7 +9183,7 @@ async function updateUserProfile(userId, updates) {
 // ==================== LOCAL STORAGE FALLBACKS ====================
 function signUpLocal(userData) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-
+    
     // Check if user already exists
     if (users.find(u => u.email === userData.email)) {
         return {
@@ -9230,7 +9244,7 @@ function signOutLocal() {
 function saveOrderLocal(orderData) {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
     const orderId = Date.now().toString();
-
+    
     const order = {
         ...orderData,
         id: orderId,
@@ -9319,27 +9333,27 @@ function enhanceAuthHandlers() {
     // Replace enhanced login form submission
     enhancedLoginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        
         const email = document.getElementById('enhancedLoginEmail').value;
         const password = document.getElementById('enhancedLoginPassword').value;
 
         showAuthLoading();
-
+        
         const result = await signInWithSupabase(email, password);
-
+        
         if (result.success) {
             currentUser = result.user;
             isAuthenticated = true;
             userHasDiscount = result.user.hasDiscount;
-
+            
             showAuthSuccess();
-
+            
             setTimeout(() => {
                 enhancedAuthModal.classList.remove('active');
                 checkoutModal.classList.add('active');
                 updateCheckoutStep(1);
                 initializeAddressSelection();
-
+                
                 if (userHasDiscount) {
                     applyDiscountToCart();
                 }
@@ -9353,7 +9367,7 @@ function enhanceAuthHandlers() {
     // Replace enhanced signup form submission
     enhancedSignupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        
         const firstName = document.getElementById('signupFirstName').value;
         const lastName = document.getElementById('signupLastName').value;
         const email = document.getElementById('enhancedSignupEmail').value;
@@ -9366,27 +9380,27 @@ function enhanceAuthHandlers() {
         }
 
         showAuthLoading();
-
+        
         const result = await signUpWithSupabase({
             firstName,
             lastName,
             email,
             password
         });
-
+        
         if (result.success) {
             currentUser = result.user;
             isAuthenticated = true;
             userHasDiscount = true;
-
+            
             showAuthSuccess();
-
+            
             setTimeout(() => {
                 enhancedAuthModal.classList.remove('active');
                 checkoutModal.classList.add('active');
                 updateCheckoutStep(1);
                 initializeAddressSelection();
-
+                
                 applyDiscountToCart();
             }, 1500);
         } else {
@@ -9425,7 +9439,7 @@ function enhanceAuthHandlers() {
 
         // Save order to Supabase
         const result = await saveOrderToSupabase(orderData);
-
+        
         if (result.success) {
             // Clear cart
             cart = [];
